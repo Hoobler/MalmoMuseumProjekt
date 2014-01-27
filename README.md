@@ -1,5 +1,8 @@
 MalmoMuseumProjekt
 ==================
 
-Dags för er att lära er mer om hur GitHub faktiskt fungerar.
-Lättaste är väl att leka lite med att modifiera olika text filer etc.
+Dags fï¿½r er att lï¿½ra er mer om hur GitHub faktiskt fungerar.<br>
+Lï¿½ttaste ï¿½r vï¿½l att leka lite med att modifiera olika text filer etc.<br>
+
+LÃ¤nk till wikin fÃ¶r lÃ¤nkar till stuffs.
+https://github.com/Hoobler/MalmoMuseumProjekt/wiki/L%C3%A4nkar-till-texter-och-tutorials-f%C3%B6r-Git-Hub<br>
