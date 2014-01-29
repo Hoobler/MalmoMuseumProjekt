@@ -1,0 +1,28 @@
+##################
+# Unity ignores:
+#
+# !!! WARNING !!!
+#
+# … you MUST convert Unity to using Metafiles *before* you start using this .gitignore file,
+# or you WILL lose data!
+#
+#####
+#
+# !!! WARNING !!!
+#
+# … don’t forget to [git add "*"] (quotes are required!) when adding new files, or git will silently ignore them
+#
+
+# OS X only (not needed on other platforms)
+.DS_Store
+*.swp
+*.Trashes
+
+# All platforms
+Library
+Temp
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
