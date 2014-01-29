@@ -3,14 +3,22 @@
 #
 # !!! WARNING !!!
 #
+<<<<<<< HEAD
 # … you MUST convert Unity to using Metafiles *before* you start using this .gitignore file,
+=======
+# â€¦ you MUST convert Unity to using Metafiles *before* you start using this .gitignore file,
+>>>>>>> 7054b340515ac737bd87f09b84e52cdf4c42f671
 # or you WILL lose data!
 #
 #####
 #
 # !!! WARNING !!!
 #
+<<<<<<< HEAD
 # … don’t forget to [git add "*"] (quotes are required!) when adding new files, or git will silently ignore them
+=======
+# â€¦ donâ€™t forget to [git add "*"] (quotes are required!) when adding new files, or git will silently ignore them
+>>>>>>> 7054b340515ac737bd87f09b84e52cdf4c42f671
 #
 
 # OS X only (not needed on other platforms)
@@ -25,4 +33,8 @@ Temp
 *.pidb
 *.unityproj
 *.sln
+<<<<<<< HEAD
 *.userprefs
+=======
+*.userprefs
+>>>>>>> 7054b340515ac737bd87f09b84e52cdf4c42f671
