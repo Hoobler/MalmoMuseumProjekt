@@ -156,8 +156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   levelToLoad: TestLoad
 =======
+=======
+>>>>>>> 5266ba39fb70e09588ee61e9033a6d12b2614f91
 --- !u!1 &261427135
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +230,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> 5266ba39fb70e09588ee61e9033a6d12b2614f91
+=======
 >>>>>>> 5266ba39fb70e09588ee61e9033a6d12b2614f91
 --- !u!1 &611005654
 GameObject:
