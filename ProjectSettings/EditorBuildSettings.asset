@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/MalmoStad.unity
   - enabled: 1
     path: Assets/Scenes/TestLoad.unity
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
