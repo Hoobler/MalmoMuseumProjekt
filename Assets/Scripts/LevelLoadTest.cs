@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class LevelLoadTest : MonoBehaviour {
+	public string levelToLoad;
+
 	void OnMouseDown(){
-		Application.LoadLevel("TestLoad");
+		Application.LoadLevel(levelToLoad);
 	}
 }
