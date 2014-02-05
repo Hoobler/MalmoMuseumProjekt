@@ -1,0 +1,669 @@
+fileFormatVersion: 2
+guid: 6043754d61b8dc940bfbc026f92218a3
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: 3dSolid
+    100002: 3dSolid 1
+    100004: 3dSolid 10
+    100006: 3dSolid 11
+    100008: 3dSolid 12
+    100010: 3dSolid 13
+    100012: 3dSolid 14
+    100014: 3dSolid 15
+    100016: 3dSolid 16
+    100018: 3dSolid 17
+    100020: 3dSolid 18
+    100022: 3dSolid 19
+    100024: 3dSolid 2
+    100026: 3dSolid 20
+    100028: 3dSolid 21
+    100030: 3dSolid 22
+    100032: 3dSolid 23
+    100034: 3dSolid 24
+    100036: 3dSolid 25
+    100038: 3dSolid 26
+    100040: 3dSolid 27
+    100042: 3dSolid 28
+    100044: 3dSolid 29
+    100046: 3dSolid 3
+    100048: 3dSolid 30
+    100050: 3dSolid 31
+    100052: 3dSolid 32
+    100054: 3dSolid 33
+    100056: 3dSolid 34
+    100058: 3dSolid 35
+    100060: 3dSolid 36
+    100062: 3dSolid 37
+    100064: 3dSolid 38
+    100066: 3dSolid 39
+    100068: 3dSolid 4
+    100070: 3dSolid 40
+    100072: 3dSolid 41
+    100074: 3dSolid 42
+    100076: 3dSolid 43
+    100078: 3dSolid 44
+    100080: 3dSolid 45
+    100082: 3dSolid 46
+    100084: 3dSolid 47
+    100086: 3dSolid 48
+    100088: 3dSolid 49
+    100090: 3dSolid 5
+    100092: 3dSolid 50
+    100094: 3dSolid 51
+    100096: 3dSolid 52
+    100098: 3dSolid 53
+    100100: 3dSolid 54
+    100102: 3dSolid 55
+    100104: 3dSolid 56
+    100106: 3dSolid 57
+    100108: 3dSolid 58
+    100110: 3dSolid 59
+    100112: 3dSolid 6
+    100114: 3dSolid 60
+    100116: 3dSolid 61
+    100118: 3dSolid 62
+    100120: 3dSolid 63
+    100122: 3dSolid 64
+    100124: 3dSolid 7
+    100126: 3dSolid 8
+    100128: 3dSolid 9
+    100130: 3dSolid003
+    100132: 3dSolid004
+    100134: 3dSolid02
+    100136: bj__lkar
+    100138: bj__lkar2
+    100140: d__rr1
+    100142: d__rr2
+    100144: d__rr3
+    100146: d__rr4
+    100148: d__rr5
+    100150: f__nster
+    100152: G06
+    100154: G06_MeshPart0
+    100156: G06_MeshPart1
+    100158: G07_08
+    100160: G09_10
+    100162: G11_12_13
+    100164: G14_15
+    100166: G16
+    100168: G17
+    100170: G18
+    100172: G19_20
+    100174: G21
+    100176: Group001
+    100178: grund
+    100180: halvd__rr1
+    100182: halvd__rr2
+    100184: Humle
+    100186: inne1
+    100188: inne2
+    100190: //RootNode
+    100192: Layer:0
+    100194: Layer:Fastighetsgrans001
+    100196: Layer:G__rd 774
+    100198: Layer:G__rd 775
+    100200: Layer:G__rd 776
+    100202: Layer:G__rd 777
+    100204: Layer:G__rd 778
+    100206: Layer:G__rd 779
+    100208: Layer:G__rd 780
+    100210: Layer:G__rd 781
+    100212: Layer:G__rd 782
+    100214: Layer:G__rd 783
+    100216: Layer:G__rd 784
+    100218: Layer:G__rd 785
+    100220: Layer:G__rd 786
+    100222: Layer:G__rd 787
+    100224: Layer:G__rd 788
+    100226: Layer:G__rd 789
+    100228: lucka1
+    100230: lucka10
+    100232: lucka11
+    100234: lucka12
+    100236: lucka13
+    100238: lucka2
+    100240: lucka3
+    100242: lucka4
+    100244: lucka5
+    100246: lucka6
+    100248: lucka7
+    100250: lucka8
+    100252: lucka9
+    100254: luckor
+    100256: m__rkt tegel
+    100258: plank
+    100260: port1
+    100262: port2
+    100264: port3
+    100266: port4
+    100268: portar
+    100270: skorsten
+    100272: staket
+    100274: tak
+    100276: trappor
+    100278: vitt tegel
+    400000: 3dSolid
+    400002: 3dSolid 1
+    400004: 3dSolid 10
+    400006: 3dSolid 11
+    400008: 3dSolid 12
+    400010: 3dSolid 13
+    400012: 3dSolid 14
+    400014: 3dSolid 15
+    400016: 3dSolid 16
+    400018: 3dSolid 17
+    400020: 3dSolid 18
+    400022: 3dSolid 19
+    400024: 3dSolid 2
+    400026: 3dSolid 20
+    400028: 3dSolid 21
+    400030: 3dSolid 22
+    400032: 3dSolid 23
+    400034: 3dSolid 24
+    400036: 3dSolid 25
+    400038: 3dSolid 26
+    400040: 3dSolid 27
+    400042: 3dSolid 28
+    400044: 3dSolid 29
+    400046: 3dSolid 3
+    400048: 3dSolid 30
+    400050: 3dSolid 31
+    400052: 3dSolid 32
+    400054: 3dSolid 33
+    400056: 3dSolid 34
+    400058: 3dSolid 35
+    400060: 3dSolid 36
+    400062: 3dSolid 37
+    400064: 3dSolid 38
+    400066: 3dSolid 39
+    400068: 3dSolid 4
+    400070: 3dSolid 40
+    400072: 3dSolid 41
+    400074: 3dSolid 42
+    400076: 3dSolid 43
+    400078: 3dSolid 44
+    400080: 3dSolid 45
+    400082: 3dSolid 46
+    400084: 3dSolid 47
+    400086: 3dSolid 48
+    400088: 3dSolid 49
+    400090: 3dSolid 5
+    400092: 3dSolid 50
+    400094: 3dSolid 51
+    400096: 3dSolid 52
+    400098: 3dSolid 53
+    400100: 3dSolid 54
+    400102: 3dSolid 55
+    400104: 3dSolid 56
+    400106: 3dSolid 57
+    400108: 3dSolid 58
+    400110: 3dSolid 59
+    400112: 3dSolid 6
+    400114: 3dSolid 60
+    400116: 3dSolid 61
+    400118: 3dSolid 62
+    400120: 3dSolid 63
+    400122: 3dSolid 64
+    400124: 3dSolid 7
+    400126: 3dSolid 8
+    400128: 3dSolid 9
+    400130: 3dSolid003
+    400132: 3dSolid004
+    400134: 3dSolid02
+    400136: bj__lkar
+    400138: bj__lkar2
+    400140: d__rr1
+    400142: d__rr2
+    400144: d__rr3
+    400146: d__rr4
+    400148: d__rr5
+    400150: f__nster
+    400152: G06
+    400154: G06_MeshPart0
+    400156: G06_MeshPart1
+    400158: G07_08
+    400160: G09_10
+    400162: G11_12_13
+    400164: G14_15
+    400166: G16
+    400168: G17
+    400170: G18
+    400172: G19_20
+    400174: G21
+    400176: Group001
+    400178: grund
+    400180: halvd__rr1
+    400182: halvd__rr2
+    400184: Humle
+    400186: inne1
+    400188: inne2
+    400190: //RootNode
+    400192: Layer:0
+    400194: Layer:Fastighetsgrans001
+    400196: Layer:G__rd 774
+    400198: Layer:G__rd 775
+    400200: Layer:G__rd 776
+    400202: Layer:G__rd 777
+    400204: Layer:G__rd 778
+    400206: Layer:G__rd 779
+    400208: Layer:G__rd 780
+    400210: Layer:G__rd 781
+    400212: Layer:G__rd 782
+    400214: Layer:G__rd 783
+    400216: Layer:G__rd 784
+    400218: Layer:G__rd 785
+    400220: Layer:G__rd 786
+    400222: Layer:G__rd 787
+    400224: Layer:G__rd 788
+    400226: Layer:G__rd 789
+    400228: lucka1
+    400230: lucka10
+    400232: lucka11
+    400234: lucka12
+    400236: lucka13
+    400238: lucka2
+    400240: lucka3
+    400242: lucka4
+    400244: lucka5
+    400246: lucka6
+    400248: lucka7
+    400250: lucka8
+    400252: lucka9
+    400254: luckor
+    400256: m__rkt tegel
+    400258: plank
+    400260: port1
+    400262: port2
+    400264: port3
+    400266: port4
+    400268: portar
+    400270: skorsten
+    400272: staket
+    400274: tak
+    400276: trappor
+    400278: vitt tegel
+    2300000: 3dSolid
+    2300002: 3dSolid 1
+    2300004: 3dSolid 10
+    2300006: 3dSolid 11
+    2300008: 3dSolid 12
+    2300010: 3dSolid 13
+    2300012: 3dSolid 14
+    2300014: 3dSolid 15
+    2300016: 3dSolid 16
+    2300018: 3dSolid 17
+    2300020: 3dSolid 18
+    2300022: 3dSolid 19
+    2300024: 3dSolid 2
+    2300026: 3dSolid 20
+    2300028: 3dSolid 21
+    2300030: 3dSolid 22
+    2300032: 3dSolid 23
+    2300034: 3dSolid 24
+    2300036: 3dSolid 25
+    2300038: 3dSolid 26
+    2300040: 3dSolid 27
+    2300042: 3dSolid 28
+    2300044: 3dSolid 29
+    2300046: 3dSolid 3
+    2300048: 3dSolid 30
+    2300050: 3dSolid 31
+    2300052: 3dSolid 32
+    2300054: 3dSolid 33
+    2300056: 3dSolid 34
+    2300058: 3dSolid 35
+    2300060: 3dSolid 36
+    2300062: 3dSolid 37
+    2300064: 3dSolid 38
+    2300066: 3dSolid 39
+    2300068: 3dSolid 4
+    2300070: 3dSolid 40
+    2300072: 3dSolid 41
+    2300074: 3dSolid 42
+    2300076: 3dSolid 43
+    2300078: 3dSolid 44
+    2300080: 3dSolid 45
+    2300082: 3dSolid 46
+    2300084: 3dSolid 47
+    2300086: 3dSolid 48
+    2300088: 3dSolid 49
+    2300090: 3dSolid 5
+    2300092: 3dSolid 50
+    2300094: 3dSolid 51
+    2300096: 3dSolid 52
+    2300098: 3dSolid 53
+    2300100: 3dSolid 54
+    2300102: 3dSolid 55
+    2300104: 3dSolid 56
+    2300106: 3dSolid 57
+    2300108: 3dSolid 58
+    2300110: 3dSolid 59
+    2300112: 3dSolid 6
+    2300114: 3dSolid 60
+    2300116: 3dSolid 61
+    2300118: 3dSolid 62
+    2300120: 3dSolid 63
+    2300122: 3dSolid 64
+    2300124: 3dSolid 7
+    2300126: 3dSolid 8
+    2300128: 3dSolid 9
+    2300130: 3dSolid003
+    2300132: 3dSolid004
+    2300134: 3dSolid02
+    2300136: bj__lkar
+    2300138: bj__lkar2
+    2300140: d__rr1
+    2300142: d__rr2
+    2300144: d__rr3
+    2300146: d__rr4
+    2300148: d__rr5
+    2300150: f__nster
+    2300152: G06_MeshPart0
+    2300154: G06_MeshPart1
+    2300156: G07_08
+    2300158: G14_15
+    2300160: G16
+    2300162: grund
+    2300164: halvd__rr1
+    2300166: halvd__rr2
+    2300168: inne1
+    2300170: inne2
+    2300172: lucka1
+    2300174: lucka10
+    2300176: lucka11
+    2300178: lucka12
+    2300180: lucka13
+    2300182: lucka2
+    2300184: lucka3
+    2300186: lucka4
+    2300188: lucka5
+    2300190: lucka6
+    2300192: lucka7
+    2300194: lucka8
+    2300196: lucka9
+    2300198: m__rkt tegel
+    2300200: plank
+    2300202: port1
+    2300204: port2
+    2300206: port3
+    2300208: port4
+    2300210: skorsten
+    2300212: staket
+    2300214: tak
+    2300216: trappor
+    2300218: vitt tegel
+    3300000: 3dSolid
+    3300002: 3dSolid 1
+    3300004: 3dSolid 10
+    3300006: 3dSolid 11
+    3300008: 3dSolid 12
+    3300010: 3dSolid 13
+    3300012: 3dSolid 14
+    3300014: 3dSolid 15
+    3300016: 3dSolid 16
+    3300018: 3dSolid 17
+    3300020: 3dSolid 18
+    3300022: 3dSolid 19
+    3300024: 3dSolid 2
+    3300026: 3dSolid 20
+    3300028: 3dSolid 21
+    3300030: 3dSolid 22
+    3300032: 3dSolid 23
+    3300034: 3dSolid 24
+    3300036: 3dSolid 25
+    3300038: 3dSolid 26
+    3300040: 3dSolid 27
+    3300042: 3dSolid 28
+    3300044: 3dSolid 29
+    3300046: 3dSolid 3
+    3300048: 3dSolid 30
+    3300050: 3dSolid 31
+    3300052: 3dSolid 32
+    3300054: 3dSolid 33
+    3300056: 3dSolid 34
+    3300058: 3dSolid 35
+    3300060: 3dSolid 36
+    3300062: 3dSolid 37
+    3300064: 3dSolid 38
+    3300066: 3dSolid 39
+    3300068: 3dSolid 4
+    3300070: 3dSolid 40
+    3300072: 3dSolid 41
+    3300074: 3dSolid 42
+    3300076: 3dSolid 43
+    3300078: 3dSolid 44
+    3300080: 3dSolid 45
+    3300082: 3dSolid 46
+    3300084: 3dSolid 47
+    3300086: 3dSolid 48
+    3300088: 3dSolid 49
+    3300090: 3dSolid 5
+    3300092: 3dSolid 50
+    3300094: 3dSolid 51
+    3300096: 3dSolid 52
+    3300098: 3dSolid 53
+    3300100: 3dSolid 54
+    3300102: 3dSolid 55
+    3300104: 3dSolid 56
+    3300106: 3dSolid 57
+    3300108: 3dSolid 58
+    3300110: 3dSolid 59
+    3300112: 3dSolid 6
+    3300114: 3dSolid 60
+    3300116: 3dSolid 61
+    3300118: 3dSolid 62
+    3300120: 3dSolid 63
+    3300122: 3dSolid 64
+    3300124: 3dSolid 7
+    3300126: 3dSolid 8
+    3300128: 3dSolid 9
+    3300130: 3dSolid003
+    3300132: 3dSolid004
+    3300134: 3dSolid02
+    3300136: bj__lkar
+    3300138: bj__lkar2
+    3300140: d__rr1
+    3300142: d__rr2
+    3300144: d__rr3
+    3300146: d__rr4
+    3300148: d__rr5
+    3300150: f__nster
+    3300152: G06_MeshPart0
+    3300154: G06_MeshPart1
+    3300156: G07_08
+    3300158: G14_15
+    3300160: G16
+    3300162: grund
+    3300164: halvd__rr1
+    3300166: halvd__rr2
+    3300168: inne1
+    3300170: inne2
+    3300172: lucka1
+    3300174: lucka10
+    3300176: lucka11
+    3300178: lucka12
+    3300180: lucka13
+    3300182: lucka2
+    3300184: lucka3
+    3300186: lucka4
+    3300188: lucka5
+    3300190: lucka6
+    3300192: lucka7
+    3300194: lucka8
+    3300196: lucka9
+    3300198: m__rkt tegel
+    3300200: plank
+    3300202: port1
+    3300204: port2
+    3300206: port3
+    3300208: port4
+    3300210: skorsten
+    3300212: staket
+    3300214: tak
+    3300216: trappor
+    3300218: vitt tegel
+    4300000: 3dSolid004
+    4300002: 3dSolid
+    4300004: 3dSolid
+    4300006: 3dSolid
+    4300008: 3dSolid
+    4300010: 3dSolid
+    4300012: 3dSolid
+    4300014: 3dSolid
+    4300016: 3dSolid
+    4300018: 3dSolid
+    4300020: 3dSolid
+    4300022: 3dSolid
+    4300024: 3dSolid
+    4300026: 3dSolid
+    4300028: 3dSolid
+    4300030: 3dSolid
+    4300032: G16
+    4300034: 3dSolid
+    4300036: 3dSolid
+    4300038: 3dSolid
+    4300040: 3dSolid
+    4300042: 3dSolid
+    4300044: 3dSolid
+    4300046: 3dSolid
+    4300048: 3dSolid
+    4300050: 3dSolid
+    4300052: 3dSolid
+    4300054: 3dSolid
+    4300056: G06_MeshPart0
+    4300058: G06_MeshPart1
+    4300060: lucka13
+    4300062: lucka1
+    4300064: lucka2
+    4300066: lucka3
+    4300068: lucka4
+    4300070: lucka5
+    4300072: lucka6
+    4300074: lucka7
+    4300076: lucka8
+    4300078: lucka9
+    4300080: lucka10
+    4300082: lucka11
+    4300084: lucka12
+    4300086: vitt tegel
+    4300088: trappor
+    4300090: tak
+    4300092: skorsten
+    4300094: m__rkt tegel
+    4300096: grund
+    4300098: f__nster
+    4300100: bj__lkar2
+    4300102: bj__lkar
+    4300104: port2
+    4300106: port3
+    4300108: port4
+    4300110: port1
+    4300112: halvd__rr1
+    4300114: d__rr5
+    4300116: d__rr4
+    4300118: d__rr3
+    4300120: d__rr2
+    4300122: d__rr1
+    4300124: halvd__rr2
+    4300126: plank
+    4300128: inne1
+    4300130: inne2
+    4300132: staket
+    4300134: G14_15
+    4300136: G07_08
+    4300138: 3dSolid
+    4300140: 3dSolid
+    4300142: 3dSolid
+    4300144: 3dSolid
+    4300146: 3dSolid
+    4300148: 3dSolid
+    4300150: 3dSolid
+    4300152: 3dSolid
+    4300154: 3dSolid
+    4300156: 3dSolid02
+    4300158: 3dSolid
+    4300160: 3dSolid
+    4300162: 3dSolid
+    4300164: 3dSolid
+    4300166: 3dSolid
+    4300168: 3dSolid
+    4300170: 3dSolid
+    4300172: 3dSolid
+    4300174: 3dSolid
+    4300176: 3dSolid
+    4300178: 3dSolid
+    4300180: 3dSolid
+    4300182: 3dSolid
+    4300184: 3dSolid
+    4300186: 3dSolid
+    4300188: 3dSolid
+    4300190: 3dSolid
+    4300192: 3dSolid
+    4300194: 3dSolid
+    4300196: 3dSolid
+    4300198: 3dSolid
+    4300200: 3dSolid
+    4300202: 3dSolid003
+    4300204: 3dSolid
+    4300206: 3dSolid
+    4300208: 3dSolid
+    4300210: 3dSolid
+    4300212: 3dSolid
+    4300214: 3dSolid
+    4300216: 3dSolid
+    4300218: 3dSolid
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
