@@ -2110,15 +2110,15 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: 0
+    m_Resolution: 2
     m_Strength: 1
-    m_Bias: .0500000007
+    m_Bias: .219999999
     m_Softness: 2.5
     m_SoftnessFade: .74000001
   m_Cookie: {fileID: 0}
