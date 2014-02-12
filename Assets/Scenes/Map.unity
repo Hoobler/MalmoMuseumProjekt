@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2850cb83995c346b444a93b0719bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: MalmoStad
+  levelToLoad: LillaTorg
 --- !u!23 &114492505
 Renderer:
   m_ObjectHideFlags: 0
