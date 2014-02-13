@@ -17,6 +17,8 @@ public class Shoot : MonoBehaviour {
 			if(Physics.Raycast(ray ,out hit, 100f)){
 
 				GameObject otherObj = hit.collider.gameObject;
+				//Debug ray för att se vart din ray ens går!
+				Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 5f); 
 
 				if(otherObj.tag == "Target"){
 					script = (ChangeTargetColor) otherObj.GetComponent(typeof(ChangeTargetColor));
