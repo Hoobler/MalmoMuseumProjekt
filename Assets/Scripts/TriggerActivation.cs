@@ -3,26 +3,33 @@ using System.Collections;
 
 public class TriggerActivation : MonoBehaviour {
 
-	public bool test = false;
+	public int collected = 0;
 
-	// Update is called once per frame
-	void Update () {
+	bool carrying = false;
+	bool shown = false;
 	
+	public Texture collectedTexture;
+
+	void Update(){
+		if (collected == 6 && shown == false) {
+			shown = true;
+		}
 	}
 
 	void OnGUI(){
-		if (test) {
-			GUI.Label(new Rect(10, 10, 100, 100), "yey");		
-		}
+		GUI.Label (new Rect (70, 30, 30, 20), collected.ToString() + " / 6");
 	}
 
 	void OnTriggerEnter(Collider other){
 
-		if (other.gameObject.tag == "Pickup") {	
+		if (other.gameObject.tag == "Pickup" && carrying == false) {	
 			other.gameObject.SetActive(false);
-			test = true;
+			carrying = true;
+		}
 
+		if (other.gameObject.tag == "Leavearea" && carrying == true) {
+			collected++;
+			carrying = false;
 		}
 	}
-
 }
