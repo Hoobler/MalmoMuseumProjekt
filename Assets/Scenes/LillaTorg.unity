@@ -412,6 +412,8 @@ GameObject:
   - 4: {fileID: 85765349}
   - 33: {fileID: 85765351}
   - 23: {fileID: 85765350}
+  - 65: {fileID: 85765352}
+  - 114: {fileID: 85765353}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -426,7 +428,7 @@ Transform:
   m_PrefabInternal: {fileID: 404003008}
   m_GameObject: {fileID: 85765348}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0353709534, y: 0, z: -.318324298}
+  m_LocalPosition: {x: -.00359841576, y: .0301294029, z: .00304779946}
   m_LocalScale: {x: .400000006, y: .5, z: .400000006}
   m_Children: []
   m_Father: {fileID: 1679170602}
@@ -460,6 +462,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 404003008}
   m_GameObject: {fileID: 85765348}
   m_Mesh: {fileID: 10205, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &85765352
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 85765348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 4}
+  m_Center: {x: 0, y: -.5, z: 0}
+--- !u!114 &85765353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 85765348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2e7a5bd2ddf6a43bb0465c7aa273d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
 --- !u!1 &115985598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,7 +2134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -6.78916168
+      value: -6.75673676
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2188,11 +2214,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .0353709534
+      value: -.00359841576
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -.318324298
+      value: .00304779946
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0301294029
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
@@ -2667,6 +2697,7 @@ GameObject:
   - 95: {fileID: 546671393}
   - 114: {fileID: 546671392}
   - 65: {fileID: 546671391}
+  - 114: {fileID: 546671396}
   m_Layer: 0
   m_Name: PickupBag
   m_TagString: Pickup
@@ -2755,6 +2786,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1017680734}
   m_GameObject: {fileID: 546671389}
   m_Mesh: {fileID: 4300000, guid: f4d10405164b82241aa6824cc14285c7, type: 3}
+--- !u!114 &546671396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 7a12429176a0d264984923bda403e8a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017680734}
+  m_GameObject: {fileID: 546671389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2e7a5bd2ddf6a43bb0465c7aa273d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
 --- !u!1 &572308885
 GameObject:
   m_ObjectHideFlags: 0
@@ -4185,6 +4229,7 @@ GameObject:
   - 95: {fileID: 1032284765}
   - 114: {fileID: 1032284764}
   - 65: {fileID: 1032284763}
+  - 114: {fileID: 1032284769}
   m_Layer: 0
   m_Name: PickupBag
   m_TagString: Pickup
@@ -4273,6 +4318,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1259366084}
+--- !u!114 &1032284769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 7a12429176a0d264984923bda403e8a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 941270048}
+  m_GameObject: {fileID: 1032284762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2e7a5bd2ddf6a43bb0465c7aa273d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
 --- !u!1 &1039038816
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,6 +5170,7 @@ GameObject:
   - 95: {fileID: 1296236687}
   - 114: {fileID: 1296236686}
   - 65: {fileID: 1296236685}
+  - 114: {fileID: 1296236690}
   m_Layer: 0
   m_Name: PickupBag
   m_TagString: Pickup
@@ -5200,6 +5259,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 697668008}
   m_GameObject: {fileID: 1296236683}
   m_Mesh: {fileID: 4300000, guid: f4d10405164b82241aa6824cc14285c7, type: 3}
+--- !u!114 &1296236690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 7a12429176a0d264984923bda403e8a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 697668008}
+  m_GameObject: {fileID: 1296236683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2e7a5bd2ddf6a43bb0465c7aa273d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
 --- !u!1 &1339624461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5932,6 +6004,56 @@ Prefab:
   m_RootGameObject: {fileID: 1114615898}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1585115729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1585115731}
+  - 132: {fileID: 1585115730}
+  m_Layer: 0
+  m_Name: PickupText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &1585115730
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1585115729}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 'Plockat Up: '
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279966710
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &1585115731
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1585115729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .00999999978, y: .99000001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1585332452
 GameObject:
   m_ObjectHideFlags: 0
@@ -6480,7 +6602,7 @@ Transform:
   m_PrefabInternal: {fileID: 404003008}
   m_GameObject: {fileID: 1679170597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.13045835, y: 1.58352423, z: -6.78916168}
+  m_LocalPosition: {x: -4.13045835, y: 1.58352423, z: -6.75673676}
   m_LocalScale: {x: .601874411, y: .601874411, z: .601874411}
   m_Children:
   - {fileID: 85765349}
@@ -6822,6 +6944,7 @@ GameObject:
   - 95: {fileID: 1743420086}
   - 114: {fileID: 1743420085}
   - 65: {fileID: 1743420084}
+  - 114: {fileID: 1743420089}
   m_Layer: 0
   m_Name: PickupBag
   m_TagString: Pickup
@@ -6910,6 +7033,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1563488488}
   m_GameObject: {fileID: 1743420082}
   m_Mesh: {fileID: 4300000, guid: f4d10405164b82241aa6824cc14285c7, type: 3}
+--- !u!114 &1743420089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 7a12429176a0d264984923bda403e8a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1563488488}
+  m_GameObject: {fileID: 1743420082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2e7a5bd2ddf6a43bb0465c7aa273d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
 --- !u!1 &1746022634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7484,6 +7620,7 @@ GameObject:
   - 95: {fileID: 1943673704}
   - 114: {fileID: 1943673703}
   - 65: {fileID: 1943673702}
+  - 114: {fileID: 1943673707}
   m_Layer: 0
   m_Name: PickupBag
   m_TagString: Pickup
@@ -7572,6 +7709,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1042574114}
   m_GameObject: {fileID: 1943673700}
   m_Mesh: {fileID: 4300000, guid: f4d10405164b82241aa6824cc14285c7, type: 3}
+--- !u!114 &1943673707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 7a12429176a0d264984923bda403e8a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1042574114}
+  m_GameObject: {fileID: 1943673700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2e7a5bd2ddf6a43bb0465c7aa273d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
 --- !u!1 &1945840248
 GameObject:
   m_ObjectHideFlags: 0
@@ -8551,6 +8701,7 @@ GameObject:
   - 95: {fileID: 2132519677}
   - 114: {fileID: 2132519676}
   - 65: {fileID: 2132519675}
+  - 114: {fileID: 2132519680}
   m_Layer: 0
   m_Name: PickupBag
   m_TagString: Pickup
@@ -8639,3 +8790,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1079049495}
   m_GameObject: {fileID: 2132519673}
   m_Mesh: {fileID: 4300000, guid: f4d10405164b82241aa6824cc14285c7, type: 3}
+--- !u!114 &2132519680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 7a12429176a0d264984923bda403e8a8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1079049495}
+  m_GameObject: {fileID: 2132519673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2e7a5bd2ddf6a43bb0465c7aa273d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: 0
