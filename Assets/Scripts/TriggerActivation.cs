@@ -4,16 +4,22 @@ using System.Collections;
 public class TriggerActivation : MonoBehaviour {
 
 	public int collected = 0;
-
+	
 	bool carrying = false;
-	bool shown = false;
 	
 	public Texture collectedTexture;
 
-	void Update(){
-		if (collected == 6 && shown == false) {
-			shown = true;
+	ArrayList array = new ArrayList();
+	
+
+	void Start(){
+		foreach(GameObject gameObj in GameObject.FindGameObjectsWithTag("Leavebag")){
+			array.Add(gameObj);
 		}
+	}
+
+	void Update(){
+
 	}
 
 	void OnGUI(){
@@ -28,8 +34,11 @@ public class TriggerActivation : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Leavearea" && carrying == true) {
-			collected++;
+
 			carrying = false;
+			GameObject go = (GameObject)array[collected];
+			collected++;
+			go.renderer.enabled = true;
 		}
 	}
 }
