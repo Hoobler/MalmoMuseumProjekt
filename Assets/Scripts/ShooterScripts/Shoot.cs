@@ -11,7 +11,8 @@ public class Shoot : MonoBehaviour {
 
 	void Update () {
 		RaycastHit hit;
-		Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+		Transform cam = Camera.main.transform;
+		Ray ray = new Ray(cam.position, cam.forward);
 
 		if(Input.GetMouseButtonDown(0)){
 			if(Physics.Raycast(ray ,out hit, 100f)){
