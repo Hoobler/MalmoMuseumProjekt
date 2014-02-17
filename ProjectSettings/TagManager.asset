@@ -8,6 +8,7 @@ TagManager:
   - UIBag
   - Leavearea
   - Leavebag
+  - Questgiver
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

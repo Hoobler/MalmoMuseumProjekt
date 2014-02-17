@@ -6,29 +6,36 @@ public class TriggerActivation : MonoBehaviour {
 	public int collected = 0;
 	
 	bool carrying = false;
+	public bool questAccpeted = false;
 	
 	public Texture collectedTexture;
 
-	ArrayList array = new ArrayList();
+	ArrayList leaveArray = new ArrayList();
+	ArrayList pickupArray = new ArrayList();
 	
 
 	void Start(){
-		foreach(GameObject gameObj in GameObject.FindGameObjectsWithTag("Leavebag")){
-			array.Add(gameObj);
+		foreach(GameObject go in GameObject.FindGameObjectsWithTag("Leavebag"))
+			leaveArray.Add(go);
+
+		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup")) 
+			pickupArray.Add(go);		
+
+		if (!questAccpeted) {
+			for(int i = 0; i < pickupArray.Count; i++){
+				GameObject go = (GameObject)pickupArray[i];
+				go.renderer.enabled = false;
+			}		
 		}
 	}
-
-	void Update(){
-
-	}
-
+	
 	void OnGUI(){
 		GUI.Label (new Rect (70, 30, 30, 20), collected.ToString() + " / 6");
 	}
 
 	void OnTriggerEnter(Collider other){
 
-		if (other.gameObject.tag == "Pickup" && carrying == false) {	
+		if (other.gameObject.tag == "Pickup" && !carrying && questAccpeted) {	
 			other.gameObject.SetActive(false);
 			carrying = true;
 		}
@@ -36,9 +43,22 @@ public class TriggerActivation : MonoBehaviour {
 		if (other.gameObject.tag == "Leavearea" && carrying == true) {
 
 			carrying = false;
-			GameObject go = (GameObject)array[collected];
+			GameObject go = (GameObject)leaveArray[collected];
 			collected++;
 			go.renderer.enabled = true;
 		}
+
+		if (other.gameObject.tag == "Questgiver" && questAccpeted == false) {
+			questAccpeted = true;
+			ShowPickupQuest();
+		}
+	}
+
+	void ShowPickupQuest(){
+		for(int i = 0; i < pickupArray.Count; i++) {
+			GameObject go = (GameObject)pickupArray[i];
+			go.renderer.enabled = true;
+		}
+
 	}
 }
