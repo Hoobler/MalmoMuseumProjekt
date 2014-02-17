@@ -12,7 +12,9 @@ public class TriggerActivation : MonoBehaviour {
 
 	ArrayList leaveArray = new ArrayList();
 	ArrayList pickupArray = new ArrayList();
-	
+
+	GameObject quest1gui;
+
 
 	void Start(){
 		foreach(GameObject go in GameObject.FindGameObjectsWithTag("Leavebag"))
@@ -25,12 +27,16 @@ public class TriggerActivation : MonoBehaviour {
 			for(int i = 0; i < pickupArray.Count; i++){
 				GameObject go = (GameObject)pickupArray[i];
 				go.renderer.enabled = false;
-			}		
+			}
 		}
+
+		quest1gui = GameObject.FindWithTag("Quest1");
+	//	quest1gui.SetActive (false);
 	}
 	
 	void OnGUI(){
-		GUI.Label (new Rect (70, 30, 30, 20), collected.ToString() + " / 6");
+		if (questAccpeted) 
+			GUI.Label (new Rect (70, 30, 30, 20), collected.ToString () + " / 6");
 	}
 
 	void OnTriggerEnter(Collider other){
@@ -59,6 +65,7 @@ public class TriggerActivation : MonoBehaviour {
 			GameObject go = (GameObject)pickupArray[i];
 			go.renderer.enabled = true;
 		}
+		quest1gui.SetActive (true);
 
 	}
 }
