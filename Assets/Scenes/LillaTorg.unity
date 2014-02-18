@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2850cb83995c346b444a93b0719bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: TestLoad
+  levelToLoad: 
 --- !u!1 &206479461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2850cb83995c346b444a93b0719bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Map
+  levelToLoad: 
 --- !u!131 &319930195
 GUITexture:
   m_ObjectHideFlags: 0
@@ -2910,6 +2910,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: .0301294029
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
   m_RootGameObject: {fileID: 1679170597}
@@ -2997,7 +3001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2850cb83995c346b444a93b0719bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Map
+  levelToLoad: 
 --- !u!1 &420711857
 GameObject:
   m_ObjectHideFlags: 0
@@ -8182,7 +8186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c96003d8ff16b45b3dc960fa19f107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiText: {fileID: 176487815}
+  guiText: {fileID: 0}
 --- !u!4 &1311353431
 Transform:
   m_ObjectHideFlags: 0
@@ -10013,7 +10017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collected: 0
-  collectedTexture: {fileID: 2800000, guid: 12dd2d7ce74ed0e4cb8e2e8abd040f24, type: 3}
+  collectedTexture: {fileID: 0}
 --- !u!1 &1702562870
 GameObject:
   m_ObjectHideFlags: 0
