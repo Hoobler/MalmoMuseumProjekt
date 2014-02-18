@@ -3073,6 +3073,7 @@ MonoBehaviour:
   button3Info: "Trycker du p\xE5 knapp3 kommer detta fram"
   buttonQuitText: Avsluta
   QuestFunction: ShowPickupQuest
+  tact: {fileID: 1679170603}
 --- !u!23 &454331521
 Renderer:
   m_ObjectHideFlags: 0
