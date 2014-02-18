@@ -55,12 +55,12 @@ public class TriggerActivation : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Questgiver" && questAccpeted == false) {
-			questAccpeted = true;
 			ShowPickupQuest();
 		}
 	}
 
-	void ShowPickupQuest(){
+	public void ShowPickupQuest(){
+		questAccpeted = true;
 		for(int i = 0; i < pickupArray.Count; i++) {
 			GameObject go = (GameObject)pickupArray[i];
 			go.renderer.enabled = true;
