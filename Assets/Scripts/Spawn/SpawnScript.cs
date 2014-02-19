@@ -14,8 +14,10 @@ public class SpawnScript : MonoBehaviour {
 		Vector3 spawnPos = spawnObj.transform.position;
 		GameObject temp = Instantiate(pcController, spawnPos, Quaternion.identity) as GameObject;
 
-		if(parent != null){
-		temp.transform.parent = parent.transform;
+		if (parent != null) {
+						temp.transform.parent = parent.transform;
+		} else if (parent == null) {
+			Debug.Log("Parent object is null");
 		}
 	#if UNITY_ANDROID
 		//Instantiate(androidController, spawnPos, Quaternion.identity);
