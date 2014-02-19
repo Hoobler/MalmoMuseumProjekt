@@ -6,8 +6,10 @@ public class SpawnScript : MonoBehaviour {
 	public GameObject androidController;
 
 	void Start () {
-		//Later!
+
+		//Hittar spawn pointen i världen
 		GameObject spawnObj = GameObject.FindGameObjectWithTag("SpawnPoint");
+		//GameObjectet som fps controlen ska parentas till
 		GameObject parent = GameObject.FindGameObjectWithTag("DynamicObjects");
 		Vector3 spawnPos = spawnObj.transform.position;
 		GameObject temp = Instantiate(pcController, spawnPos, Quaternion.identity) as GameObject;
@@ -15,7 +17,6 @@ public class SpawnScript : MonoBehaviour {
 		if(parent != null){
 		temp.transform.parent = parent.transform;
 		}
-
 	#if UNITY_ANDROID
 		//Instantiate(androidController, spawnPos, Quaternion.identity);
 	#endif
