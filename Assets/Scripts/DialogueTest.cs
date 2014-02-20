@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class DialogueTest: MonoBehaviour {
 
 	public string introText = "Här ska det stå introduktions-text";
@@ -21,6 +22,8 @@ public class DialogueTest: MonoBehaviour {
 	public Texture button3Texture;
 	public Texture buttonQuitTexture;
 
+	public float speechDistance = 10.0f;
+	public float abortConversationDistance = 20.0f;
 	GUIText mainGUIText;
 	GUIText button1GUIText;
 	GUIText button2GUIText;
@@ -48,11 +51,8 @@ public class DialogueTest: MonoBehaviour {
 
 	public string QuestFunction;
 
-	public TriggerActivation tact;
-	//intro
-	//jobb
-	//område
-	//hejdå
+	private TriggerActivation tact;
+	private Transform temp;
 
 	private bool conversationActive = false;
 
@@ -157,36 +157,45 @@ public class DialogueTest: MonoBehaviour {
 //		Destroy (buttonQuitBackObject);
 //		}
 
-	void Update(){
-		if (conversationActive)
-			if (Input.GetMouseButtonDown (0)) {
-				if (button1Back != null)
-					if (button1Back.GetScreenRect ().Contains (Input.mousePosition)) {
-						mainGUIText.text = button1Info;
-				if(tact)
-						tact.ShowPickupQuest();
-						}
-				if (button2Back != null)
-					if (button2Back.GetScreenRect ().Contains (Input.mousePosition)) {
-						mainGUIText.text = button2Info;
-						}
-				if (button3Back != null)
-					if (button3Back.GetScreenRect ().Contains (Input.mousePosition)) {
-						mainGUIText.text = button3Info;
-						}
-				if (buttonQuitBack != null)
-					if (buttonQuitBack.GetScreenRect ().Contains (Input.mousePosition)) {
-						Destroy (dialogueObject);
-						conversationActive = false;
+	void KillConversation(){
+		Destroy (dialogueObject);
+		conversationActive = false;
+		}
 
-					}
-			}
+	void Update(){
+		if (conversationActive) {
+						if (Input.GetMouseButtonDown (0)) {
+								if (button1Back != null)
+								if (button1Back.GetScreenRect ().Contains (Input.mousePosition)) {
+										mainGUIText.text = button1Info;
+										if (tact)
+												tact.ShowPickupQuest ();
+								}
+								if (button2Back != null)
+								if (button2Back.GetScreenRect ().Contains (Input.mousePosition)) {
+										mainGUIText.text = button2Info;
+								}
+								if (button3Back != null)
+								if (button3Back.GetScreenRect ().Contains (Input.mousePosition)) {
+										mainGUIText.text = button3Info;
+								}
+								if (buttonQuitBack != null)
+								if (buttonQuitBack.GetScreenRect ().Contains (Input.mousePosition)) {
+									KillConversation();
+
+								}
+						}
+			if(temp && Vector3.Distance(temp.position, this.transform.position) > abortConversationDistance)
+				KillConversation();
+				}
 	}
 
 	void OnMouseDown(){
-		if (!conversationActive) {
-			Init ();
-			conversationActive = true;
-		}		
+		temp = GameObject.FindGameObjectWithTag ("Player").transform;
+		if(Vector3.Distance(temp.position, this.transform.position) < speechDistance)
+			if (!conversationActive) {
+				Init ();
+				conversationActive = true;
+			}		
 	}
 }
