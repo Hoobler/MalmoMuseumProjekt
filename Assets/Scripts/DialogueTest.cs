@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class DialogueTest: MonoBehaviour {
 
 	public string introText = "Här ska det stå introduktions-text";
@@ -15,8 +16,14 @@ public class DialogueTest: MonoBehaviour {
 	public string button3Info = "Trycker du på knapp3 kommer detta fram";
 	public string buttonQuitText = "Avsluta";
 
+	public Texture backgroundTexture;
+	public Texture button1Texture;
+	public Texture button2Texture;
+	public Texture button3Texture;
+	public Texture buttonQuitTexture;
 
-
+	public float speechDistance = 10.0f;
+	public float abortConversationDistance = 20.0f;
 	GUIText mainGUIText;
 	GUIText button1GUIText;
 	GUIText button2GUIText;
@@ -44,11 +51,8 @@ public class DialogueTest: MonoBehaviour {
 
 	public string QuestFunction;
 
-	public TriggerActivation tact;
-	//intro
-	//jobb
-	//område
-	//hejdå
+	private TriggerActivation tact;
+	private Transform temp;
 
 	private bool conversationActive = false;
 
@@ -57,12 +61,13 @@ public class DialogueTest: MonoBehaviour {
 	}
 
 	void Init(){
+		
 		dialogueObject = new GameObject ("Dialogue");
 
 		backObject = new GameObject ("DialogueBackground");
 		backObject.transform.parent = dialogueObject.transform;
 		background = (GUITexture)backObject.AddComponent (typeof(GUITexture));
-		background.texture = Resources.Load ("bild") as Texture;
+		background.texture = backgroundTexture;
 		background.transform.position =  new Vector3 (0.2f, 0.5f, 0);
 		background.transform.localScale = new Vector3 (0.3f, 0.6f, 0);
 
@@ -78,7 +83,7 @@ public class DialogueTest: MonoBehaviour {
 			button1BackObject = new GameObject ("DialogueButton1Background");
 			button1BackObject.transform.parent = dialogueObject.transform;
 			button1Back = (GUITexture)button1BackObject.AddComponent (typeof(GUITexture));
-			button1Back.texture = Resources.Load ("bild2") as Texture;
+			button1Back.texture = button1Texture;
 			button1Back.transform.position = new Vector3 (0.12f, 0.4f, 0.1f);
 			button1Back.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 			
@@ -95,7 +100,7 @@ public class DialogueTest: MonoBehaviour {
 			button2BackObject = new GameObject ("DialogueButton2Background");
 			button2BackObject.transform.parent = dialogueObject.transform;
 			button2Back = (GUITexture)button2BackObject.AddComponent (typeof(GUITexture));
-			button2Back.texture = Resources.Load ("bild2") as Texture;
+			button2Back.texture = button2Texture;
 			button2Back.transform.position = new Vector3 (0.28f, 0.4f, 0.1f);
 			button2Back.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 			
@@ -112,7 +117,7 @@ public class DialogueTest: MonoBehaviour {
 			button3BackObject = new GameObject ("DialogueButton3Background");
 			button3BackObject.transform.parent = dialogueObject.transform;
 			button3Back = (GUITexture)button3BackObject.AddComponent (typeof(GUITexture));
-			button3Back.texture = Resources.Load ("bild2") as Texture;
+			button3Back.texture = button3Texture;
 			button3Back.transform.position = new Vector3 (0.12f, 0.3f, 0.1f);
 			button3Back.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 
@@ -128,7 +133,7 @@ public class DialogueTest: MonoBehaviour {
 		buttonQuitBackObject = new GameObject ("DialogueButtonQuitBackground");
 		buttonQuitBackObject.transform.parent = dialogueObject.transform;
 		buttonQuitBack = (GUITexture)buttonQuitBackObject.AddComponent (typeof(GUITexture));
-		buttonQuitBack.texture = Resources.Load ("bild2") as Texture;
+		buttonQuitBack.texture = buttonQuitTexture;
 		buttonQuitBack.transform.position =  new Vector3 (0.28f, 0.3f, 0.1f);
 		buttonQuitBack.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 
@@ -140,6 +145,8 @@ public class DialogueTest: MonoBehaviour {
 		buttonQuitGUIText.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 		buttonQuitGUIText.color = new Color (0, 0, 0);
 
+		tact = GameObject.FindGameObjectWithTag ("Player").GetComponent ("TriggerActivation") as TriggerActivation;
+
 		//SendMessage ("QuestTrigger", 5);
 
 
@@ -150,35 +157,45 @@ public class DialogueTest: MonoBehaviour {
 //		Destroy (buttonQuitBackObject);
 //		}
 
-	void Update(){
-		if (conversationActive)
-			if (Input.GetMouseButtonDown (0)) {
-				if (button1Back != null)
-					if (button1Back.GetScreenRect ().Contains (Input.mousePosition)) {
-						mainGUIText.text = button1Info;
-						tact.ShowPickupQuest();
-						}
-				if (button2Back != null)
-					if (button2Back.GetScreenRect ().Contains (Input.mousePosition)) {
-						mainGUIText.text = button2Info;
-						}
-				if (button3Back != null)
-					if (button3Back.GetScreenRect ().Contains (Input.mousePosition)) {
-						mainGUIText.text = button3Info;
-						}
-				if (buttonQuitBack != null)
-					if (buttonQuitBack.GetScreenRect ().Contains (Input.mousePosition)) {
-						Destroy (dialogueObject);
-						conversationActive = false;
+	void KillConversation(){
+		Destroy (dialogueObject);
+		conversationActive = false;
+		}
 
-					}
-			}
+	void Update(){
+		if (conversationActive) {
+						if (Input.GetMouseButtonDown (0)) {
+								if (button1Back != null)
+								if (button1Back.GetScreenRect ().Contains (Input.mousePosition)) {
+										mainGUIText.text = button1Info;
+										if (tact)
+												tact.ShowPickupQuest ();
+								}
+								if (button2Back != null)
+								if (button2Back.GetScreenRect ().Contains (Input.mousePosition)) {
+										mainGUIText.text = button2Info;
+								}
+								if (button3Back != null)
+								if (button3Back.GetScreenRect ().Contains (Input.mousePosition)) {
+										mainGUIText.text = button3Info;
+								}
+								if (buttonQuitBack != null)
+								if (buttonQuitBack.GetScreenRect ().Contains (Input.mousePosition)) {
+									KillConversation();
+
+								}
+						}
+			if(temp && Vector3.Distance(temp.position, this.transform.position) > abortConversationDistance)
+				KillConversation();
+				}
 	}
 
 	void OnMouseDown(){
-		if (!conversationActive) {
-			Init ();
-			conversationActive = true;
-		}		
+		temp = GameObject.FindGameObjectWithTag ("Player").transform;
+		if(Vector3.Distance(temp.position, this.transform.position) < speechDistance)
+			if (!conversationActive) {
+				Init ();
+				conversationActive = true;
+			}		
 	}
 }

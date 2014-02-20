@@ -12,15 +12,17 @@ public class SpawnScript : MonoBehaviour {
 		//GameObjectet som fps controlen ska parentas till
 		GameObject parent = GameObject.FindGameObjectWithTag("DynamicObjects");
 		Vector3 spawnPos = spawnObj.transform.position;
+	#if UNITY_STANDALONE_WIN
 		GameObject temp = Instantiate(pcController, spawnPos, Quaternion.identity) as GameObject;
+	#endif
+	#if UNITY_ANDROID
+		GameObject temp = Instantiate(androidController, spawnPos, Quaternion.identity) as GameObject;
+	#endif
 
 		if (parent != null) {
-						temp.transform.parent = parent.transform;
+			temp.transform.parent = parent.transform;
 		} else if (parent == null) {
 			Debug.Log("Parent object is null");
 		}
-	#if UNITY_ANDROID
-		//Instantiate(androidController, spawnPos, Quaternion.identity);
-	#endif
 	}
 }
