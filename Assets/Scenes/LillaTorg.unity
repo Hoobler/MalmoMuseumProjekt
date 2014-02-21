@@ -11970,32 +11970,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 206479462}
---- !u!1 &1921814538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1921814539}
-  m_Layer: 0
-  m_Name: DynamicObjects
-  m_TagString: DynamicObjects
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1921814539
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1921814538}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &1935581900
 GameObject:
   m_ObjectHideFlags: 0
@@ -13172,7 +13146,7 @@ Prefab:
     - target: {fileID: 11400000, guid: d27f9df03fa253b4ea285fe879bbdb6a, type: 2}
       propertyPath: parent
       value: 
-      objectReference: {fileID: 1921814538}
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d27f9df03fa253b4ea285fe879bbdb6a, type: 2}
       propertyPath: pcController
       value: 
