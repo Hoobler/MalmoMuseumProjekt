@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 0cce770f34eae31448820c60bcf9e3b3
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: LegFront_Rt_Ctrl
+    100004: LegFront_Lt_Ctrl0
+    100006: WLObjPig
+    100008: Bip001 L Finger0
+    100010: Bip001 Ponytail1
+    100012: LegFront_Lt_Ctrl
+    100014: Bip001 L Foot 1
+    100016: IK Chain01
+    100018: Bip001 L Calf
+    100020: LegBack_Lt_Ctrl
+    100022: Bip001 R Finger0
+    100024: IK Chain08
+    100026: Bip001 Neck
+    100028: Bip001 L UpperArm
+    100030: IK Chain05
+    100032: Bip001 Pelvis
+    100034: Bip001 L Clavicle
+    100036: Bip001 Spine2
+    100038: Bip001 Spine1
+    100040: Bip001 Neck1
+    100042: Bip001 R Hand
+    100044: Bip001 R UpperArm
+    100046: Bip001 R Calf
+    100048: Bip001 Head
+    100050: IK Chain04
+    100052: IK Chain03
+    100054: Bip001 Spine
+    100056: Bip001 L Forearm
+    100058: Bip001 R Thigh
+    100060: Bip001 L Toe0
+    100062: Bip001 L Foot
+    100064: Bip001 R Foot
+    100066: Bip001
+    100068: Bip001 R Clavicle
+    100070: LegBack_Rt_Ctrl
+    100072: IK Chain02
+    100074: Bip001 R Toe0
+    100076: Bip001 R Forearm
+    100078: LegFront_Rt_Ctrl0
+    100080: Bip001 L Thigh
+    100082: Bip001 Ponytail2
+    100084: Bip001 1
+    100086: IK Chain06
+    100088: Bip001 L Hand
+    100090: Bip001 Tail
+    400000: //RootNode
+    400002: LegFront_Rt_Ctrl
+    400004: LegFront_Lt_Ctrl0
+    400006: WLObjPig
+    400008: Bip001 L Finger0
+    400010: Bip001 Ponytail1
+    400012: LegFront_Lt_Ctrl
+    400014: Bip001 L Foot 1
+    400016: IK Chain01
+    400018: Bip001 L Calf
+    400020: LegBack_Lt_Ctrl
+    400022: Bip001 R Finger0
+    400024: IK Chain08
+    400026: Bip001 Neck
+    400028: Bip001 L UpperArm
+    400030: IK Chain05
+    400032: Bip001 Pelvis
+    400034: Bip001 L Clavicle
+    400036: Bip001 Spine2
+    400038: Bip001 Spine1
+    400040: Bip001 Neck1
+    400042: Bip001 R Hand
+    400044: Bip001 R UpperArm
+    400046: Bip001 R Calf
+    400048: Bip001 Head
+    400050: IK Chain04
+    400052: IK Chain03
+    400054: Bip001 Spine
+    400056: Bip001 L Forearm
+    400058: Bip001 R Thigh
+    400060: Bip001 L Toe0
+    400062: Bip001 L Foot
+    400064: Bip001 R Foot
+    400066: Bip001
+    400068: Bip001 R Clavicle
+    400070: LegBack_Rt_Ctrl
+    400072: IK Chain02
+    400074: Bip001 R Toe0
+    400076: Bip001 R Forearm
+    400078: LegFront_Rt_Ctrl0
+    400080: Bip001 L Thigh
+    400082: Bip001 Ponytail2
+    400084: Bip001 1
+    400086: IK Chain06
+    400088: Bip001 L Hand
+    400090: Bip001 Tail
+    4300000: WLObjPig
+    4300002: Bip001
+    4300004: LegFront_Lt_Ctrl
+    4300006: LegFront_Rt_Ctrl
+    4300008: LegBack_Lt_Ctrl
+    4300010: LegBack_Rt_Ctrl
+    4300012: Bip001
+    7400000: Take 001
+    7400002: WlObjPig_Idle
+    11100000: //RootNode
+    13700000: WLObjPig
+  materials:
+    importMaterials: 1
+    materialName: 3
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
