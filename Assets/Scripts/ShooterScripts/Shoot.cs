@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Shoot : MonoBehaviour {
-	
-	public ChangeTargetColor script;
+
+	private ChangeTargetColor script;
 
 	void Start () {
 	
@@ -22,6 +22,7 @@ public class Shoot : MonoBehaviour {
 				Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 5f); 
 
 				if(otherObj.tag == "Target"){
+					Debug.Log("Target hit");
 					script = (ChangeTargetColor) otherObj.GetComponent(typeof(ChangeTargetColor));
 					script.ChangeSize();
 				}
