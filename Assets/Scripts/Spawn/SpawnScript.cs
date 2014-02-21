@@ -5,6 +5,8 @@ public class SpawnScript : MonoBehaviour {
 	public GameObject pcController;
 	public GameObject androidController;
 
+	//private CreateDynamicContainer container;
+
 	void Start () {
 
 		//Hittar spawn pointen i världen
@@ -19,10 +21,22 @@ public class SpawnScript : MonoBehaviour {
 		GameObject temp = Instantiate(androidController, spawnPos, Quaternion.identity) as GameObject;
 	#endif
 
-		if (parent != null) {
+		if (parent == null) {
+			Debug.Log ("Parent object is null, creating a new object!");
+			CreateDynamicContainer.CreateContainer ("DynamicObjects", "DynamicObjects");
+			parent = GameObject.FindGameObjectWithTag("DynamicObjects");
 			temp.transform.parent = parent.transform;
-		} else if (parent == null) {
-			Debug.Log("Parent object is null");
+		} else if (!parent) {
+			temp.transform.parent = parent.transform;
 		}
+
+
+
+
+//		if (parent != null) {
+//			temp.transform.parent = parent.transform;
+//		} else if (parent == null) {
+//			Debug.Log("Parent object is null");
+//		}
 	}
 }
