@@ -5,7 +5,7 @@ public class QuestManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -15,7 +15,11 @@ public class QuestManager : MonoBehaviour {
 
 	public void ActivateQuest(string name)
 	{
-		Debug.Log ("Quest '" + name + "' activated");
+		TriggerActivation tact = GameObject.FindGameObjectWithTag ("Player").GetComponent ("TriggerActivation") as TriggerActivation;
+
+		if (name == "LillaTorgBagQuest") {
+			tact.ShowPickupQuest();
+		}
 	}
 
 }

@@ -163,7 +163,7 @@ public class DialogueTest: MonoBehaviour {
 			button4GUIText.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 			button4GUIText.color = new Color (0, 0, 0);
 			if(font)
-				button3GUIText.font = font;
+				button4GUIText.font = font;
 		}
 		//SendMessage ("QuestTrigger", 5);
 
