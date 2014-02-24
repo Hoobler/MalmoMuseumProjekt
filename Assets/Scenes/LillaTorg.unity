@@ -5983,19 +5983,19 @@ MonoBehaviour:
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   button1:
     enabled: 1
-    quitOnPress: 0
+    quitOnPress: 1
     textOnButton: Knapptext
     shownInfoWhenPressed: "Du tryckte p\xE5 en knapp"
     backgroundTexture: {fileID: 2800000, guid: 7eaacd50ace4bdb4c8509b6a27b90266, type: 3}
     isQuestTrigger: 1
-    nameOfQuest: Knapp1
+    nameOfQuest: LillaTorgBagQuest
   button2:
     enabled: 1
     quitOnPress: 0
     textOnButton: Knapptext
     shownInfoWhenPressed: "Du tryckte p\xE5 en knapp"
     backgroundTexture: {fileID: 2800000, guid: 7eaacd50ace4bdb4c8509b6a27b90266, type: 3}
-    isQuestTrigger: 1
+    isQuestTrigger: 0
     nameOfQuest: Knapp2
   button3:
     enabled: 1
