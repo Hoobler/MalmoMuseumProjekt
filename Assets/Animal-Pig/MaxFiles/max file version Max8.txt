@@ -1,3 +1,0 @@
-unzip the zip file
-max files version:Max8
-Texture in obj folder

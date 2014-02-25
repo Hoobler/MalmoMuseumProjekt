@@ -15,10 +15,10 @@ public class QuestManager : MonoBehaviour {
 
 	public void ActivateQuest(string name)
 	{
-		TriggerActivation tact = GameObject.FindGameObjectWithTag ("Player").GetComponent ("TriggerActivation") as TriggerActivation;
+		QuestBase tact = GameObject.FindGameObjectWithTag ("Player").GetComponent ("TriggerActivation") as QuestBase;
 
 		if (name == "LillaTorgBagQuest") {
-			tact.ShowPickupQuest();
+			tact.Trigger();
 		}
 	}
 

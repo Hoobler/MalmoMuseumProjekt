@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TriggerActivation : MonoBehaviour {
+public class TriggerActivation : QuestBase {
 
 	public int collected = 0;
 	
@@ -68,4 +68,16 @@ public class TriggerActivation : MonoBehaviour {
 		quest1gui.SetActive (true);
 
 	}
+
+	public override void Trigger ()
+	{
+		questAccpeted = true;
+		for(int i = 0; i < pickupArray.Count; i++) {
+			GameObject go = (GameObject)pickupArray[i];
+			go.renderer.enabled = true;
+		}
+		quest1gui.SetActive (true);
+	}
 }
+
+

@@ -5980,7 +5980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introText: "H\xE4r ska det st\xE5 introduktionstext som kan vara superl\xE5ng."
-  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
   button1:
     enabled: 1
     quitOnPress: 1
