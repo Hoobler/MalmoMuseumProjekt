@@ -15,10 +15,10 @@ public class TriggerActivation : QuestBase {
 	ArrayList pickupArray = new ArrayList();
 
 	GameObject quest1gui;
-
+	GameObject holdBag;
 
 	void Start(){
-
+		holdBag = GameObject.FindGameObjectWithTag("HoldBag");
 	}
 	
 	void OnGUI(){
@@ -31,10 +31,12 @@ public class TriggerActivation : QuestBase {
 		if (other.gameObject.tag == "Pickup" && !carrying && questAccpeted) {	
 			other.gameObject.SetActive(false);
 			carrying = true;
+			holdBag.renderer.enabled = true;
 		}
 
 		if (other.gameObject.tag == "Leavearea" && carrying == true) {
 
+			holdBag.renderer.enabled = false;
 			carrying = false;
 			GameObject go = (GameObject)leaveArray[collected];
 			collected++;
