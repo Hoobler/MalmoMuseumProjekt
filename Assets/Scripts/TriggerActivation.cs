@@ -4,6 +4,7 @@ using System.Collections;
 public class TriggerActivation : QuestBase {
 
 	public int collected = 0;
+	int nrOfBags = 6;
 	
 	bool carrying = false;
 	public bool questAccpeted = false;
@@ -17,21 +18,7 @@ public class TriggerActivation : QuestBase {
 
 
 	void Start(){
-		foreach(GameObject go in GameObject.FindGameObjectsWithTag("Leavebag"))
-			leaveArray.Add(go);
 
-		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup")) 
-			pickupArray.Add(go);		
-
-		if (!questAccpeted) {
-			for(int i = 0; i < pickupArray.Count; i++){
-				GameObject go = (GameObject)pickupArray[i];
-				go.renderer.enabled = false;
-			}
-		}
-
-		quest1gui = GameObject.FindWithTag("Quest1");
-	//	quest1gui.SetActive (false);
 	}
 	
 	void OnGUI(){
@@ -52,31 +39,49 @@ public class TriggerActivation : QuestBase {
 			GameObject go = (GameObject)leaveArray[collected];
 			collected++;
 			go.renderer.enabled = true;
+			if(collected >= nrOfBags)
+				TriggerFinish ();
 		}
-
-		if (other.gameObject.tag == "Questgiver" && questAccpeted == false) {
-			ShowPickupQuest();
-		}
-	}
-
-	public void ShowPickupQuest(){
-		questAccpeted = true;
-		for(int i = 0; i < pickupArray.Count; i++) {
-			GameObject go = (GameObject)pickupArray[i];
-			go.renderer.enabled = true;
-		}
-		quest1gui.SetActive (true);
 
 	}
 
-	public override void Trigger ()
+	public override void TriggerStart ()
 	{
+		//start()
+		foreach(GameObject go in GameObject.FindGameObjectsWithTag("Leavebag"))
+			leaveArray.Add(go);
+		
+		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup")) 
+			pickupArray.Add(go);		
+		
+		if (!questAccpeted) {
+			for(int i = 0; i < pickupArray.Count; i++){
+				GameObject go = (GameObject)pickupArray[i];
+				go.renderer.enabled = false;
+			}
+		}
+		
+		quest1gui = GameObject.FindWithTag("Quest1");
+		collected = 0;
+		//showpickupquest()
 		questAccpeted = true;
 		for(int i = 0; i < pickupArray.Count; i++) {
 			GameObject go = (GameObject)pickupArray[i];
 			go.renderer.enabled = true;
 		}
 		quest1gui.SetActive (true);
+	}
+
+	public override void TriggerFinish()
+	{
+		for(int i = 0; i < pickupArray.Count; i++){
+			GameObject go = (GameObject)pickupArray[i];
+			go.renderer.enabled = false;
+		}
+
+		questAccpeted = false;
+
+		Debug.Log ("QUEST FINISHED");
 	}
 }
 
