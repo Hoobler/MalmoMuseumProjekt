@@ -66,13 +66,25 @@ public class DialogueTest: MonoBehaviour {
 	}
 
 	void FormatMainText(){
+		string[] text = mainGUIText.text.Split(" "[0]);
+		mainGUIText.text = "";
 
+		for (int i = 0; i < text.GetLength(0); i++) {
+
+			mainGUIText.text += text[i] + " ";
+			if(mainGUIText.GetScreenRect().width > 250)
+			{
+				mainGUIText.text = mainGUIText.text.Substring(0, mainGUIText.text.Length - text[i].Length - 1);
+				mainGUIText.text += "\n" + text[i] + " ";
+			}
+		}
 	}
 
 	void Init(){
 
 		dialogueObject = new GameObject ("Dialogue");
 		questManager = GameObject.Find ("Quest_Handler").GetComponent (typeof(QuestManager)) as QuestManager;
+
 		backObject = new GameObject ("DialogueBackground");
 		backObject.transform.parent = dialogueObject.transform;
 		background = (GUITexture)backObject.AddComponent (typeof(GUITexture));
@@ -87,6 +99,7 @@ public class DialogueTest: MonoBehaviour {
 		mainGUIText.transform.position =  new Vector3 (0.08f, 0.75f, 0.10f);
 		mainGUIText.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 		mainGUIText.color = new Color (0, 0, 0);
+		mainGUIText.lineSpacing = 1f;
 		if(font)
 			mainGUIText.font = font;
 
@@ -165,6 +178,8 @@ public class DialogueTest: MonoBehaviour {
 			if(font)
 				button4GUIText.font = font;
 		}
+
+		FormatMainText ();
 		//SendMessage ("QuestTrigger", 5);
 
 
@@ -220,6 +235,8 @@ public class DialogueTest: MonoBehaviour {
 						if(button4.quitOnPress)
 							KillConversation();
 					}
+				FormatMainText();
+
 			}
 			if(playerTransform && Vector3.Distance(playerTransform.position, this.transform.position) > abortConversationDistance)
 				KillConversation();
