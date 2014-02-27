@@ -10,7 +10,7 @@ public class ChangeTargetColor : MonoBehaviour {
 	private bool reachedTarget = false;
 
 	void Start () {
-
+		EventManager.OnHit += ChangeSize;
 	}
 
 	void Update(){
@@ -24,9 +24,11 @@ public class ChangeTargetColor : MonoBehaviour {
 		}
 	}
 
-	public void ChangeSize(){
+	public void ChangeSize(int id){
+		if(id == 1){
 		Debug.Log("ChangeSize");
 		hit = true;
 		transform.localScale = new Vector3(1f, 1f, 1f);
+		}
 	}
 }
