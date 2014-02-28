@@ -39,6 +39,8 @@ public class DialogueTest: MonoBehaviour {
 	GUITexture button3Back;
 	GUITexture button4Back;
 
+	GameObject dialogueObject;
+
 	private Transform playerTransform;
 
 	private bool conversationActive = false;
@@ -64,7 +66,7 @@ public class DialogueTest: MonoBehaviour {
 
 	void Init(){
 
-		GameObject dialogueObject = new GameObject ("Dialogue");
+		dialogueObject = new GameObject ("Dialogue");
 		questManager = GameObject.Find ("Quest_Handler").GetComponent (typeof(QuestManager)) as QuestManager;
 
 		GameObject backObject = new GameObject ("DialogueBackground");
@@ -173,7 +175,7 @@ public class DialogueTest: MonoBehaviour {
 //		}
 
 	void KillConversation(){
-		Destroy (GameObject.Find("Dialogue"));
+		Destroy (dialogueObject);
 		conversationActive = false;
 		}
 

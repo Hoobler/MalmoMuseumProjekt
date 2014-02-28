@@ -3,7 +3,9 @@ using System.Collections;
 
 public class DestroyOnClick : MonoBehaviour {
 
+
+
 	public void OnMouseDown(){
-		Destroy(this);
+		Destroy (gameObject.transform.root.gameObject);
 	}
 }
