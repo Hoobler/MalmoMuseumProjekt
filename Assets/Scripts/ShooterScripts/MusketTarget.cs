@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChangeTargetColor : MonoBehaviour {
-
+public class MusketTarget : MonoBehaviour {
+	
 	public float speed = 10f;
 	public Vector3 endPos;
-
+	public int targetID;
+	
 	private bool hit = false;
 	private bool reachedTarget = false;
 
 	void Start () {
-		EventManager.OnHit += ChangeSize;
+		EventManager.OnHit += EventRespons;
 	}
-
+	
 	void Update(){
 		if(hit && !reachedTarget){
 			transform.position = Vector3.Slerp(transform.position, endPos, speed * Time.deltaTime);
@@ -23,12 +24,11 @@ public class ChangeTargetColor : MonoBehaviour {
 			reachedTarget = true;
 		}
 	}
-
-	public void ChangeSize(int id){
-		if(id == 1){
-		Debug.Log("ChangeSize");
-		hit = true;
-		transform.localScale = new Vector3(1f, 1f, 1f);
+	
+	void EventRespons(int id){
+		if(targetID == id){
+			Debug.Log("ChangeSize");
+			hit = true;
 		}
 	}
 }

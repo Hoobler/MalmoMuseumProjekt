@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class Shoot : MonoBehaviour {
-
-	private ChangeTargetColor script;
+	
 	private float moveSpeed = 5;
 	private Vector3 moveToPos;
 	private bool locked;
