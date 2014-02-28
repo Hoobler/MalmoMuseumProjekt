@@ -39,24 +39,6 @@ public class DialogueTest: MonoBehaviour {
 	GUITexture button3Back;
 	GUITexture button4Back;
 
-	GameObject dialogueObject;
-
-	GameObject backObject;
-
-	GameObject mainGUITextObject;
-	GameObject button1BackObject;
-	GameObject button1TextObject;
-
-	GameObject button2BackObject;
-	GameObject button2TextObject;
-
-	GameObject button3BackObject;
-	GameObject button3TextObject;
-
-	GameObject button4BackObject;
-	GameObject button4TextObject;
-
-
 	private Transform playerTransform;
 
 	private bool conversationActive = false;
@@ -82,17 +64,17 @@ public class DialogueTest: MonoBehaviour {
 
 	void Init(){
 
-		dialogueObject = new GameObject ("Dialogue");
+		GameObject dialogueObject = new GameObject ("Dialogue");
 		questManager = GameObject.Find ("Quest_Handler").GetComponent (typeof(QuestManager)) as QuestManager;
 
-		backObject = new GameObject ("DialogueBackground");
+		GameObject backObject = new GameObject ("DialogueBackground");
 		backObject.transform.parent = dialogueObject.transform;
 		background = (GUITexture)backObject.AddComponent (typeof(GUITexture));
 		background.texture = backgroundTexture;
 		background.transform.position =  new Vector3 (0.2f, 0.5f, 0);
 		background.transform.localScale = new Vector3 (0.3f, 0.6f, 0);
 
-		mainGUITextObject = new GameObject ("DialogueMainText");
+		GameObject mainGUITextObject = new GameObject ("DialogueMainText");
 		mainGUITextObject.transform.parent = dialogueObject.transform;
 		mainGUIText = (GUIText)mainGUITextObject.AddComponent (typeof(GUIText));
 		mainGUIText.text = introText;
@@ -104,14 +86,14 @@ public class DialogueTest: MonoBehaviour {
 			mainGUIText.font = font;
 
 		if (button1.enabled) {
-			button1BackObject = new GameObject ("DialogueButton1Background");
+			GameObject button1BackObject = new GameObject ("DialogueButton1Background");
 			button1BackObject.transform.parent = dialogueObject.transform;
 			button1Back = (GUITexture)button1BackObject.AddComponent (typeof(GUITexture));
 			button1Back.texture = button1.backgroundTexture;
 			button1Back.transform.position = new Vector3 (0.12f, 0.4f, 0.1f);
 			button1Back.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 
-			button1TextObject = new GameObject ("DialogueButton1Text");
+			GameObject button1TextObject = new GameObject ("DialogueButton1Text");
 			button1TextObject.transform.parent = dialogueObject.transform;
 			button1GUIText = (GUIText)button1TextObject.AddComponent (typeof(GUIText));
 			button1GUIText.text = button1.textOnButton;
@@ -123,14 +105,14 @@ public class DialogueTest: MonoBehaviour {
 		}
 
 		if (button2.enabled) {
-			button2BackObject = new GameObject ("DialogueButton2Background");
+			GameObject button2BackObject = new GameObject ("DialogueButton2Background");
 			button2BackObject.transform.parent = dialogueObject.transform;
 			button2Back = (GUITexture)button2BackObject.AddComponent (typeof(GUITexture));
 			button2Back.texture = button2.backgroundTexture;
 			button2Back.transform.position = new Vector3 (0.28f, 0.4f, 0.1f);
 			button2Back.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 			
-			button2TextObject = new GameObject ("DialogueButton2Text");
+			GameObject button2TextObject = new GameObject ("DialogueButton2Text");
 			button2TextObject.transform.parent = dialogueObject.transform;
 			button2GUIText = (GUIText)button2TextObject.AddComponent (typeof(GUIText));
 			button2GUIText.text = button2.textOnButton;
@@ -142,14 +124,14 @@ public class DialogueTest: MonoBehaviour {
 		}
 
 		if (button3.enabled) {
-			button3BackObject = new GameObject ("DialogueButton3Background");
+			GameObject button3BackObject = new GameObject ("DialogueButton3Background");
 			button3BackObject.transform.parent = dialogueObject.transform;
 			button3Back = (GUITexture)button3BackObject.AddComponent (typeof(GUITexture));
 			button3Back.texture = button3.backgroundTexture;
 			button3Back.transform.position = new Vector3 (0.12f, 0.3f, 0.1f);
 			button3Back.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 
-			button3TextObject = new GameObject ("DialogueButton3Text");
+			GameObject button3TextObject = new GameObject ("DialogueButton3Text");
 			button3TextObject.transform.parent = dialogueObject.transform;
 			button3GUIText = (GUIText)button3TextObject.AddComponent (typeof(GUIText));
 			button3GUIText.text = button3.textOnButton;
@@ -161,14 +143,14 @@ public class DialogueTest: MonoBehaviour {
 		}
 
 		if (button4.enabled) {
-			button4BackObject = new GameObject ("DialogueButton4Background");
+			GameObject button4BackObject = new GameObject ("DialogueButton4Background");
 			button4BackObject.transform.parent = dialogueObject.transform;
 			button4Back = (GUITexture)button4BackObject.AddComponent (typeof(GUITexture));
 			button4Back.texture = button4.backgroundTexture;
 			button4Back.transform.position = new Vector3 (0.28f, 0.3f, 0.1f);
 			button4Back.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
 
-			button4TextObject = new GameObject ("DialogueButton4Text");
+			GameObject button4TextObject = new GameObject ("DialogueButton4Text");
 			button4TextObject.transform.parent = dialogueObject.transform;
 			button4GUIText = (GUIText)button4TextObject.AddComponent (typeof(GUIText));
 			button4GUIText.text = button4.textOnButton;
@@ -191,7 +173,7 @@ public class DialogueTest: MonoBehaviour {
 //		}
 
 	void KillConversation(){
-		Destroy (dialogueObject);
+		Destroy (GameObject.Find("Dialogue"));
 		conversationActive = false;
 		}
 

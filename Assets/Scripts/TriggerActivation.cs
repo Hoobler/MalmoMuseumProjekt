@@ -4,7 +4,7 @@ using System.Collections;
 public class TriggerActivation : QuestBase {
 
 	public int collected = 0;
-	int nrOfBags = 6;
+	int nrOfBags = 1;
 	
 	bool carrying = false;
 	public bool questAccpeted = false;
@@ -84,6 +84,7 @@ public class TriggerActivation : QuestBase {
 		questAccpeted = false;
 
 		Debug.Log ("QUEST FINISHED");
+		base.TriggerFinish ();
 	}
 }
 
