@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MusketTarget : MonoBehaviour {
 	
-	public float speed = 10f;
-	public Vector3 endPos;
+	public float speed = 2f;
+	public Transform endPos;
 	public int targetID;
 	
 	private bool hit = false;
@@ -16,10 +16,10 @@ public class MusketTarget : MonoBehaviour {
 	
 	void Update(){
 		if(hit && !reachedTarget){
-			transform.position = Vector3.Slerp(transform.position, endPos, speed * Time.deltaTime);
+			transform.position = Vector3.Slerp(transform.position, endPos.position, speed * Time.deltaTime);
 		}
 		//To stop it from updating and moving the target!
-		if(Vector3.Distance(transform.position, endPos) <= 0.1f){
+		if(Vector3.Distance(transform.position, endPos.position) <= 0.1f && !reachedTarget){
 			Debug.Log("Stopp!");
 			reachedTarget = true;
 		}
