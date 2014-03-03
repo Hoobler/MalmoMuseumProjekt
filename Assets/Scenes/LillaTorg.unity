@@ -3593,6 +3593,91 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1495603870}
   m_GameObject: {fileID: 173334946}
   m_Mesh: {fileID: 4300016, guid: 4f1bd8d788359834db3c6884650fde5b, type: 3}
+--- !u!1 &174518123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 174518124}
+  - 33: {fileID: 174518127}
+  - 64: {fileID: 174518126}
+  - 23: {fileID: 174518125}
+  - 114: {fileID: 174518128}
+  m_Layer: 0
+  m_Name: QuestMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &174518124
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174518123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.0808132365, y: 2.86670661, z: -.00324248127}
+  m_LocalScale: {x: .12555705, y: 1.54826427, z: .308795601}
+  m_Children: []
+  m_Father: {fileID: 454331524}
+--- !u!23 &174518125
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174518123}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 688bc2ba79e29614da6fe7248497142e, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!64 &174518126
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174518123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &174518127
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174518123}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &174518128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174518123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e44e4222c1366844ba475485aa9dc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startQuest: {fileID: 2800000, guid: dc482b65496e22f42b8d8972cf1daa96, type: 3}
+  acceptedQuest: {fileID: 2800000, guid: 93ae3eff0d1c97347bf7df51296644d1, type: 3}
+  finishedQuest: {fileID: 2800000, guid: c08a616a78d3ddf45b149498c615e8ee, type: 3}
 --- !u!1 &176487814
 GameObject:
   m_ObjectHideFlags: 0
@@ -8843,7 +8928,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.92236423, y: .645767927, z: 10.7819519}
   m_LocalScale: {x: .645884633, y: .645884633, z: .645884633}
-  m_Children: []
+  m_Children:
+  - {fileID: 174518124}
   m_Father: {fileID: 960606671}
 --- !u!1 &456633951
 GameObject:
@@ -19690,6 +19776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collected: 0
   questAccpeted: 0
+  questFinished: 0
   collectedTexture: {fileID: 0}
 --- !u!1 &1034579010
 GameObject:
@@ -23500,6 +23587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collected: 0
   questAccpeted: 0
+  questFinished: 0
   collectedTexture: {fileID: 0}
 --- !u!65 &1226807320
 BoxCollider:
@@ -25339,6 +25427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collected: 0
   questAccpeted: 0
+  questFinished: 0
   collectedTexture: {fileID: 0}
 --- !u!1 &1298138073
 GameObject:
@@ -34002,6 +34091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collected: 0
   questAccpeted: 0
+  questFinished: 0
   collectedTexture: {fileID: 0}
 --- !u!1 &1747252639
 GameObject:
@@ -38052,6 +38142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collected: 0
   questAccpeted: 0
+  questFinished: 0
   collectedTexture: {fileID: 0}
 --- !u!1 &1945840248
 GameObject:
@@ -41640,6 +41731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collected: 0
   questAccpeted: 0
+  questFinished: 0
   collectedTexture: {fileID: 0}
 --- !u!1 &2135188054
 GameObject:
