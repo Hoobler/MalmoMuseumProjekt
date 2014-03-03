@@ -16,12 +16,22 @@ public class MusketTarget : MonoBehaviour {
 	
 	void Update(){
 		if(hit && !reachedTarget){
-			transform.position = Vector3.Slerp(transform.position, endPos.position, speed * Time.deltaTime);
+			StartCoroutine(MoveTarget(transform, transform.position, endPos.position, speed));
 		}
 		//To stop it from updating and moving the target!
 		if(Vector3.Distance(transform.position, endPos.position) <= 0.1f && !reachedTarget){
 			Debug.Log("Stopp!");
 			reachedTarget = true;
+		}
+	}
+
+	IEnumerator MoveTarget(Transform mTransform, Vector3 startPos, Vector3 endPos, float time){
+		float i = 0f;
+		float rate = 1.0f/time;
+		while(i < 1.0f){
+			i += Time.deltaTime * rate;
+			mTransform.position = Vector3.Lerp(startPos, endPos, i);
+			yield return null;
 		}
 	}
 	
