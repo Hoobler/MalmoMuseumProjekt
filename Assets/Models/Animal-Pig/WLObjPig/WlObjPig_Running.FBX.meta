@@ -1,0 +1,213 @@
+fileFormatVersion: 2
+guid: 1a30dcbebb68c434099b6d852ba20de0
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: LegFront_Lt_Ctrl
+    100004: LegFront_Rt_Ctrl
+    100006: Bip001 L Finger0
+    100008: LegFront_Rt_Ctrl0
+    100010: IK Chain04
+    100012: Bip001 Tail
+    100014: Bip001 R Finger0
+    100016: IK Chain01
+    100018: Bip001 L Foot
+    100020: Bip001 R Calf
+    100022: Bip001 R Foot
+    100024: Bip001 Pelvis
+    100026: Bip001 R Hand
+    100028: IK Chain02
+    100030: Bip001 L Forearm
+    100032: LegFront_Lt_Ctrl0
+    100034: Bip001 L Hand
+    100036: Bip001 L UpperArm
+    100038: Bip001 L Clavicle
+    100040: Bip001 L Calf
+    100042: Bip001 1
+    100044: IK Chain05
+    100046: Bip001 R Thigh
+    100048: IK Chain06
+    100050: Bip001 L Toe0
+    100052: Bip001 Ponytail2
+    100054: Bip001 Ponytail1
+    100056: Bip001 R Toe0
+    100058: LegBack_Rt_Ctrl
+    100060: Bip001
+    100062: Bip001 Neck1
+    100064: Bip001 L Thigh
+    100066: Bip001 R Clavicle
+    100068: IK Chain07
+    100070: IK Chain08
+    100072: Bip001 R UpperArm
+    100074: Bip001 R Forearm
+    100076: Bip001 Head
+    100078: LegBack_Lt_Ctrl
+    100080: IK Chain03
+    100082: Bip001 Neck
+    100086: Bip001 Spine2
+    100088: WLObjPig
+    100090: Bip001 Spine1
+    100092: Bip001 Spine
+    400000: //RootNode
+    400002: LegFront_Lt_Ctrl
+    400004: LegFront_Rt_Ctrl
+    400006: Bip001 L Finger0
+    400008: LegFront_Rt_Ctrl0
+    400010: IK Chain04
+    400012: Bip001 Tail
+    400014: Bip001 R Finger0
+    400016: IK Chain01
+    400018: Bip001 L Foot
+    400020: Bip001 R Calf
+    400022: Bip001 R Foot
+    400024: Bip001 Pelvis
+    400026: Bip001 R Hand
+    400028: IK Chain02
+    400030: Bip001 L Forearm
+    400032: LegFront_Lt_Ctrl0
+    400034: Bip001 L Hand
+    400036: Bip001 L UpperArm
+    400038: Bip001 L Clavicle
+    400040: Bip001 L Calf
+    400042: Bip001 1
+    400044: IK Chain05
+    400046: Bip001 R Thigh
+    400048: IK Chain06
+    400050: Bip001 L Toe0
+    400052: Bip001 Ponytail2
+    400054: Bip001 Ponytail1
+    400056: Bip001 R Toe0
+    400058: LegBack_Rt_Ctrl
+    400060: Bip001
+    400062: Bip001 Neck1
+    400064: Bip001 L Thigh
+    400066: Bip001 R Clavicle
+    400068: IK Chain07
+    400070: IK Chain08
+    400072: Bip001 R UpperArm
+    400074: Bip001 R Forearm
+    400076: Bip001 Head
+    400078: LegBack_Lt_Ctrl
+    400080: IK Chain03
+    400082: Bip001 Neck
+    400086: Bip001 Spine2
+    400088: WLObjPig
+    400090: Bip001 Spine1
+    400092: Bip001 Spine
+    4300000: WLObjPig
+    7400000: Take 001
+    7400002: WlObjPig_Running
+    7400004: idle
+    7400006: idle0
+    7400008: run
+    7400010: walk
+    7400012: jump
+    7400014: WlObjPig_Jump
+    11100000: //RootNode
+    13700000: WLObjPig
+  materials:
+    importMaterials: 1
+    materialName: 3
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: WlObjPig_Running
+      takeName: 
+      firstFrame: 1
+      lastFrame: 20
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: WlObjPig_Jump
+      takeName: 
+      firstFrame: 10
+      lastFrame: 20
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

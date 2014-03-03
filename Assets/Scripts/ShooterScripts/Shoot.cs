@@ -2,11 +2,13 @@
 using System.Collections;
 
 public class Shoot : MonoBehaviour {
-	
-	public ChangeTargetColor script;
+
+	private Vector3 moveToPos;
+	private bool _reachedTarget;
+	private bool _weaponActive;
 
 	void Start () {
-	
+		EventManager.OnQuest += EventRespons;
 	}
 
 	void Update () {
@@ -14,18 +16,33 @@ public class Shoot : MonoBehaviour {
 		Transform cam = Camera.main.transform;
 		Ray ray = new Ray(cam.position, cam.forward);
 
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetMouseButtonDown(0) && _weaponActive){
 			if(Physics.Raycast(ray ,out hit, 100f)){
-
+				Debug.Log("Hit!" + hit.collider.gameObject);
 				GameObject otherObj = hit.collider.gameObject;
-				//Debug ray för att se vart din ray ens går!
-				Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 5f); 
-
 				if(otherObj.tag == "Target"){
-					script = (ChangeTargetColor) otherObj.GetComponent(typeof(ChangeTargetColor));
-					script.ChangeSize();
+					EventManager.TriggerOnHit(1);
 				}
 			}
 		}
  	}
+
+	void EventRespons(string type){
+		if(type == "EnterShootArea"){
+			EnableWeapon();
+		}
+		else if (type == "ExitShootArea"){
+			DisableWeapon();
+		}
+	}
+
+	void EnableWeapon(){
+		Debug.Log("Enable Weapon");
+		_weaponActive = true;
+	}
+
+	void DisableWeapon(){
+		_weaponActive = false;
+		Debug.Log("Disable Weapon");
+	}
 }
