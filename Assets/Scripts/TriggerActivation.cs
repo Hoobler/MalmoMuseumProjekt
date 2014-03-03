@@ -8,6 +8,7 @@ public class TriggerActivation : QuestBase {
 	
 	bool carrying = false;
 	public bool questAccpeted = false;
+	public bool questFinished = false;
 	
 	public Texture collectedTexture;
 
@@ -80,7 +81,7 @@ public class TriggerActivation : QuestBase {
 			GameObject go = (GameObject)pickupArray[i];
 			go.renderer.enabled = false;
 		}
-
+		questFinished = true;
 		questAccpeted = false;
 
 		Debug.Log ("QUEST FINISHED");
