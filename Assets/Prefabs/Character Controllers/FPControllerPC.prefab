@@ -405,6 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collected: 0
   questAccpeted: 0
+  questFinished: 0
   collectedTexture: {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:
@@ -417,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e0e85704cc13b42a5151cce4917abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crossHair: {fileID: 13100000, guid: 3eecd004b3bfb464f848cd6cdb3ade63, type: 2}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

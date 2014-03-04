@@ -8,6 +8,7 @@ public class MusketTarget : MonoBehaviour {
 	public int targetID;
 	
 	private bool hit = false;
+	private bool questTrigger = false;
 	private bool reachedTarget = false;
 
 	void Start () {
@@ -23,7 +24,16 @@ public class MusketTarget : MonoBehaviour {
 			Debug.Log("Stopp!");
 			reachedTarget = true;
 		}
+
+		if(hit && !questTrigger){
+			EventManager.TriggerOnQuest(QuestTypeEnum.OnGoing, "stuff");
+		}
+		if(questTrigger && reachedTarget){
+			EventManager.TriggerOnQuest(QuestTypeEnum.GoalReached, "stuff");
+		}
 	}
+
+	void ResetTarget(){}
 
 	IEnumerator MoveTarget(Transform mTransform, Vector3 startPos, Vector3 endPos, float time){
 		float i = 0f;

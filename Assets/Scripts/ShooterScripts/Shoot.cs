@@ -3,9 +3,12 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour {
 
+	public GUITexture crossHair;
+
 	private Vector3 moveToPos;
 	private bool _reachedTarget;
 	private bool _weaponActive;
+	private bool _showCrossHair;
 
 	void Start () {
 		EventManager.OnQuest += EventRespons;
@@ -27,22 +30,26 @@ public class Shoot : MonoBehaviour {
 		}
  	}
 
-	void EventRespons(string type){
-		if(type == "EnterShootArea"){
-			EnableWeapon();
-		}
-		else if (type == "ExitShootArea"){
-			DisableWeapon();
+	void EventRespons(QuestTypeEnum enumType, string type){
+		if(enumType == QuestTypeEnum.Trigger){
+			if(type == "EnterShootArea"){
+				EnableWeapon();
+			}
+			else if (type == "ExitShootArea"){
+				DisableWeapon();
+			}
 		}
 	}
 
 	void EnableWeapon(){
 		Debug.Log("Enable Weapon");
 		_weaponActive = true;
+		_showCrossHair = true;
 	}
 
 	void DisableWeapon(){
 		_weaponActive = false;
+		_showCrossHair = false;
 		Debug.Log("Disable Weapon");
 	}
 }

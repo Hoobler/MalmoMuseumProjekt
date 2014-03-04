@@ -2,9 +2,11 @@
 using System.Collections;
 using System;
 
-public delegate void QuestEvent(string type);
+public delegate void QuestEvent(QuestTypeEnum typeEnum, string stuff);
 public delegate void FireEvent(int id);
 public delegate void LockPlayerEvent(string type , LockPlayerEventArgs evtArgs);
+
+public enum QuestTypeEnum{Finnished, Started, OnGoing, GoalReached, Trigger};
 
 public class EventManager : MonoBehaviour {
 
@@ -12,9 +14,9 @@ public class EventManager : MonoBehaviour {
 	public static event FireEvent OnHit;
 	public static event LockPlayerEvent OnLock;
 
-	public static void TriggerOnQuest(string type){
+	public static void TriggerOnQuest(QuestTypeEnum typeEnum, string type){
 		if(OnQuest != null){
-			OnQuest(type);
+			OnQuest(typeEnum, type);
 		}
 	}
 

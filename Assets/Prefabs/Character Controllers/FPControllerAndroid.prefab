@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &100014
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -22,7 +22,7 @@ EditorExtensionImpl:
   serializedVersion: 6
 --- !u!1 &100016
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -173,8 +173,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: .999564111, z: 0, w: .0295233373}
+  m_LocalPosition: {x: -7.90903139, y: 6.18735456, z: 1.81141007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400020}
@@ -439,14 +439,14 @@ GUITexture:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 902873f1336b14507b2ae690b68ecc51, type: 3}
+  m_Texture: {fileID: 2800000, guid: ab5bb3eb247a4492fa9900f6ac0db050, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .150000006}
   m_PixelInset:
     serializedVersion: 2
-    x: -200
-    y: 0
-    width: 200
-    height: 125
+    x: -64
+    y: -64
+    width: 128
+    height: 128
   m_LeftBorder: 0
   m_RightBorder: 0
   m_TopBorder: 0
@@ -461,14 +461,14 @@ GUITexture:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 400c2f66c145548b6a08e6ac69655ea2, type: 3}
+  m_Texture: {fileID: 2800000, guid: ab5bb3eb247a4492fa9900f6ac0db050, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .150000006}
   m_PixelInset:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 200
-    height: 125
+    x: 64
+    y: 64
+    width: 128
+    height: 128
   m_LeftBorder: 0
   m_RightBorder: 0
   m_TopBorder: 0
@@ -495,7 +495,7 @@ EditorExtensionImpl:
   serializedVersion: 6
 --- !u!1001 &100100000
 Prefab:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}

@@ -13,13 +13,13 @@ public class ShootArea : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == "Player"){
-			EventManager.TriggerOnQuest("EnterShootArea");
+			EventManager.TriggerOnQuest(QuestTypeEnum.Trigger, "EnterShootArea");
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if(other.tag == "Player"){
-			EventManager.TriggerOnQuest("ExitShootArea");
+			EventManager.TriggerOnQuest(QuestTypeEnum.Trigger, "ExitShootArea");
 		}
 	}
 }
