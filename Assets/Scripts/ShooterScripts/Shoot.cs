@@ -12,6 +12,7 @@ public class Shoot : MonoBehaviour {
 
 	void Start () {
 		EventManager.OnQuest += EventRespons;
+		crossHair.enabled = true;
 	}
 
 	void Update () {

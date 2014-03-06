@@ -47,7 +47,7 @@ public class MusketTarget : MonoBehaviour {
 	
 	void EventRespons(int id){
 		if(targetID == id){
-			Debug.Log("ChangeSize");
+			Debug.Log("Target hit!");
 			hit = true;
 		}
 	}

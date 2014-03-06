@@ -17257,7 +17257,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1218555583}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: PlayerSpawn
   m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21186,6 +21186,10 @@ Prefab:
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
+      propertyPath: m_Name
+      value: PlayerSpawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
