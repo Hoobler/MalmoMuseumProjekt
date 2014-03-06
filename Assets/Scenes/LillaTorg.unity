@@ -13760,8 +13760,8 @@ Transform:
   - {fileID: 543904582}
   - {fileID: 1767268185}
   - {fileID: 1277921444}
-  - {fileID: 1245005132}
   - {fileID: 1521595564}
+  - {fileID: 1245005132}
   - {fileID: 1099209600}
   - {fileID: 868226197}
   - {fileID: 1421276490}
@@ -25198,6 +25198,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
+      propertyPath: m_Name
+      value: PlayerSpawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
   m_RootGameObject: {fileID: 1314702213}
@@ -25888,7 +25892,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1314702214}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: PlayerSpawn
   m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
