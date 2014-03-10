@@ -9,6 +9,7 @@ public class TriggerActivation : QuestBase {
 	bool carrying = false;
 	public bool questAccpeted = false;
 	public bool questFinished = false;
+	private float timeElapsed = 0.0f;
 	
 	public Texture collectedTexture;
 
@@ -23,8 +24,16 @@ public class TriggerActivation : QuestBase {
 	}
 	
 	void OnGUI(){
-		if (questAccpeted) 
+		if (questAccpeted) {
 			GUI.Label (new Rect (70, 30, 30, 20), collected.ToString () + " / 6");
+			GUI.Label (new Rect (70, 50, 30, 20), timeElapsed.ToString());
+		}
+			
+	}
+
+	void Update(){
+		if (questAccpeted)
+			timeElapsed += Time.deltaTime;
 	}
 
 	void OnTriggerEnter(Collider other){
