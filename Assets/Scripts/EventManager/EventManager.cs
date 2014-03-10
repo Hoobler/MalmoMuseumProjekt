@@ -5,6 +5,7 @@ using System;
 //The event enums are lockated in the EventEnums.cs
 
 //The Delegates goes here! You need a delegate and an event for this to work.
+public delegate void ActivateEvent(string type, ActiveEnum activeEnum);
 public delegate void QuestEvent(QuestTypeEnum typeEnum, string stuff);
 public delegate void FireEvent(int id);
 public delegate void LockPlayerEvent(string type , LockPlayerEventArgs evtArgs);
@@ -12,6 +13,7 @@ public delegate void LockPlayerEvent(string type , LockPlayerEventArgs evtArgs);
 public class EventManager : MonoBehaviour {
 
 	//Create events to subscribe to!
+	public static event ActivateEvent OnActivate;
 	public static event QuestEvent OnQuest;
 	public static event FireEvent OnHit;
 	public static event LockPlayerEvent OnLock;
@@ -45,6 +47,12 @@ public class EventManager : MonoBehaviour {
 	public static void TriggerLockPlayer(string type, LockPlayerEventArgs evtArgs){
 		if(OnLock != null){
 			OnLock(type, evtArgs);
+		}
+	}
+
+	public static void TriggerOnActivate(string type, ActiveEnum activeEnum){
+		if(OnActivate != null){
+			OnActivate(type, activeEnum);
 		}
 	}
 }

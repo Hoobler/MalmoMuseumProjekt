@@ -2,30 +2,30 @@
 using System.Collections;
 
 public class Shoot : MonoBehaviour {
-
-	public GUITexture crossHair;
-
-	private Vector3 moveToPos;
-	private bool _reachedTarget;
+	
 	private bool _weaponActive;
-	private bool _showCrossHair;
+
+	//Ray casting variables
+	private Ray _ray;
+	private RaycastHit _hit;
+	//Camera transform
+	private Transform _cameraTransform;
 
 	void Start () {
 		EventManager.OnQuest += EventRespons;
-		crossHair.enabled = true;
 	}
 
 	void Update () {
-		RaycastHit hit;
-		Transform cam = Camera.main.transform;
-		Ray ray = new Ray(cam.position, cam.forward);
-
-		if(Input.GetMouseButtonDown(0) && _weaponActive){
-			if(Physics.Raycast(ray ,out hit, 100f)){
-				Debug.Log("Hit!" + hit.collider.gameObject);
-				GameObject otherObj = hit.collider.gameObject;
-				if(otherObj.tag == "Target"){
-					EventManager.TriggerOnHit(1);
+		if(_weaponActive){
+			if(Input.GetMouseButtonDown(0)){
+				RayCastChecker();
+			}
+			if(Input.touchCount > 0){
+				int i = 0;
+				while (i++ < Input.touchCount){
+					if(Input.GetTouch(i).phase == TouchPhase.Ended){
+						RayCastChecker();
+					}
 				}
 			}
 		}
@@ -45,12 +45,25 @@ public class Shoot : MonoBehaviour {
 	void EnableWeapon(){
 		Debug.Log("Enable Weapon");
 		_weaponActive = true;
-		_showCrossHair = true;
+		EventManager.TriggerOnActivate("CrossHair", ActiveEnum.Active);
 	}
 
 	void DisableWeapon(){
 		_weaponActive = false;
-		_showCrossHair = false;
+		EventManager.TriggerOnActivate("CrossHair", ActiveEnum.Disabled);
 		Debug.Log("Disable Weapon");
+	}
+
+	void RayCastChecker(){
+		_cameraTransform = Camera.main.transform;
+		_ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+		
+		if(Physics.Raycast(_ray ,out _hit, 100f)){
+			Debug.Log("Hit!" + _hit.collider.gameObject);
+			GameObject otherObj = _hit.collider.gameObject;
+			if(otherObj.tag == "Target"){
+				EventManager.TriggerOnHit(1);
+			}
+		}
 	}
 }
