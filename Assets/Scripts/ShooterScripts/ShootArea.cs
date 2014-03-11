@@ -5,6 +5,8 @@ public class ShootArea : MonoBehaviour {
 
 	public bool DisableMeshRenderer;
 
+	private bool _questStared;
+
 	void Start(){
 		if(DisableMeshRenderer){
 			gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -13,13 +15,13 @@ public class ShootArea : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == "Player"){
-			EventManager.TriggerOnQuest(QuestTypeEnum.Trigger, "EnterShootArea");
+			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt ,new QuestEventArgs(QuestTypeEnum.Trigger, "EnterShootArea"));
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if(other.tag == "Player"){
-			EventManager.TriggerOnQuest(QuestTypeEnum.Trigger, "ExitShootArea");
+			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt ,new QuestEventArgs(QuestTypeEnum.Trigger, "ExitShootArea"));
 		}
-	}
+	}	
 }

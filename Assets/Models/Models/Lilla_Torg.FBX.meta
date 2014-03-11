@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 2d5697c389fbb094f97dbfac59e4d03a
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: 3dSolid
     100002: 3dSolid 1
@@ -198,6 +198,7 @@ ModelImporter:
     2300120: Object006
     2300122: Object020
     2300124: Object021
+    2300126: 3dSolid 18
     3300000: 3dSolid
     3300002: 3dSolid 1
     3300004: 3dSolid 10
@@ -261,6 +262,7 @@ ModelImporter:
     3300120: Object006
     3300122: Object020
     3300124: Object021
+    3300126: 3dSolid 18
     4300000: 3dSolid
     4300002: 3dSolid
     4300004: 3dSolid
@@ -376,5 +378,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 

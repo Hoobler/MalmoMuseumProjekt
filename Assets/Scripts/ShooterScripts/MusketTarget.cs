@@ -13,6 +13,7 @@ public class MusketTarget : MonoBehaviour {
 
 	void Start () {
 		EventManager.OnHit += EventRespons;
+		EventManager.OnQuest += EventReset;
 	}
 	
 	void Update(){
@@ -26,10 +27,10 @@ public class MusketTarget : MonoBehaviour {
 		}
 
 		if(hit && !questTrigger){
-			EventManager.TriggerOnQuest(QuestTypeEnum.OnGoing, "stuff");
+			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt , new QuestEventArgs(QuestTypeEnum.OnGoing, "stuff"));
 		}
 		if(questTrigger && reachedTarget){
-			EventManager.TriggerOnQuest(QuestTypeEnum.GoalReached, "stuff");
+			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt , new QuestEventArgs(QuestTypeEnum.GoalReached, "stuff"));
 		}
 	}
 
@@ -42,6 +43,14 @@ public class MusketTarget : MonoBehaviour {
 			i += Time.deltaTime * rate;
 			mTransform.position = Vector3.Lerp(startPos, endPos, i);
 			yield return null;
+		}
+	}
+
+	void EventReset(MiniGamesEnum miniEnum , QuestEventArgs evArgs){
+		if(miniEnum == MiniGamesEnum.Musköt){
+			if(evArgs.QuestType == QuestTypeEnum.Reset){
+				ResetTarget();
+			}
 		}
 	}
 	

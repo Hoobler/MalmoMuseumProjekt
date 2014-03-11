@@ -2,8 +2,11 @@
 using System.Collections;
 
 public class Shoot : MonoBehaviour {
+
+	private ParticleSystem particle;
 	
 	private bool _weaponActive;
+	private bool _questStared;
 
 	//Ray casting variables
 	private Ray _ray;
@@ -12,12 +15,18 @@ public class Shoot : MonoBehaviour {
 	private Transform _cameraTransform;
 
 	void Start () {
+		_questStared = false;
 		EventManager.OnQuest += EventRespons;
+		particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
+		particle.Stop();
+		particle.Clear();
 	}
 
 	void Update () {
 		if(_weaponActive){
 			if(Input.GetMouseButtonDown(0)){
+				Debug.Log("SHIT!");
+				particle.Play ();
 				RayCastChecker();
 			}
 			if(Input.touchCount > 0){
@@ -31,12 +40,18 @@ public class Shoot : MonoBehaviour {
 		}
  	}
 
-	void EventRespons(QuestTypeEnum enumType, string type){
-		if(enumType == QuestTypeEnum.Trigger){
-			if(type == "EnterShootArea"){
+	void EventRespons(MiniGamesEnum miniEnum , QuestEventArgs evArgs){
+		if(miniEnum == MiniGamesEnum.Musköt){
+			if(evArgs.QuestType == QuestTypeEnum.Started){
+				_questStared = true;
+			}
+			else if(evArgs.QuestType == QuestTypeEnum.Finnished){
+				_questStared = false;
+			}
+			else if(evArgs.Info == "EnterShootArea" && _questStared){
 				EnableWeapon();
 			}
-			else if (type == "ExitShootArea"){
+			else if (evArgs.Info == "ExitShootArea" && _questStared){
 				DisableWeapon();
 			}
 		}
@@ -63,6 +78,7 @@ public class Shoot : MonoBehaviour {
 			GameObject otherObj = _hit.collider.gameObject;
 			if(otherObj.tag == "Target"){
 				EventManager.TriggerOnHit(1);
+				EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.OnGoing, "Hit"));
 			}
 		}
 	}

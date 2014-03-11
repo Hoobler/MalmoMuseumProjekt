@@ -6,7 +6,7 @@ using System;
 
 //The Delegates goes here! You need a delegate and an event for this to work.
 public delegate void ActivateEvent(string type, ActiveEnum activeEnum);
-public delegate void QuestEvent(QuestTypeEnum typeEnum, string stuff);
+public delegate void QuestEvent(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs);
 public delegate void FireEvent(int id);
 public delegate void LockPlayerEvent(string type , LockPlayerEventArgs evtArgs);
 
@@ -26,9 +26,9 @@ public class EventManager : MonoBehaviour {
 	/// </summary>
 	/// <param name="typeEnum">An enum for what type of quest event</param>
 	/// <param name="type">String info about the event.</param>
-	public static void TriggerOnQuest(QuestTypeEnum typeEnum, string type){
+	public static void TriggerOnQuest(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs){
 		if(OnQuest != null){
-			OnQuest(typeEnum, type);
+			OnQuest(miniEnum, eventArgs);
 		}
 	}
 
