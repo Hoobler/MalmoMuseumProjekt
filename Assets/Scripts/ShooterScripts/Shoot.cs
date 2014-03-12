@@ -3,15 +3,17 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour {
 
+	public float ScaleLimit;
+	public int CircleDepth;
+
 	private ParticleSystem particle;
 	
 	private bool _weaponActive;
 	private bool _questStared;
-
-	//Ray casting variables
+	private bool _questFinished;
+	
 	private Ray _ray;
 	private RaycastHit _hit;
-	//Camera transform
 	private Transform _cameraTransform;
 
 	void Start () {
@@ -25,7 +27,7 @@ public class Shoot : MonoBehaviour {
 	void Update () {
 		if(_weaponActive){
 			if(Input.GetMouseButtonDown(0)){
-				Debug.Log("SHIT!");
+				Debug.Log("Mouse Shoot!");
 				particle.Play ();
 				RayCastChecker();
 			}
@@ -70,10 +72,17 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void RayCastChecker(){
+
+		Vector3 direction = Random.insideUnitCircle * ScaleLimit;
+		direction.z = CircleDepth;
+		direction = transform.TransformDirection ( direction.normalized );
+
+
 		_cameraTransform = Camera.main.transform;
-		_ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
-		
+		_ray = new Ray(_cameraTransform.position, direction);
+
 		if(Physics.Raycast(_ray ,out _hit, 100f)){
+			Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
 			Debug.Log("Hit!" + _hit.collider.gameObject);
 			GameObject otherObj = _hit.collider.gameObject;
 			if(otherObj.tag == "Target"){

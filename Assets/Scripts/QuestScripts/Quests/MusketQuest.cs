@@ -8,8 +8,7 @@ public class MusketQuest : MonoBehaviour {
 	private bool _questStarted;
 	private bool _questFinished;
 	private int _hits;
-
-	// Use this for initialization
+	
 	void Start () {
 		EventManager.OnQuest += EventRespons;
 
@@ -17,8 +16,7 @@ public class MusketQuest : MonoBehaviour {
 		_questStarted = false;
 		_hits = 0;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if(_hits >= HitsToFinish){
 			_questFinished = true;
@@ -41,6 +39,7 @@ public class MusketQuest : MonoBehaviour {
 		}
 	}
 
+	// Add more to this at a later date!
 	void QuestFinished(){
 		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Finnished, null));
 	}
