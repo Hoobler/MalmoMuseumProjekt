@@ -20,15 +20,18 @@ public class Shoot : MonoBehaviour {
 		_questStared = false;
 		EventManager.OnQuest += EventRespons;
 		particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
-		particle.Stop();
-		particle.Clear();
+		if(particle != null){
+			particle.Stop();
+			particle.Clear();
+		}
 	}
 
 	void Update () {
 		if(_weaponActive){
 			if(Input.GetMouseButtonDown(0)){
 				Debug.Log("Mouse Shoot!");
-				particle.Play ();
+				if(particle != null)
+					particle.Play ();
 				RayCastChecker();
 			}
 			if(Input.touchCount > 0){
