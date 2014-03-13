@@ -35,7 +35,7 @@ public class MusketQuest : MonoBehaviour {
 
 	void OnGUI(){
 		if (_questStarted) {
-			//GUI.Label (new Rect (70, 30, 30, 20), collected.ToString () + " / 6");
+			GUI.Label (new Rect (70, 30, 30, 20), _hits.ToString());
 			GUI.Label (new Rect (70, 50, 30, 20), _timeElapsed.ToString());
 		}
 	}
@@ -44,7 +44,9 @@ public class MusketQuest : MonoBehaviour {
 		if(miniEnum == MiniGamesEnum.Musköt){
 			if(evArgs.QuestType == QuestTypeEnum.OnGoing){
 				if(evArgs.Info == "Hit" && _questStarted){
-					_hits++;
+					if(_hits != HitsToFinish){
+						_hits++;
+					}
 				}
 			}
 			if(evArgs.QuestType == QuestTypeEnum.Started){

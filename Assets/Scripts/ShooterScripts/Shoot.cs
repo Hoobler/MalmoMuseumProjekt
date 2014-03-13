@@ -83,8 +83,6 @@ public class Shoot : MonoBehaviour {
 		_cameraTransform = Camera.main.transform;
 		_ray = new Ray(_cameraTransform.position, direction);
 
-		Debug.Log(_ray);
-
 		if(Physics.Raycast(_ray ,out _hit, 100f)){
 			Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
 			Debug.Log("Hit!" + _hit.collider.gameObject);
