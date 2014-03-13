@@ -4037,6 +4037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitsToFinish: 2
+  TimeLimit: 0
 --- !u!1001 &180945949
 Prefab:
   m_ObjectHideFlags: 0
