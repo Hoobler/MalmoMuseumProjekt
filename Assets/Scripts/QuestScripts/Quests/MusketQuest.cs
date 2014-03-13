@@ -25,20 +25,21 @@ public class MusketQuest : MonoBehaviour {
 	}
 
 	void Update () {
-		if(_hits >= HitsToFinish && !_timeLimitExceeded){
-			_questEnded = true;
-			_questSuccess = true;
-		}
-		if(_questEnded){
-			QuestFinished();
-		}
-		if(_questStarted && !_questEnded){
-			_timeElapsed += Time.deltaTime;
-		}
-		if(_timeElapsed >= TimeLimit){
-			_timeLimitExceeded = true;
-			_questEnded = true;
-			_questSuccess = false;
+		if(_firstHit && !_questEnded){
+			if(_hits >= HitsToFinish && !_timeLimitExceeded){
+				_questEnded = true;
+				_questSuccess = true;
+				QuestFinished();
+			}
+			if(_questStarted && !_questEnded){
+				_timeElapsed += Time.deltaTime;
+			}
+			if(_timeElapsed >= TimeLimit){
+				_timeLimitExceeded = true;
+				_questEnded = true;
+				_questSuccess = false;
+				QuestFinished();
+			}
 		}
 	}
 
@@ -55,6 +56,9 @@ public class MusketQuest : MonoBehaviour {
 				if(evArgs.Info == "Hit" && _questStarted){
 					if(_hits != HitsToFinish){
 						_hits++;
+						if(!_firstHit){
+							_firstHit = true;
+						}
 					}
 				}
 			}
