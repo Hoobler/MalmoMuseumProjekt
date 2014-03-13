@@ -6,30 +6,39 @@ public class MusketQuest : MonoBehaviour {
 	public int HitsToFinish;
 	public float TimeLimit;
 
+	private bool _questSuccess;
 	private bool _questStarted;
-	private bool _questFinished;
+	private bool _questEnded;
 	private bool _firstHit;
+	private bool _timeLimitExceeded;
 	private int _hits;
 	private float _timeElapsed;
 	
 	void Start () {
 		EventManager.OnQuest += EventRespons;
 
-		_questFinished = false;
+		_questEnded = false;
 		_questStarted = false;
 		_firstHit = false;
+		_questSuccess = false;
 		_hits = 0;
 	}
 
 	void Update () {
-		if(_hits >= HitsToFinish && _timeElapsed <= TimeLimit){
-			_questFinished = true;
+		if(_hits >= HitsToFinish && !_timeLimitExceeded){
+			_questEnded = true;
+			_questSuccess = true;
 		}
-		if(_questFinished){
+		if(_questEnded){
 			QuestFinished();
 		}
-		if(_questStarted && !_questFinished){
+		if(_questStarted && !_questEnded){
 			_timeElapsed += Time.deltaTime;
+		}
+		if(_timeElapsed >= TimeLimit){
+			_timeLimitExceeded = true;
+			_questEnded = true;
+			_questSuccess = false;
 		}
 	}
 
@@ -57,6 +66,7 @@ public class MusketQuest : MonoBehaviour {
 
 	// Add more to this at a later date!
 	void QuestFinished(){
+		Debug.Log("Finnished");
 		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Finnished, null));
 	}
 
