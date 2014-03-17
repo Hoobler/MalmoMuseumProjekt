@@ -24,14 +24,11 @@ public class TouchCamera : TouchInput {
 		}
 	}
 
-	void Update () {
-	}
-
-	void OnTouchBegan(){
+	public override void OnTouchBegan(){
 		touchToCheck = TouchInput.currTouch;
 	}
 
-	public void OnTouchMoved(){
+	public override void OnTouchMoved(){
 		_pitch -= Input.GetTouch(touchToCheck).deltaPosition.y * RotationSpeed * _inverted * Time.deltaTime;
 		_yaw += Input.GetTouch(touchToCheck).deltaPosition.x * RotationSpeed * _inverted * Time.deltaTime;
 
@@ -42,7 +39,7 @@ public class TouchCamera : TouchInput {
 		Camera.main.transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
 	}
 
-	void OnTouchEnded(){
+	public override void OnTouchEnded(){
 		if(TouchInput.currTouch == touchToCheck || Input.touches.Length <= 0)
 			touchToCheck = 64;
 	}
