@@ -14,7 +14,6 @@ public class ChickenAI : MonoBehaviour {
 	float panicDistance = 2;
 	float notPanickedDistance = 5;
 	public ChickenState state = ChickenState.CREEPY;
-	bool playerFound = false;
 	float hungerlevel =0f;
 	Vector3 targetPos;
 	// Update is called once per frame

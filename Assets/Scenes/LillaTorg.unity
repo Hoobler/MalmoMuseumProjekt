@@ -30005,6 +30005,32 @@ Transform:
   - {fileID: 704972582}
   - {fileID: 1288763824}
   m_Father: {fileID: 743002172}
+--- !u!1 &1421832154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1421832155}
+  m_Layer: 0
+  m_Name: AppleQuestStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1421832155
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1421832154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.01375961, y: -7.09767342, z: 12.5960493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1546080436}
 --- !u!1001 &1424358664
 Prefab:
   m_ObjectHideFlags: 0
@@ -30633,7 +30659,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400018, guid: 6f2aebf1255289645b7426481f9c7bb4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.18684578
+      value: -8.2385788
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 6f2aebf1255289645b7426481f9c7bb4, type: 2}
       propertyPath: m_LocalPosition.y
@@ -30641,7 +30667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 6f2aebf1255289645b7426481f9c7bb4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -5.62984276
+      value: .0846853256
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 6f2aebf1255289645b7426481f9c7bb4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -31822,7 +31848,7 @@ Transform:
   m_PrefabInternal: {fileID: 1436701824}
   m_GameObject: {fileID: 1495635400}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.18684578, y: 6.27931881, z: -5.62984276}
+  m_LocalPosition: {x: -8.2385788, y: 6.27931881, z: .0846853256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1831150044}
@@ -33234,8 +33260,10 @@ Transform:
   m_LocalPosition: {x: 19.1919632, y: 1.34698689, z: -18.1422653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1421832155}
   - {fileID: 1432568736}
   - {fileID: 1249112533}
+  - {fileID: 1728304147}
   m_Father: {fileID: 960606671}
 --- !u!1 &1546770783
 GameObject:
@@ -36082,8 +36110,9 @@ GameObject:
   - 136: {fileID: 1728304145}
   - 23: {fileID: 1728304144}
   - 114: {fileID: 1728304143}
+  - 114: {fileID: 1728304148}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: AppleQuestPerson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36102,16 +36131,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introText: "H\xE4r ska det st\xE5 introduktionstext"
   font: {fileID: 0}
-  backgroundTexture: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons:
   - quitOnPress: 1
     textOnButton: "Quest - Accepta h\xE4r!"
     shownInfoWhenPressed: 
-    backgroundTexture: {fileID: 0}
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
-    nameOfQuest: 
+    nameOfQuest: LillaTorgAppleQuest
 --- !u!23 &1728304144
 Renderer:
   m_ObjectHideFlags: 0
@@ -36160,10 +36189,21 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1728304142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.6757946, y: 1.22869873, z: -8.10701084}
+  m_LocalPosition: {x: -7.51616859, y: -.118288159, z: 10.0352545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1546080436}
+--- !u!114 &1728304148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1728304142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cc21c8e6f47b64ead4d52f3f0da419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1731681452
 GameObject:
   m_ObjectHideFlags: 0
