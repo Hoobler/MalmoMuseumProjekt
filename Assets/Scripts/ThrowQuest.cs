@@ -16,6 +16,8 @@ public class ThrowQuest : QuestBase {
 	float totalTimeBetweenThrows;
 	int nrOfActiveApples;
 
+	Transform chargeBar;
+
 	float charge; //pedja kom på detta
 	float chargeRate;
 	bool charging;
@@ -31,7 +33,7 @@ public class ThrowQuest : QuestBase {
 			player.position = new Vector3 (startPoint.position.x, player.position.y, startPoint.position.z);
 			//Debug.Log ("" + startPoint.position.x + "=" + player.position.x + ", " + startPoint.position.z + "=" + player.position.z);
 			player.LookAt (new Vector3(basket.position.x, player.position.y, basket.position.z));
-
+			chargeBar.position = new Vector3 (chargeBar.position.x, 0.3f + 0.4f * charge, chargeBar.position.z);
 			if (!questStart && Input.GetMouseButtonDown (0))
 				questStart = true;
 
@@ -88,7 +90,7 @@ public class ThrowQuest : QuestBase {
 			Debug.Log("COLLIDE");
 			applesInBasket++;
 			if(applesInBasket >= 6)
-				TriggerFinish();
+				TriggerFinish(true);
 		}
 	}
 	public void Init()
@@ -98,11 +100,13 @@ public class ThrowQuest : QuestBase {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		basket = GameObject.Find("QuestBasketTrigger").transform;
 		startPoint = GameObject.Find ("AppleQuestStartPoint").transform;
-		//player.LookAt (basket);
+		Instantiate(Resources.Load ("ChargeBar"));
+		chargeBar = GameObject.Find ("ChargeAmount").transform;
+
 		applesToThrow = 10;
 		applesInBasket = 0;
 		charge = 0f;
-		chargeRate = 0.005f;
+		chargeRate = 0.009f;
 		totalTimeBetweenThrows = 1.0f;
 
 	}
@@ -122,5 +126,7 @@ public class ThrowQuest : QuestBase {
 				else
 						Debug.Log ("NAY");
 		questActive = false;
+		if(chargeBar.root != null)
+			Destroy (chargeBar.root.gameObject);
 	}
 }
