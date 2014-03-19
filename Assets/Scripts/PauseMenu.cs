@@ -3,25 +3,31 @@ using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
 
-	public GUIText guiText;
-	bool paused;
+	private bool _paused;
 
 	void Start () {
-		paused = false;
+		_paused = false;
 		Debug.Log("PauseMenu Start");
-		guiText.text = "Null";
+	}
+	
+	void OnGUI(){
+		if (_paused) {
+			GUI.Label (new Rect (Screen.width /2 , 30, 30, 20), "Paused");
+		}
 	}
 
 	void Update () {
-		if(paused == false){
-			Screen.lockCursor = true;
-		}
-
-		if(Input.GetKeyDown(KeyCode.Escape)){
+		if(Input.GetKeyDown(KeyCode.Escape) && !_paused ){
+			Debug.Log("Paused");
 			Screen.showCursor = true;
 			Screen.lockCursor = false;
-			paused = true;
-			guiText.text = "Paused";
+			_paused = true;
+		} 
+		else if (Input.GetKeyDown(KeyCode.Escape) && _paused){
+			Debug.Log("UnPaused");
+			_paused = false;
+			Screen.showCursor = false;
+			Screen.lockCursor= true;
 		}
 	}
 }
