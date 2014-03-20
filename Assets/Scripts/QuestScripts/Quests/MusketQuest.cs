@@ -1,17 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class Points{
+	public int BullsEye;
+	public int SecondRing;
+	public int ThirdRing;
+}
+
 public class MusketQuest : MonoBehaviour {
 
 	public int HitsToFinish;
 	public float TimeLimit;
+	public Points Points;
 
 	private bool _questSuccess;
 	private bool _questStarted;
 	private bool _questEnded;
 	private bool _firstHit;
 	private bool _timeLimitExceeded;
-	private int _hits;
+	private int _totalPoints;
 	private float _timeElapsed;
 	
 	void Start () {
@@ -45,7 +53,7 @@ public class MusketQuest : MonoBehaviour {
 
 	void OnGUI(){
 		if (_questStarted) {
-			GUI.Label (new Rect (70, 30, 30, 20), _hits.ToString());
+			GUI.Label (new Rect (70, 30, 30, 20), "Poäng: " + _totalPoints.ToString());
 			GUI.Label (new Rect (70, 50, 30, 20), _timeElapsed.ToString());
 		}
 	}
