@@ -63,15 +63,12 @@ public class MusketQuest : MonoBehaviour {
 		if(miniEnum == MiniGamesEnum.Musköt){
 			if(evArgs.QuestType == QuestTypeEnum.OnGoing){
 				if(evArgs.Info == "BullsEye" && _questStarted){
-					//Poäng ska läggas till här!
 					_totalPoints += Points.BullsEye;
 				}
 				if(evArgs.Info == "RedRing" && _questStarted){
-					//Poäng ska läggas till här!
 					_totalPoints += Points.ThirdRing;
 				}
 				if(evArgs.Info == "WhiteRing" && _questStarted){
-					//Poäng ska läggas till här!
 					_totalPoints += Points.SecondRing;
 				}
 			}

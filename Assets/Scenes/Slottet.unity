@@ -7542,6 +7542,7 @@ GameObject:
   - 33: {fileID: 155565916}
   - 23: {fileID: 155565914}
   - 64: {fileID: 155565915}
+  - 114: {fileID: 155565917}
   m_Layer: 10
   m_Name: BullsEye
   m_TagString: Target
@@ -7601,6 +7602,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155565912}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &155565917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155565912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f6d9dc0600aa440826b7382a8ceb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &158015695
 GameObject:
   m_ObjectHideFlags: 0
@@ -83378,6 +83390,7 @@ GameObject:
   - 33: {fileID: 1646116598}
   - 23: {fileID: 1646116596}
   - 64: {fileID: 1646116597}
+  - 114: {fileID: 1646116600}
   m_Layer: 10
   m_Name: WhiteRing
   m_TagString: Target
@@ -83437,6 +83450,17 @@ Transform:
   m_LocalScale: {x: .351505905, y: .094415471, z: .351505905}
   m_Children: []
   m_Father: {fileID: 957942918}
+--- !u!114 &1646116600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646116595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f6d9dc0600aa440826b7382a8ceb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1646118872
 GameObject:
   m_ObjectHideFlags: 0
@@ -102213,6 +102237,7 @@ GameObject:
   - 33: {fileID: 2027537901}
   - 23: {fileID: 2027537899}
   - 64: {fileID: 2027537900}
+  - 114: {fileID: 2027537902}
   m_Layer: 10
   m_Name: RedRing
   m_TagString: Target
@@ -102272,6 +102297,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2027537897}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2027537902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2027537897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f6d9dc0600aa440826b7382a8ceb48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2029927106
 GameObject:
   m_ObjectHideFlags: 0
