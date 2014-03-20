@@ -10,19 +10,16 @@ public class MusketTarget : MonoBehaviour {
 	private bool _hit = false;
 	private bool _questTrigger = false;
 	private bool _reachedTarget = false;
-	private bool _stopped;
+	private bool _questRunning;
 
 	void Start () {
-		EventManager.OnHit += EventRespons;
-		EventManager.OnQuest += EventReset;
+		_questRunning = false;
+		EventManager.OnQuest += EventRespons;
 		StartCoroutine(MoveTarget(triggers[0].position, triggers[1].position));
 	}
-	
-	void Update(){
-//		if(hit && !reachedTarget){
-//			StartCoroutine(MoveTarget(transform, transform.position, endPos.position, speed));
-//		}
 
+	// Tabort detta med kanske!?
+	void Update(){
 		if(_hit && !_questTrigger){
 			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt , new QuestEventArgs(QuestTypeEnum.OnGoing, "stuff"));
 		}
@@ -30,20 +27,6 @@ public class MusketTarget : MonoBehaviour {
 			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt , new QuestEventArgs(QuestTypeEnum.GoalReached, "stuff"));
 		}
 	}
-
-	void ResetTarget(){}
-
-	//Old
-//	IEnumerator MoveTarget(Transform mTransform, Vector3 startPos, Vector3 endPos, float time){
-//		float i = 0f;
-//		float rate = 1.0f/time;
-//		while(i < 1.0f){
-//			if(!
-//			i += Time.deltaTime * rate;
-//			mTransform.position = Vector3.Lerp(startPos, endPos, i);
-//			yield return null;
-//		}
-//	}
 
 	//New ska stoppa target från att röra sig när questen inte är aktiv
 	//Resten av tiden sak den åka mellan leftPos och rightPos
@@ -53,9 +36,9 @@ public class MusketTarget : MonoBehaviour {
 		bool goLeft = false;
 		bool goRight = true;
 		while(true){
-			if(_stopped){
+			if(!_questRunning){
 				yield return new WaitForSeconds(0.5f);
-			} else {
+			} else if(_questRunning) {
 				distLeft = Vector3.Distance(this.transform.position, leftPos);
 				distRight = Vector3.Distance(this.transform.position, rightPos);
 				rate = Time.deltaTime * Speed;
@@ -81,20 +64,15 @@ public class MusketTarget : MonoBehaviour {
 			}
 		}
 	}
-
-	//Tabort senare antaligen! Yes Tabort!
-	void EventReset(MiniGamesEnum miniEnum , QuestEventArgs evArgs){
-		if(miniEnum == MiniGamesEnum.Musköt){
-			if(evArgs.QuestType == QuestTypeEnum.Reset){
-				ResetTarget();
-			}
-		}
-	}
 	
-	void EventRespons(int id){
-		if(targetID == id){
-			Debug.Log("Target hit! " + id);
-			_hit = true;
+	void EventRespons(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs){
+		if(miniEnum == MiniGamesEnum.Musköt){
+			if(eventArgs.QuestType == QuestTypeEnum.Started){
+				_questRunning = true;
+			}
+			if(eventArgs.QuestType == QuestTypeEnum.Finnished){
+				_questRunning = false;
+			}
 		}
 	}
 }
