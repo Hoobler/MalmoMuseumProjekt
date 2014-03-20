@@ -36088,7 +36088,8 @@ Prefab:
       propertyPath: m_Name
       value: Target
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 2473063303cd62b4ebb3eed267f6d9f2, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2473063303cd62b4ebb3eed267f6d9f2, type: 3}
   m_RootGameObject: {fileID: 957942917}
   m_IsPrefabParent: 0
@@ -47835,7 +47836,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 957942918}
-  - 95: {fileID: 957942921}
   - 114: {fileID: 957942920}
   - 65: {fileID: 957942919}
   m_Layer: 0
@@ -47889,22 +47889,6 @@ MonoBehaviour:
   triggers:
   - {fileID: 1239850993}
   - {fileID: 1614492440}
-  targetID: 1
---- !u!95 &957942921
-Animator:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 2473063303cd62b4ebb3eed267f6d9f2,
-    type: 3}
-  m_PrefabInternal: {fileID: 713950019}
-  m_GameObject: {fileID: 957942917}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 2473063303cd62b4ebb3eed267f6d9f2, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_ApplyRootMotion: 1
-  m_AnimatePhysics: 0
-  m_HasTransformHierarchy: 1
 --- !u!1 &959632185
 GameObject:
   m_ObjectHideFlags: 0
