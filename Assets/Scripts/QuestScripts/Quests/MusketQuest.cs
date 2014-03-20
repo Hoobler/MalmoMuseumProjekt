@@ -29,12 +29,13 @@ public class MusketQuest : MonoBehaviour {
 		_questStarted = false;
 		_firstHit = false;
 		_questSuccess = false;
-		_hits = 0;
+		_totalPoints = 0;
 	}
 
 	void Update () {
 		if(_firstHit && !_questEnded){
-			if(_hits >= HitsToFinish && !_timeLimitExceeded){
+			//Ändra till time limit!
+			if(_totalPoints >= HitsToFinish && !_timeLimitExceeded){
 				_questEnded = true;
 				_questSuccess = true;
 				QuestFinished();
@@ -61,13 +62,9 @@ public class MusketQuest : MonoBehaviour {
 	void EventRespons(MiniGamesEnum miniEnum, QuestEventArgs evArgs){
 		if(miniEnum == MiniGamesEnum.Musköt){
 			if(evArgs.QuestType == QuestTypeEnum.OnGoing){
-				if(evArgs.Info == "Hit" && _questStarted){
-					if(_hits != HitsToFinish){
-						_hits++;
-						if(!_firstHit){
-							_firstHit = true;
-						}
-					}
+				if(evArgs.Info == "RedRing" && _questStarted){
+					//Poäng ska läggas till här!
+					Debug.Log("RedRing hit!");
 				}
 			}
 			if(evArgs.QuestType == QuestTypeEnum.Started){
@@ -84,7 +81,7 @@ public class MusketQuest : MonoBehaviour {
 
 	void ResetQuest(){
 		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Reset, null));
-		_hits = 0;
+		_totalPoints = 0;
 		_timeElapsed = 0;
 	}
 }

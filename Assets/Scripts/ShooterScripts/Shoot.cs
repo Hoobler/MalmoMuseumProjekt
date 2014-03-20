@@ -83,14 +83,23 @@ public class Shoot : MonoBehaviour {
 		_cameraTransform = Camera.main.transform;
 		_ray = new Ray(_cameraTransform.position, direction);
 
-		if(Physics.Raycast(_ray ,out _hit, 100f)){
-			Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
-			Debug.Log("Hit!" + _hit.collider.gameObject);
+		if(Physics.Raycast(_ray ,out _hit, 100f, 1 << 10)){
+			//Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
+			//Debug.Log("Hit!" + _hit.collider.gameObject);
 			GameObject otherObj = _hit.collider.gameObject;
-			if(otherObj.tag == "Target"){
-				EventManager.TriggerOnHit(1);
-				EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.OnGoing, "Hit"));
+			if(_hit.collider.name == "BullsEye"){
+				//EventManager.TriggerOnHit(1);
+				SendToMusketQuest("BullsEye");
+			} else if (_hit.collider.name == "WhiteRing"){
+				SendToMusketQuest("WhiteRing");
+			} else if (_hit.collider.name == "RedRing"){
+				SendToMusketQuest("RedRing");
 			}
 		}
 	}
+
+	void SendToMusketQuest(string infoToSend){
+		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.OnGoing, infoToSend));
+	}
+
 }

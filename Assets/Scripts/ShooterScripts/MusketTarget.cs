@@ -4,7 +4,7 @@ using System.Collections;
 public class MusketTarget : MonoBehaviour {
 	
 	public float speed = 2f;
-	public Transform endPos;
+	//public Transform endPos;
 	public int targetID;
 	
 	private bool hit = false;
@@ -17,14 +17,14 @@ public class MusketTarget : MonoBehaviour {
 	}
 	
 	void Update(){
-		if(hit && !reachedTarget){
-			StartCoroutine(MoveTarget(transform, transform.position, endPos.position, speed));
-		}
+//		if(hit && !reachedTarget){
+//			StartCoroutine(MoveTarget(transform, transform.position, endPos.position, speed));
+//		}
 		//To stop it from updating and moving the target!
-		if(Vector3.Distance(transform.position, endPos.position) <= 0.1f && !reachedTarget){
-			Debug.Log("Stopp!");
-			reachedTarget = true;
-		}
+//		if(Vector3.Distance(transform.position, endPos.position) <= 0.1f && !reachedTarget){
+//			Debug.Log("Stopp!");
+//			reachedTarget = true;
+//		}
 
 		if(hit && !questTrigger){
 			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt , new QuestEventArgs(QuestTypeEnum.OnGoing, "stuff"));
@@ -56,7 +56,7 @@ public class MusketTarget : MonoBehaviour {
 	
 	void EventRespons(int id){
 		if(targetID == id){
-			Debug.Log("Target hit!");
+			Debug.Log("Target hit! " + id);
 			hit = true;
 		}
 	}
