@@ -5,27 +5,13 @@ public class MusketTarget : MonoBehaviour {
 	
 	public float Speed = 2f;
 	public Transform[] triggers;
-	public int targetID;
-	
-	private bool _hit = false;
-	private bool _questTrigger = false;
-	private bool _reachedTarget = false;
+
 	private bool _questRunning;
 
 	void Start () {
 		_questRunning = false;
 		EventManager.OnQuest += EventRespons;
 		StartCoroutine(MoveTarget(triggers[0].position, triggers[1].position));
-	}
-
-	// Tabort detta med kanske!?
-	void Update(){
-		if(_hit && !_questTrigger){
-			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt , new QuestEventArgs(QuestTypeEnum.OnGoing, "stuff"));
-		}
-		if(_questTrigger && _reachedTarget){
-			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt , new QuestEventArgs(QuestTypeEnum.GoalReached, "stuff"));
-		}
 	}
 
 	//New ska stoppa target från att röra sig när questen inte är aktiv
