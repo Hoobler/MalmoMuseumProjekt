@@ -54,7 +54,7 @@ public class MusketQuest : MonoBehaviour {
 
 	void OnGUI(){
 		if (_questStarted) {
-			GUI.Label (new Rect (70, 30, 30, 20), "Poäng: " + _totalPoints.ToString());
+			GUI.Label (new Rect (70, 30, 70, 20), "Poäng: " + _totalPoints.ToString());
 			GUI.Label (new Rect (70, 50, 30, 20), _timeElapsed.ToString());
 		}
 	}
@@ -62,9 +62,17 @@ public class MusketQuest : MonoBehaviour {
 	void EventRespons(MiniGamesEnum miniEnum, QuestEventArgs evArgs){
 		if(miniEnum == MiniGamesEnum.Musköt){
 			if(evArgs.QuestType == QuestTypeEnum.OnGoing){
+				if(evArgs.Info == "BullsEye" && _questStarted){
+					//Poäng ska läggas till här!
+					_totalPoints += Points.BullsEye;
+				}
 				if(evArgs.Info == "RedRing" && _questStarted){
 					//Poäng ska läggas till här!
-					Debug.Log("RedRing hit!");
+					_totalPoints += Points.ThirdRing;
+				}
+				if(evArgs.Info == "WhiteRing" && _questStarted){
+					//Poäng ska läggas till här!
+					_totalPoints += Points.SecondRing;
 				}
 			}
 			if(evArgs.QuestType == QuestTypeEnum.Started){

@@ -84,15 +84,17 @@ public class Shoot : MonoBehaviour {
 		_ray = new Ray(_cameraTransform.position, direction);
 
 		if(Physics.Raycast(_ray ,out _hit, 100f, 1 << 10)){
-			//Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
+			Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
 			//Debug.Log("Hit!" + _hit.collider.gameObject);
 			GameObject otherObj = _hit.collider.gameObject;
 			if(_hit.collider.name == "BullsEye"){
 				//EventManager.TriggerOnHit(1);
 				SendToMusketQuest("BullsEye");
-			} else if (_hit.collider.name == "WhiteRing"){
+			}
+			if (_hit.collider.name == "WhiteRing"){
 				SendToMusketQuest("WhiteRing");
-			} else if (_hit.collider.name == "RedRing"){
+			}
+			if (_hit.collider.name == "RedRing"){
 				SendToMusketQuest("RedRing");
 			}
 		}

@@ -7540,8 +7540,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 155565913}
   - 33: {fileID: 155565916}
-  - 136: {fileID: 155565915}
   - 23: {fileID: 155565914}
+  - 64: {fileID: 155565915}
   m_Layer: 10
   m_Name: BullsEye
   m_TagString: Target
@@ -7581,8 +7581,8 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
---- !u!136 &155565915
-CapsuleCollider:
+--- !u!64 &155565915
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -7590,10 +7590,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 1
+  m_Convex: 0
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &155565916
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9078,9 +9078,9 @@ MonoBehaviour:
   HitsToFinish: 2
   TimeLimit: 30
   Points:
-    BullsEye: 0
-    SecondRing: 0
-    ThirdRing: 0
+    BullsEye: 10
+    SecondRing: 5
+    ThirdRing: 2
 --- !u!1001 &180945949
 Prefab:
   m_ObjectHideFlags: 0
@@ -36030,15 +36030,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: 2473063303cd62b4ebb3eed267f6d9f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.4319611
+      value: 5.36679649
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 2473063303cd62b4ebb3eed267f6d9f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.1873579
+      value: 4.96260309
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 2473063303cd62b4ebb3eed267f6d9f2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.2187748
+      value: 3.36374116
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 2473063303cd62b4ebb3eed267f6d9f2, type: 3}
       propertyPath: m_LocalRotation.x
@@ -47840,7 +47840,7 @@ Transform:
   m_PrefabInternal: {fileID: 713950019}
   m_GameObject: {fileID: 957942917}
   m_LocalRotation: {x: 0, y: -.804295242, z: 0, w: .594229937}
-  m_LocalPosition: {x: 37.4319611, y: 6.1873579, z: 13.2187748}
+  m_LocalPosition: {x: 5.36679649, y: 4.96260309, z: 3.36374116}
   m_LocalScale: {x: 2.63895273, y: 2.63895273, z: 2.63895273}
   m_Children:
   - {fileID: 1055178989}
@@ -83376,8 +83376,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1646116599}
   - 33: {fileID: 1646116598}
-  - 136: {fileID: 1646116597}
   - 23: {fileID: 1646116596}
+  - 64: {fileID: 1646116597}
   m_Layer: 10
   m_Name: WhiteRing
   m_TagString: Target
@@ -83406,8 +83406,8 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
---- !u!136 &1646116597
-CapsuleCollider:
+--- !u!64 &1646116597
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -83415,10 +83415,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 1
+  m_Convex: 0
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1646116598
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -102211,8 +102211,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 2027537898}
   - 33: {fileID: 2027537901}
-  - 136: {fileID: 2027537900}
   - 23: {fileID: 2027537899}
+  - 64: {fileID: 2027537900}
   m_Layer: 10
   m_Name: RedRing
   m_TagString: Target
@@ -102252,8 +102252,8 @@ Renderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
---- !u!136 &2027537900
-CapsuleCollider:
+--- !u!64 &2027537900
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -102261,10 +102261,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 1
+  m_Convex: 0
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &2027537901
 MeshFilter:
   m_ObjectHideFlags: 0
