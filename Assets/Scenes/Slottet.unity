@@ -4468,6 +4468,14 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 5.6514802
       objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
+      propertyPath: m_Name
+      value: KanonQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
+      propertyPath: m_TagString
+      value: Kanon
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
   m_RootGameObject: {fileID: 1434733573}
@@ -7028,6 +7036,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 830313757}
   m_GameObject: {fileID: 143090512}
   m_Mesh: {fileID: 4300008, guid: 6e9502a6e434adc4c9e4eecd74a799dd, type: 3}
+--- !u!1 &144573381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 144573382}
+  m_Layer: 0
+  m_Name: Dice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144573382
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 144573381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.6433029, y: -83.4302597, z: 14.4736786}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1118466827}
+  m_Father: {fileID: 926949576}
 --- !u!1001 &144643406
 Prefab:
   m_ObjectHideFlags: 0
@@ -8378,7 +8413,6 @@ Transform:
   m_LocalPosition: {x: 109.337677, y: 42.7866173, z: 74.9566803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1434733574}
   - {fileID: 426616359}
   - {fileID: 217149472}
   - {fileID: 1529171434}
@@ -8402,6 +8436,7 @@ Transform:
   - {fileID: 1396234233}
   - {fileID: 313397988}
   - {fileID: 1239046319}
+  - {fileID: 1434733574}
   m_Father: {fileID: 1326178236}
 --- !u!1001 &170475606
 Prefab:
@@ -8955,10 +8990,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 180846119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 33.6433029, y: 83.4302597, z: -14.4736786}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 926949576}
+  m_Father: {fileID: 1396918513}
 --- !u!114 &180846121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25747,6 +25782,33 @@ Transform:
   - {fileID: 1493186470}
   - {fileID: 1093706819}
   m_Father: {fileID: 1215440737}
+--- !u!1 &502776215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 502776216}
+  m_Layer: 0
+  m_Name: Canon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &502776216
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502776215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 124.993584, y: -49.8589745, z: 48.6036644}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 739109535}
+  m_Father: {fileID: 926949576}
 --- !u!1 &505044119
 GameObject:
   m_ObjectHideFlags: 0
@@ -37616,10 +37678,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 739109531}
   m_LocalRotation: {x: .398915112, y: -.583837926, z: .583837986, w: .398915142}
-  m_LocalPosition: {x: 130.951797, y: 9.05051613, z: 22.3738689}
+  m_LocalPosition: {x: 16.6390305, y: 43.466259, z: -21.3290119}
   m_LocalScale: {x: 1.69834208, y: 1, z: 1.11735988}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 502776216}
 --- !u!1 &742287646
 GameObject:
   m_ObjectHideFlags: 0
@@ -45903,9 +45965,10 @@ Transform:
   m_LocalPosition: {x: -10.6808119, y: 15.4432325, z: -4.90078402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 144573382}
+  - {fileID: 1396918513}
   - {fileID: 723517953}
-  - {fileID: 180846120}
-  - {fileID: 2060747938}
+  - {fileID: 502776216}
   m_Father: {fileID: 0}
 --- !u!1001 &927894806
 Prefab:
@@ -56061,6 +56124,76 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!1 &1118466826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1118466827}
+  - 33: {fileID: 1118466830}
+  - 136: {fileID: 1118466829}
+  - 23: {fileID: 1118466828}
+  m_Layer: 0
+  m_Name: QuestGiverDice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1118466827
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118466826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 48.4988213, y: 75.2648773, z: -46.4332275}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 144573382}
+--- !u!23 &1118466828
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118466826}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!136 &1118466829
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118466826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1118466830
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118466826}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1118687040
 Prefab:
   m_ObjectHideFlags: 0
@@ -70767,6 +70900,34 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!1 &1396918512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1396918513}
+  m_Layer: 0
+  m_Name: Musket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1396918513
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396918512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.6433029, y: -83.4302597, z: 14.4736786}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 180846120}
+  - {fileID: 2060747938}
+  m_Father: {fileID: 926949576}
 --- !u!1 &1399530149
 GameObject:
   m_ObjectHideFlags: 0
@@ -72108,8 +72269,8 @@ GameObject:
   - 4: {fileID: 1434733574}
   - 95: {fileID: 1434733575}
   m_Layer: 0
-  m_Name: kanon
-  m_TagString: Untagged
+  m_Name: KanonQuest
+  m_TagString: Kanon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102936,10 +103097,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2060747937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.20802402, y: -7.72612381, z: 2.30029964}
+  m_LocalPosition: {x: 40.851326, y: 75.7041321, z: -12.1733789}
   m_LocalScale: {x: 1, y: 3.05804396, z: 1}
   m_Children: []
-  m_Father: {fileID: 926949576}
+  m_Father: {fileID: 1396918513}
 --- !u!114 &2060747939
 MonoBehaviour:
   m_ObjectHideFlags: 0
