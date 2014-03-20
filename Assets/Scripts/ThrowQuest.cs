@@ -41,6 +41,10 @@ public class ThrowQuest : QuestBase {
 				if (applesToThrow > 0 && !appleIsInTheAir) {
 					if (Input.GetMouseButton (0)) {
 						if (charging) {
+							if(chargeRate >= 0)
+								chargeRate = 0.002f + 0.025f* charge;
+							else
+								chargeRate = -0.002f - 0.025f*charge;
 							charge += chargeRate;
 							Debug.Log ("" + charge);
 							if (charge > 1.0f) {
