@@ -35,12 +35,14 @@ public class MusketTarget : MonoBehaviour {
 		float rate = 0;
 		bool goLeft = false;
 		bool goRight = true;
+		Vector3 newLeft = new Vector3(leftPos.x, transform.position.y, leftPos.z);
+		Vector3 newRight = new Vector3(rightPos.x, transform.position.y, rightPos.z);
 		while(true){
 			if(!_questRunning){
 				yield return new WaitForSeconds(0.5f);
 			} else if(_questRunning) {
-				distLeft = Vector3.Distance(this.transform.position, leftPos);
-				distRight = Vector3.Distance(this.transform.position, rightPos);
+				distLeft = Vector3.Distance(this.transform.position, newLeft);
+				distRight = Vector3.Distance(this.transform.position, newRight);
 				rate = Time.deltaTime * Speed;
 
 				if(distRight <= 0.01f){
@@ -54,11 +56,11 @@ public class MusketTarget : MonoBehaviour {
 				}
 
 				if(goRight){
-					this.transform.position = Vector3.MoveTowards(transform.position, rightPos, rate);
+					this.transform.position = Vector3.MoveTowards(transform.position, newRight, rate);
 					yield return null;
 				}
 				if(goLeft){
-					this.transform.position = Vector3.MoveTowards(transform.position, leftPos, rate);
+					this.transform.position = Vector3.MoveTowards(transform.position, newLeft, rate);
 					yield return null;
 				}
 			}
