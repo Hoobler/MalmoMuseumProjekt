@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e0e85704cc13b42a5151cce4917abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReloadTime: 5
   ScaleLimit: 1
   CircleDepth: 20
 --- !u!124 &12400000

@@ -3,20 +3,25 @@ using System.Collections;
 
 public class Shoot : MonoBehaviour {
 
+	public float ReloadTime;
 	public float ScaleLimit;
 	public int CircleDepth;
 
 	private ParticleSystem particle;
-	
+
+	private float _reloadTimeLeft;
+
 	private bool _weaponActive;
 	private bool _questStared;
 	private bool _questFinished;
+	private bool _reloading;
 	
 	private Ray _ray;
 	private RaycastHit _hit;
 	private Transform _cameraTransform;
 
 	void Start () {
+		_reloadTimeLeft = ReloadTime;
 		_questStared = false;
 		EventManager.OnQuest += EventRespons;
 		//particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
@@ -27,7 +32,7 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void Update () {
-		if(_weaponActive){
+		if(_weaponActive && !_reloading){
 			if(Input.GetMouseButtonDown(0)){
 				Debug.Log("Mouse Shoot!");
 				RayCastChecker();
@@ -42,6 +47,13 @@ public class Shoot : MonoBehaviour {
 					}
 				}
 			}
+		}
+
+		if(_reloadTimeLeft <= 0){
+			_reloading = false;
+			_reloadTimeLeft = ReloadTime;
+		}else{
+			_reloadTimeLeft -= Time.deltaTime;
 		}
  	}
 
@@ -75,7 +87,7 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void RayCastChecker(){
-
+		_reloading = true;
 		Vector3 direction = Random.insideUnitCircle * ScaleLimit;
 		direction.z = CircleDepth;
 		direction = transform.TransformDirection ( direction.normalized );
@@ -87,7 +99,6 @@ public class Shoot : MonoBehaviour {
 			//Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
 			GameObject otherObj = _hit.collider.gameObject;
 			if(_hit.collider.name == "BullsEye"){
-				//EventManager.TriggerOnHit(1); // Behövs den här ens?
 				SendToMusketQuest("BullsEye");
 			}
 			if (_hit.collider.name == "WhiteRing"){
