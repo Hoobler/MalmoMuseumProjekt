@@ -19,6 +19,11 @@ public class QuestManager : MonoBehaviour {
 			QuestBase apple = GameObject.Find ("AppleQuestPerson").GetComponent ("ThrowQuest") as QuestBase;
 			apple.TriggerStart();
 		}
+
+		if (name == "SlottetDiceGame") {
+			QuestBase dicequest = GameObject.Find ("QuestGiverDice").GetComponent("DiceQuest") as QuestBase;
+			dicequest.TriggerStart();
+		}
 	}
 
 }

@@ -56210,6 +56210,8 @@ GameObject:
   - 33: {fileID: 1118466830}
   - 136: {fileID: 1118466829}
   - 23: {fileID: 1118466828}
+  - 114: {fileID: 1118466832}
+  - 114: {fileID: 1118466831}
   m_Layer: 0
   m_Name: QuestGiverDice
   m_TagString: Untagged
@@ -56269,6 +56271,40 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118466826}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1118466831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118466826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Spela t\xE4rning"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 1
+    nameOfQuest: SlottetDiceGame
+--- !u!114 &1118466832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118466826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e82fee6f0786434bbeb68d7ec2d4895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1118687040
 Prefab:
   m_ObjectHideFlags: 0
@@ -101012,6 +101048,86 @@ Prefab:
   m_RootGameObject: {fileID: 1919911451}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1997384559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1997384564}
+  - 20: {fileID: 1997384563}
+  - 124: {fileID: 1997384562}
+  - 92: {fileID: 1997384561}
+  - 81: {fileID: 1997384560}
+  m_Layer: 0
+  m_Name: DiceCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1997384560
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997384559}
+  m_Enabled: 1
+--- !u!92 &1997384561
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997384559}
+  m_Enabled: 1
+--- !u!124 &1997384562
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997384559}
+  m_Enabled: 1
+--- !u!20 &1997384563
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997384559}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_HDR: 0
+  m_OcclusionCulling: 1
+--- !u!4 &1997384564
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997384559}
+  m_LocalRotation: {x: -.505399525, y: .505228043, z: -.494545251, w: -.494713038}
+  m_LocalPosition: {x: 5.67260361, y: 7.89840269, z: -37.1592712}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1001 &1997776045
 Prefab:
   m_ObjectHideFlags: 0
