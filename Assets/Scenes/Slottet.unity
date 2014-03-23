@@ -4426,19 +4426,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 170187681}
+    m_TransformParent: {fileID: 502776216}
     m_Modifications:
     - target: {fileID: 400024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.3195953
+      value: -50.9931793
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.400259
+      value: 47.8159981
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.45501804
+      value: -52.1578979
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4458,7 +4458,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.65147877
+      value: 5.65147829
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_LocalScale.y
@@ -4466,11 +4466,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.6514802
+      value: 5.65147972
       objectReference: {fileID: 0}
     - target: {fileID: 100024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_Name
-      value: KanonQuest
+      value: CanonQuest
       objectReference: {fileID: 0}
     - target: {fileID: 100024, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
       propertyPath: m_TagString
@@ -8518,7 +8518,6 @@ Transform:
   - {fileID: 1396234233}
   - {fileID: 313397988}
   - {fileID: 1239046319}
-  - {fileID: 1434733574}
   m_Father: {fileID: 1326178236}
 --- !u!1001 &170475606
 Prefab:
@@ -20535,6 +20534,95 @@ MeshFilter:
   m_PrefabInternal: {fileID: 820855779}
   m_GameObject: {fileID: 396004962}
   m_Mesh: {fileID: 4300010, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
+--- !u!1 &397968092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 397968093}
+  - 20: {fileID: 397968097}
+  - 124: {fileID: 397968096}
+  - 92: {fileID: 397968095}
+  - 81: {fileID: 397968094}
+  - 45: {fileID: 397968098}
+  m_Layer: 0
+  m_Name: CanonCamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &397968093
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397968092}
+  m_LocalRotation: {x: 0, y: .54512167, z: 0, w: .838356972}
+  m_LocalPosition: {x: -51.905159, y: 50.4088249, z: -52.3343353}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 502776216}
+--- !u!81 &397968094
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397968092}
+  m_Enabled: 0
+--- !u!92 &397968095
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397968092}
+  m_Enabled: 1
+--- !u!124 &397968096
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397968092}
+  m_Enabled: 1
+--- !u!20 &397968097
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397968092}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_HDR: 0
+  m_OcclusionCulling: 1
+--- !u!45 &397968098
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397968092}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 53412155bc1016547b1a77b2333c0380, type: 2}
 --- !u!1 &398278216
 GameObject:
   m_ObjectHideFlags: 0
@@ -25893,6 +25981,9 @@ Transform:
   m_LocalPosition: {x: 124.993584, y: -49.8589745, z: 48.6036644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 397968093}
+  - {fileID: 1434733574}
+  - {fileID: 2041662237}
   - {fileID: 739109535}
   m_Father: {fileID: 926949576}
 --- !u!1 &505044119
@@ -37711,7 +37802,7 @@ GameObject:
   - 64: {fileID: 739109533}
   - 23: {fileID: 739109532}
   m_Layer: 0
-  m_Name: Skepp
+  m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72449,7 +72540,7 @@ GameObject:
   - 4: {fileID: 1434733574}
   - 95: {fileID: 1434733575}
   m_Layer: 0
-  m_Name: KanonQuest
+  m_Name: CanonQuest
   m_TagString: Kanon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72462,8 +72553,8 @@ Transform:
   m_PrefabInternal: {fileID: 95994834}
   m_GameObject: {fileID: 1434733573}
   m_LocalRotation: {x: 0, y: .573567986, z: 0, w: .819158018}
-  m_LocalPosition: {x: 63.3195953, y: 13.400259, z: -8.45501804}
-  m_LocalScale: {x: 5.65147877, y: 5.6514802, z: 5.6514802}
+  m_LocalPosition: {x: -50.9931793, y: 47.8159981, z: -52.1578979}
+  m_LocalScale: {x: 5.65147829, y: 5.6514802, z: 5.65147972}
   m_Children:
   - {fileID: 1218957473}
   - {fileID: 152371645}
@@ -72482,7 +72573,7 @@ Transform:
   - {fileID: 977773283}
   - {fileID: 720209715}
   - {fileID: 1051988632}
-  m_Father: {fileID: 170187681}
+  m_Father: {fileID: 502776216}
 --- !u!95 &1434733575
 Animator:
   serializedVersion: 2
@@ -101066,14 +101157,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1997384560
 AudioListener:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1997384559}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &1997384561
 Behaviour:
   m_ObjectHideFlags: 0
@@ -102917,6 +103008,115 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1712993562}
   m_GameObject: {fileID: 2035900207}
   m_Mesh: {fileID: 4300014, guid: 59d42e047b71455419076d862f1aac9d, type: 3}
+--- !u!1 &2041662236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2041662237}
+  - 33: {fileID: 2041662241}
+  - 136: {fileID: 2041662240}
+  - 23: {fileID: 2041662239}
+  - 114: {fileID: 2041662238}
+  - 114: {fileID: 2041662242}
+  m_Layer: 0
+  m_Name: QuestGiverCanon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2041662237
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041662236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -53.0239944, y: 48.7192917, z: -49.370388}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 502776216}
+--- !u!114 &2041662238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041662236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: Shoot it down!
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: Accept!
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 1
+    nameOfQuest: SlottetCanonQuest
+--- !u!23 &2041662239
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041662236}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!136 &2041662240
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041662236}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &2041662241
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041662236}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2041662242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2041662236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a76d955a885cc40a0e2e1f9123d926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canonballs_shot: 0
+  mainCamera: {fileID: 0}
+  canonCamera: {fileID: 0}
 --- !u!1 &2043636965
 GameObject:
   m_ObjectHideFlags: 0

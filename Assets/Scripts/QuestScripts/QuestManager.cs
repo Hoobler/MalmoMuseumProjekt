@@ -24,6 +24,11 @@ public class QuestManager : MonoBehaviour {
 			QuestBase dicequest = GameObject.Find ("QuestGiverDice").GetComponent("DiceQuest") as QuestBase;
 			dicequest.TriggerStart();
 		}
+
+		if (name == "SlottetCanonQuest") {
+			QuestBase canonquest = GameObject.Find ("QuestGiverCanon").GetComponent("CanonQuest") as QuestBase;
+			canonquest.TriggerStart();
+		}
 	}
 
 }
