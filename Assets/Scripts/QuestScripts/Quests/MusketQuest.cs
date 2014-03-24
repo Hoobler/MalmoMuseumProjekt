@@ -9,16 +9,13 @@ public class Points{
 }
 
 public class MusketQuest : MonoBehaviour {
-
-	public int HitsToFinish;
+	
 	public float TimeLimit;
 	public Points Points;
-
-	private bool _questSuccess;
+	
 	private bool _questStarted;
 	private bool _questEnded;
 	private bool _firstHit;
-	private bool _timeLimitExceeded;
 	private int _totalPoints;
 	private float _timeElapsed;
 	
@@ -28,25 +25,17 @@ public class MusketQuest : MonoBehaviour {
 		_questEnded = false;
 		_questStarted = false;
 		_firstHit = false;
-		_questSuccess = false;
 		_totalPoints = 0;
 	}
 
 	void Update () {
 		if(_firstHit && !_questEnded){
-			//Ändra till time limit!
-			if(_totalPoints >= HitsToFinish && !_timeLimitExceeded){
-				_questEnded = true;
-				_questSuccess = true;
-				QuestFinished();
-			}
 			if(_questStarted && !_questEnded){
 				_timeElapsed += Time.deltaTime;
 			}
 			if(_timeElapsed >= TimeLimit){
-				_timeLimitExceeded = true;
 				_questEnded = true;
-				_questSuccess = false;
+				HighScore();
 				QuestFinished();
 			}
 		}
@@ -77,6 +66,10 @@ public class MusketQuest : MonoBehaviour {
 			}
 		}
 	}
+
+	void HighScore(){
+		//stuffs at a later date!
+	}	
 
 	// Add more to this at a later date!
 	void QuestFinished(){

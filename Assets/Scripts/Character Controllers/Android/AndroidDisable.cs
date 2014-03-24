@@ -12,7 +12,7 @@ public class AndroidDisable: MonoBehaviour {
 	}
 
 	void EventRespons(string type){
-		Debug.Log("Disable test");
+		//Debug.Log("Disable test");
 		if(type == "lock"){
 			LeftPad.SetActive(false);
 			RightPad.SetActive(false);
