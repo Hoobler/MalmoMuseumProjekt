@@ -14,7 +14,9 @@ public class ShootArea : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
+		Debug.Log("Trigger Enter" + other.name);
 		if(other.tag == "Player"){
+			Debug.Log("Trigger Player");
 			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt ,new QuestEventArgs(QuestTypeEnum.Trigger, "EnterShootArea"));
 			EventManager.TriggerDisableAndroid("lock");
 		}
