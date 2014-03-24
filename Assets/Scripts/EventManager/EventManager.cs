@@ -9,6 +9,7 @@ public delegate void ActivateEvent(string type, ActiveEnum activeEnum);
 public delegate void QuestEvent(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs);
 public delegate void FireEvent(int id);
 public delegate void LockPlayerEvent(string type , LockPlayerEventArgs evtArgs);
+public delegate void DisableAndroid(string type);
 
 public class EventManager : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class EventManager : MonoBehaviour {
 	public static event QuestEvent OnQuest;
 	public static event FireEvent OnHit;
 	public static event LockPlayerEvent OnLock;
+	public static event DisableAndroid OnDisable;
 
 	//Set up a public methods that you can use to "trigger" an event!
 	//Pass in the parameters you want/need for the event.
@@ -53,6 +55,12 @@ public class EventManager : MonoBehaviour {
 	public static void TriggerOnActivate(string type, ActiveEnum activeEnum){
 		if(OnActivate != null){
 			OnActivate(type, activeEnum);
+		}
+	}
+
+	public static void TriggerDisableAndroid(string type){
+		if(OnDisable != null){
+			OnDisable(type);
 		}
 	}
 }
