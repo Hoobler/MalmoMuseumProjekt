@@ -59,6 +59,7 @@ public class Shoot : MonoBehaviour {
 
 	void EventRespons(MiniGamesEnum miniEnum , QuestEventArgs evArgs){
 		if(miniEnum == MiniGamesEnum.Musköt){
+			Debug.Log("Shoot test");
 			if(evArgs.QuestType == QuestTypeEnum.Started){
 				_questStared = true;
 			}
