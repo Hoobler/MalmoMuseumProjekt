@@ -70,13 +70,13 @@ public class CanonQuest : QuestBase {
 					angles_turned_side++;
 				}
 			}
-			if(Input.GetKey(KeyCode.S)){
+			if(Input.GetKey(KeyCode.W)){
 				if(angles_turned_up < ANGLES_TURNED_MAX_UP){
 					canon.transform.eulerAngles = new Vector3(canon.transform.eulerAngles.x + 1, canon.transform.eulerAngles.y, canon.transform.eulerAngles.z);
 					angles_turned_up++;
 				}
 			}
-			if(Input.GetKey(KeyCode.W)){
+			if(Input.GetKey(KeyCode.S)){
 				if(angles_turned_up > 0){
 					canon.transform.eulerAngles = new Vector3(canon.transform.eulerAngles.x - 1, canon.transform.eulerAngles.y, canon.transform.eulerAngles.z);
 					angles_turned_up--;
