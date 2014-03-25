@@ -7,7 +7,7 @@ public class CanonQuest : QuestBase {
 	private int canonballs_shot;
 	private const int ANGLES_TURNED_MAX_SIDE = 30;
 	private int angles_turned_side = 0;
-	private const int ANGLES_TURNED_MAX_UP = 30;
+	private const int ANGLES_TURNED_MAX_UP = 10;
 	private int angles_turned_up = 0;
 
 	GameObject mainCamera;
@@ -71,15 +71,15 @@ public class CanonQuest : QuestBase {
 				}
 			}
 			if(Input.GetKey(KeyCode.W)){
-				if(angles_turned_up < ANGLES_TURNED_MAX_UP){
-					canon.transform.eulerAngles = new Vector3(canon.transform.eulerAngles.x + 1, canon.transform.eulerAngles.y, canon.transform.eulerAngles.z);
-					angles_turned_up++;
+				if(angles_turned_up > -ANGLES_TURNED_MAX_UP){
+					canon.transform.eulerAngles = new Vector3(canon.transform.eulerAngles.x - 1, canon.transform.eulerAngles.y, canon.transform.eulerAngles.z);
+					angles_turned_up--;
 				}
 			}
 			if(Input.GetKey(KeyCode.S)){
-				if(angles_turned_up > 0){
-					canon.transform.eulerAngles = new Vector3(canon.transform.eulerAngles.x - 1, canon.transform.eulerAngles.y, canon.transform.eulerAngles.z);
-					angles_turned_up--;
+				if(angles_turned_up <= 0){
+					canon.transform.eulerAngles = new Vector3(canon.transform.eulerAngles.x + 1, canon.transform.eulerAngles.y, canon.transform.eulerAngles.z);
+					angles_turned_up++;
 				}
 			}
 			if(Input.GetKeyDown(KeyCode.Space)){

@@ -103119,18 +103119,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: Shoot it down!
+  introText: "Du d\xE4r! \r\n\r\nVi beh\xF6ver hj\xE4lp, ser du skeppet d\xE4r borta
+    med holl\xE4ndska flaggan viftandes fr\xE5n masten? Anv\xE4nd kanonen f\xF6r att
+    skjuta ner det. T\xE4nk p\xE5 hur du siktar, kanonkulan \xE4r v\xE4ldigt l\xE5ngsam
+    men n\xE4r den v\xE4l tr\xE4ffar \xE4r det stenh\xE5rt!"
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons:
   - quitOnPress: 1
-    textOnButton: Accept!
+    textOnButton: "D\xE5 skjuter vi!"
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
     nameOfQuest: SlottetCanonQuest
+  - quitOnPress: 1
+    textOnButton: Ni fixar det utan mig grabbar.
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
 --- !u!23 &2041662239
 Renderer:
   m_ObjectHideFlags: 0
