@@ -9086,8 +9086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15793dfe82bb635479a5792324671046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitsToFinish: 2
-  TimeLimit: 30
+  TimeLimit: 60
   Points:
     BullsEye: 10
     SecondRing: 5
@@ -13793,7 +13792,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: dc69c6bd1fcc36c44ab26b49f2234664, type: 2}
   m_PrefabInternal: {fileID: 562296403}
   m_GameObject: {fileID: 255434275}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalRotation: {x: -.704218328, y: -.0190558825, z: -.0372693911, w: .708748579}
   m_LocalPosition: {x: -12.5466261, y: 10.0804043, z: -4.8620615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -20549,7 +20548,7 @@ GameObject:
   - 45: {fileID: 397968098}
   m_Layer: 0
   m_Name: CanonCamera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28783,19 +28782,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc69c6bd1fcc36c44ab26b49f2234664, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.707106829
+      value: -.704218328
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc69c6bd1fcc36c44ab26b49f2234664, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -.0190558825
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc69c6bd1fcc36c44ab26b49f2234664, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -.0372693911
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dc69c6bd1fcc36c44ab26b49f2234664, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .707106829
+      value: .708748579
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc69c6bd1fcc36c44ab26b49f2234664, type: 2}
@@ -71179,6 +71178,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1396918513}
+  - 114: {fileID: 1396918514}
   m_Layer: 0
   m_Name: Musket
   m_TagString: Untagged
@@ -71199,6 +71199,28 @@ Transform:
   - {fileID: 180846120}
   - {fileID: 2060747938}
   m_Father: {fileID: 926949576}
+--- !u!114 &1396918514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396918512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848616cd97175c341b4fab6f0522c09a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationMatrix:
+  - MinRangeY: -5
+    MaxRangeY: 5
+    MinRangeX: -10
+    MaxRangeX: 10
+    time: 2
+  - MinRangeY: 0
+    MaxRangeY: 5
+    MinRangeX: 5
+    MaxRangeX: 10
+    time: 5
 --- !u!1 &1399530149
 GameObject:
   m_ObjectHideFlags: 0
@@ -103114,9 +103136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a76d955a885cc40a0e2e1f9123d926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canonballs_shot: 0
-  mainCamera: {fileID: 0}
-  canonCamera: {fileID: 0}
 --- !u!1 &2043636965
 GameObject:
   m_ObjectHideFlags: 0

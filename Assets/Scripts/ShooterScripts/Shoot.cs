@@ -115,4 +115,8 @@ public class Shoot : MonoBehaviour {
 		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.OnGoing, infoToSend));
 	}
 
+	//Polish senare!
+	void MovePlayerToCenter(){
+		//this.transform.position = Vector3.MoveTowards(transform.position, newRight, rate);
+	}
 }
