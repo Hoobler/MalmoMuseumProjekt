@@ -12,6 +12,7 @@ public class CameraRotation{
 
 public class MovingSight : MonoBehaviour {
 
+	public bool TestThis;
 	public CameraRotation[] RotationMatrix;
 
 	private Transform _cameraTransform;
@@ -21,13 +22,10 @@ public class MovingSight : MonoBehaviour {
 	private float _timeLeft;
 
 	void Start () {
-		//_cameraTransform = Camera.main.transform;
-		//_rotationVector = new Vector3(Random.Range(-20.0f,20.0f), Random.Range(-20.0f,20.0f), Camera.main.transform.rotation.z);
-		_rotationVector = new Vector3(RotationMatrix[0].MinRangeX,
-		                             RotationMatrix[0].MaxRangeX,
-		                             Camera.main.transform.rotation.z);
 		_active = true;
-		StartCoroutine(SightSway());
+		if(TestThis){
+			StartCoroutine(SightSway());
+		}
 	}
 
 	void Update () {
