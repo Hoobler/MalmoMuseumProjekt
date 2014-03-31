@@ -48,11 +48,11 @@ public class MovingSight : MonoBehaviour {
 				}
 				_rotationVector = new Vector3(RotationMatrix[index].MinRangeX,
 				                              RotationMatrix[index].MaxRangeX,
-				                              Camera.main.transform.rotation.z);
+				                              0/*Camera.main.transform.rotation.z*/);
 
 				Debug.Log(timeLeft);
 				if(timeLeft >=0){;
-					Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, Quaternion.Euler(_rotationVector), Time.deltaTime);
+					Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation,(Camera.main.transform.rotation * Quaternion.Euler(_rotationVector)), Time.deltaTime);
 					timeLeft -= Time.deltaTime;
 				}
 				if(timeLeft <= 0){

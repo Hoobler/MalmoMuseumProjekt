@@ -53,7 +53,7 @@ GameObject:
   - 114: {fileID: 11400004}
   m_Layer: 9
   m_Name: FPControllerAndroid
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ GameObject:
   - 136: {fileID: 13600000}
   m_Layer: 9
   m_Name: Capsule
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,7 +179,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100018}
   m_LocalRotation: {x: 0, y: .999564111, z: 0, w: .0295233373}
-  m_LocalPosition: {x: -7.50291824, y: 6.18735504, z: 2.08516693}
+  m_LocalPosition: {x: -16.4950905, y: 6.18735456, z: -.6198349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400020}

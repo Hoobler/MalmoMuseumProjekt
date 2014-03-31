@@ -71210,6 +71210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848616cd97175c341b4fab6f0522c09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TestThis: 0
   RotationMatrix:
   - MinRangeY: -5
     MaxRangeY: 5
