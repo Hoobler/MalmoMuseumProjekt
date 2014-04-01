@@ -13,7 +13,7 @@ public class DiceQuest : QuestBase {
 	bool questActive;
 
 	GameObject[] dice;
-	State state = State.PRETHROW;
+	State state;
 	int numberOfDiceToThrow;
 
 	ArrayList listOfNumbers = new ArrayList();
@@ -25,31 +25,37 @@ public class DiceQuest : QuestBase {
 	int nrOfRerolls;
 	GameObject mainCamera;
 	GameObject dicecamera;
+	GameObject invisWall;
+	GameObject diceparent;
 
 	Transform player;
 	// Use this for initialization
 	void Start () {
 		dicecamera = GameObject.Find ("DiceCamera");
-		mainCamera 	= GameObject.Find ("Main Camera");
 		dicecamera.camera.enabled = false;
 	}
 
 	public override void TriggerStart()
 	{
 		Debug.Log ("START");
-		
+
+		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
 		dicecamera.camera.enabled = true;
 		numberOfDiceToThrow = 5;
-
+		state = State.PRETHROW;
 
 		dice = new GameObject[numberOfDiceToThrow];
+			Destroy(GameObject.Find("DiceParent"));
+
+		diceparent = new GameObject ("DiceParent");
 		for (int i = 0; i < numberOfDiceToThrow; i++) {
 			listOfNumbers.Add(i);
 		}
 		nrOfRerolls = 5;
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		questActive = true;
+
 	}
 
 	public override void TriggerFinish()
@@ -57,6 +63,7 @@ public class DiceQuest : QuestBase {
 		questActive = false;
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
+
 	}
 
 	int CheckWhichSideIsUp(Transform die)
@@ -112,6 +119,7 @@ public class DiceQuest : QuestBase {
 			if(nrOfRerolls > 0)
 			{
 				nrOfRerolls--;
+				Destroy (invisWall);
 				state = State.SELECT_REROLL;
 			}
 			else
@@ -147,6 +155,8 @@ public class DiceQuest : QuestBase {
 				//startHold.y = dicecamera.transform.position.y;
 				//endHold.y = startHold.y;
 				totalPoints = 0;
+				//invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls"), new Vector3(5.29764f, 4.712706f, -36.91311f), new Quaternion()) as GameObject;
+				invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
 				state = State.POSTTHROW;
 				startHold = dicecamera.camera.ScreenPointToRay(startHold).origin;
 				endHold = dicecamera.camera.ScreenPointToRay(endHold).origin;
@@ -158,11 +168,12 @@ public class DiceQuest : QuestBase {
 				for(int i = 0; i < numberOfDiceToThrow; i++)
 				{
 					dice[(int)listOfNumbers[i]] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
-					dice[(int)listOfNumbers[i]].transform.position = startHold+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
+					dice[(int)listOfNumbers[i]].transform.position = startHold+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.5f, -0.1f), Random.Range(-0.1f, 0.1f));
 
 					dice[(int)listOfNumbers[i]].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 					dice[(int)listOfNumbers[i]].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-					dice[(int)listOfNumbers[i]].rigidbody.AddForce(direction*700f);
+					dice[(int)listOfNumbers[i]].rigidbody.AddForce(direction*400f);
+					dice[(int)listOfNumbers[i]].transform.parent = diceparent.transform;
 
 				}
 				numberOfDiceToThrow = 0;
@@ -190,6 +201,8 @@ public class DiceQuest : QuestBase {
 				}
 			}
 
+			if(numberOfDiceToThrow == 5)
+				state = State.PRETHROW;
 			if(Input.mousePosition.x < 50 && Input.mousePosition.y < 50)
 				state = State.PRETHROW;
 		}

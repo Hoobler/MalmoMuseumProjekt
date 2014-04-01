@@ -44,7 +44,6 @@ public class MovingSight : MonoBehaviour {
 			}
 		}
 	}
-
 	//lol!
 	void EventRespons(MiniGamesEnum miniEnum , QuestEventArgs evArgs){
 		if(miniEnum == MiniGamesEnum.Musköt){
