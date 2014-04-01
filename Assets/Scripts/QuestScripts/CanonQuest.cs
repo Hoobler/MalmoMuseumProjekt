@@ -40,14 +40,6 @@ public class CanonQuest : QuestBase {
 		canonballs_shot = 0;
 
 		questActive = true;
-<<<<<<< HEAD
-=======
-
-		//player.SetActive (false);
-
-		//InitScreenComponents ();
-
->>>>>>> aaac566043485b97d5da25ce05a92a6b02724c4e
 	}
 
 	public override void TriggerFinish ()
