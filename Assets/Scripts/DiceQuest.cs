@@ -23,39 +23,40 @@ public class DiceQuest : QuestBase {
 	Vector3 endHold;
 	int totalPoints;
 	int nrOfRerolls;
-	GameObject prevMainCamera;
+	GameObject mainCamera;
 	GameObject dicecamera;
 
 	Transform player;
 	// Use this for initialization
 	void Start () {
-
+		dicecamera = GameObject.Find ("DiceCamera");
+		mainCamera 	= GameObject.Find ("Main Camera");
+		dicecamera.camera.enabled = false;
 	}
 
 	public override void TriggerStart()
 	{
 		Debug.Log ("START");
-		prevMainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
-		dicecamera = GameObject.Find ("DiceCamera");
-		prevMainCamera.tag = "Untagged";
-		dicecamera.tag = "MainCamera";
+		
+		mainCamera.camera.enabled = false;
+		dicecamera.camera.enabled = true;
 		numberOfDiceToThrow = 5;
+
 
 		dice = new GameObject[numberOfDiceToThrow];
 		for (int i = 0; i < numberOfDiceToThrow; i++) {
 			listOfNumbers.Add(i);
 		}
-		nrOfRerolls = 1;
+		nrOfRerolls = 5;
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		questActive = true;
 	}
 
 	public override void TriggerFinish()
 	{
-		Debug.Log ("FINISH");
 		questActive = false;
-		prevMainCamera.tag = "MainCamera";
-		dicecamera.tag = "Untagged";
+		mainCamera.camera.enabled = true;
+		dicecamera.camera.enabled = false;
 	}
 
 	int CheckWhichSideIsUp(Transform die)
@@ -100,7 +101,7 @@ public class DiceQuest : QuestBase {
 	{
 		int nrOfSleepingDice = 0;
 		for (int i = 0; i < dice.Length; i++) {
-			if(dice[i].rigidbody.IsSleeping())
+			if(dice[i].rigidbody.velocity == Vector3.zero)
 				nrOfSleepingDice++;
 		}
 		if (nrOfSleepingDice >= dice.Length) {
@@ -143,14 +144,26 @@ public class DiceQuest : QuestBase {
 			{
 				holdingDownMouseButton = false;
 				endHold = Input.mousePosition;
+				//startHold.y = dicecamera.transform.position.y;
+				//endHold.y = startHold.y;
 				totalPoints = 0;
 				state = State.POSTTHROW;
+				startHold = dicecamera.camera.ScreenPointToRay(startHold).origin;
+				endHold = dicecamera.camera.ScreenPointToRay(endHold).origin;
+				endHold.y = startHold.y;
+				Vector3 direction = (endHold  - startHold);
+
+				Debug.Log(startHold.ToString());
 
 				for(int i = 0; i < numberOfDiceToThrow; i++)
 				{
 					dice[(int)listOfNumbers[i]] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
-					dice[(int)listOfNumbers[i]].transform.position = dicecamera.transform.position;
-					dice[(int)listOfNumbers[i]].rigidbody.AddForce(endHold - startHold);
+					dice[(int)listOfNumbers[i]].transform.position = startHold+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
+
+					dice[(int)listOfNumbers[i]].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
+					dice[(int)listOfNumbers[i]].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
+					dice[(int)listOfNumbers[i]].rigidbody.AddForce(direction*700f);
+
 				}
 				numberOfDiceToThrow = 0;
 				listOfNumbers.Clear();
@@ -163,7 +176,8 @@ public class DiceQuest : QuestBase {
 	{
 		if (Input.GetMouseButtonDown (0))
 		{
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+			Ray ray = dicecamera.camera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			Physics.Raycast(ray, out hit);
 			for(int i = 0; i < dice.Length; i++)
