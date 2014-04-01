@@ -39,7 +39,7 @@ public class CanonQuest : QuestBase {
 
 		//player.SetActive (false);
 
-		InitScreenComponents ();
+		//InitScreenComponents ();
 
 	}
 
