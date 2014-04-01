@@ -6,10 +6,15 @@ public class CanonQuest : QuestBase {
 	private const int TOTAL_CANONBALLS = 3;
 	private int canonballs_shot;
 
+	private const float ROTATION_SPEED = 20;
+
 	GameObject mainCamera;
 	GameObject canonCamera;
 	GameObject canon;
+	GameObject canonPipe;
 	GameObject ship;
+	GameObject player;
+
 
 	private bool questActive = false;
 	
@@ -20,8 +25,10 @@ public class CanonQuest : QuestBase {
 
 		mainCamera 	= GameObject.Find ("Main Camera");
 		canonCamera = GameObject.Find ("CanonCamera");
-		canon 		= GameObject.Find ("Canon");
+		canon 		= GameObject.FindGameObjectWithTag ("Kanon");
+		canonPipe 	= GameObject.FindGameObjectWithTag ("KanonPipa");
 		ship 		= GameObject.Find ("Ship");
+		player 		= GameObject.FindGameObjectWithTag ("Player");
 
 		mainCamera.camera.enabled = false;
 		canonCamera.camera.enabled = true;
@@ -29,6 +36,8 @@ public class CanonQuest : QuestBase {
 		canonballs_shot = 0;
 
 		questActive = true;
+
+		//player.SetActive (false);
 
 		InitScreenComponents ();
 
@@ -38,6 +47,7 @@ public class CanonQuest : QuestBase {
 	{
 		mainCamera.camera.enabled = true;
 		canonCamera.camera.enabled = false;
+		//player.SetActive (true);
 	}
 
 	// Use this for initialization
@@ -47,17 +57,16 @@ public class CanonQuest : QuestBase {
 	
 	// Update is called once per frame
 	void Update () {
-		float speed = 20f;
 		if (questActive) {
-			if (Input.GetKeyDown (KeyCode.A))
-				canon.transform.Rotate (Vector3.up * speed * Time.deltaTime);
-			if (Input.GetKeyDown (KeyCode.D))
-				canon.transform.Rotate (-Vector3.up * speed * Time.deltaTime);
+			if (Input.GetKey (KeyCode.A))
+				canon.transform.Rotate(-Vector3.up * ROTATION_SPEED * Time.deltaTime); 
+			if (Input.GetKey (KeyCode.D))
+				canon.transform.Rotate(Vector3.up * ROTATION_SPEED * Time.deltaTime);
+			if (Input.GetKey (KeyCode.W))
+				canonPipe.transform.Rotate(Vector3.left * ROTATION_SPEED * Time.deltaTime); 
+			if (Input.GetKey (KeyCode.S))
+				canonPipe.transform.Rotate(Vector3.right * ROTATION_SPEED * Time.deltaTime);
+
 		}
-	}
-
-	void InitScreenComponents(){
-
-
 	}
 }
