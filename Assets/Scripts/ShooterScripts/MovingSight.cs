@@ -22,10 +22,9 @@ public class MovingSight : MonoBehaviour {
 	private float _timeLeft;
 
 	void Start () {
-		_active = true;
-		if(TestThis){
-			StartCoroutine(SightSway());
-		}
+		EventManager.OnQuest += EventRespons;
+		//_active = true;
+		StartCoroutine(SightSway());
 	}
 
 	void Update () {
@@ -66,6 +65,17 @@ public class MovingSight : MonoBehaviour {
 //					newTime = true;
 //				}
 				yield return null;
+			}
+		}
+	}
+
+	void EventRespons(MiniGamesEnum miniEnum , QuestEventArgs evArgs){
+		if(miniEnum == MiniGamesEnum.Musköt){
+			if(evArgs.QuestType == QuestTypeEnum.Started){
+				_active = true;
+			}
+			if(evArgs.QuestType == QuestTypeEnum.Finnished){
+				_active = false;
 			}
 		}
 	}
