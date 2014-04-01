@@ -156,7 +156,7 @@ public class DiceQuest : QuestBase {
 				//endHold.y = startHold.y;
 				totalPoints = 0;
 				//invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls"), new Vector3(5.29764f, 4.712706f, -36.91311f), new Quaternion()) as GameObject;
-				invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
+
 				state = State.POSTTHROW;
 				startHold = dicecamera.camera.ScreenPointToRay(startHold).origin;
 				endHold = dicecamera.camera.ScreenPointToRay(endHold).origin;
@@ -202,9 +202,15 @@ public class DiceQuest : QuestBase {
 			}
 
 			if(numberOfDiceToThrow == 5)
+			{
 				state = State.PRETHROW;
+				invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
+			}
 			if(Input.mousePosition.x < 50 && Input.mousePosition.y < 50)
+			{
 				state = State.PRETHROW;
+				invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
+			}
 		}
 	}
 	// Update is called once per frame
