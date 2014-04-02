@@ -26,7 +26,7 @@ public class CanonBallScript : MonoBehaviour {
 	void OnTriggerEnter(Collider collider){
 		if (!hit && collider.gameObject.name == "Hull") {
 			hit = true;
-			Debug.Log ("CANONBALL COLLISION");
+			Debug.Log ("CANONBALL COLLISION : " + collider.gameObject.name);
 			quest.CanonBallTrigger(hit);
 			Destroy(gameObject);
 		}
