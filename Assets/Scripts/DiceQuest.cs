@@ -40,7 +40,6 @@ public class DiceQuest : QuestBase {
 
 	public override void TriggerStart()
 	{
-		Debug.Log ("START");
 		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
 		resetButton = (GUITexture)button.GetComponent ("GUITexture");
 		resetButton.enabled = false;
@@ -69,6 +68,10 @@ public class DiceQuest : QuestBase {
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
 		Destroy (resetButton.gameObject);
+		Destroy (invisWall);
+		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+		endText.text = "Du fick " + totalPoints + " poäng!";
 	}
 
 	int CheckWhichSideIsUp(Transform die)
@@ -79,31 +82,37 @@ public class DiceQuest : QuestBase {
 		if(Vector3.Angle (die.up, Vector3.up) < angle)
 		{
 			angle = Vector3.Angle (die.up, Vector3.up);
+			//die.up = Vector3.up;
 			sideUp = 6;
 		}
 		if(Vector3.Angle (-die.up, Vector3.up) < angle)
 		{
 			angle = Vector3.Angle (-die.up, Vector3.up);
+			//die.up = -Vector3.up;
 			sideUp = 1;
 		}
 		if(Vector3.Angle (die.forward, Vector3.up) < angle)
 		{
 			angle = Vector3.Angle (die.forward, Vector3.up);
+			//die.forward = Vector3.up;
 			sideUp = 5;
 		}
 		if(Vector3.Angle (-die.forward, Vector3.up) < angle)
 		{
 			angle = Vector3.Angle (-die.forward, Vector3.up);
+			//die.forward = -Vector3.up;
 			sideUp = 2;
 		}
 		if(Vector3.Angle (die.right, Vector3.up) < angle)
 		{
 			angle = Vector3.Angle (die.right, Vector3.up);
+			//die.right = Vector3.up;
 			sideUp = 4;
 		}
 		if(Vector3.Angle (-die.right, Vector3.up) < angle)
 		{
 			angle = Vector3.Angle (-die.right, Vector3.up);
+			//die.right = -Vector3.up;
 			sideUp = 3;
 		}
 		return sideUp;
@@ -207,11 +216,15 @@ public class DiceQuest : QuestBase {
 				}
 			}
 
-
 			if(resetButton.GetScreenRect().Contains(Input.mousePosition) || numberOfDiceToThrow == 5)
 			{
-				state = State.PRETHROW;
-				invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
+				if(numberOfDiceToThrow == 0)
+					state = State.FINISH;
+				else
+				{
+					state = State.PRETHROW;
+					invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
+				}
 				resetButton.enabled = false;
 			}
 		}
