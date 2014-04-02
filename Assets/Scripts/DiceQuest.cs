@@ -28,17 +28,22 @@ public class DiceQuest : QuestBase {
 	GameObject invisWall;
 	GameObject diceparent;
 
+	GUITexture resetButton;
+
 	Transform player;
 	// Use this for initialization
 	void Start () {
 		dicecamera = GameObject.Find ("DiceCamera");
 		dicecamera.camera.enabled = false;
+
 	}
 
 	public override void TriggerStart()
 	{
 		Debug.Log ("START");
-
+		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
+		resetButton = (GUITexture)button.GetComponent ("GUITexture");
+		resetButton.enabled = false;
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
 		dicecamera.camera.enabled = true;
@@ -63,7 +68,7 @@ public class DiceQuest : QuestBase {
 		questActive = false;
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
-
+		Destroy (resetButton.gameObject);
 	}
 
 	int CheckWhichSideIsUp(Transform die)
@@ -120,6 +125,7 @@ public class DiceQuest : QuestBase {
 			{
 				nrOfRerolls--;
 				Destroy (invisWall);
+				resetButton.enabled = true;
 				state = State.SELECT_REROLL;
 			}
 			else
@@ -201,15 +207,12 @@ public class DiceQuest : QuestBase {
 				}
 			}
 
-			if(numberOfDiceToThrow == 5)
+
+			if(resetButton.GetScreenRect().Contains(Input.mousePosition) || numberOfDiceToThrow == 5)
 			{
 				state = State.PRETHROW;
 				invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
-			}
-			if(Input.mousePosition.x < 50 && Input.mousePosition.y < 50)
-			{
-				state = State.PRETHROW;
-				invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
+				resetButton.enabled = false;
 			}
 		}
 	}
