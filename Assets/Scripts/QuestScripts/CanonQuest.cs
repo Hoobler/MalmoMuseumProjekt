@@ -10,6 +10,12 @@ public class CanonQuest : QuestBase {
 	private Vector3 start_side_rotation;
 	private Vector3 start_up_rotation;
 
+	private const float RELOAD_TIME = 5f;
+	private float reload_timer;
+
+	private bool canonball_in_air = false;
+
+	private int nr_of_hits = 0;
 
 	GameObject mainCamera;
 	GameObject canonCamera;
@@ -21,9 +27,7 @@ public class CanonQuest : QuestBase {
 	GameObject canonMuzzle;
 	GameObject canonBase;
 
-
 	private bool questActive = false;
-	
 
 	public override void TriggerStart ()
 	{
@@ -31,17 +35,17 @@ public class CanonQuest : QuestBase {
 
 		mainCamera 	= GameObject.Find ("Main Camera");
 		canonCamera = GameObject.Find ("CanonCamera");
-		canon 		= GameObject.FindGameObjectWithTag ("Kanon");
-		canonPipe 	= GameObject.FindGameObjectWithTag ("KanonPipa");
 		ship 		= GameObject.Find ("Ship");
 		player 		= GameObject.FindGameObjectWithTag ("Player");
+
+		canon 		= GameObject.FindGameObjectWithTag ("Kanon");
+		canonPipe 	= GameObject.FindGameObjectWithTag ("KanonPipa");
 		canonMuzzle = GameObject.Find ("KanonMynning");
 		canonBase	= GameObject.Find ("KanonBas");
 		
 
 		mainCamera.SetActive(false);
 		canonCamera.SetActive (true);
-		//player.SetActive (false);
 
 		canonballs_shot = 0;
 
@@ -50,9 +54,11 @@ public class CanonQuest : QuestBase {
 
 	public override void TriggerFinish ()
 	{
+
 		mainCamera.SetActive (true);
 		canonCamera.SetActive (false);
-		//player.SetActive (true);
+		questActive = false;
+		Debug.Log ("Träffar: " + nr_of_hits);
 	}
 
 	// Use this for initialization
@@ -84,18 +90,37 @@ public class CanonQuest : QuestBase {
 				start_up_rotation += Vector3.right * ROTATION_SPEED * Time.deltaTime;
 			}
 			//Skjut
-			if(Input.GetKeyDown(KeyCode.Space) && canonballs_shot <= TOTAL_CANONBALLS){
+			if(Input.GetKeyDown(KeyCode.Space) && canonballs_shot <= TOTAL_CANONBALLS && !canonball_in_air){
 				Fire();
 			}
-
+			//Avsluta spel
+			if(canonballs_shot >= TOTAL_CANONBALLS)
+				TriggerFinish();
+			if(canonball_in_air)
+				UpdateCanonballs();
 		}
 	}
 
 	private void Fire(){
 		canonballs_shot++;
+		canonball_in_air = true;
 		canonBall = Instantiate (Resources.Load ("CanonBall")) as GameObject;
 		canonBall.transform.position = canonMuzzle.transform.position;
 		canonBall.rigidbody.AddForce ((canonMuzzle.transform.position - canonBase.transform.position).normalized * 3000f);
+	}
 
+	private void UpdateCanonballs(){
+		reload_timer += Time.deltaTime;
+
+		if (reload_timer >= RELOAD_TIME) {
+			Destroy(canonBall);	
+			reload_timer = 0;
+			canonball_in_air = false;
+		}
+	}
+
+	public void CanonBallTrigger(bool hit){
+		if (hit)
+			nr_of_hits++;
 	}
 }
