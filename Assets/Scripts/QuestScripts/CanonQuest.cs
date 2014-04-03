@@ -35,14 +35,14 @@ public class CanonQuest : QuestBase {
 
 		mainCamera 	= GameObject.Find ("Main Camera");
 		canonCamera = GameObject.Find ("CanonCamera");
-		ship 		= GameObject.Find ("Ship");
 		player 		= GameObject.FindGameObjectWithTag ("Player");
 
 		canon 		= GameObject.FindGameObjectWithTag ("Kanon");
 		canonPipe 	= GameObject.FindGameObjectWithTag ("KanonPipa");
 		canonMuzzle = GameObject.Find ("KanonMynning");
 		canonBase	= GameObject.Find ("KanonBas");
-		
+
+		ship.SetActive (true);
 
 		mainCamera.SetActive(false);
 		canonCamera.SetActive (true);
@@ -63,7 +63,8 @@ public class CanonQuest : QuestBase {
 
 	// Use this for initialization
 	void Start () {
-	
+		ship = GameObject.Find ("Ship");
+		ship.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -120,7 +121,18 @@ public class CanonQuest : QuestBase {
 	}
 
 	public void CanonBallTrigger(bool hit){
-		if (hit)
+		if (hit) {
 			nr_of_hits++;
+			UpdateShip();
+		}
+	}
+
+	private void UpdateShip(){
+		ShipScript script = ship.GetComponent (typeof(ShipScript)) as ShipScript;
+		if (script != null) {
+			script.Speed = new Vector3 (0.03f, -0.05f, 0.03f);
+			Debug.Log ("Ship script changed");
+		}
+
 	}
 }
