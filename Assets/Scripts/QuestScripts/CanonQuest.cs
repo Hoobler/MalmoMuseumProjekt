@@ -130,8 +130,9 @@ public class CanonQuest : QuestBase {
 	private void UpdateShip(){
 		ShipScript script = ship.GetComponent (typeof(ShipScript)) as ShipScript;
 		if (script != null) {
-			script.Speed = new Vector3 (0.03f, -0.05f, 0.03f);
+			script.Speed = new Vector3 (0.03f, -0.02f, 0.03f);
 			Debug.Log ("Ship script changed");
+			script.hit = true;
 		}
 
 	}

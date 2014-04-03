@@ -7,6 +7,8 @@ public class ShipScript : MonoBehaviour {
 	GameObject endPoint;
 	Vector3 distance;
 	Vector3 speed;
+	public bool hit = false;
+	private const int ROTATION_SPEED = -5;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +28,8 @@ public class ShipScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		gameObject.transform.position += new Vector3 (distance.x * speed.x, speed.y, distance.z * speed.z);
+		if (hit)
+			gameObject.transform.Rotate (Vector3.forward * ROTATION_SPEED * Time.deltaTime);
 	}
 
 	public Vector3 Speed{
