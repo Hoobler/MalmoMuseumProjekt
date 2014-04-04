@@ -29,6 +29,7 @@ GameObject:
   - 33: {fileID: 3300004}
   - 23: {fileID: 2300004}
   - 111: {fileID: 11100000}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: musketoon_long
   m_TagString: Untagged
@@ -267,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100018}
   m_LocalRotation: {x: 0, y: .999564111, z: 0, w: .0295233373}
-  m_LocalPosition: {x: -6.77175522, y: 6.18735504, z: 2.88217926}
+  m_LocalPosition: {x: -6.93581772, y: 6.18735552, z: 2.96931076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400020}
@@ -648,6 +649,17 @@ MonoBehaviour:
 --- !u!1002 &11400013
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!114 &11400014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6695178f05581b74a8f335319b115a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12400002
 Behaviour:
   m_ObjectHideFlags: 1
