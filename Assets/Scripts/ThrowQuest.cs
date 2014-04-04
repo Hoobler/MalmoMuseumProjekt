@@ -125,10 +125,15 @@ public class ThrowQuest : QuestBase {
 
 	public void TriggerFinish (bool success)
 	{
+		string finishInfo;
 		if (success)
-						Debug.Log ("YAY");
+						finishInfo = "Du klarade det!";
 				else
-						Debug.Log ("NAY");
+						finishInfo = "Tyvärr, du träffade bara " + applesInBasket + " äpplen.";
+		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+		endText.text = finishInfo;
+
 		questActive = false;
 		if(chargeBar.root != null)
 			Destroy (chargeBar.root.gameObject);
