@@ -7,6 +7,8 @@ public class Shoot : MonoBehaviour {
 	public float ScaleLimit;
 	public int CircleDepth;
 
+	public Texture ReloadTexture;
+
 	private ParticleSystem particle;
 
 	private float _reloadTimeLeft;
@@ -28,6 +30,13 @@ public class Shoot : MonoBehaviour {
 		if(particle != null){
 			particle.Stop();
 			particle.Clear();
+		}
+	}
+
+	void OnGUI(){
+		if(_weaponActive && _reloading){
+			float w = ((ReloadTime - _reloadTimeLeft) / ReloadTime) * 200;
+			GUI.DrawTexture(new Rect(Screen.width/2 - 100, Screen.height/1.1f, w, 15), ReloadTexture);
 		}
 	}
 
