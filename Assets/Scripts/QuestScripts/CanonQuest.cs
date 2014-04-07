@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CanonQuest : QuestBase {
 
-	private const int TOTAL_CANONBALLS = 10;
+	private const int TOTAL_CANONBALLS = 5;
 	private int canonballs_shot;
 
 	private const float ROTATION_SPEED = 10;
@@ -17,6 +17,8 @@ public class CanonQuest : QuestBase {
 
 	private int nr_of_hits = 0;
 
+	private ParticleSystem smoke;
+
 	GameObject mainCamera;
 	GameObject canonCamera;
 	GameObject canon;
@@ -27,6 +29,9 @@ public class CanonQuest : QuestBase {
 	GameObject canonMuzzle;
 	GameObject canonBase;
 
+	public Texture canonball_texture;
+	public Texture reloadbar_texture;
+
 	private bool questActive = false;
 
 	public override void TriggerStart ()
@@ -35,12 +40,12 @@ public class CanonQuest : QuestBase {
 
 		mainCamera 	= GameObject.Find ("Main Camera");
 		canonCamera = GameObject.Find ("CanonCamera");
-		player 		= GameObject.FindGameObjectWithTag ("Player");
-
+		player		= GameObject.FindGameObjectWithTag ("Player");
 		canon 		= GameObject.FindGameObjectWithTag ("Kanon");
 		canonPipe 	= GameObject.FindGameObjectWithTag ("KanonPipa");
 		canonMuzzle = GameObject.Find ("KanonMynning");
 		canonBase	= GameObject.Find ("KanonBas");
+		smoke 		= GameObject.Find ("CanonSmoke").GetComponent ("ParticleSystem") as ParticleSystem;
 
 		ship.SetActive (true);
 
@@ -50,6 +55,10 @@ public class CanonQuest : QuestBase {
 		canonballs_shot = 0;
 
 		questActive = true;
+		if (smoke) {
+			smoke.Clear ();
+			smoke.Stop ();
+		}
 	}
 
 	public override void TriggerFinish ()
@@ -103,11 +112,15 @@ public class CanonQuest : QuestBase {
 	}
 
 	private void Fire(){
+		smoke.Stop ();
+		smoke.Clear ();
 		canonballs_shot++;
 		canonball_in_air = true;
 		canonBall = Instantiate (Resources.Load ("CanonBall")) as GameObject;
 		canonBall.transform.position = canonMuzzle.transform.position;
 		canonBall.rigidbody.AddForce ((canonMuzzle.transform.position - canonBase.transform.position).normalized * 3000f);
+		smoke.transform.position = canonMuzzle.transform.position;
+		smoke.Play ();
 	}
 
 	private void UpdateCanonballs(){
@@ -135,5 +148,20 @@ public class CanonQuest : QuestBase {
 			script.hit = true;
 		}
 
+	}
+
+	void OnGUI(){
+		if (questActive) {
+			int sh = Screen.height;
+			for(int i = 0; i < TOTAL_CANONBALLS - canonballs_shot; i++){
+				GUI.DrawTexture(new Rect(10 + 30 * i,sh - 70,60,60),canonball_texture, ScaleMode.ScaleToFit);
+			}	
+
+			if(canonball_in_air){
+				float w = ((RELOAD_TIME - reload_timer) / RELOAD_TIME) * 200;
+				GUI.DrawTexture(new Rect(Screen.width/2 - 100,sh/1.1f, w, 15), reloadbar_texture);
+			}
+
+		}
 	}
 }
