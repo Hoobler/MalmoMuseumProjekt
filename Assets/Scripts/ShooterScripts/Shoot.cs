@@ -24,7 +24,7 @@ public class Shoot : MonoBehaviour {
 		_reloadTimeLeft = ReloadTime;
 		_questStared = false;
 		EventManager.OnQuest += EventRespons;
-		//particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
+		particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
 		if(particle != null){
 			particle.Stop();
 			particle.Clear();

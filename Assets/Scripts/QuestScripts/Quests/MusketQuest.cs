@@ -44,7 +44,6 @@ public class MusketQuest : MonoBehaviour {
 	void OnGUI(){
 		if (_questStarted) {
 			GUI.Label (new Rect (70, 30, 70, 20), "Poäng: " + _totalPoints.ToString());
-			GUI.Label (new Rect (70, 50, 30, 20), _timeElapsed.ToString());
 		}
 	}
 
