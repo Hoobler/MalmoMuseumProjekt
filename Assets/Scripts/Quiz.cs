@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
@@ -12,6 +12,8 @@ public class Quiz : MonoBehaviour {
 
 	public Question[] questions;
 	public bool randomizeQuestions;
+	ArrayList listOfAnswers;
+	ArrayList listOfQuestions;
 	Rect backgroundBounds;
 	GUIText questionText;
 	GameObject[] buttons;
@@ -44,13 +46,13 @@ public class Quiz : MonoBehaviour {
 		if (active) {
 			if(Input.GetMouseButtonDown(0))
 			{
-				if(currentQuestion < questions.Length)
+				if (listOfQuestions.Count != 0)
 				{
-					for(int i = 0; i < questions[currentQuestion].answers.Length; i++)
+					for(int i = 0; i < questions [(int)listOfQuestions[currentQuestion]].answers.Length; i++)
 					{
 						if(((GUITexture)buttons[i].GetComponentInChildren(typeof(GUITexture))).GetScreenRect().Contains(Input.mousePosition))
 						{
-							if(i == questions[currentQuestion].correctAnswer)
+							if(i == questions [(int)listOfQuestions[currentQuestion]].correctAnswer)
 								points++;
 							NextQuestion ();
 							break;
@@ -87,8 +89,17 @@ public class Quiz : MonoBehaviour {
 		background.transform.parent = quizParent.transform;
 		backgroundBounds = ((GUITexture)background.GetComponentInChildren (typeof(GUITexture))).GetScreenRect ();
 		questionText = (GUIText)background.GetComponentInChildren (typeof(GUIText));
-		currentQuestion = 0;
+		if(randomizeQuestions)
+			currentQuestion = Random.Range (0, questions.Length - 1);
+		else
+			currentQuestion = 0;
 		points = 0;
+
+		listOfQuestions = new ArrayList ();
+		for (int i = 0; i < questions.Length; i++) {
+			listOfQuestions.Add (i);
+		}
+
 		buttons = new GameObject[4];
 		for (int i = 0; i < 4; i++) {
 			buttons [i] = (GameObject)Instantiate (Resources.Load ("Button"));
@@ -107,22 +118,24 @@ public class Quiz : MonoBehaviour {
 
 	void NextQuestion()
 	{
-		currentQuestion++;
-		if (currentQuestion >= questions.Length)
+		listOfQuestions.RemoveAt (currentQuestion);
+		if (listOfQuestions.Count == 0) {
 			EndScreen ();
-		else
+		} else {
+			currentQuestion = Random.Range (0, listOfQuestions.Count - 1);
 			SetValues ();
+		}
 	}
 
 	void SetValues()
 	{
-		questionText.text = questions [currentQuestion].question;
+		questionText.text = questions [(int)listOfQuestions[currentQuestion]].question;
 		FormatMainText ();
-		for (int i = 0; i < questions[currentQuestion].answers.Length; i++) { 
-			SetButtonText(buttons [i], questions [currentQuestion].answers [i]);
+		for (int i = 0; i < questions [(int)listOfQuestions[currentQuestion]].answers.Length; i++) { 
+			SetButtonText(buttons [i], questions [(int)listOfQuestions[currentQuestion]].answers [i]);
 			SetButtonEnabled(buttons[i], true);
 		}
-		for (int i = questions[currentQuestion].answers.Length; i < 4; i++)
+		for (int i = questions [(int)listOfQuestions[currentQuestion]].answers.Length; i < 4; i++)
 			SetButtonEnabled(buttons[i], false);
 	}
 
