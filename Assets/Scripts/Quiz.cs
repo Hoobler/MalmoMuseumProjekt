@@ -19,13 +19,13 @@ public class Quiz : MonoBehaviour {
 	GameObject quizParent;
 	bool active = false;
 	int points;
-//
-//	// Use this for initialization
-//	void Start () {
-//	
-//	}
-//
-//
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+
+
 	void EndScreen()
 	{
 		if (points == 0)
@@ -93,8 +93,7 @@ public class Quiz : MonoBehaviour {
 		for (int i = 0; i < 4; i++) {
 			buttons [i] = (GameObject)Instantiate (Resources.Load ("Button"));
 			buttons[i].transform.parent = quizParent.transform;
-			SetButtonText(buttons[i], questions[0].answers[i]);
-			buttons[i].transform.position = new Vector3(0.25f + 0.25f*(i%2), 0.25f+0.25f*(i/2), 0); 
+			buttons[i].transform.position = new Vector3(0.25f + 0.25f*(i%2), 0.25f+0.1f*(i/2), 0); 
 		}
 
 		SetValues ();
