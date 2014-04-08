@@ -12,14 +12,14 @@ SceneSettings:
     backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: .5, g: .5, b: .5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: .00999999978
+  m_FogMode: 2
+  m_FogDensity: .0500000007
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_AmbientLight: {r: .404411793, g: .404411793, b: .404411793, a: 1}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 53412155bc1016547b1a77b2333c0380, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -4141,7 +4141,7 @@ Transform:
   m_GameObject: {fileID: 85203191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.0931053, y: 3.76008606, z: -4.33405685}
-  m_LocalScale: {x: 456.704865, y: 28.544054, z: 456.704865}
+  m_LocalScale: {x: 10824.209, y: 676.513062, z: 10824.209}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1001 &85490793
@@ -30861,7 +30861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &594400454
 Transform:
   m_ObjectHideFlags: 0
@@ -50570,6 +50570,10 @@ Prefab:
     - target: {fileID: 400098, guid: e7b6ccc8fd6a6554a92411d30e11407d, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.35132003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100098, guid: e7b6ccc8fd6a6554a92411d30e11407d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7b6ccc8fd6a6554a92411d30e11407d, type: 3}
@@ -86153,15 +86157,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 2}
       propertyPath: m_LocalScale.x
-      value: 456.704865
+      value: 10824.209
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 2}
       propertyPath: m_LocalScale.y
-      value: 28.544054
+      value: 676.513062
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6b436d069d11415d1100ab9b44295342, type: 2}
       propertyPath: m_LocalScale.z
-      value: 456.704865
+      value: 10824.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6b436d069d11415d1100ab9b44295342, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b436d069d11415d1100ab9b44295342, type: 2}
