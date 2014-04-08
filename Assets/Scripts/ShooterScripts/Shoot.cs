@@ -17,6 +17,7 @@ public class Shoot : MonoBehaviour {
 	private bool _questStared;
 	private bool _questFinished;
 	private bool _reloading;
+	private bool _firstHit;
 	
 	private Ray _ray;
 	private RaycastHit _hit;
@@ -25,6 +26,7 @@ public class Shoot : MonoBehaviour {
 	void Start () {
 		_reloadTimeLeft = ReloadTime;
 		_questStared = false;
+		_firstHit = false;
 		EventManager.OnQuest += EventRespons;
 		particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
 		if(particle != null){
@@ -45,8 +47,9 @@ public class Shoot : MonoBehaviour {
 			if(Input.GetMouseButtonDown(0)){
 				Debug.Log("Mouse Shoot!");
 				RayCastChecker();
-				if(particle != null)
+				if(particle != null){
 					particle.Play ();
+				}
 			}
 			if(Input.touchCount > 0){
 				int i = 0;
@@ -71,6 +74,7 @@ public class Shoot : MonoBehaviour {
 			Debug.Log("Shoot test");
 			if(evArgs.QuestType == QuestTypeEnum.Started){
 				_questStared = true;
+				_firstHit = false;
 			}
 			else if(evArgs.QuestType == QuestTypeEnum.Finnished){
 				_questStared = false;
@@ -97,6 +101,10 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void RayCastChecker(){
+		if(!_firstHit){
+			_firstHit = true;
+			SendToMusketQuest("FirstHit");
+		}
 		_reloading = true;
 		Vector3 direction = Random.insideUnitCircle * ScaleLimit;
 		direction.z = CircleDepth;

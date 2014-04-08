@@ -9,7 +9,7 @@ public class Points{
 }
 
 public class MusketQuest : MonoBehaviour {
-	
+
 	public float TimeLimit;
 	public Points Points;
 	
@@ -43,6 +43,7 @@ public class MusketQuest : MonoBehaviour {
 
 	void OnGUI(){
 		if (_questStarted) {
+			GUI.Label (new Rect (70, 50, 100, 20), "Tid: " + _timeElapsed.ToString());
 			GUI.Label (new Rect (70, 30, 70, 20), "Poäng: " + _totalPoints.ToString());
 		}
 	}
@@ -58,6 +59,9 @@ public class MusketQuest : MonoBehaviour {
 				}
 				if(evArgs.Info == "WhiteRing" && _questStarted){
 					_totalPoints += Points.SecondRing;
+				}
+				if(evArgs.Info == "FirstHit" && _questStarted){
+					_firstHit = true;
 				}
 			}
 			if(evArgs.QuestType == QuestTypeEnum.Started){
@@ -80,5 +84,6 @@ public class MusketQuest : MonoBehaviour {
 		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Reset, null));
 		_totalPoints = 0;
 		_timeElapsed = 0;
+		_firstHit = false;
 	}
 }
