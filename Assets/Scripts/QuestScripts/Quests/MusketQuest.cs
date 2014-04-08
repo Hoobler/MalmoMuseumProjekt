@@ -86,5 +86,6 @@ public class MusketQuest : MonoBehaviour {
 		_totalPoints = 0;
 		_timeElapsed = 0;
 		_firstHit = false;
+		_questEnded = false;
 	}
 }
