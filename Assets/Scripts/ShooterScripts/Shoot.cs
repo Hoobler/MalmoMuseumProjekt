@@ -78,6 +78,10 @@ public class Shoot : MonoBehaviour {
 			}
 			else if(evArgs.QuestType == QuestTypeEnum.Finnished){
 				_questStared = false;
+				DisableWeapon();
+			}
+			else if(evArgs.QuestType == QuestTypeEnum.Reset){
+				_firstHit = false;
 			}
 			else if(evArgs.Info == "EnterShootArea" && _questStared){
 				EnableWeapon();

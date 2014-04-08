@@ -65,6 +65,7 @@ public class MusketQuest : MonoBehaviour {
 				}
 			}
 			if(evArgs.QuestType == QuestTypeEnum.Started){
+				ResetQuest();
 				_questStarted = true;
 			}
 		}
