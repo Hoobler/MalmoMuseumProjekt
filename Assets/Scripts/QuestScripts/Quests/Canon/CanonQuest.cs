@@ -118,7 +118,7 @@ public class CanonQuest : QuestBase {
 		canonball_in_air = true;
 		canonBall = Instantiate (Resources.Load ("CanonBall")) as GameObject;
 		canonBall.transform.position = canonMuzzle.transform.position;
-		canonBall.rigidbody.AddForce ((canonMuzzle.transform.position - canonBase.transform.position).normalized * 3000f);
+		canonBall.rigidbody.AddForce ((canonMuzzle.transform.position - canonBase.transform.position).normalized * 4000f);
 		smoke.transform.position = canonMuzzle.transform.position;
 		smoke.Play ();
 	}

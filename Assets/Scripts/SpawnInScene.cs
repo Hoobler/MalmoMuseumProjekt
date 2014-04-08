@@ -12,16 +12,16 @@ public class SpawnInScene : MonoBehaviour {
 	private bool timerstart = false;
 	private float alpha = 0.0f;
 
-	private const float TIME_ON_SCREEN = 5.0f;
+	private const float TIME_ON_SCREEN = 4.0f;
 	private float timer = 0.0f;
 
 	// Use this for initialization
 	void Start () {
 
-		if (Application.loadedLevel == 0)
+		if (Application.loadedLevel == 0)	//LILLA TORG
 			background_texture = Resources.Load ("skylt_lillatorg") as Texture;
 
-		if(Application.loadedLevel == 3)
+		if(Application.loadedLevel == 3)	//SLOTTET
 			background_texture = Resources.Load ("skylt_slottet") as Texture;
 
 		GameObject backObject = new GameObject ();
@@ -44,6 +44,7 @@ public class SpawnInScene : MonoBehaviour {
 			alpha -= 0.005f;
 			if(alpha <= 0.0f){
 				fadeout = false;
+				//Tar bort scriptet så det inte updaterar mer.
 				Destroy(gameObject.GetComponent("SpawnInScene"));
 			}
 		}
