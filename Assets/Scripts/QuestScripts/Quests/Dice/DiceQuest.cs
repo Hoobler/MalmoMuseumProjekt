@@ -48,7 +48,6 @@ public class DiceQuest : QuestBase {
 		dicecamera.camera.enabled = true;
 		numberOfDiceToThrow = 5;
 		state = State.PRETHROW;
-
 		dice = new GameObject[numberOfDiceToThrow];
 			Destroy(GameObject.Find("DiceParent"));
 
@@ -74,11 +73,11 @@ public class DiceQuest : QuestBase {
 		endText.text = "Du fick " + totalPoints + " poäng!";
 	}
 
-	int CheckWhichSideIsUp(Transform die)
+	public int CheckWhichSideIsUp(Transform die)
 	{
 		int sideUp = 0;
 		float angle = 360;
-
+		
 		if(Vector3.Angle (die.up, Vector3.up) < angle)
 		{
 			angle = Vector3.Angle (die.up, Vector3.up);
