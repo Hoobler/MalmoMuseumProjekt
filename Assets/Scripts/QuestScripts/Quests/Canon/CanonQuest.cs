@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CanonQuest : QuestBase {
+public class CanonQuest : QuestBase,  {
 
 	private const int TOTAL_CANONBALLS = 5;
 	private int canonballs_shot;
@@ -31,8 +31,14 @@ public class CanonQuest : QuestBase {
 
 	public Texture canonball_texture;
 	public Texture reloadbar_texture;
+	public Texture arrow_texture;
 
 	private bool questActive = false;
+
+	GUITexture left_arrow;
+	GUITexture right_arrow;
+	GUITexture up_arrow;
+	GUITexture down_arrow;
 
 	public override void TriggerStart ()
 	{
@@ -59,6 +65,8 @@ public class CanonQuest : QuestBase {
 			smoke.Clear ();
 			smoke.Stop ();
 		}
+
+		Init ();
 	}
 
 	public override void TriggerFinish ()
@@ -74,6 +82,38 @@ public class CanonQuest : QuestBase {
 	void Start () {
 		ship = GameObject.Find ("Ship");
 		ship.SetActive (false);
+	}
+
+	//Initializes arrows on screen
+	void Init(){
+		GameObject la = new GameObject ();
+		left_arrow = (GUITexture)la.AddComponent (typeof(GUITexture));
+		left_arrow.texture = arrow_texture;
+		left_arrow.transform.position =  new Vector3 (0.65f, 0.1f, 0);
+		left_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+
+		GameObject ra = new GameObject ();
+		right_arrow = (GUITexture)ra.AddComponent (typeof(GUITexture));
+		right_arrow.texture = arrow_texture;
+		right_arrow.transform.position =  new Vector3 (0.85f, 0.1f, 0);
+		right_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+		
+
+		GameObject ua = new GameObject ();
+		up_arrow = (GUITexture)ua.AddComponent (typeof(GUITexture));
+		up_arrow.texture = arrow_texture;
+		up_arrow.transform.position =  new Vector3 (0.75f, 0.2f, 0);
+		up_arrow.transform.localScale = new Vector3 (0.1f, 0.11f, 0);
+		
+
+		GameObject da = new GameObject ();
+		down_arrow = (GUITexture)da.AddComponent (typeof(GUITexture));
+		down_arrow.texture = arrow_texture;
+		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
+		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+
+		Debug.Log ("Init arrows");
+
 	}
 	
 	// Update is called once per frame
@@ -109,6 +149,8 @@ public class CanonQuest : QuestBase {
 			if(canonball_in_air)
 				UpdateCanonballs();
 		}
+
+
 	}
 
 	private void Fire(){
