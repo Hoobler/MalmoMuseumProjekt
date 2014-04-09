@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CanonQuest : QuestBase,  {
+public class CanonQuest : QuestBase  {
 
 	private const int TOTAL_CANONBALLS = 5;
 	private int canonballs_shot;
