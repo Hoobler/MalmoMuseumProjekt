@@ -22,6 +22,24 @@ public class TouchInput : MonoBehaviour {
 		else{
 			for(int i = 0; i < Input.touchCount; i++){
 				currTouch = i;
+
+				if(this.guiTexture != null && (this.guiTexture.HitTest(Input.GetTouch(i).position)))
+				{
+					//if current touch hits our guitexture, run this code
+					if(Input.GetTouch(i).phase == TouchPhase.Began)
+					{
+						OnTouchTextureBegan();
+						touchToCheck = currTouch;
+					}
+					if(Input.GetTouch(i).phase == TouchPhase.Ended)
+					{
+						OnTouchTextureEnded();
+					}
+					if(Input.GetTouch(i).phase == TouchPhase.Moved)
+					{
+						OnTouchTextureMoved();
+					}
+				}
 				if(Input.GetTouch(i).phase == TouchPhase.Began){
 					OnTouchBegan();
 				}
@@ -43,4 +61,7 @@ public class TouchInput : MonoBehaviour {
 	public virtual void OnTouchMoved(){}
 	public virtual void OnTouchEnded(){}
 	public virtual void OnTouchStationary(){}
+	public virtual void OnTouchTextureBegan(){}
+	public virtual void OnTouchTextureMoved(){}
+	public virtual void OnTouchTextureEnded(){}
 }
