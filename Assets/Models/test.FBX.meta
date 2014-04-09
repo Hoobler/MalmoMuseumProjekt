@@ -1,0 +1,1110 @@
+fileFormatVersion: 2
+guid: c99583de1b019e74a828375ce43fa43f
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: 3dSolid
+    100002: 3dSolid 1
+    100004: 3dSolid 10
+    100006: 3dSolid 100
+    100008: 3dSolid 101
+    100010: 3dSolid 102
+    100012: 3dSolid 103
+    100014: 3dSolid 104
+    100016: 3dSolid 105
+    100018: 3dSolid 106
+    100020: 3dSolid 107
+    100022: 3dSolid 108
+    100024: 3dSolid 109
+    100026: 3dSolid 11
+    100028: 3dSolid 110
+    100030: 3dSolid 111
+    100032: 3dSolid 112
+    100034: 3dSolid 113
+    100036: 3dSolid 114
+    100038: 3dSolid 115
+    100040: 3dSolid 116
+    100042: 3dSolid 117
+    100044: 3dSolid 118
+    100046: 3dSolid 119
+    100048: 3dSolid 12
+    100050: 3dSolid 120
+    100052: 3dSolid 121
+    100054: 3dSolid 122
+    100056: 3dSolid 123
+    100058: 3dSolid 124
+    100060: 3dSolid 125
+    100062: 3dSolid 126
+    100064: 3dSolid 127
+    100066: 3dSolid 128
+    100068: 3dSolid 129
+    100070: 3dSolid 13
+    100072: 3dSolid 130
+    100074: 3dSolid 131
+    100076: 3dSolid 132
+    100078: 3dSolid 133
+    100080: 3dSolid 134
+    100082: 3dSolid 135
+    100084: 3dSolid 136
+    100086: 3dSolid 137
+    100088: 3dSolid 138
+    100090: 3dSolid 139
+    100092: 3dSolid 14
+    100094: 3dSolid 140
+    100096: 3dSolid 141
+    100098: 3dSolid 142
+    100100: 3dSolid 143
+    100102: 3dSolid 144
+    100104: 3dSolid 145
+    100106: 3dSolid 146
+    100108: 3dSolid 147
+    100110: 3dSolid 148
+    100112: 3dSolid 149
+    100114: 3dSolid 15
+    100116: 3dSolid 150
+    100118: 3dSolid 151
+    100120: 3dSolid 152
+    100122: 3dSolid 153
+    100124: 3dSolid 154
+    100126: 3dSolid 155
+    100128: 3dSolid 156
+    100130: 3dSolid 157
+    100132: 3dSolid 158
+    100134: 3dSolid 159
+    100136: 3dSolid 16
+    100138: 3dSolid 160
+    100140: 3dSolid 161
+    100142: 3dSolid 162
+    100144: 3dSolid 163
+    100146: 3dSolid 164
+    100148: 3dSolid 165
+    100150: 3dSolid 17
+    100152: 3dSolid 18
+    100154: 3dSolid 19
+    100156: 3dSolid 2
+    100158: 3dSolid 20
+    100160: 3dSolid 21
+    100162: 3dSolid 22
+    100164: 3dSolid 23
+    100166: 3dSolid 24
+    100168: 3dSolid 25
+    100170: 3dSolid 26
+    100172: 3dSolid 27
+    100174: 3dSolid 28
+    100176: 3dSolid 29
+    100178: 3dSolid 3
+    100180: 3dSolid 30
+    100182: 3dSolid 31
+    100184: 3dSolid 32
+    100186: 3dSolid 33
+    100188: 3dSolid 34
+    100190: 3dSolid 35
+    100192: 3dSolid 36
+    100194: 3dSolid 37
+    100196: 3dSolid 38
+    100198: 3dSolid 39
+    100200: 3dSolid 4
+    100202: 3dSolid 40
+    100204: 3dSolid 41
+    100206: 3dSolid 42
+    100208: 3dSolid 43
+    100210: 3dSolid 44
+    100212: 3dSolid 45
+    100214: 3dSolid 46
+    100216: 3dSolid 47
+    100218: 3dSolid 48
+    100220: 3dSolid 49
+    100222: 3dSolid 5
+    100224: 3dSolid 50
+    100226: 3dSolid 51
+    100228: 3dSolid 52
+    100230: 3dSolid 53
+    100232: 3dSolid 54
+    100234: 3dSolid 55
+    100236: 3dSolid 56
+    100238: 3dSolid 57
+    100240: 3dSolid 58
+    100242: 3dSolid 59
+    100244: 3dSolid 6
+    100246: 3dSolid 60
+    100248: 3dSolid 61
+    100250: 3dSolid 62
+    100252: 3dSolid 63
+    100254: 3dSolid 64
+    100256: 3dSolid 65
+    100258: 3dSolid 66
+    100260: 3dSolid 67
+    100262: 3dSolid 68
+    100264: 3dSolid 69
+    100266: 3dSolid 7
+    100268: 3dSolid 70
+    100270: 3dSolid 71
+    100272: 3dSolid 72
+    100274: 3dSolid 73
+    100276: 3dSolid 74
+    100278: 3dSolid 75
+    100280: 3dSolid 76
+    100282: 3dSolid 77
+    100284: 3dSolid 78
+    100286: 3dSolid 79
+    100288: 3dSolid 8
+    100290: 3dSolid 80
+    100292: 3dSolid 81
+    100294: 3dSolid 82
+    100296: 3dSolid 83
+    100298: 3dSolid 84
+    100300: 3dSolid 85
+    100302: 3dSolid 86
+    100304: 3dSolid 87
+    100306: 3dSolid 88
+    100308: 3dSolid 89
+    100310: 3dSolid 9
+    100312: 3dSolid 90
+    100314: 3dSolid 91
+    100316: 3dSolid 92
+    100318: 3dSolid 93
+    100320: 3dSolid 94
+    100322: 3dSolid 95
+    100324: 3dSolid 96
+    100326: 3dSolid 97
+    100328: 3dSolid 98
+    100330: 3dSolid 99
+    100332: 3dSolid007
+    100334: 3dSolid008
+    100336: 3dSolid009
+    100338: 3dSolid01
+    100340: 3dSolid010
+    100342: 3dSolid011
+    100344: 3dSolid02
+    100346: 3dSolid03
+    100348: 3dSolid04
+    100350: 3dSolid05
+    100352: 3dSolid06
+    100354: G468
+    100356: L_Bricks_004
+    100358: L_Bricks_005
+    100360: L_Bricks_007
+    100362: L_Bricks_010
+    100364: L_Bricks_011
+    100366: L_Puts_009
+    100368: L_Roof_003
+    100370: L_Roof_005
+    100372: L_Stone_002
+    100374: L_Stone_003
+    100376: L_Wood_007
+    100378: L_Wood_011
+    100380: L_Wood_023
+    100382: L_Wood_024
+    100384: L_Wood_028
+    100386: Object001
+    100388: Object01
+    100390: Object02
+    100392: S_Beam_015
+    100394: S_Beam_019
+    100396: S_Beam_026
+    100398: S_Door_005
+    100400: S_Door_009
+    100402: S_Door_018
+    100404: S_Door_028
+    100406: S_Stone_002
+    100408: S_Stone_003
+    100410: S_Window_010
+    100412: S_Window_035
+    100414: S_Window_041
+    100416: S_Window_042
+    100418: S_Window_043
+    100420: //RootNode
+    400000: 3dSolid
+    400002: 3dSolid 1
+    400004: 3dSolid 10
+    400006: 3dSolid 100
+    400008: 3dSolid 101
+    400010: 3dSolid 102
+    400012: 3dSolid 103
+    400014: 3dSolid 104
+    400016: 3dSolid 105
+    400018: 3dSolid 106
+    400020: 3dSolid 107
+    400022: 3dSolid 108
+    400024: 3dSolid 109
+    400026: 3dSolid 11
+    400028: 3dSolid 110
+    400030: 3dSolid 111
+    400032: 3dSolid 112
+    400034: 3dSolid 113
+    400036: 3dSolid 114
+    400038: 3dSolid 115
+    400040: 3dSolid 116
+    400042: 3dSolid 117
+    400044: 3dSolid 118
+    400046: 3dSolid 119
+    400048: 3dSolid 12
+    400050: 3dSolid 120
+    400052: 3dSolid 121
+    400054: 3dSolid 122
+    400056: 3dSolid 123
+    400058: 3dSolid 124
+    400060: 3dSolid 125
+    400062: 3dSolid 126
+    400064: 3dSolid 127
+    400066: 3dSolid 128
+    400068: 3dSolid 129
+    400070: 3dSolid 13
+    400072: 3dSolid 130
+    400074: 3dSolid 131
+    400076: 3dSolid 132
+    400078: 3dSolid 133
+    400080: 3dSolid 134
+    400082: 3dSolid 135
+    400084: 3dSolid 136
+    400086: 3dSolid 137
+    400088: 3dSolid 138
+    400090: 3dSolid 139
+    400092: 3dSolid 14
+    400094: 3dSolid 140
+    400096: 3dSolid 141
+    400098: 3dSolid 142
+    400100: 3dSolid 143
+    400102: 3dSolid 144
+    400104: 3dSolid 145
+    400106: 3dSolid 146
+    400108: 3dSolid 147
+    400110: 3dSolid 148
+    400112: 3dSolid 149
+    400114: 3dSolid 15
+    400116: 3dSolid 150
+    400118: 3dSolid 151
+    400120: 3dSolid 152
+    400122: 3dSolid 153
+    400124: 3dSolid 154
+    400126: 3dSolid 155
+    400128: 3dSolid 156
+    400130: 3dSolid 157
+    400132: 3dSolid 158
+    400134: 3dSolid 159
+    400136: 3dSolid 16
+    400138: 3dSolid 160
+    400140: 3dSolid 161
+    400142: 3dSolid 162
+    400144: 3dSolid 163
+    400146: 3dSolid 164
+    400148: 3dSolid 165
+    400150: 3dSolid 17
+    400152: 3dSolid 18
+    400154: 3dSolid 19
+    400156: 3dSolid 2
+    400158: 3dSolid 20
+    400160: 3dSolid 21
+    400162: 3dSolid 22
+    400164: 3dSolid 23
+    400166: 3dSolid 24
+    400168: 3dSolid 25
+    400170: 3dSolid 26
+    400172: 3dSolid 27
+    400174: 3dSolid 28
+    400176: 3dSolid 29
+    400178: 3dSolid 3
+    400180: 3dSolid 30
+    400182: 3dSolid 31
+    400184: 3dSolid 32
+    400186: 3dSolid 33
+    400188: 3dSolid 34
+    400190: 3dSolid 35
+    400192: 3dSolid 36
+    400194: 3dSolid 37
+    400196: 3dSolid 38
+    400198: 3dSolid 39
+    400200: 3dSolid 4
+    400202: 3dSolid 40
+    400204: 3dSolid 41
+    400206: 3dSolid 42
+    400208: 3dSolid 43
+    400210: 3dSolid 44
+    400212: 3dSolid 45
+    400214: 3dSolid 46
+    400216: 3dSolid 47
+    400218: 3dSolid 48
+    400220: 3dSolid 49
+    400222: 3dSolid 5
+    400224: 3dSolid 50
+    400226: 3dSolid 51
+    400228: 3dSolid 52
+    400230: 3dSolid 53
+    400232: 3dSolid 54
+    400234: 3dSolid 55
+    400236: 3dSolid 56
+    400238: 3dSolid 57
+    400240: 3dSolid 58
+    400242: 3dSolid 59
+    400244: 3dSolid 6
+    400246: 3dSolid 60
+    400248: 3dSolid 61
+    400250: 3dSolid 62
+    400252: 3dSolid 63
+    400254: 3dSolid 64
+    400256: 3dSolid 65
+    400258: 3dSolid 66
+    400260: 3dSolid 67
+    400262: 3dSolid 68
+    400264: 3dSolid 69
+    400266: 3dSolid 7
+    400268: 3dSolid 70
+    400270: 3dSolid 71
+    400272: 3dSolid 72
+    400274: 3dSolid 73
+    400276: 3dSolid 74
+    400278: 3dSolid 75
+    400280: 3dSolid 76
+    400282: 3dSolid 77
+    400284: 3dSolid 78
+    400286: 3dSolid 79
+    400288: 3dSolid 8
+    400290: 3dSolid 80
+    400292: 3dSolid 81
+    400294: 3dSolid 82
+    400296: 3dSolid 83
+    400298: 3dSolid 84
+    400300: 3dSolid 85
+    400302: 3dSolid 86
+    400304: 3dSolid 87
+    400306: 3dSolid 88
+    400308: 3dSolid 89
+    400310: 3dSolid 9
+    400312: 3dSolid 90
+    400314: 3dSolid 91
+    400316: 3dSolid 92
+    400318: 3dSolid 93
+    400320: 3dSolid 94
+    400322: 3dSolid 95
+    400324: 3dSolid 96
+    400326: 3dSolid 97
+    400328: 3dSolid 98
+    400330: 3dSolid 99
+    400332: 3dSolid007
+    400334: 3dSolid008
+    400336: 3dSolid009
+    400338: 3dSolid01
+    400340: 3dSolid010
+    400342: 3dSolid011
+    400344: 3dSolid02
+    400346: 3dSolid03
+    400348: 3dSolid04
+    400350: 3dSolid05
+    400352: 3dSolid06
+    400354: G468
+    400356: L_Bricks_004
+    400358: L_Bricks_005
+    400360: L_Bricks_007
+    400362: L_Bricks_010
+    400364: L_Bricks_011
+    400366: L_Puts_009
+    400368: L_Roof_003
+    400370: L_Roof_005
+    400372: L_Stone_002
+    400374: L_Stone_003
+    400376: L_Wood_007
+    400378: L_Wood_011
+    400380: L_Wood_023
+    400382: L_Wood_024
+    400384: L_Wood_028
+    400386: Object001
+    400388: Object01
+    400390: Object02
+    400392: S_Beam_015
+    400394: S_Beam_019
+    400396: S_Beam_026
+    400398: S_Door_005
+    400400: S_Door_009
+    400402: S_Door_018
+    400404: S_Door_028
+    400406: S_Stone_002
+    400408: S_Stone_003
+    400410: S_Window_010
+    400412: S_Window_035
+    400414: S_Window_041
+    400416: S_Window_042
+    400418: S_Window_043
+    400420: //RootNode
+    2300000: 3dSolid
+    2300002: 3dSolid 1
+    2300004: 3dSolid 10
+    2300006: 3dSolid 100
+    2300008: 3dSolid 101
+    2300010: 3dSolid 102
+    2300012: 3dSolid 103
+    2300014: 3dSolid 104
+    2300016: 3dSolid 105
+    2300018: 3dSolid 106
+    2300020: 3dSolid 107
+    2300022: 3dSolid 108
+    2300024: 3dSolid 109
+    2300026: 3dSolid 11
+    2300028: 3dSolid 110
+    2300030: 3dSolid 111
+    2300032: 3dSolid 112
+    2300034: 3dSolid 113
+    2300036: 3dSolid 114
+    2300038: 3dSolid 115
+    2300040: 3dSolid 116
+    2300042: 3dSolid 117
+    2300044: 3dSolid 118
+    2300046: 3dSolid 119
+    2300048: 3dSolid 12
+    2300050: 3dSolid 120
+    2300052: 3dSolid 121
+    2300054: 3dSolid 122
+    2300056: 3dSolid 123
+    2300058: 3dSolid 124
+    2300060: 3dSolid 125
+    2300062: 3dSolid 126
+    2300064: 3dSolid 127
+    2300066: 3dSolid 128
+    2300068: 3dSolid 129
+    2300070: 3dSolid 13
+    2300072: 3dSolid 130
+    2300074: 3dSolid 131
+    2300076: 3dSolid 132
+    2300078: 3dSolid 133
+    2300080: 3dSolid 134
+    2300082: 3dSolid 135
+    2300084: 3dSolid 136
+    2300086: 3dSolid 137
+    2300088: 3dSolid 138
+    2300090: 3dSolid 139
+    2300092: 3dSolid 14
+    2300094: 3dSolid 140
+    2300096: 3dSolid 141
+    2300098: 3dSolid 142
+    2300100: 3dSolid 143
+    2300102: 3dSolid 144
+    2300104: 3dSolid 145
+    2300106: 3dSolid 146
+    2300108: 3dSolid 147
+    2300110: 3dSolid 148
+    2300112: 3dSolid 149
+    2300114: 3dSolid 15
+    2300116: 3dSolid 150
+    2300118: 3dSolid 151
+    2300120: 3dSolid 152
+    2300122: 3dSolid 153
+    2300124: 3dSolid 154
+    2300126: 3dSolid 155
+    2300128: 3dSolid 156
+    2300130: 3dSolid 157
+    2300132: 3dSolid 158
+    2300134: 3dSolid 159
+    2300136: 3dSolid 16
+    2300138: 3dSolid 160
+    2300140: 3dSolid 161
+    2300142: 3dSolid 162
+    2300144: 3dSolid 163
+    2300146: 3dSolid 164
+    2300148: 3dSolid 165
+    2300150: 3dSolid 17
+    2300152: 3dSolid 18
+    2300154: 3dSolid 19
+    2300156: 3dSolid 2
+    2300158: 3dSolid 20
+    2300160: 3dSolid 21
+    2300162: 3dSolid 22
+    2300164: 3dSolid 23
+    2300166: 3dSolid 24
+    2300168: 3dSolid 25
+    2300170: 3dSolid 26
+    2300172: 3dSolid 27
+    2300174: 3dSolid 28
+    2300176: 3dSolid 29
+    2300178: 3dSolid 3
+    2300180: 3dSolid 30
+    2300182: 3dSolid 31
+    2300184: 3dSolid 32
+    2300186: 3dSolid 33
+    2300188: 3dSolid 34
+    2300190: 3dSolid 35
+    2300192: 3dSolid 36
+    2300194: 3dSolid 37
+    2300196: 3dSolid 38
+    2300198: 3dSolid 39
+    2300200: 3dSolid 4
+    2300202: 3dSolid 40
+    2300204: 3dSolid 41
+    2300206: 3dSolid 42
+    2300208: 3dSolid 43
+    2300210: 3dSolid 44
+    2300212: 3dSolid 45
+    2300214: 3dSolid 46
+    2300216: 3dSolid 47
+    2300218: 3dSolid 48
+    2300220: 3dSolid 49
+    2300222: 3dSolid 5
+    2300224: 3dSolid 50
+    2300226: 3dSolid 51
+    2300228: 3dSolid 52
+    2300230: 3dSolid 53
+    2300232: 3dSolid 54
+    2300234: 3dSolid 55
+    2300236: 3dSolid 56
+    2300238: 3dSolid 57
+    2300240: 3dSolid 58
+    2300242: 3dSolid 59
+    2300244: 3dSolid 6
+    2300246: 3dSolid 60
+    2300248: 3dSolid 61
+    2300250: 3dSolid 62
+    2300252: 3dSolid 63
+    2300254: 3dSolid 64
+    2300256: 3dSolid 65
+    2300258: 3dSolid 66
+    2300260: 3dSolid 67
+    2300262: 3dSolid 68
+    2300264: 3dSolid 69
+    2300266: 3dSolid 7
+    2300268: 3dSolid 70
+    2300270: 3dSolid 71
+    2300272: 3dSolid 72
+    2300274: 3dSolid 73
+    2300276: 3dSolid 74
+    2300278: 3dSolid 75
+    2300280: 3dSolid 76
+    2300282: 3dSolid 77
+    2300284: 3dSolid 78
+    2300286: 3dSolid 79
+    2300288: 3dSolid 8
+    2300290: 3dSolid 80
+    2300292: 3dSolid 81
+    2300294: 3dSolid 82
+    2300296: 3dSolid 83
+    2300298: 3dSolid 84
+    2300300: 3dSolid 85
+    2300302: 3dSolid 86
+    2300304: 3dSolid 87
+    2300306: 3dSolid 88
+    2300308: 3dSolid 89
+    2300310: 3dSolid 9
+    2300312: 3dSolid 90
+    2300314: 3dSolid 91
+    2300316: 3dSolid 92
+    2300318: 3dSolid 93
+    2300320: 3dSolid 94
+    2300322: 3dSolid 95
+    2300324: 3dSolid 96
+    2300326: 3dSolid 97
+    2300328: 3dSolid 98
+    2300330: 3dSolid 99
+    2300332: 3dSolid007
+    2300334: 3dSolid008
+    2300336: 3dSolid009
+    2300338: 3dSolid01
+    2300340: 3dSolid010
+    2300342: 3dSolid011
+    2300344: 3dSolid02
+    2300346: 3dSolid03
+    2300348: 3dSolid04
+    2300350: 3dSolid05
+    2300352: 3dSolid06
+    2300354: G468
+    2300356: L_Bricks_004
+    2300358: L_Bricks_005
+    2300360: L_Bricks_007
+    2300362: L_Bricks_010
+    2300364: L_Bricks_011
+    2300366: L_Puts_009
+    2300368: L_Roof_003
+    2300370: L_Roof_005
+    2300372: L_Stone_002
+    2300374: L_Stone_003
+    2300376: L_Wood_007
+    2300378: L_Wood_011
+    2300380: L_Wood_023
+    2300382: L_Wood_024
+    2300384: L_Wood_028
+    2300386: Object001
+    2300388: Object01
+    2300390: Object02
+    2300392: S_Beam_015
+    2300394: S_Beam_019
+    2300396: S_Beam_026
+    2300398: S_Door_005
+    2300400: S_Door_009
+    2300402: S_Door_018
+    2300404: S_Door_028
+    2300406: S_Stone_002
+    2300408: S_Stone_003
+    2300410: S_Window_010
+    2300412: S_Window_035
+    2300414: S_Window_041
+    2300416: S_Window_042
+    2300418: S_Window_043
+    3300000: 3dSolid
+    3300002: 3dSolid 1
+    3300004: 3dSolid 10
+    3300006: 3dSolid 100
+    3300008: 3dSolid 101
+    3300010: 3dSolid 102
+    3300012: 3dSolid 103
+    3300014: 3dSolid 104
+    3300016: 3dSolid 105
+    3300018: 3dSolid 106
+    3300020: 3dSolid 107
+    3300022: 3dSolid 108
+    3300024: 3dSolid 109
+    3300026: 3dSolid 11
+    3300028: 3dSolid 110
+    3300030: 3dSolid 111
+    3300032: 3dSolid 112
+    3300034: 3dSolid 113
+    3300036: 3dSolid 114
+    3300038: 3dSolid 115
+    3300040: 3dSolid 116
+    3300042: 3dSolid 117
+    3300044: 3dSolid 118
+    3300046: 3dSolid 119
+    3300048: 3dSolid 12
+    3300050: 3dSolid 120
+    3300052: 3dSolid 121
+    3300054: 3dSolid 122
+    3300056: 3dSolid 123
+    3300058: 3dSolid 124
+    3300060: 3dSolid 125
+    3300062: 3dSolid 126
+    3300064: 3dSolid 127
+    3300066: 3dSolid 128
+    3300068: 3dSolid 129
+    3300070: 3dSolid 13
+    3300072: 3dSolid 130
+    3300074: 3dSolid 131
+    3300076: 3dSolid 132
+    3300078: 3dSolid 133
+    3300080: 3dSolid 134
+    3300082: 3dSolid 135
+    3300084: 3dSolid 136
+    3300086: 3dSolid 137
+    3300088: 3dSolid 138
+    3300090: 3dSolid 139
+    3300092: 3dSolid 14
+    3300094: 3dSolid 140
+    3300096: 3dSolid 141
+    3300098: 3dSolid 142
+    3300100: 3dSolid 143
+    3300102: 3dSolid 144
+    3300104: 3dSolid 145
+    3300106: 3dSolid 146
+    3300108: 3dSolid 147
+    3300110: 3dSolid 148
+    3300112: 3dSolid 149
+    3300114: 3dSolid 15
+    3300116: 3dSolid 150
+    3300118: 3dSolid 151
+    3300120: 3dSolid 152
+    3300122: 3dSolid 153
+    3300124: 3dSolid 154
+    3300126: 3dSolid 155
+    3300128: 3dSolid 156
+    3300130: 3dSolid 157
+    3300132: 3dSolid 158
+    3300134: 3dSolid 159
+    3300136: 3dSolid 16
+    3300138: 3dSolid 160
+    3300140: 3dSolid 161
+    3300142: 3dSolid 162
+    3300144: 3dSolid 163
+    3300146: 3dSolid 164
+    3300148: 3dSolid 165
+    3300150: 3dSolid 17
+    3300152: 3dSolid 18
+    3300154: 3dSolid 19
+    3300156: 3dSolid 2
+    3300158: 3dSolid 20
+    3300160: 3dSolid 21
+    3300162: 3dSolid 22
+    3300164: 3dSolid 23
+    3300166: 3dSolid 24
+    3300168: 3dSolid 25
+    3300170: 3dSolid 26
+    3300172: 3dSolid 27
+    3300174: 3dSolid 28
+    3300176: 3dSolid 29
+    3300178: 3dSolid 3
+    3300180: 3dSolid 30
+    3300182: 3dSolid 31
+    3300184: 3dSolid 32
+    3300186: 3dSolid 33
+    3300188: 3dSolid 34
+    3300190: 3dSolid 35
+    3300192: 3dSolid 36
+    3300194: 3dSolid 37
+    3300196: 3dSolid 38
+    3300198: 3dSolid 39
+    3300200: 3dSolid 4
+    3300202: 3dSolid 40
+    3300204: 3dSolid 41
+    3300206: 3dSolid 42
+    3300208: 3dSolid 43
+    3300210: 3dSolid 44
+    3300212: 3dSolid 45
+    3300214: 3dSolid 46
+    3300216: 3dSolid 47
+    3300218: 3dSolid 48
+    3300220: 3dSolid 49
+    3300222: 3dSolid 5
+    3300224: 3dSolid 50
+    3300226: 3dSolid 51
+    3300228: 3dSolid 52
+    3300230: 3dSolid 53
+    3300232: 3dSolid 54
+    3300234: 3dSolid 55
+    3300236: 3dSolid 56
+    3300238: 3dSolid 57
+    3300240: 3dSolid 58
+    3300242: 3dSolid 59
+    3300244: 3dSolid 6
+    3300246: 3dSolid 60
+    3300248: 3dSolid 61
+    3300250: 3dSolid 62
+    3300252: 3dSolid 63
+    3300254: 3dSolid 64
+    3300256: 3dSolid 65
+    3300258: 3dSolid 66
+    3300260: 3dSolid 67
+    3300262: 3dSolid 68
+    3300264: 3dSolid 69
+    3300266: 3dSolid 7
+    3300268: 3dSolid 70
+    3300270: 3dSolid 71
+    3300272: 3dSolid 72
+    3300274: 3dSolid 73
+    3300276: 3dSolid 74
+    3300278: 3dSolid 75
+    3300280: 3dSolid 76
+    3300282: 3dSolid 77
+    3300284: 3dSolid 78
+    3300286: 3dSolid 79
+    3300288: 3dSolid 8
+    3300290: 3dSolid 80
+    3300292: 3dSolid 81
+    3300294: 3dSolid 82
+    3300296: 3dSolid 83
+    3300298: 3dSolid 84
+    3300300: 3dSolid 85
+    3300302: 3dSolid 86
+    3300304: 3dSolid 87
+    3300306: 3dSolid 88
+    3300308: 3dSolid 89
+    3300310: 3dSolid 9
+    3300312: 3dSolid 90
+    3300314: 3dSolid 91
+    3300316: 3dSolid 92
+    3300318: 3dSolid 93
+    3300320: 3dSolid 94
+    3300322: 3dSolid 95
+    3300324: 3dSolid 96
+    3300326: 3dSolid 97
+    3300328: 3dSolid 98
+    3300330: 3dSolid 99
+    3300332: 3dSolid007
+    3300334: 3dSolid008
+    3300336: 3dSolid009
+    3300338: 3dSolid01
+    3300340: 3dSolid010
+    3300342: 3dSolid011
+    3300344: 3dSolid02
+    3300346: 3dSolid03
+    3300348: 3dSolid04
+    3300350: 3dSolid05
+    3300352: 3dSolid06
+    3300354: G468
+    3300356: L_Bricks_004
+    3300358: L_Bricks_005
+    3300360: L_Bricks_007
+    3300362: L_Bricks_010
+    3300364: L_Bricks_011
+    3300366: L_Puts_009
+    3300368: L_Roof_003
+    3300370: L_Roof_005
+    3300372: L_Stone_002
+    3300374: L_Stone_003
+    3300376: L_Wood_007
+    3300378: L_Wood_011
+    3300380: L_Wood_023
+    3300382: L_Wood_024
+    3300384: L_Wood_028
+    3300386: Object001
+    3300388: Object01
+    3300390: Object02
+    3300392: S_Beam_015
+    3300394: S_Beam_019
+    3300396: S_Beam_026
+    3300398: S_Door_005
+    3300400: S_Door_009
+    3300402: S_Door_018
+    3300404: S_Door_028
+    3300406: S_Stone_002
+    3300408: S_Stone_003
+    3300410: S_Window_010
+    3300412: S_Window_035
+    3300414: S_Window_041
+    3300416: S_Window_042
+    3300418: S_Window_043
+    4300000: G468
+    4300002: 3dSolid05
+    4300004: 3dSolid
+    4300006: 3dSolid
+    4300008: 3dSolid
+    4300010: 3dSolid
+    4300012: 3dSolid
+    4300014: 3dSolid
+    4300016: 3dSolid
+    4300018: 3dSolid
+    4300020: 3dSolid
+    4300022: 3dSolid
+    4300024: 3dSolid
+    4300026: 3dSolid
+    4300028: 3dSolid
+    4300030: 3dSolid
+    4300032: 3dSolid
+    4300034: 3dSolid
+    4300036: 3dSolid01
+    4300038: 3dSolid
+    4300040: 3dSolid
+    4300042: 3dSolid
+    4300044: 3dSolid
+    4300046: 3dSolid
+    4300048: 3dSolid
+    4300050: 3dSolid
+    4300052: 3dSolid
+    4300054: 3dSolid
+    4300056: 3dSolid
+    4300058: 3dSolid
+    4300060: 3dSolid
+    4300062: 3dSolid
+    4300064: 3dSolid
+    4300066: 3dSolid
+    4300068: 3dSolid
+    4300070: 3dSolid
+    4300072: 3dSolid
+    4300074: 3dSolid
+    4300076: 3dSolid
+    4300078: 3dSolid
+    4300080: 3dSolid
+    4300082: 3dSolid
+    4300084: 3dSolid
+    4300086: 3dSolid
+    4300088: 3dSolid
+    4300090: 3dSolid
+    4300092: 3dSolid
+    4300094: 3dSolid
+    4300096: 3dSolid
+    4300098: 3dSolid
+    4300100: 3dSolid
+    4300102: 3dSolid
+    4300104: 3dSolid
+    4300106: 3dSolid
+    4300108: 3dSolid
+    4300110: 3dSolid
+    4300112: 3dSolid
+    4300114: 3dSolid
+    4300116: 3dSolid
+    4300118: 3dSolid
+    4300120: 3dSolid
+    4300122: 3dSolid008
+    4300124: 3dSolid
+    4300126: 3dSolid
+    4300128: 3dSolid
+    4300130: 3dSolid
+    4300132: 3dSolid
+    4300134: 3dSolid
+    4300136: 3dSolid
+    4300138: 3dSolid
+    4300140: 3dSolid
+    4300142: 3dSolid
+    4300144: 3dSolid009
+    4300146: 3dSolid
+    4300148: 3dSolid
+    4300150: 3dSolid
+    4300152: 3dSolid
+    4300154: 3dSolid
+    4300156: 3dSolid
+    4300158: 3dSolid
+    4300160: 3dSolid
+    4300162: 3dSolid
+    4300164: 3dSolid
+    4300166: 3dSolid
+    4300168: 3dSolid
+    4300170: Object001
+    4300172: 3dSolid010
+    4300174: 3dSolid011
+    4300176: 3dSolid
+    4300178: 3dSolid
+    4300180: 3dSolid
+    4300182: 3dSolid
+    4300184: 3dSolid
+    4300186: 3dSolid
+    4300188: 3dSolid
+    4300190: 3dSolid
+    4300192: 3dSolid
+    4300194: 3dSolid
+    4300196: 3dSolid
+    4300198: 3dSolid
+    4300200: 3dSolid
+    4300202: 3dSolid
+    4300204: 3dSolid
+    4300206: 3dSolid
+    4300208: 3dSolid
+    4300210: 3dSolid
+    4300212: 3dSolid
+    4300214: 3dSolid
+    4300216: 3dSolid
+    4300218: 3dSolid
+    4300220: 3dSolid
+    4300222: 3dSolid02
+    4300224: 3dSolid04
+    4300226: 3dSolid
+    4300228: 3dSolid
+    4300230: 3dSolid
+    4300232: 3dSolid
+    4300234: 3dSolid
+    4300236: 3dSolid
+    4300238: 3dSolid
+    4300240: 3dSolid
+    4300242: 3dSolid
+    4300244: 3dSolid
+    4300246: 3dSolid
+    4300248: 3dSolid
+    4300250: 3dSolid
+    4300252: 3dSolid
+    4300254: 3dSolid
+    4300256: 3dSolid
+    4300258: 3dSolid
+    4300260: 3dSolid
+    4300262: 3dSolid
+    4300264: 3dSolid
+    4300266: 3dSolid
+    4300268: 3dSolid
+    4300270: 3dSolid
+    4300272: 3dSolid
+    4300274: 3dSolid
+    4300276: 3dSolid
+    4300278: 3dSolid
+    4300280: 3dSolid
+    4300282: 3dSolid
+    4300284: 3dSolid
+    4300286: 3dSolid06
+    4300288: 3dSolid
+    4300290: 3dSolid
+    4300292: 3dSolid
+    4300294: 3dSolid
+    4300296: 3dSolid
+    4300298: 3dSolid
+    4300300: 3dSolid
+    4300302: Object01
+    4300304: Object02
+    4300306: 3dSolid03
+    4300308: 3dSolid
+    4300310: 3dSolid
+    4300312: 3dSolid
+    4300314: 3dSolid
+    4300316: 3dSolid
+    4300318: 3dSolid
+    4300320: 3dSolid
+    4300322: 3dSolid
+    4300324: 3dSolid
+    4300326: 3dSolid
+    4300328: 3dSolid
+    4300330: 3dSolid
+    4300332: 3dSolid
+    4300334: 3dSolid
+    4300336: 3dSolid
+    4300338: 3dSolid
+    4300340: 3dSolid
+    4300342: 3dSolid
+    4300344: 3dSolid
+    4300346: 3dSolid
+    4300348: 3dSolid
+    4300350: 3dSolid
+    4300352: 3dSolid
+    4300354: 3dSolid
+    4300356: 3dSolid
+    4300358: 3dSolid007
+    4300360: 3dSolid
+    4300362: S_Beam_015
+    4300364: S_Stone_003
+    4300366: L_Bricks_010
+    4300368: S_Door_005
+    4300370: L_Wood_023
+    4300372: S_Window_041
+    4300374: S_Window_042
+    4300376: S_Window_043
+    4300378: S_Door_018
+    4300380: L_Roof_005
+    4300382: L_Wood_007
+    4300384: L_Bricks_005
+    4300386: L_Puts_009
+    4300388: L_Wood_028
+    4300390: L_Bricks_007
+    4300392: L_Stone_002
+    4300394: S_Stone_002
+    4300396: S_Beam_026
+    4300398: L_Bricks_011
+    4300400: S_Window_010
+    4300402: L_Wood_011
+    4300404: S_Door_028
+    4300406: S_Window_035
+    4300408: S_Door_009
+    4300410: L_Stone_003
+    4300412: L_Bricks_004
+    4300414: S_Beam_019
+    4300416: L_Roof_003
+    4300418: L_Wood_024
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
