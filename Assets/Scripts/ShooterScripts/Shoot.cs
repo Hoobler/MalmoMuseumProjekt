@@ -28,6 +28,7 @@ public class Shoot : MonoBehaviour {
 		_questStared = false;
 		_firstHit = false;
 		EventManager.OnQuest += EventRespons;
+		EventManager.OnTouchEvent += TouchRespons;
 		particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
 		if(particle != null){
 			particle.Stop();
@@ -89,6 +90,13 @@ public class Shoot : MonoBehaviour {
 			else if (evArgs.Info == "ExitShootArea" && _questStared){
 				DisableWeapon();
 			}
+		}
+	}
+
+	void TouchRespons(TouchEnum touchEnum){
+		if (touchEnum == TouchEnum.Touched) {
+			Debug.Log("Touched Event in Shoot.CS");
+			RayCastChecker();
 		}
 	}
 

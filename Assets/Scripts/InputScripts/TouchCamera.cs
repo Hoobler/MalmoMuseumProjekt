@@ -42,5 +42,8 @@ public class TouchCamera : TouchInput {
 	public override void OnTouchEnded(){
 		if(TouchInput.currTouch == touchToCheck || Input.touches.Length <= 0)
 			touchToCheck = 64;
+		if (TouchInput.currTouch == touchToCheck) {
+			EventManager.TriggerOnTouchEvent(TouchEnum.Touched);
+		}
 	}
 }

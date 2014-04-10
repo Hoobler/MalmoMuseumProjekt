@@ -20,7 +20,7 @@ public class MusketQuest : MonoBehaviour {
 	private float _timeElapsed;
 	
 	void Start () {
-		EventManager.OnQuest += EventRespons;
+		EventManager.OnQuest += QuestRespons;
 
 		_questEnded = false;
 		_questStarted = false;
@@ -48,7 +48,7 @@ public class MusketQuest : MonoBehaviour {
 		}
 	}
 
-	void EventRespons(MiniGamesEnum miniEnum, QuestEventArgs evArgs){
+	void QuestRespons(MiniGamesEnum miniEnum, QuestEventArgs evArgs){
 		if(miniEnum == MiniGamesEnum.Musköt){
 			if(evArgs.QuestType == QuestTypeEnum.OnGoing){
 				if(evArgs.Info == "BullsEye" && _questStarted){
