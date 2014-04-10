@@ -95,10 +95,12 @@ public class Shoot : MonoBehaviour {
 
 	void TouchRespons(TouchEnum touchEnum){
 		if (touchEnum == TouchEnum.Touched) {
-			Debug.Log("Touched Event in Shoot.CS");
-			RayCastChecker();
-			if(particle != null){
-				particle.Play ();
+			if(_weaponActive && !_reloading){
+				Debug.Log("Touched Event in Shoot.CS");
+				RayCastChecker();
+				if(particle != null){
+					particle.Play ();
+				}
 			}
 		}
 	}
