@@ -97,6 +97,9 @@ public class Shoot : MonoBehaviour {
 		if (touchEnum == TouchEnum.Touched) {
 			Debug.Log("Touched Event in Shoot.CS");
 			RayCastChecker();
+			if(particle != null){
+				particle.Play ();
+			}
 		}
 	}
 
