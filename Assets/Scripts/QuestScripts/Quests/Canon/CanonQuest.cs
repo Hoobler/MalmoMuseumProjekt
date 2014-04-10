@@ -40,10 +40,9 @@ public class CanonQuest : QuestBase  {
 	GUITexture up_arrow;
 	GUITexture down_arrow;
 
+	//Called when player starts quest
 	public override void TriggerStart ()
 	{
-		Debug.Log ("Canon quest started");
-
 		mainCamera 	= GameObject.Find ("Main Camera");
 		canonCamera = GameObject.Find ("CanonCamera");
 		player		= GameObject.FindGameObjectWithTag ("Player");
@@ -69,6 +68,7 @@ public class CanonQuest : QuestBase  {
 		Init ();
 	}
 
+	//Called when player finishes quest
 	public override void TriggerFinish ()
 	{
 
@@ -111,8 +111,7 @@ public class CanonQuest : QuestBase  {
 		down_arrow.texture = arrow_texture;
 		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
 		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
-
-		Debug.Log ("Init arrows");
+		
 
 	}
 	
@@ -152,7 +151,7 @@ public class CanonQuest : QuestBase  {
 
 
 	}
-
+	//Called when player presses shoots the canon
 	private void Fire(){
 		smoke.Stop ();
 		smoke.Clear ();
@@ -165,6 +164,8 @@ public class CanonQuest : QuestBase  {
 		smoke.Play ();
 	}
 
+
+	//Updates reload timer and destroys canonball
 	private void UpdateCanonballs(){
 		reload_timer += Time.deltaTime;
 
@@ -175,14 +176,16 @@ public class CanonQuest : QuestBase  {
 		}
 	}
 
+	//Called from CanonBallScript when it hit's the boat
 	public void CanonBallTrigger(bool hit){
 		if (hit) {
 			nr_of_hits++;
-			UpdateShip();
+			ShipCollision();
 		}
 	}
 
-	private void UpdateShip(){
+	//Called when ship gets hit
+	private void ShipCollision(){
 		ShipScript script = ship.GetComponent (typeof(ShipScript)) as ShipScript;
 		if (script != null) {
 			script.Speed = new Vector3 (0.03f, -0.02f, 0.03f);
@@ -192,6 +195,7 @@ public class CanonQuest : QuestBase  {
 
 	}
 
+	//Draws GUI elements
 	void OnGUI(){
 		if (questActive) {
 			int sh = Screen.height;
