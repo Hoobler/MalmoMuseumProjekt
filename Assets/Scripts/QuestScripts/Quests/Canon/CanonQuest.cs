@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CanonQuest : QuestBase {
+public class CanonQuest : QuestBase  {
 
 	private const int TOTAL_CANONBALLS = 5;
 	private int canonballs_shot;
@@ -31,13 +31,18 @@ public class CanonQuest : QuestBase {
 
 	public Texture canonball_texture;
 	public Texture reloadbar_texture;
+	public Texture arrow_texture;
 
 	private bool questActive = false;
 
+	GUITexture left_arrow;
+	GUITexture right_arrow;
+	GUITexture up_arrow;
+	GUITexture down_arrow;
+
+	//Called when player starts quest
 	public override void TriggerStart ()
 	{
-		Debug.Log ("Canon quest started");
-
 		mainCamera 	= GameObject.Find ("Main Camera");
 		canonCamera = GameObject.Find ("CanonCamera");
 		player		= GameObject.FindGameObjectWithTag ("Player");
@@ -59,8 +64,11 @@ public class CanonQuest : QuestBase {
 			smoke.Clear ();
 			smoke.Stop ();
 		}
+
+		Init ();
 	}
 
+	//Called when player finishes quest
 	public override void TriggerFinish ()
 	{
 
@@ -74,6 +82,37 @@ public class CanonQuest : QuestBase {
 	void Start () {
 		ship = GameObject.Find ("Ship");
 		ship.SetActive (false);
+	}
+
+	//Initializes arrows on screen
+	void Init(){
+		GameObject la = new GameObject ();
+		left_arrow = (GUITexture)la.AddComponent (typeof(GUITexture));
+		left_arrow.texture = arrow_texture;
+		left_arrow.transform.position =  new Vector3 (0.65f, 0.1f, 0);
+		left_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+
+		GameObject ra = new GameObject ();
+		right_arrow = (GUITexture)ra.AddComponent (typeof(GUITexture));
+		right_arrow.texture = arrow_texture;
+		right_arrow.transform.position =  new Vector3 (0.85f, 0.1f, 0);
+		right_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+		
+
+		GameObject ua = new GameObject ();
+		up_arrow = (GUITexture)ua.AddComponent (typeof(GUITexture));
+		up_arrow.texture = arrow_texture;
+		up_arrow.transform.position =  new Vector3 (0.75f, 0.2f, 0);
+		up_arrow.transform.localScale = new Vector3 (0.1f, 0.11f, 0);
+		
+
+		GameObject da = new GameObject ();
+		down_arrow = (GUITexture)da.AddComponent (typeof(GUITexture));
+		down_arrow.texture = arrow_texture;
+		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
+		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+		
+
 	}
 	
 	// Update is called once per frame
@@ -109,8 +148,10 @@ public class CanonQuest : QuestBase {
 			if(canonball_in_air)
 				UpdateCanonballs();
 		}
-	}
 
+
+	}
+	//Called when player presses shoots the canon
 	private void Fire(){
 		smoke.Stop ();
 		smoke.Clear ();
@@ -123,6 +164,8 @@ public class CanonQuest : QuestBase {
 		smoke.Play ();
 	}
 
+
+	//Updates reload timer and destroys canonball
 	private void UpdateCanonballs(){
 		reload_timer += Time.deltaTime;
 
@@ -133,14 +176,16 @@ public class CanonQuest : QuestBase {
 		}
 	}
 
+	//Called from CanonBallScript when it hit's the boat
 	public void CanonBallTrigger(bool hit){
 		if (hit) {
 			nr_of_hits++;
-			UpdateShip();
+			ShipCollision();
 		}
 	}
 
-	private void UpdateShip(){
+	//Called when ship gets hit
+	private void ShipCollision(){
 		ShipScript script = ship.GetComponent (typeof(ShipScript)) as ShipScript;
 		if (script != null) {
 			script.Speed = new Vector3 (0.03f, -0.02f, 0.03f);
@@ -150,6 +195,7 @@ public class CanonQuest : QuestBase {
 
 	}
 
+	//Draws GUI elements
 	void OnGUI(){
 		if (questActive) {
 			int sh = Screen.height;
