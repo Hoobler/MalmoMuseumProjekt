@@ -5,6 +5,8 @@ public class SpawnScript : MonoBehaviour {
 	public GameObject pcController;
 	public GameObject androidController;
 
+	private GameObject temp;
+	private Vector3 spawnPos;
 	//private CreateDynamicContainer container;
 
 	void Start () {
@@ -13,12 +15,12 @@ public class SpawnScript : MonoBehaviour {
 		GameObject spawnObj = GameObject.Find("PlayerSpawn");
 		//GameObjectet som fps controlen ska parentas till
 		GameObject parent = GameObject.FindGameObjectWithTag("DynamicObjects");
-		Vector3 spawnPos = spawnObj.transform.position;
+		spawnPos = spawnObj.transform.position;
 	#if UNITY_STANDALONE_WIN
-		GameObject temp = Instantiate(pcController, spawnPos, Quaternion.identity) as GameObject;
+		temp = Instantiate(pcController, spawnPos, Quaternion.identity) as GameObject;
 	#endif
 	#if UNITY_ANDROID
-		GameObject temp = Instantiate(androidController, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+		temp = Instantiate(androidController, new Vector3(0,0,0), Quaternion.identity) as GameObject;
 	#endif
 
 		if (parent == null) {
@@ -30,13 +32,11 @@ public class SpawnScript : MonoBehaviour {
 			temp.transform.parent = parent.transform;
 		}
 
+	}
 
-
-
-//		if (parent != null) {
-//			temp.transform.parent = parent.transform;
-//		} else if (parent == null) {
-//			Debug.Log("Parent object is null");
-//		}
+	void Update(){
+		//Respawnar spelaren ifall han är under vatten på slottet
+		if (temp.transform.position.y < 3.5f && Application.loadedLevel == 3)
+			temp.transform.position = spawnPos;
 	}
 }
