@@ -45,13 +45,13 @@ public class Shoot : MonoBehaviour {
 
 	void Update () {
 		if(_weaponActive && !_reloading){
-			if(Input.GetMouseButtonDown(0)){
-				Debug.Log("Mouse Shoot!");
-				RayCastChecker();
-				if(particle != null){
-					particle.Play ();
-				}
-			}
+//			if(Input.GetMouseButtonDown(0)){
+//				Debug.Log("Mouse Shoot!");
+//				RayCastChecker();
+//				if(particle != null){
+//					particle.Play ();
+//				}
+//			}
 //			if(Input.touchCount > 0){
 //				int i = 0;
 //				while (i++ < Input.touchCount){

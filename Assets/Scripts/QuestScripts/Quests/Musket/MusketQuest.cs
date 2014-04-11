@@ -12,15 +12,18 @@ public class MusketQuest : MonoBehaviour {
 
 	public float TimeLimit;
 	public Points Points;
+	public Transform ShootSpot;
 	
 	private bool _questStarted;
 	private bool _questEnded;
 	private bool _firstHit;
 	private int _totalPoints;
 	private float _timeElapsed;
+	private Transform _playerTransform;
 	
 	void Start () {
 		EventManager.OnQuest += QuestRespons;
+		_playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
 		_questEnded = false;
 		_questStarted = false;
@@ -65,10 +68,33 @@ public class MusketQuest : MonoBehaviour {
 				}
 			}
 			if(evArgs.QuestType == QuestTypeEnum.Started){
-				ResetQuest();
+				ResetQuest(); //Really start quest...
+				StartCoroutine(MovePlayerToShootSpot());
 				_questStarted = true;
 			}
 		}
+	}
+
+	//Should move the player to the spot where he is going to shoot from.
+	IEnumerator MovePlayerToShootSpot(){
+		float distToShootSpot = 0;
+		float rate = 0;
+		float speed = 2;
+		bool goToSpot = true;
+
+		Vector3 newShootSpot = new Vector3(ShootSpot.transform.position.x, transform.position.y, ShootSpot.transform.position.z);
+		while(goToSpot){
+				distToShootSpot = Vector3.Distance(_playerTransform.position, newShootSpot);
+				rate = Time.deltaTime * speed;
+				
+				if(distToShootSpot <= 0.01f){
+					goToSpot = false;
+				}
+				if(goToSpot){
+					this.transform.position = Vector3.MoveTowards(_playerTransform.position, newShootSpot, rate);
+					yield return null;
+				}
+			}
 	}
 
 	void HighScore(){
