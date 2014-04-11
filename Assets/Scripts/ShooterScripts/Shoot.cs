@@ -52,14 +52,14 @@ public class Shoot : MonoBehaviour {
 					particle.Play ();
 				}
 			}
-			if(Input.touchCount > 0){
-				int i = 0;
-				while (i++ < Input.touchCount){
-					if(Input.GetTouch(i).phase == TouchPhase.Ended){
-						RayCastChecker();
-					}
-				}
-			}
+//			if(Input.touchCount > 0){
+//				int i = 0;
+//				while (i++ < Input.touchCount){
+//					if(Input.GetTouch(i).phase == TouchPhase.Ended){
+//						RayCastChecker();
+//					}
+//				}
+//			}
 		}
 
 		if(_reloadTimeLeft <= 0){

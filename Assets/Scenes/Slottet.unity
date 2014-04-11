@@ -63502,7 +63502,7 @@ Transform:
   m_PrefabInternal: {fileID: 1493050286}
   m_GameObject: {fileID: 1218555582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.2776928, y: 7.61869717, z: -36.6009979}
+  m_LocalPosition: {x: 16.5535812, y: 8.98133659, z: -31.634861}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78773,15 +78773,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.2776928
+      value: 16.5535812
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.61869717
+      value: 8.98133659
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -36.6009979
+      value: -31.634861
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalRotation.x
@@ -107647,7 +107647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canonball_texture: {fileID: 2800000, guid: d3c5df92b4068f4489592e9497668ad7, type: 3}
   reloadbar_texture: {fileID: 2800000, guid: 0ab0b0a51e74dfb48be7285b3fb2e0ac, type: 3}
-  arrow_texture: {fileID: 0}
+  arrow_texture: {fileID: 2800000, guid: 636b3fafeee028d47a8dd6508c6dcb66, type: 3}
 --- !u!1 &2043636965
 GameObject:
   m_ObjectHideFlags: 0

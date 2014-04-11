@@ -35,12 +35,14 @@ public class SpawnInScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
+
 		if (fadein) {
 			alpha += 0.005f;
 			if(alpha >= 1.0f)
 				fadein = false;
 		}
 		if (fadeout) {
+			Debug.Log ("Fade out");
 			alpha -= 0.005f;
 			if(alpha <= 0.0f){
 				fadeout = false;
@@ -49,8 +51,10 @@ public class SpawnInScene : MonoBehaviour {
 			}
 		}
 
-		if (timer > TIME_ON_SCREEN)
+		if (timer > TIME_ON_SCREEN) {
+			fadein = false;
 			fadeout = true;
+		}
 
 		background.color = new Color (background.color.r, background.color.g, background.color.b, alpha);
 	}

@@ -39,6 +39,8 @@ public class CanonQuest : QuestBase  {
 	GUITexture right_arrow;
 	GUITexture up_arrow;
 	GUITexture down_arrow;
+	
+	GUITexture[] guiList = new GUITexture[4];
 
 	//Called when player starts quest
 	public override void TriggerStart ()
@@ -111,7 +113,11 @@ public class CanonQuest : QuestBase  {
 		down_arrow.texture = arrow_texture;
 		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
 		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
-		
+
+		guiList [0] = left_arrow;
+		guiList [1] = right_arrow;
+		guiList [2] = up_arrow;
+		guiList [3] = down_arrow;
 
 	}
 	
@@ -147,10 +153,52 @@ public class CanonQuest : QuestBase  {
 				TriggerFinish();
 			if(canonball_in_air)
 				UpdateCanonballs();
+
+			UpdateTouch();
 		}
 
-
 	}
+
+	//Touch input for controlling canon (Android)
+	void UpdateTouch(){
+
+		if (Input.touches.Length == 0) {
+
+		} 
+		else {
+			for(int j = 0; j < 4; j++)
+				for (int i = 0; i < Input.touchCount; i++) {
+				if (guiList[j] != null && (guiList[j].HitTest (Input.GetTouch (i).position))) {
+						//if current touch hits our guitexture, run this code
+						if (Input.GetTouch (i).phase == TouchPhase.Began) {
+							if(j == 0){
+								Debug.Log ("Roterar vänster");
+								canon.transform.Rotate(-Vector3.up * ROTATION_SPEED * Time.deltaTime);
+								start_side_rotation += -Vector3.up * ROTATION_SPEED * Time.deltaTime;
+							}
+							if(j == 1){
+								Debug.Log("Roterar höger");
+							canon.transform.Rotate(Vector3.up * ROTATION_SPEED * Time.deltaTime);
+							start_side_rotation += Vector3.up * ROTATION_SPEED * Time.deltaTime;
+						}
+							if(j == 2){
+								Debug.Log("Roterar upp");
+							canonPipe.transform.Rotate(Vector3.left * ROTATION_SPEED * Time.deltaTime); 
+							start_up_rotation += Vector3.left * ROTATION_SPEED * Time.deltaTime;
+						}
+							if(j == 3){
+								Debug.Log("Roterar ner");
+							canonPipe.transform.Rotate(Vector3.right * ROTATION_SPEED * Time.deltaTime);
+							start_up_rotation += Vector3.right * ROTATION_SPEED * Time.deltaTime;
+						}
+						}
+						if (Input.GetTouch (i).phase == TouchPhase.Ended) {
+						}
+				}
+			}
+		}
+	}
+
 	//Called when player presses shoots the canon
 	private void Fire(){
 		smoke.Stop ();

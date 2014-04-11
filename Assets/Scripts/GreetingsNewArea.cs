@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor.Scripting;
 using System.Collections;
 
 public class GreetingsNewArea : MonoBehaviour {

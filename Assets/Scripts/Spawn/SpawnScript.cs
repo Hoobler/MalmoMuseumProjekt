@@ -31,12 +31,18 @@ public class SpawnScript : MonoBehaviour {
 		} else if (!parent) {
 			temp.transform.parent = parent.transform;
 		}
-
 	}
 
 	void Update(){
 		//Respawnar spelaren ifall han är under vatten på slottet
+		#if UNITY_STANDALONE_WIN		
 		if (temp.transform.position.y < 3.5f && Application.loadedLevel == 3)
 			temp.transform.position = spawnPos;
+		#endif
+		#if UNITY_ANDROID
+//		if (temp.transform.position.y < 3.5f && Application.loadedLevel == 3)
+//			temp.transform.position = spawnPos;
+		#endif
+
 	}
 }
