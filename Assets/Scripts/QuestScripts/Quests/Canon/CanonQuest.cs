@@ -39,8 +39,9 @@ public class CanonQuest : QuestBase  {
 	GUITexture right_arrow;
 	GUITexture up_arrow;
 	GUITexture down_arrow;
+	GUITexture shoot_gui;
 	
-	GUITexture[] guiList = new GUITexture[4];
+	GUITexture[] guiList = new GUITexture[5];
 
 	//Called when player starts quest
 	public override void TriggerStart ()
@@ -74,6 +75,10 @@ public class CanonQuest : QuestBase  {
 	public override void TriggerFinish ()
 	{
 
+		//Removes arrows on screen
+		GameObject t = GameObject.Find ("CanonGUI");
+		Destroy (t);
+
 		mainCamera.SetActive (true);
 		canonCamera.SetActive (false);
 		questActive = false;
@@ -88,75 +93,97 @@ public class CanonQuest : QuestBase  {
 
 	//Initializes arrows on screen
 	void Init(){
-		GameObject la = new GameObject ();
+
+		GameObject canonGUI = new GameObject ("CanonGUI");
+
+		GameObject la = new GameObject ("Arrow");
 		left_arrow = (GUITexture)la.AddComponent (typeof(GUITexture));
 		left_arrow.texture = arrow_texture;
 		left_arrow.transform.position =  new Vector3 (0.65f, 0.1f, 0);
 		left_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+		left_arrow.transform.parent = canonGUI.transform;
 
-		GameObject ra = new GameObject ();
+		GameObject ra = new GameObject ("Arrow");
 		right_arrow = (GUITexture)ra.AddComponent (typeof(GUITexture));
 		right_arrow.texture = arrow_texture;
 		right_arrow.transform.position =  new Vector3 (0.85f, 0.1f, 0);
 		right_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
-		
+		right_arrow.transform.parent = canonGUI.transform;
 
-		GameObject ua = new GameObject ();
+		GameObject ua = new GameObject ("Arrow");
 		up_arrow = (GUITexture)ua.AddComponent (typeof(GUITexture));
 		up_arrow.texture = arrow_texture;
 		up_arrow.transform.position =  new Vector3 (0.75f, 0.2f, 0);
 		up_arrow.transform.localScale = new Vector3 (0.1f, 0.11f, 0);
-		
+		up_arrow.transform.parent = canonGUI.transform;
 
-		GameObject da = new GameObject ();
+		GameObject da = new GameObject ("Arrow");
 		down_arrow = (GUITexture)da.AddComponent (typeof(GUITexture));
 		down_arrow.texture = arrow_texture;
 		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
 		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+		down_arrow.transform.parent = canonGUI.transform;
+
+		GameObject shoot_go = new GameObject ("Arrow");
+		shoot_gui = (GUITexture)shoot_go.AddComponent (typeof(GUITexture));
+		shoot_gui.texture = arrow_texture;
+		shoot_gui.transform.position = new Vector3 (0.5f, 0.1f, 0);
+		shoot_gui.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
+		shoot_gui.transform.parent = canonGUI.transform;
 
 		guiList [0] = left_arrow;
 		guiList [1] = right_arrow;
 		guiList [2] = up_arrow;
 		guiList [3] = down_arrow;
+		guiList [4] = shoot_gui;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (questActive) {
-			//Sväng vänster
-			if (Input.GetKey (KeyCode.A) && start_side_rotation.y > -10f) {
-				canon.transform.Rotate(-Vector3.up * ROTATION_SPEED * Time.deltaTime);
-				start_side_rotation += -Vector3.up * ROTATION_SPEED * Time.deltaTime;
-			}
-			//Sväng höger
-			if (Input.GetKey (KeyCode.D) && start_side_rotation.y < 10f){
-				canon.transform.Rotate(Vector3.up * ROTATION_SPEED * Time.deltaTime);
-				start_side_rotation += Vector3.up * ROTATION_SPEED * Time.deltaTime;
-			}
-			//Sväng upp
-			if (Input.GetKey (KeyCode.W) && start_up_rotation.x > -10f){
-				canonPipe.transform.Rotate(Vector3.left * ROTATION_SPEED * Time.deltaTime); 
-				start_up_rotation += Vector3.left * ROTATION_SPEED * Time.deltaTime;
-			}
-			//Sväng ner
-			if (Input.GetKey (KeyCode.S) && start_up_rotation.x < 0f){
-				canonPipe.transform.Rotate(Vector3.right * ROTATION_SPEED * Time.deltaTime);
-				start_up_rotation += Vector3.right * ROTATION_SPEED * Time.deltaTime;
-			}
-			//Skjut
-			if(Input.GetKeyDown(KeyCode.Space) && canonballs_shot <= TOTAL_CANONBALLS && !canonball_in_air){
-				Fire();
-			}
+
+			#if UNITY_STANDALONE_WIN
+			UpdateKeyboard();
+			#endif
+			#if UNITY_ANDROID
+			UpdateTouch();
+			#endif
+
 			//Avsluta spel
 			if(canonballs_shot >= TOTAL_CANONBALLS)
 				TriggerFinish();
 			if(canonball_in_air)
 				UpdateCanonballs();
-
-			UpdateTouch();
 		}
+	}
 
+	//Keyboard input for controlling canon (PC)
+	void UpdateKeyboard(){
+		//Sväng vänster
+		if (Input.GetKey (KeyCode.A) && start_side_rotation.y > -10f) {
+			canon.transform.Rotate(-Vector3.up * ROTATION_SPEED * Time.deltaTime);
+			start_side_rotation += -Vector3.up * ROTATION_SPEED * Time.deltaTime;
+		}
+		//Sväng höger
+		if (Input.GetKey (KeyCode.D) && start_side_rotation.y < 10f){
+			canon.transform.Rotate(Vector3.up * ROTATION_SPEED * Time.deltaTime);
+			start_side_rotation += Vector3.up * ROTATION_SPEED * Time.deltaTime;
+		}
+		//Sväng upp
+		if (Input.GetKey (KeyCode.W) && start_up_rotation.x > -10f){
+			canonPipe.transform.Rotate(Vector3.left * ROTATION_SPEED * Time.deltaTime); 
+			start_up_rotation += Vector3.left * ROTATION_SPEED * Time.deltaTime;
+		}
+		//Sväng ner
+		if (Input.GetKey (KeyCode.S) && start_up_rotation.x < 0f){
+			canonPipe.transform.Rotate(Vector3.right * ROTATION_SPEED * Time.deltaTime);
+			start_up_rotation += Vector3.right * ROTATION_SPEED * Time.deltaTime;
+		}
+		//Skjut
+		if(Input.GetKeyDown(KeyCode.Space) && canonballs_shot <= TOTAL_CANONBALLS && !canonball_in_air){
+			Fire();
+		}
 	}
 
 	//Touch input for controlling canon (Android)
@@ -166,34 +193,31 @@ public class CanonQuest : QuestBase  {
 
 		} 
 		else {
-			for(int j = 0; j < 4; j++)
+			for(int j = 0; j < 5; j++)
 				for (int i = 0; i < Input.touchCount; i++) {
 				if (guiList[j] != null && (guiList[j].HitTest (Input.GetTouch (i).position))) {
 						//if current touch hits our guitexture, run this code
-						if (Input.GetTouch (i).phase == TouchPhase.Began) {
-							if(j == 0){
-								Debug.Log ("Roterar vänster");
-								canon.transform.Rotate(-Vector3.up * ROTATION_SPEED * Time.deltaTime);
-								start_side_rotation += -Vector3.up * ROTATION_SPEED * Time.deltaTime;
-							}
-							if(j == 1){
-								Debug.Log("Roterar höger");
+					if (Input.GetTouch (i).phase == TouchPhase.Began || Input.GetTouch (i).phase == TouchPhase.Stationary) {
+						if(j == 0  && start_side_rotation.y > -10f){		//VÄNSTER
+							canon.transform.Rotate(-Vector3.up * ROTATION_SPEED * Time.deltaTime);
+							start_side_rotation += -Vector3.up * ROTATION_SPEED * Time.deltaTime;
+						}
+						if(j == 1 && start_side_rotation.y < 10f){			//HÖGER
 							canon.transform.Rotate(Vector3.up * ROTATION_SPEED * Time.deltaTime);
 							start_side_rotation += Vector3.up * ROTATION_SPEED * Time.deltaTime;
 						}
-							if(j == 2){
-								Debug.Log("Roterar upp");
+						if(j == 2 && start_up_rotation.x > -10f){			//UPP
 							canonPipe.transform.Rotate(Vector3.left * ROTATION_SPEED * Time.deltaTime); 
 							start_up_rotation += Vector3.left * ROTATION_SPEED * Time.deltaTime;
 						}
-							if(j == 3){
-								Debug.Log("Roterar ner");
+						if(j == 3 && start_up_rotation.x < 0f){			//NER
 							canonPipe.transform.Rotate(Vector3.right * ROTATION_SPEED * Time.deltaTime);
 							start_up_rotation += Vector3.right * ROTATION_SPEED * Time.deltaTime;
 						}
-						}
-						if (Input.GetTouch (i).phase == TouchPhase.Ended) {
-						}
+						if(j == 4 && canonballs_shot <= TOTAL_CANONBALLS && !canonball_in_air){	//SKJUT
+							Fire();
+						}	
+					}
 				}
 			}
 		}
