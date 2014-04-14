@@ -13,6 +13,11 @@ public class CanonQuest : QuestBase  {
 	private const float RELOAD_TIME = 5f;
 	private float reload_timer;
 
+
+	private const float END_TIMER_FAIL = 5f;
+	private const float END_TIMER_COMPLETE = 15f;
+	private float end_timer;
+
 	private bool canonball_in_air = false;
 
 	private int nr_of_hits = 0;
@@ -82,7 +87,12 @@ public class CanonQuest : QuestBase  {
 		mainCamera.SetActive (true);
 		canonCamera.SetActive (false);
 		questActive = false;
-		Debug.Log ("Träffar: " + nr_of_hits);
+		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+		if (nr_of_hits > 0)
+						endText.text = "Du sänkte skeppet!";
+				else
+						endText.text = "Tusan, du missade alla skott";
 	}
 
 	// Use this for initialization
@@ -158,8 +168,12 @@ public class CanonQuest : QuestBase  {
 			#endif
 
 			//Avsluta spel
-			if(canonballs_shot >= TOTAL_CANONBALLS)
-				TriggerFinish();
+			if(nr_of_hits > 0 || canonballs_shot >= TOTAL_CANONBALLS)
+			{
+				UpdateEndTimer();
+			}
+			//---
+
 			if(canonball_in_air)
 				UpdateCanonballs();
 		}
@@ -228,6 +242,14 @@ public class CanonQuest : QuestBase  {
 				}
 			}
 		}
+	}
+
+	void UpdateEndTimer(){
+		end_timer += Time.deltaTime;
+		if (end_timer > END_TIMER_COMPLETE && nr_of_hits > 0)
+			TriggerFinish ();
+		if (end_timer > END_TIMER_FAIL && nr_of_hits == 0)
+			TriggerFinish ();
 	}
 
 	//Called when player presses shoots the canon
