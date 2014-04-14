@@ -24,6 +24,8 @@ public class CanonQuest : QuestBase  {
 
 	private ParticleSystem smoke;
 
+	private Vector3 prevPos;
+
 	GameObject mainCamera;
 	GameObject canonCamera;
 	GameObject canon;
@@ -62,6 +64,11 @@ public class CanonQuest : QuestBase  {
 
 		ship.SetActive (true);
 
+
+		prevPos = (player.transform.position);
+		GameObject temp = GameObject.Find ("Graphics");
+		temp.renderer.enabled = false;
+
 		mainCamera.SetActive(false);
 		canonCamera.SetActive (true);
 
@@ -93,6 +100,8 @@ public class CanonQuest : QuestBase  {
 						endText.text = "Du sänkte skeppet!";
 				else
 						endText.text = "Tusan, du missade alla skott";
+
+		player.transform.position = prevPos;
 	}
 
 	// Use this for initialization
