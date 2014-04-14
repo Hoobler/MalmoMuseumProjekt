@@ -58470,17 +58470,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  introText: "Hall\xE5 d\xE4r Malm\xF6bo. Vad s\xE4gs om ett spel t\xE4rning? Soldaterna
+    m\xE5 vara stora och starka men de \xE4r inte bra p\xE5 att spela t\xE4rning i
+    alla fall, ingen p\xE5 slottet har lyckats besegra mig \xE4n."
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons:
   - quitOnPress: 1
-    textOnButton: "Spela t\xE4rning"
+    textOnButton: "D\xE5 blir v\xE4l jag den f\xF6rste att g\xF6ra det."
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
+    nameOfQuest: SlottetDiceGame
+  - quitOnPress: 1
+    textOnButton: "Nej tack, jag har annat att g\xF6ra."
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
     nameOfQuest: SlottetDiceGame
 --- !u!114 &1118466832
 MonoBehaviour:
@@ -108380,20 +108388,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  introText: "Vi beh\xF6ver alltid fler soldater p\xE5 slottet, \xE4nda sen Grevefejden
+    har kraven p\xE5 s\xE4kerhet varit mycket h\xF6gre. Om du vill bli en soldat m\xE5ste
+    kunna hantera en musk\xF6t. Anv\xE4nd g\xE4rna skjutbanan h\xE4r f\xF6r att tr\xE4na."
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons:
   - quitOnPress: 1
-    textOnButton: Accept
+    textOnButton: "Jag vill l\xE4ra mig skjuta med musk\xF6t."
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
     nameOfQuest: MusketQuest
   - quitOnPress: 1
-    textOnButton: No you crazy man!
+    textOnButton: Kanske senare.
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 0
