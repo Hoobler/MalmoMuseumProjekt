@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour {
 	public float ScaleLimit;
 	public int CircleDepth;
 
+	public Transform ShootSpot;
 	public Texture ReloadTexture;
 
 	private ParticleSystem particle;
@@ -34,6 +35,7 @@ public class Shoot : MonoBehaviour {
 			particle.Stop();
 			particle.Clear();
 		}
+		ShootSpot = GameObject.Find("ShootSpot").transform;
 	}
 
 	void OnGUI(){
@@ -45,13 +47,13 @@ public class Shoot : MonoBehaviour {
 
 	void Update () {
 		if(_weaponActive && !_reloading){
-//			if(Input.GetMouseButtonDown(0)){
-//				Debug.Log("Mouse Shoot!");
-//				RayCastChecker();
-//				if(particle != null){
-//					particle.Play ();
-//				}
-//			}
+			if(Input.GetMouseButtonDown(0)){
+				Debug.Log("Mouse Shoot!");
+				RayCastChecker();
+				if(particle != null){
+					particle.Play ();
+				}
+			}
 //			if(Input.touchCount > 0){
 //				int i = 0;
 //				while (i++ < Input.touchCount){
@@ -74,6 +76,7 @@ public class Shoot : MonoBehaviour {
 		if(miniEnum == MiniGamesEnum.Musköt){
 			Debug.Log("Shoot test");
 			if(evArgs.QuestType == QuestTypeEnum.Started){
+				StartCoroutine(MovePlayerToShootSpot());
 				_questStared = true;
 				_firstHit = false;
 			}
@@ -83,12 +86,6 @@ public class Shoot : MonoBehaviour {
 			}
 			else if(evArgs.QuestType == QuestTypeEnum.Reset){
 				_firstHit = false;
-			}
-			else if(evArgs.Info == "EnterShootArea" && _questStared){
-				EnableWeapon();
-			}
-			else if (evArgs.Info == "ExitShootArea" && _questStared){
-				DisableWeapon();
 			}
 		}
 	}
@@ -149,8 +146,28 @@ public class Shoot : MonoBehaviour {
 		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.OnGoing, infoToSend));
 	}
 
-	//Polish senare!
-	void MovePlayerToCenter(){
-		//this.transform.position = Vector3.MoveTowards(transform.position, newRight, rate);
+	//Should move the player to the spot where he is going to shoot from.
+	IEnumerator MovePlayerToShootSpot(){
+		float distToShootSpot = 0;
+		float rate = 0;
+		float speed = 2;
+		bool goToSpot = true;
+		
+		Vector3 newShootSpot = new Vector3(ShootSpot.transform.position.x, transform.position.y, ShootSpot.transform.position.z);
+		while(goToSpot){
+			distToShootSpot = Vector3.Distance(transform.position, newShootSpot);
+			rate = Time.deltaTime * speed;
+			
+			if(distToShootSpot <= 0.01f){
+				goToSpot = false;
+			}
+			if(goToSpot){
+				this.transform.position = Vector3.MoveTowards(transform.position, newShootSpot, rate);
+				yield return null;
+			}
+		}
+
+		EventManager.TriggerDisableAndroid("lock");
+		EnableWeapon();
 	}
 }

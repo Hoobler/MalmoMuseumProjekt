@@ -10262,7 +10262,6 @@ MonoBehaviour:
     BullsEye: 10
     SecondRing: 5
     ThirdRing: 2
-  ShootSpot: {fileID: 1565592147}
 --- !u!1001 &180945949
 Prefab:
   m_ObjectHideFlags: 0
