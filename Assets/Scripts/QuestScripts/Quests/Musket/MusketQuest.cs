@@ -105,6 +105,9 @@ public class MusketQuest : MonoBehaviour {
 	void QuestFinished(){
 		Debug.Log("Finnished");
 		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Finnished, null));
+		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+		endText.text = "Du fick " + _totalPoints + " poäng!";
 	}
 
 	void ResetQuest(){
