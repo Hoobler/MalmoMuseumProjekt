@@ -13,6 +13,11 @@ public class CanonQuest : QuestBase  {
 	private const float RELOAD_TIME = 5f;
 	private float reload_timer;
 
+
+	private const float END_TIMER_FAIL = 5f;
+	private const float END_TIMER_COMPLETE = 15f;
+	private float end_timer;
+
 	private bool canonball_in_air = false;
 
 	private int nr_of_hits = 0;
@@ -82,7 +87,12 @@ public class CanonQuest : QuestBase  {
 		mainCamera.SetActive (true);
 		canonCamera.SetActive (false);
 		questActive = false;
-		Debug.Log ("Träffar: " + nr_of_hits);
+		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+		if (nr_of_hits > 0)
+						endText.text = "Du sänkte skeppet!";
+				else
+						endText.text = "Tusan, du missade alla skott";
 	}
 
 	// Use this for initialization
@@ -94,49 +104,56 @@ public class CanonQuest : QuestBase  {
 	//Initializes arrows on screen
 	void Init(){
 
-		GameObject canonGUI = new GameObject ("CanonGUI");
+		#if UNITY_ANDROID
+		InitGUI();
+		#endif
 
+	}
+
+	void InitGUI(){
+
+		GameObject canonGUI = new GameObject ("CanonGUI");
+		
 		GameObject la = new GameObject ("Arrow");
 		left_arrow = (GUITexture)la.AddComponent (typeof(GUITexture));
 		left_arrow.texture = arrow_texture;
 		left_arrow.transform.position =  new Vector3 (0.65f, 0.1f, 0);
 		left_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		left_arrow.transform.parent = canonGUI.transform;
-
+		
 		GameObject ra = new GameObject ("Arrow");
 		right_arrow = (GUITexture)ra.AddComponent (typeof(GUITexture));
 		right_arrow.texture = arrow_texture;
 		right_arrow.transform.position =  new Vector3 (0.85f, 0.1f, 0);
 		right_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		right_arrow.transform.parent = canonGUI.transform;
-
+		
 		GameObject ua = new GameObject ("Arrow");
 		up_arrow = (GUITexture)ua.AddComponent (typeof(GUITexture));
 		up_arrow.texture = arrow_texture;
 		up_arrow.transform.position =  new Vector3 (0.75f, 0.2f, 0);
 		up_arrow.transform.localScale = new Vector3 (0.1f, 0.11f, 0);
 		up_arrow.transform.parent = canonGUI.transform;
-
+		
 		GameObject da = new GameObject ("Arrow");
 		down_arrow = (GUITexture)da.AddComponent (typeof(GUITexture));
 		down_arrow.texture = arrow_texture;
 		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
 		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		down_arrow.transform.parent = canonGUI.transform;
-
+		
 		GameObject shoot_go = new GameObject ("Arrow");
 		shoot_gui = (GUITexture)shoot_go.AddComponent (typeof(GUITexture));
 		shoot_gui.texture = arrow_texture;
 		shoot_gui.transform.position = new Vector3 (0.5f, 0.1f, 0);
 		shoot_gui.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		shoot_gui.transform.parent = canonGUI.transform;
-
+		
 		guiList [0] = left_arrow;
 		guiList [1] = right_arrow;
 		guiList [2] = up_arrow;
 		guiList [3] = down_arrow;
 		guiList [4] = shoot_gui;
-
 	}
 	
 	// Update is called once per frame
@@ -151,8 +168,12 @@ public class CanonQuest : QuestBase  {
 			#endif
 
 			//Avsluta spel
-			if(canonballs_shot >= TOTAL_CANONBALLS)
-				TriggerFinish();
+			if(nr_of_hits > 0 || canonballs_shot >= TOTAL_CANONBALLS)
+			{
+				UpdateEndTimer();
+			}
+			//---
+
 			if(canonball_in_air)
 				UpdateCanonballs();
 		}
@@ -221,6 +242,14 @@ public class CanonQuest : QuestBase  {
 				}
 			}
 		}
+	}
+
+	void UpdateEndTimer(){
+		end_timer += Time.deltaTime;
+		if (end_timer > END_TIMER_COMPLETE && nr_of_hits > 0)
+			TriggerFinish ();
+		if (end_timer > END_TIMER_FAIL && nr_of_hits == 0)
+			TriggerFinish ();
 	}
 
 	//Called when player presses shoots the canon

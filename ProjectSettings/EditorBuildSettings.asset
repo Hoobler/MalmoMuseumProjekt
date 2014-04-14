@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Map.unity
   - enabled: 1
     path: Assets/Scenes/Slottet.unity
+  - enabled: 1
+    path: Assets/Scenes/Grabroder.unity

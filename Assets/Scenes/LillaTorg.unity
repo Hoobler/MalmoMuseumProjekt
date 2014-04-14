@@ -12,13 +12,13 @@ SceneSettings:
     backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: .5, g: .5, b: .5, a: 1}
   m_FogMode: 3
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
+  m_AmbientLight: {r: .389705896, g: .389705896, b: .389705896, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
@@ -9292,28 +9292,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: '1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4
-    5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3
-    4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 '
+  introText: "Urs\xE4kta mig!\r\n\r\nSkulle du kunna hj\xE4lpa mig lite? Min fru \xE4r
+    sur p\xE5 mig s\xE5 hon tog mina vetep\xE5sar och g\xF6mde dem \xF6ver hela torget.
+    Jag har ont i f\xF6tterna av all kullersten s\xE5 jag m\xE5ste vila lite. Om du
+    hittar n\xE5gra, skulle du kunna l\xE4mna tillbaka dem till mig? Du kan l\xE4gga
+    dem h\xE4r bredvid.\r\n"
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons:
-  - quitOnPress: 0
-    textOnButton: Ettan
+  - quitOnPress: 1
+    textOnButton: "Sj\xE4lvklart hj\xE4lper jag dig!"
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
     nameOfQuest: LillaTorgBagQuest
-  - quitOnPress: 0
-    textOnButton: "Tv\xE5an"
-    shownInfoWhenPressed: 
-    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
-    isQuestTrigger: 0
-    nameOfQuest: 
   - quitOnPress: 1
-    textOnButton: Trean
+    textOnButton: Inte just nu.
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 0
@@ -14162,15 +14158,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 7a12429176a0d264984923bda403e8a8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.8839579
+      value: 9.68983078
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a12429176a0d264984923bda403e8a8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .100001641
+      value: .100001693
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a12429176a0d264984923bda403e8a8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 21.4429226
+      value: 21.7617493
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7a12429176a0d264984923bda403e8a8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -14422,6 +14418,91 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1421276490}
+--- !u!1 &705572818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 705572819}
+  - 33: {fileID: 705572823}
+  - 64: {fileID: 705572822}
+  - 23: {fileID: 705572821}
+  - 114: {fileID: 705572820}
+  m_Layer: 0
+  m_Name: QuestMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &705572819
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705572818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.16695118, y: 1.81340003, z: .179279327}
+  m_LocalScale: {x: .0810950026, y: 1, z: .199445993}
+  m_Children: []
+  m_Father: {fileID: 1728304147}
+--- !u!114 &705572820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705572818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e44e4222c1366844ba475485aa9dc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startQuest: {fileID: 2800000, guid: dc482b65496e22f42b8d8972cf1daa96, type: 3}
+  acceptedQuest: {fileID: 2800000, guid: 93ae3eff0d1c97347bf7df51296644d1, type: 3}
+  finishedQuest: {fileID: 2800000, guid: c08a616a78d3ddf45b149498c615e8ee, type: 3}
+--- !u!23 &705572821
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705572818}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 688bc2ba79e29614da6fe7248497142e, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!64 &705572822
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705572818}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &705572823
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705572818}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &712808978
 GameObject:
   m_ObjectHideFlags: 0
@@ -27266,7 +27347,7 @@ Transform:
   m_PrefabInternal: {fileID: 697668008}
   m_GameObject: {fileID: 1296236683}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: 10.8839579, y: .100001641, z: 21.4429226}
+  m_LocalPosition: {x: 9.68983078, y: .100001693, z: 21.7617493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1259366084}
@@ -30886,6 +30967,32 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 868226197}
+--- !u!1 &1446594082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1446594083}
+  m_Layer: 0
+  m_Name: NPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1446594083
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446594082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.03069973, y: 4.04454708, z: .710946083}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1446909676
 GameObject:
   m_ObjectHideFlags: 0
@@ -36089,17 +36196,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  introText: "KORGBOLL, KORGBOLL!\r\n\r\nHall\xE5 Malm\xF6bo, har du spelat korgboll
+    n\xE5gon g\xE5ng? Jag k\xE4nner p\xE5 mig att det kommer bli n\xE5got stort i
+    framtiden! Det \xE4r enkelt, du ska kasta i \xE4pplena i korgen. Om du lyckas
+    kasta i alla sexk \xE4pplen s\xE5 ber\xE4ttar jag n\xE5got f\xF6r dig om Malm\xF6
+    som du kanske inte visste tidigare."
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons:
   - quitOnPress: 1
-    textOnButton: "Quest - Accepta h\xE4r!"
+    textOnButton: Vad kul, jag provar.
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
+    nameOfQuest: LillaTorgAppleQuest
+  - quitOnPress: 1
+    textOnButton: Nej tack.
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
     nameOfQuest: LillaTorgAppleQuest
 --- !u!23 &1728304144
 Renderer:
@@ -36151,7 +36268,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.51616859, y: -.118288159, z: 10.0352545}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 705572819}
   m_Father: {fileID: 1546080436}
 --- !u!114 &1728304148
 MonoBehaviour:
