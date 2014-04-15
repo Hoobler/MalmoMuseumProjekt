@@ -45,7 +45,7 @@ public class ThrowQuest : QuestBase {
 								chargeRate = 0.002f + 0.025f* charge;
 							else
 								chargeRate = -0.002f - 0.025f*charge;
-							charge += chargeRate;
+							charge += chargeRate*Time.deltaTime*60;
 							Debug.Log ("" + charge);
 							if (charge > 1.0f) {
 									charge = 1.0f;

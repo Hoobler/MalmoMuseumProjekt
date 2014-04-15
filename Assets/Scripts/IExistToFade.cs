@@ -14,7 +14,7 @@ public class IExistToFade : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		alpha -= 0.01f;
+		alpha -= Time.deltaTime;
 		if (alpha <= 0)
 						Destroy (gameObject);
 				else

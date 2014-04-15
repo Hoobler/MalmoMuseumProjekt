@@ -17,7 +17,7 @@ public class ShipScript : MonoBehaviour {
 		endPoint 	= GameObject.Find ("ShipEnd");
 
 		distance = endPoint.transform.position - startPoint.transform.position;
-		speed = new Vector3 (0.05f, 0, 0.05f);
+		speed = new Vector3 (0.05f, 0, 0.05f)*Time.deltaTime*60;
 
 		gameObject.transform.position = startPoint.transform.position;
 
