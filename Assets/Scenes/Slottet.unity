@@ -18,7 +18,7 @@ RenderSettings:
   m_FogDensity: .0299999993
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientLight: {r: .463235319, g: .463235319, b: .463235319, a: 1}
+  m_AmbientLight: {r: .227941155, g: .227941155, b: .227941155, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 5ba172cd3918d7c44aa6d04446119a00, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
@@ -58390,6 +58390,7 @@ GameObject:
   - 23: {fileID: 1118466828}
   - 114: {fileID: 1118466832}
   - 114: {fileID: 1118466831}
+  - 120: {fileID: 1118466833}
   m_Layer: 0
   m_Name: QuestGiverDice
   m_TagString: Untagged
@@ -58491,6 +58492,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa1518f879865c4182088cec95e300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!120 &1118466833
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118466826}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: f9734dcf8963cf141b310e063704399f, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4278190335
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4287037306
+  m_UseWorldSpace: 1
 --- !u!1001 &1118687040
 Prefab:
   m_ObjectHideFlags: 0
@@ -63501,7 +63536,7 @@ Transform:
   m_PrefabInternal: {fileID: 1493050286}
   m_GameObject: {fileID: 1218555582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.55332184, y: 31.2094707, z: .287519097}
+  m_LocalPosition: {x: -10.8186855, y: 31.2094707, z: -43.9431801}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78772,7 +78807,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.55332184
+      value: -10.8186855
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.y
@@ -78780,7 +78815,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .287519097
+      value: -43.9431801
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalRotation.x

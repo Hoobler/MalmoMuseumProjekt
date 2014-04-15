@@ -36282,6 +36282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cc21c8e6f47b64ead4d52f3f0da419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appleImage: {fileID: 2800000, guid: 5e1ac105c9ecda247b402702901b11bb, type: 3}
 --- !u!1 &1731681452
 GameObject:
   m_ObjectHideFlags: 0
@@ -40343,6 +40344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7575a232817e7004882b4fc6d7b57f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomizeQuestions: 1
   questions:
   - question: What color is Jim's red gun?
     answers:
@@ -40370,7 +40372,6 @@ MonoBehaviour:
     - Both A and B
     - C
     correctAnswer: 3
-  randomizeQuestions: 1
 --- !u!23 &1926440640
 Renderer:
   m_ObjectHideFlags: 0

@@ -10,8 +10,9 @@ public class Question{
 
 public class Quiz : MonoBehaviour {
 
-	public Question[] questions;
 	public bool randomizeQuestions;
+	public Question[] questions;
+
 	ArrayList listOfAnswers;
 	ArrayList listOfQuestions;
 	Rect backgroundBounds;
@@ -60,7 +61,12 @@ public class Quiz : MonoBehaviour {
 							{
 								selectedAnswer = i;
 								if(selectedAnswer == questions [(int)listOfQuestions[currentQuestion]].correctAnswer)
+								{
 									points++;
+									Instantiate(Resources.Load ("FadeCorrect"));
+								}
+								else
+									Instantiate(Resources.Load ("FadeWrong"));
 								isChoosingAnswer = false;
 
 								((GUITexture)buttons[selectedAnswer].GetComponentInChildren(typeof(GUITexture))).color = Color.red;

@@ -23,6 +23,17 @@ public class ThrowQuest : QuestBase {
 	bool charging;
 	bool appleIsInTheAir;
 
+	public Texture appleImage;
+
+	public void OnGUI()
+	{
+		if(questActive)
+			for(int i = 0; i < applesToThrow; i++)
+			{
+				GUI.DrawTexture(new Rect(10*i, 10, 64, 64), appleImage);
+			}
+	}
+
 	public void Update()
 	{
 		if (questActive) {
@@ -34,34 +45,40 @@ public class ThrowQuest : QuestBase {
 			//Debug.Log ("" + startPoint.position.x + "=" + player.position.x + ", " + startPoint.position.z + "=" + player.position.z);
 			player.LookAt (new Vector3(basket.position.x, player.position.y, basket.position.z));
 			chargeBar.position = new Vector3 (chargeBar.position.x, 0.3f + 0.4f * charge, chargeBar.position.z);
-			if (!questStart && Input.GetMouseButtonDown (0))
-				questStart = true;
 
 			if (questStart) {
 				if (applesToThrow > 0 && !appleIsInTheAir) {
-					if (Input.GetMouseButton (0)) {
-						if (charging) {
+					if(Input.GetMouseButtonDown(0) && !charging) {
+						charging = true;
+					}
+					else if(charging)
+					{
+						if(Input.GetMouseButton(0)) {
 							if(chargeRate >= 0)
 								chargeRate = 0.002f + 0.025f* charge;
 							else
 								chargeRate = -0.002f - 0.025f*charge;
-							charge += chargeRate;
+							charge += chargeRate*Time.deltaTime*60;
 							Debug.Log ("" + charge);
 							if (charge > 1.0f) {
-									charge = 1.0f;
-									chargeRate = -chargeRate;
+								charge = 1.0f;
+								chargeRate = -chargeRate;
 							} else if (charge < 0.0f) {
-									charge = 0.0f;
-									chargeRate = -chargeRate;
+								charge = 0.0f;
+								chargeRate = -chargeRate;
 							}
-						} else
-							charging = true;
-					} else if (charging) {
-						charging = false;
-						Toss ();
+						}
+						else
+						{
+							charging = false;
+							Toss ();
+						}
 					}
 				}
 			}
+
+			if (!questStart && Input.GetMouseButtonDown (0))
+				questStart = true;
 		}
 	}
 
@@ -91,7 +108,7 @@ public class ThrowQuest : QuestBase {
 		appleIsInTheAir = false;
 		if (hit)
 		{
-			Debug.Log("COLLIDE");
+			Instantiate(Resources.Load ("FadeCorrect"));
 			applesInBasket++;
 			if(applesInBasket >= 6)
 				TriggerFinish(true);

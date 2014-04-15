@@ -19,6 +19,7 @@ public class AppleScript : MonoBehaviour {
 	{
 			timeUntilRemoval -= Time.deltaTime;
 			if (timeUntilRemoval <= 0) {
+				throwRef.AppleTrigger (false);
 				throwRef.FinishCheck();
 				Destroy (gameObject);
 			}
@@ -27,20 +28,17 @@ public class AppleScript : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log ("APPLECOLLISION");
-		if (throwRef != null)
-			throwRef.AppleTrigger (false);
 		if (timeUntilRemoval >= 3)
 			timeUntilRemoval = 3f;
 	}
 	void OnTriggerEnter(Collider collider)
 	{
 		if (!hasTriggered) {
-			hasTriggered = true;
+
 			if (timeUntilRemoval >= 1)
 				timeUntilRemoval = 1f;
-			Debug.Log ("APPLETRIGGER");
 			if (collider.gameObject.name == "QuestBasketTrigger") {
+				hasTriggered = true;
 				if (throwRef != null) {
 					throwRef.AppleTrigger (true);
 				}
