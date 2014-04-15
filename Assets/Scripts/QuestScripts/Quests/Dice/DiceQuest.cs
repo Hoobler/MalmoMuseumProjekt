@@ -29,6 +29,7 @@ public class DiceQuest : QuestBase {
 	GameObject diceparent;
 
 	GUITexture resetButton;
+	LineRenderer lineRenderer;
 
 	Transform player;
 	// Use this for initialization
@@ -58,7 +59,8 @@ public class DiceQuest : QuestBase {
 		nrOfRerolls = 5;
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		questActive = true;
-
+		lineRenderer = gameObject.GetComponent<LineRenderer> ();
+		lineRenderer.enabled = false;
 	}
 
 	public override void TriggerFinish()
@@ -146,11 +148,9 @@ public class DiceQuest : QuestBase {
 
 	void FinishUpdate()
 	{
-		Debug.Log ("" + totalPoints);
 		TriggerFinish ();
 
 	}
-
 	void PreThrowUpdate()
 	{
 		if (!holdingDownMouseButton)
@@ -159,9 +159,16 @@ public class DiceQuest : QuestBase {
 			{
 				holdingDownMouseButton = true;
 				startHold = Input.mousePosition;
+				lineRenderer.enabled = true;
+				lineRenderer.SetWidth(0,0.01f);
+				lineRenderer.SetPosition(0, dicecamera.camera.ScreenPointToRay(startHold).origin);
+				lineRenderer.SetPosition(1, dicecamera.camera.ScreenPointToRay(Input.mousePosition).origin);
 			}
 		}
 		else {
+			lineRenderer.SetPosition(0, dicecamera.camera.ScreenPointToRay(startHold).origin);
+			lineRenderer.SetPosition(1, dicecamera.camera.ScreenPointToRay(Input.mousePosition).origin);
+
 			if(!Input.GetMouseButton(0))
 			{
 				holdingDownMouseButton = false;
@@ -170,7 +177,7 @@ public class DiceQuest : QuestBase {
 				//endHold.y = startHold.y;
 				totalPoints = 0;
 				//invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls"), new Vector3(5.29764f, 4.712706f, -36.91311f), new Quaternion()) as GameObject;
-
+				lineRenderer.enabled = false;
 				state = State.POSTTHROW;
 				startHold = dicecamera.camera.ScreenPointToRay(startHold).origin;
 				endHold = dicecamera.camera.ScreenPointToRay(endHold).origin;

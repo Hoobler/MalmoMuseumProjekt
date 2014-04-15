@@ -36282,6 +36282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cc21c8e6f47b64ead4d52f3f0da419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appleImage: {fileID: 2800000, guid: 5e1ac105c9ecda247b402702901b11bb, type: 3}
 --- !u!1 &1731681452
 GameObject:
   m_ObjectHideFlags: 0
