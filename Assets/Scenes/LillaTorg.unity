@@ -40356,7 +40356,21 @@ MonoBehaviour:
     - B
     - Both A and B
     correctAnswer: 2
-  randomizeQuestions: 0
+  - question: "Fr\xE5ga 3"
+    answers:
+    - 1
+    - 2
+    - 3
+    - 4
+    correctAnswer: 2
+  - question: "Fr\xE5ga 4"
+    answers:
+    - A
+    - B
+    - Both A and B
+    - C
+    correctAnswer: 3
+  randomizeQuestions: 1
 --- !u!23 &1926440640
 Renderer:
   m_ObjectHideFlags: 0

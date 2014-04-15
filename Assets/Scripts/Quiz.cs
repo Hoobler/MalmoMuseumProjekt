@@ -21,6 +21,9 @@ public class Quiz : MonoBehaviour {
 	GameObject quizParent;
 	bool active = false;
 	int points;
+	bool isChoosingAnswer;
+
+	int selectedAnswer;
 
 	// Use this for initialization
 	void Start () {
@@ -42,26 +45,39 @@ public class Quiz : MonoBehaviour {
 		}
 	}
 
+
 	void Update() {
 		if (active) {
 			if(Input.GetMouseButtonDown(0))
 			{
-				if (listOfQuestions.Count != 0)
+				if(isChoosingAnswer)
 				{
-					for(int i = 0; i < questions [(int)listOfQuestions[currentQuestion]].answers.Length; i++)
+					if (listOfQuestions.Count != 0)
 					{
-						if(((GUITexture)buttons[i].GetComponentInChildren(typeof(GUITexture))).GetScreenRect().Contains(Input.mousePosition))
+						for(int i = 0; i < questions [(int)listOfQuestions[currentQuestion]].answers.Length; i++)
 						{
-							if(i == questions [(int)listOfQuestions[currentQuestion]].correctAnswer)
-								points++;
-							NextQuestion ();
-							break;
+							if(((GUITexture)buttons[i].GetComponentInChildren(typeof(GUITexture))).GetScreenRect().Contains(Input.mousePosition))
+							{
+								selectedAnswer = i;
+								if(selectedAnswer == questions [(int)listOfQuestions[currentQuestion]].correctAnswer)
+									points++;
+								isChoosingAnswer = false;
+
+								((GUITexture)buttons[selectedAnswer].GetComponentInChildren(typeof(GUITexture))).color = Color.red;
+								((GUITexture)buttons[questions [(int)listOfQuestions[currentQuestion]].correctAnswer].GetComponentInChildren(typeof(GUITexture))).color = Color.green;
+								break;
+							}
 						}
+					}
+					else
+					{
+						TriggerFinish();
 					}
 				}
 				else
 				{
-					TriggerFinish();
+					isChoosingAnswer = true;
+					NextQuestion();
 				}
 			}
 		}
@@ -89,6 +105,7 @@ public class Quiz : MonoBehaviour {
 		background.transform.parent = quizParent.transform;
 		backgroundBounds = ((GUITexture)background.GetComponentInChildren (typeof(GUITexture))).GetScreenRect ();
 		questionText = (GUIText)background.GetComponentInChildren (typeof(GUIText));
+		isChoosingAnswer = true;
 		if(randomizeQuestions)
 			currentQuestion = Random.Range (0, questions.Length - 1);
 		else
@@ -134,6 +151,7 @@ public class Quiz : MonoBehaviour {
 		for (int i = 0; i < questions [(int)listOfQuestions[currentQuestion]].answers.Length; i++) { 
 			SetButtonText(buttons [i], questions [(int)listOfQuestions[currentQuestion]].answers [i]);
 			SetButtonEnabled(buttons[i], true);
+			((GUITexture)buttons[i].GetComponentInChildren(typeof(GUITexture))).color = Color.black;
 		}
 		for (int i = questions [(int)listOfQuestions[currentQuestion]].answers.Length; i < 4; i++)
 			SetButtonEnabled(buttons[i], false);
