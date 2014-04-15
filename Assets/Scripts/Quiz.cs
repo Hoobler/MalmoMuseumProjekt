@@ -60,7 +60,12 @@ public class Quiz : MonoBehaviour {
 							{
 								selectedAnswer = i;
 								if(selectedAnswer == questions [(int)listOfQuestions[currentQuestion]].correctAnswer)
+								{
 									points++;
+									Instantiate(Resources.Load ("FadeCorrect"));
+								}
+								else
+									Instantiate(Resources.Load ("FadeWrong"));
 								isChoosingAnswer = false;
 
 								((GUITexture)buttons[selectedAnswer].GetComponentInChildren(typeof(GUITexture))).color = Color.red;
