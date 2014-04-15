@@ -10,8 +10,9 @@ public class Question{
 
 public class Quiz : MonoBehaviour {
 
-	public Question[] questions;
 	public bool randomizeQuestions;
+	public Question[] questions;
+
 	ArrayList listOfAnswers;
 	ArrayList listOfQuestions;
 	Rect backgroundBounds;

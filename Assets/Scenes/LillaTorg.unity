@@ -40343,6 +40343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7575a232817e7004882b4fc6d7b57f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomizeQuestions: 1
   questions:
   - question: What color is Jim's red gun?
     answers:
@@ -40370,7 +40371,6 @@ MonoBehaviour:
     - Both A and B
     - C
     correctAnswer: 3
-  randomizeQuestions: 1
 --- !u!23 &1926440640
 Renderer:
   m_ObjectHideFlags: 0
