@@ -109,8 +109,13 @@ public class Quiz : MonoBehaviour {
 		quizParent = new GameObject ("QuizParent");
 		GameObject background = (GameObject)Instantiate (Resources.Load ("Quizmain"));
 		background.transform.parent = quizParent.transform;
+
+		//posititioning and shit. Mostly positioning.
+		((GUITexture)background.GetComponentInChildren (typeof(GUITexture))).pixelInset = new Rect (Screen.width / 8, Screen.height / 8, 6 * Screen.width / 8, 6 * Screen.height / 8);
 		backgroundBounds = ((GUITexture)background.GetComponentInChildren (typeof(GUITexture))).GetScreenRect ();
 		questionText = (GUIText)background.GetComponentInChildren (typeof(GUIText));
+		questionText.pixelOffset = new Vector2 (backgroundBounds.x + backgroundBounds.width *0.1f, backgroundBounds.y + backgroundBounds.height * 0.9f);
+
 		isChoosingAnswer = true;
 		if(randomizeQuestions)
 			currentQuestion = Random.Range (0, questions.Length - 1);
