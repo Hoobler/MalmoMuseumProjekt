@@ -20,9 +20,11 @@ public class SpawnInScene : MonoBehaviour {
 
 		if (Application.loadedLevel == 0)	//LILLA TORG
 			background_texture = Resources.Load ("skylt_lillatorg") as Texture;
-
 		if(Application.loadedLevel == 3)	//SLOTTET
 			background_texture = Resources.Load ("skylt_slottet") as Texture;
+		if (Application.loadedLevel == 4)	//GRÅBRÖDER
+			background_texture = Resources.Load ("skylt_grabroder") as Texture;
+
 
 		GameObject backObject = new GameObject ();
 		background = (GUITexture)backObject.AddComponent (typeof(GUITexture));
@@ -37,13 +39,13 @@ public class SpawnInScene : MonoBehaviour {
 		timer += Time.deltaTime;
 
 		if (fadein) {
-			alpha += 0.005f;
+			alpha += 0.008f * Time.deltaTime * 60;
 			if(alpha >= 1.0f)
 				fadein = false;
 		}
 		if (fadeout) {
 			Debug.Log ("Fade out");
-			alpha -= 0.005f;
+			alpha -= 0.015f * Time.deltaTime * 60;
 			if(alpha <= 0.0f){
 				fadeout = false;
 				//Tar bort scriptet så det inte updaterar mer.
