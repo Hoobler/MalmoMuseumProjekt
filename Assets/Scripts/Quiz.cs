@@ -127,7 +127,10 @@ public class Quiz : MonoBehaviour {
 		for (int i = 0; i < 4; i++) {
 			buttons [i] = (GameObject)Instantiate (Resources.Load ("Button"));
 			buttons[i].transform.parent = quizParent.transform;
-			buttons[i].transform.position = new Vector3(0.25f + 0.25f*(i%2), 0.25f+0.1f*(i/2), 0); 
+			if(i%2 == 0)
+				buttons[i].transform.position = new Vector3(0.5f - 0.15f, 0.25f+0.1f*(i/2), 0); 
+			if(i%2 == 1)
+				buttons[i].transform.position = new Vector3(0.5f + 0.15f, 0.25f+0.1f*(i/2), 0);
 		}
 
 		SetValues ();
