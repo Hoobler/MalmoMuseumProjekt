@@ -36,7 +36,8 @@ public class DiceQuest : QuestBase {
 	void Start () {
 		dicecamera = GameObject.Find ("DiceCamera");
 		dicecamera.camera.enabled = false;
-
+		invisWall = GameObject.Find ("Invisible Walls");
+		invisWall.SetActive (false);
 	}
 
 	public override void TriggerStart()
@@ -61,6 +62,7 @@ public class DiceQuest : QuestBase {
 		questActive = true;
 		lineRenderer = gameObject.GetComponent<LineRenderer> ();
 		lineRenderer.enabled = false;
+		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 	}
 
 	public override void TriggerFinish()
@@ -69,10 +71,11 @@ public class DiceQuest : QuestBase {
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
 		Destroy (resetButton.gameObject);
-		Destroy (invisWall);
+		invisWall.SetActive (false);
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		endText.text = "Du fick " + totalPoints + " poäng!";
+		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
 	}
 
 	public int CheckWhichSideIsUp(Transform die)
@@ -134,7 +137,7 @@ public class DiceQuest : QuestBase {
 			if(nrOfRerolls > 0)
 			{
 				nrOfRerolls--;
-				Destroy (invisWall);
+				invisWall.SetActive(false);
 				resetButton.enabled = true;
 				state = State.SELECT_REROLL;
 			}
@@ -229,7 +232,7 @@ public class DiceQuest : QuestBase {
 				else
 				{
 					state = State.PRETHROW;
-					invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls")) as GameObject;
+					invisWall.SetActive(true);
 				}
 				resetButton.enabled = false;
 			}
