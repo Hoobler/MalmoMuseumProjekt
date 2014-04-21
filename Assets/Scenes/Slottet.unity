@@ -63588,7 +63588,7 @@ Transform:
   m_PrefabInternal: {fileID: 1493050286}
   m_GameObject: {fileID: 1218555582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.8186855, y: 31.2094707, z: -43.9431801}
+  m_LocalPosition: {x: -10.8186855, y: 9.02067757, z: -43.9431801}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78915,7 +78915,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 31.2094707
+      value: 9.02067757
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4164350be39a2a04bb608c335e216c05, type: 2}
       propertyPath: m_LocalPosition.z
@@ -107871,7 +107871,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2041662236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.0239944, y: 48.7192917, z: -49.370388}
+  m_LocalPosition: {x: -183.721359, y: 48.7192917, z: -52.5462303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 502776216}
@@ -107886,9 +107886,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: "Du d\xE4r! \r\n\r\nVi beh\xF6ver hj\xE4lp, ser du skeppet d\xE4r borta
-    med holl\xE4ndska flaggan viftandes fr\xE5n masten? Anv\xE4nd kanonen f\xF6r att
-    skjuta ner det. T\xE4nk p\xE5 hur du siktar, kanonkulan \xE4r v\xE4ldigt l\xE5ngsam
+  introText: "Du d\xE4r! \r\n\r\nVi beh\xF6ver hj\xE4lp, holl\xE4ndska skepp \xE4r
+    p\xE5 ing\xE5ng f\xF6r att f\xF6rs\xF6ka ta v\xE5ra skepp. Anv\xE4nd kanonen f\xF6r
+    att skjuta ner det. T\xE4nk p\xE5 hur du siktar, kanonkulan \xE4r v\xE4ldigt l\xE5ngsam
     men n\xE4r den v\xE4l tr\xE4ffar \xE4r det stenh\xE5rt!"
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
