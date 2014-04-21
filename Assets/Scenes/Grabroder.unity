@@ -31265,12 +31265,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  introText: "Vi har f\xE5ngat en massa spioner. Hj\xE4lp oss bed\xF6ma vem som \xE4r
+    den danska."
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
-  buttons: []
+  buttons:
+  - quitOnPress: 0
+    textOnButton: Om mig
+    shownInfoWhenPressed: "Jag \xE4r en soldat som bla bla bla"
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+  - quitOnPress: 0
+    textOnButton: Om kvarteret
+    shownInfoWhenPressed: "St\xE4llet \xE4r gammalt bla bla bla"
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+  - quitOnPress: 1
+    textOnButton: "Jag vet vet som \xE4r spion"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 1
+    nameOfQuest: GraBroderSpion
+  - quitOnPress: 1
+    textOnButton: "Hej d\xE5"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
 --- !u!114 &1011142224
 MonoBehaviour:
   m_ObjectHideFlags: 0

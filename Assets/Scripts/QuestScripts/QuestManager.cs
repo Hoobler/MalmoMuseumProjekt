@@ -29,6 +29,10 @@ public class QuestManager : MonoBehaviour {
 			QuestBase canonquest = GameObject.Find ("QuestGiverCanon").GetComponent("CanonQuest") as QuestBase;
 			canonquest.TriggerStart();
 		}
+
+		if(name == "GraBroderSpion") {
+			((QuestBase) GameObject.Find ("QuestGiverSpion").GetComponent("SpionQuest")).TriggerStart();
+		}
 	}
 
 }
