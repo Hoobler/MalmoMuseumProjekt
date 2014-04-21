@@ -20,7 +20,7 @@ public class QuestManager : MonoBehaviour {
 			apple.TriggerStart();
 		}
 
-		if (name == "SlottetDiceGame") {
+		if (name == "GraBroderDiceGame") {
 			QuestBase dicequest = GameObject.Find ("QuestGiverDice").GetComponent("DiceQuest") as QuestBase;
 			dicequest.TriggerStart();
 		}

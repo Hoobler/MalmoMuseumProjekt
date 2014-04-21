@@ -3831,6 +3831,7 @@ GameObject:
   - 33: {fileID: 155875917}
   - 136: {fileID: 155875916}
   - 23: {fileID: 155875915}
+  - 114: {fileID: 155875918}
   m_Layer: 0
   m_Name: SpionA
   m_TagString: Untagged
@@ -3890,6 +3891,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155875913}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &155875918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155875913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons: []
 --- !u!1001 &162493421
 Prefab:
   m_ObjectHideFlags: 0
@@ -18122,7 +18140,7 @@ MonoBehaviour:
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
-    nameOfQuest: SlottetDiceGame
+    nameOfQuest: GraBroderDiceGame
   - quitOnPress: 1
     textOnButton: NEJ
     shownInfoWhenPressed: 
@@ -31249,7 +31267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introText: "H\xE4r ska det st\xE5 introduktionstext"
   font: {fileID: 0}
-  backgroundTexture: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons: []
@@ -34912,6 +34930,7 @@ GameObject:
   - 33: {fileID: 1163427492}
   - 136: {fileID: 1163427491}
   - 23: {fileID: 1163427490}
+  - 114: {fileID: 1163427493}
   m_Layer: 0
   m_Name: SpionB
   m_TagString: Untagged
@@ -34971,6 +34990,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1163427488}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1163427493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1163427488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons: []
 --- !u!1001 &1164256369
 Prefab:
   m_ObjectHideFlags: 0
@@ -47298,6 +47334,7 @@ GameObject:
   - 33: {fileID: 1601500585}
   - 136: {fileID: 1601500584}
   - 23: {fileID: 1601500583}
+  - 114: {fileID: 1601500586}
   m_Layer: 0
   m_Name: SpionC
   m_TagString: Untagged
@@ -47357,6 +47394,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1601500581}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1601500586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601500581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "H\xE4r ska det st\xE5 introduktionstext"
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons: []
 --- !u!1 &1606360368
 GameObject:
   m_ObjectHideFlags: 0
