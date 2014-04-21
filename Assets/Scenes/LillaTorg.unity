@@ -40388,31 +40388,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomizeQuestions: 1
   questions:
-  - question: What color is Jim's red gun?
+  - question: "Lilla torg anv\xE4ndes som en handlingsplats. Vilka varor kunde man
+      fr\xE4mst hitta h\xE4r?"
     answers:
-    - Green
-    - Yellow
-    - Blue
+    - Djur
+    - Hantverk och Mat
+    - Vapen
+    - Fordon
+    correctAnswer: 1
+  - question: "Under vilket \xE5rtionde anlades lilla torg som en ny plats f\xF6r
+      handel?"
+    answers:
+    - 1590-talet
+    - 1450-talet
+    - 1690-talet
+    - 1300-talet
     correctAnswer: 0
-  - question: When did the battle of Hamstrings take place?
+  - question: "Vad bestod marken p\xE5 lilla torg i f\xF6rsta hand av under 1690-talet?"
     answers:
-    - A
-    - B
-    - Both A and B
+    - Jord
+    - "Gr\xE4s"
+    - Kullersten
+    - Asfalt
     correctAnswer: 2
-  - question: "Fr\xE5ga 3"
+  - question: "Vad kallades staden innan den fick namnet \u201CMalm\xF6\u201D?"
     answers:
-    - 1
-    - 2
-    - 3
-    - 4
-    correctAnswer: 2
-  - question: "Fr\xE5ga 4"
-    answers:
-    - A
-    - B
-    - Both A and B
-    - C
+    - Malmbo
+    - "Malm\xF6hus"
+    - Malmborgen
+    - Ellenbogen
     correctAnswer: 3
 --- !u!23 &1926440640
 Renderer:
