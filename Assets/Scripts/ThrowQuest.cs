@@ -15,10 +15,11 @@ public class ThrowQuest : QuestBase {
 	float timeBetweenThrows;
 	float totalTimeBetweenThrows;
 	int nrOfActiveApples;
+	GameObject chargeBar;
+	GameObject chargeBarAmount;
+	GameObject chargeBarBack;
 
-	Transform chargeBar;
-
-	float charge; //pedja kom på detta
+	float charge;
 	float chargeRate;
 	bool charging;
 	bool appleIsInTheAir;
@@ -44,8 +45,8 @@ public class ThrowQuest : QuestBase {
 			player.position = new Vector3 (startPoint.position.x, player.position.y, startPoint.position.z);
 			//Debug.Log ("" + startPoint.position.x + "=" + player.position.x + ", " + startPoint.position.z + "=" + player.position.z);
 			player.LookAt (new Vector3(basket.position.x, player.position.y, basket.position.z));
-			chargeBar.position = new Vector3 (chargeBar.position.x, 0.3f + 0.4f * charge, chargeBar.position.z);
-
+			//chargeBarAmount.transform.position = new Vector3 (chargeBarAmount.transform.position.x, 0.3f + 0.4f * charge, chargeBarAmount.transform.position.z);
+			(chargeBarAmount.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height * (0.275f + 0.4f * charge), Screen.width *0.05f, Screen.height * 0.03f);
 			if (questStart) {
 				if (applesToThrow > 0 && !appleIsInTheAir) {
 					if(Input.GetMouseButtonDown(0) && !charging) {
@@ -121,9 +122,11 @@ public class ThrowQuest : QuestBase {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		basket = GameObject.Find("QuestBasketTrigger").transform;
 		startPoint = GameObject.Find ("AppleQuestStartPoint").transform;
-		Instantiate(Resources.Load ("ChargeBar"));
-		chargeBar = GameObject.Find ("ChargeAmount").transform;
-
+		chargeBar = (GameObject)Instantiate(Resources.Load ("ChargeBar"));
+		chargeBarAmount = GameObject.Find ("ChargeAmount");
+		chargeBarBack = GameObject.Find ("ChargeBackground");
+		(chargeBarBack.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height / 4f, Screen.width / 20f, Screen.height / 2f);
+		(chargeBarAmount.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height * 0.3f, Screen.width *0.05f, Screen.height * 0.05f);
 		applesToThrow = 10;
 		applesInBasket = 0;
 		charge = 0f;
@@ -152,7 +155,7 @@ public class ThrowQuest : QuestBase {
 		endText.text = finishInfo;
 
 		questActive = false;
-		if(chargeBar.root != null)
-			Destroy (chargeBar.root.gameObject);
+		if(chargeBar != null)
+			Destroy (chargeBar);
 	}
 }
