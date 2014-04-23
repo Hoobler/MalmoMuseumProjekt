@@ -28,7 +28,8 @@ public class DiceQuest : QuestBase {
 	GameObject invisWall;
 	GameObject diceparent;
 
-	GUITexture resetButton;
+	GUITexture resetButtonBack;
+	GUIText resetButtonText;
 	LineRenderer lineRenderer;
 
 	Transform player;
@@ -43,8 +44,13 @@ public class DiceQuest : QuestBase {
 	public override void TriggerStart()
 	{
 		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
-		resetButton = (GUITexture)button.GetComponent ("GUITexture");
-		resetButton.enabled = false;
+		resetButtonBack = (GUITexture)button.GetComponent ("GUITexture");
+		resetButtonBack.pixelInset = new Rect (Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.15f, Screen.height * 0.15f);
+		resetButtonBack.enabled = false;
+		resetButtonText = (GUIText)button.GetComponent ("GUIText");
+		resetButtonText.pixelOffset = resetButtonBack.GetScreenRect ().center;
+		resetButtonText.fontSize = 14 * (Screen.width / 800);
+		resetButtonText.enabled = false;
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
 		dicecamera.camera.enabled = true;
@@ -70,7 +76,7 @@ public class DiceQuest : QuestBase {
 		questActive = false;
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
-		Destroy (resetButton.gameObject);
+		Destroy (resetButtonBack.gameObject);
 		invisWall.SetActive (false);
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
@@ -138,7 +144,9 @@ public class DiceQuest : QuestBase {
 			{
 				nrOfRerolls--;
 				invisWall.SetActive(false);
-				resetButton.enabled = true;
+				resetButtonBack.enabled = true;
+				resetButtonText.text = "BEHÅLL RESULTAT";
+				resetButtonText.enabled = true;
 				state = State.SELECT_REROLL;
 			}
 			else
@@ -219,13 +227,20 @@ public class DiceQuest : QuestBase {
 			{
 				if(dice[i] == hit.collider.gameObject)
 				{
+
 					numberOfDiceToThrow++;
 					Destroy(dice[i]);
 					listOfNumbers.Add(i);
+					if(numberOfDiceToThrow == 1)
+					{
+						resetButtonText.text = "SLÅ OM EN";
+					}
+					else
+						resetButtonText.text = "SLÅ OM "+numberOfDiceToThrow;
 				}
 			}
 
-			if(resetButton.GetScreenRect().Contains(Input.mousePosition) || numberOfDiceToThrow == 5)
+			if(resetButtonBack.GetScreenRect().Contains(Input.mousePosition) || numberOfDiceToThrow == 5)
 			{
 				if(numberOfDiceToThrow == 0)
 					state = State.FINISH;
@@ -234,7 +249,8 @@ public class DiceQuest : QuestBase {
 					state = State.PRETHROW;
 					invisWall.SetActive(true);
 				}
-				resetButton.enabled = false;
+				resetButtonBack.enabled = false;
+				resetButtonText.enabled = false;
 			}
 		}
 	}

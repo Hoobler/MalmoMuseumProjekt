@@ -39,7 +39,7 @@ public class DialogueTest: MonoBehaviour {
 	public Knapp[] buttons; 
 
 	void Start(){
-
+		Debug.Log ("(W: "+Screen.width.ToString ()+" H: "+Screen.height.ToString ()+ ") CR: " + Screen.currentResolution.width + " "+Screen.currentResolution.height);
 	}
 
 	void FormatMainText(){
@@ -84,8 +84,10 @@ public class DialogueTest: MonoBehaviour {
 				buttons [i].text.color = new Color (0, 0, 0);
 				buttons[i].text.alignment = TextAlignment.Center;
 				buttons[i].text.anchor = TextAnchor.MiddleCenter;
-				if (font)
-						buttons [i].text.font = font;
+			if (font)
+				buttons [i].text.font = font;
+			buttons[i].text.fontSize = (int)(12 * Screen.width / 800f);
+				
 			buttonParent.transform.localScale = Vector3.zero;
 			buttonParent.transform.position = Vector3.zero;
 
@@ -121,6 +123,8 @@ public class DialogueTest: MonoBehaviour {
 		mainGUIText.lineSpacing = 1f;
 		if(font)
 			mainGUIText.font = font;
+		mainGUIText.fontSize = (int) (12 * Screen.width / 800f);
+
 
 		GameObject kryssIHornet = new GameObject ("Exit Cross");
 		kryssIHornet.transform.parent = dialogueObject.transform;
