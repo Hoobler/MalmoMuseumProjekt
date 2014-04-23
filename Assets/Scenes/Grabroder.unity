@@ -3907,7 +3907,13 @@ MonoBehaviour:
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
-  buttons: []
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Hej d\xE5"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
 --- !u!1001 &162493421
 Prefab:
   m_ObjectHideFlags: 0
@@ -35031,7 +35037,13 @@ MonoBehaviour:
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
-  buttons: []
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Hej d\xE5"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
 --- !u!1001 &1164256369
 Prefab:
   m_ObjectHideFlags: 0
@@ -47435,7 +47447,13 @@ MonoBehaviour:
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
-  buttons: []
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Hej d\xE5"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
 --- !u!1 &1606360368
 GameObject:
   m_ObjectHideFlags: 0
