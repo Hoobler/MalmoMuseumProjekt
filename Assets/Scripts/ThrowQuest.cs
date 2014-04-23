@@ -8,6 +8,7 @@ public class ThrowQuest : QuestBase {
 
 	int applesToThrow;
 	int applesInBasket;
+	int nrOfApplesForSuccess;
 	Transform player;
 	Transform basket;
 	Transform startPoint;
@@ -111,7 +112,7 @@ public class ThrowQuest : QuestBase {
 		{
 			Instantiate(Resources.Load ("FadeCorrect"));
 			applesInBasket++;
-			if(applesInBasket >= 6)
+			if(applesInBasket >= nrOfApplesForSuccess)
 				TriggerFinish(true);
 		}
 	}
@@ -127,7 +128,8 @@ public class ThrowQuest : QuestBase {
 		chargeBarBack = GameObject.Find ("ChargeBackground");
 		(chargeBarBack.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height / 4f, Screen.width / 20f, Screen.height / 2f);
 		(chargeBarAmount.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height * 0.3f, Screen.width *0.05f, Screen.height * 0.05f);
-		applesToThrow = 10;
+		applesToThrow = 6;
+		nrOfApplesForSuccess = 3;
 		applesInBasket = 0;
 		charge = 0f;
 		chargeRate = 0.009f;

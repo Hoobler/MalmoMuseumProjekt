@@ -4,7 +4,7 @@ using System.Collections;
 public class SpionQuest : QuestBase {
 
 	bool questActive;
-
+	GameObject dialogueWindow;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class SpionQuest : QuestBase {
 	public override void TriggerStart ()
 	{
 		questActive = true;
-		Debug.Log("SPION START");
+		//dialogueWindow = (GameObject)Instantiate("
 	}
 
 	public override void TriggerFinish ()

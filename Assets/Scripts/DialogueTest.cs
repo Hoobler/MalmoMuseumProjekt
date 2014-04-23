@@ -133,24 +133,27 @@ public class DialogueTest: MonoBehaviour {
 	void Update(){
 		if (conversationActive) {
 			if (Input.GetMouseButtonDown (0)) {
-				for(int i = 0; i < buttons.Length; i++)
-				{
-					if (buttons[i].background.GetScreenRect ().Contains (Input.mousePosition)) {
 
-						if (questManager && buttons[i].isQuestTrigger)
-							questManager.ActivateQuest(buttons[i].nameOfQuest);
 
-						if(buttons[i].quitOnPress)
-						{
-							KillConversation();
+					for(int i = 0; i < buttons.Length; i++)
+					{
+						if (buttons[i].background.GetScreenRect ().Contains (Input.mousePosition)) {
+					
+							if (questManager && buttons[i].isQuestTrigger)
+								questManager.ActivateQuest(buttons[i].nameOfQuest);
+					
+							if(buttons[i].quitOnPress)
+							{
+								KillConversation();
+								break;
+							}
+					
+							mainGUIText.text = buttons[i].shownInfoWhenPressed;
+							FormatMainText();
 							break;
 						}
-
-						mainGUIText.text = buttons[i].shownInfoWhenPressed;
-						FormatMainText();
-						break;
 					}
-				}
+
 			}
 			if(playerTransform && Vector3.Distance(playerTransform.position, this.transform.position) > abortConversationDistance)
 				KillConversation();
