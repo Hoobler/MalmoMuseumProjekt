@@ -31,7 +31,7 @@ public class DialogueTest: MonoBehaviour {
 	GUITexture background;
 
 	GameObject dialogueObject;
-
+	GUITexture exitCross;
 	private Transform playerTransform;
 
 	private bool conversationActive = false;
@@ -70,22 +70,24 @@ public class DialogueTest: MonoBehaviour {
 				buttons [i].background = (GUITexture)backObject.AddComponent (typeof(GUITexture));
 				buttons [i].background.texture = buttons [i].backgroundTexture;
 			
-			buttons [i].background.transform.localScale = new Vector3 (0.20f, 0.07f, 0);
-				buttons [i].background.transform.position = new Vector3 (0.0f, 0f, 0.1f);
-		
+				buttons [i].background.transform.localScale = new Vector3 (0, 0, 0);
+				buttons [i].background.transform.position = new Vector3 (0.0f, 0f, 0f);
+			buttons[i].background.pixelInset = new Rect(background.GetScreenRect().x + background.GetScreenRect().width*0.1f, background.GetScreenRect().yMin + background.GetScreenRect().width*0.05f + (background.GetScreenRect().height * 0.06f)*(buttons.Length-i - 1), background.GetScreenRect().width*0.5f, background.GetScreenRect().height * 0.1f);
+
 				GameObject textObject = new GameObject ("Text");
 				textObject.transform.parent = buttonParent.transform;
 				buttons [i].text = (GUIText)textObject.AddComponent (typeof(GUIText));
 				buttons [i].text.text = buttons [i].textOnButton;
-				buttons [i].text.transform.position = new Vector3 (0f, 0f, 0.11f);
-				buttons [i].text.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
+				buttons [i].text.transform.position = Vector3.zero;
+			buttons [i].text.transform.localScale = Vector3.zero;
+			buttons[i].text.pixelOffset = new Vector2(buttons[i].background.GetScreenRect().x + buttons[i].background.GetScreenRect().width*0.5f, buttons[i].background.GetScreenRect().y + buttons[i].background.GetScreenRect().height*0.5f);
 				buttons [i].text.color = new Color (0, 0, 0);
 				buttons[i].text.alignment = TextAlignment.Center;
 				buttons[i].text.anchor = TextAnchor.MiddleCenter;
 				if (font)
 						buttons [i].text.font = font;
-				buttonParent.transform.localScale = new Vector3(1,1,1);
-				buttonParent.transform.position = new Vector3(0, -0.23f+offsetY*(buttons.Length-i - 1), 0.1f);
+			buttonParent.transform.localScale = Vector3.zero;
+			buttonParent.transform.position = Vector3.zero;
 
 
 		}
@@ -103,22 +105,32 @@ public class DialogueTest: MonoBehaviour {
 		backObject.transform.parent = backgroundHolder.transform;
 		background = (GUITexture)backObject.AddComponent (typeof(GUITexture));
 		background.texture = backgroundTexture;
-		background.transform.position =  new Vector3 (0f, 0f, 0);
-		background.transform.localScale = new Vector3 (0.3f, 0.6f, 0);
+		background.transform.position = new Vector3 (0, 0, -1);
+		background.transform.localScale = Vector3.zero;
+		background.pixelInset = new Rect (Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.4f, Screen.height * 0.8f);
 
 		GameObject mainGUITextObject = new GameObject ("MainText");
 		mainGUITextObject.transform.parent = backgroundHolder.transform;
 		mainGUIText = (GUIText)mainGUITextObject.AddComponent (typeof(GUIText));
 		mainGUIText.text = introText;
-		mainGUIText.transform.position =  new Vector3 (-0.12f, 0.25f, 0.10f);
-		mainGUIText.transform.localScale = new Vector3 (0.1f, 0.05f, 0);
+		mainGUIText.transform.position =  Vector3.zero;
+		mainGUIText.transform.localScale = Vector3.zero;
+		mainGUIText.pixelOffset = new Vector2 (background.GetScreenRect ().x + background.GetScreenRect ().width * 0.1f, background.GetScreenRect ().yMax - background.GetScreenRect ().height * 0.1f);
+
 		mainGUIText.color = new Color (0, 0, 0);
 		mainGUIText.lineSpacing = 1f;
 		if(font)
 			mainGUIText.font = font;
 
+		GameObject kryssIHornet = new GameObject ("Exit Cross");
+		kryssIHornet.transform.parent = dialogueObject.transform;
+		exitCross = (GUITexture)kryssIHornet.AddComponent(typeof(GUITexture));
+		exitCross.texture = (Texture)Resources.Load ("kryss");
+		exitCross.gameObject.transform.position = Vector3.zero;
+		exitCross.gameObject.transform.localScale = Vector3.zero;
+		exitCross.pixelInset = new Rect (background.GetScreenRect ().xMax - background.GetScreenRect ().width * 0.1f, background.GetScreenRect ().yMax - background.GetScreenRect ().height * 0.1f, background.GetScreenRect ().width * 0.05f, background.GetScreenRect ().width * 0.05f); 
 		CreateNewButtons ();
-		dialogueObject.transform.position = new Vector3 (0.2f, 0.5f, 0);
+		dialogueObject.transform.position = Vector3.zero;
 
 		FormatMainText ();
 
@@ -133,8 +145,8 @@ public class DialogueTest: MonoBehaviour {
 	void Update(){
 		if (conversationActive) {
 			if (Input.GetMouseButtonDown (0)) {
-
-
+				if(exitCross.GetScreenRect().Contains(Input.mousePosition))
+					KillConversation();
 					for(int i = 0; i < buttons.Length; i++)
 					{
 						if (buttons[i].background.GetScreenRect ().Contains (Input.mousePosition)) {
