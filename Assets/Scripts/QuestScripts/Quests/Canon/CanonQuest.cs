@@ -86,14 +86,12 @@ public class CanonQuest : QuestBase  {
 	//Called when player finishes quest
 	public override void TriggerFinish ()
 	{
-
 		//Removes arrows on screen
 		GameObject t = GameObject.Find ("CanonGUI");
 		Destroy (t);
-
+		questActive = false;
 		mainCamera.SetActive (true);
 		canonCamera.SetActive (false);
-		questActive = false;
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		if (nr_of_hits > 0)
@@ -102,6 +100,7 @@ public class CanonQuest : QuestBase  {
 						endText.text = "Tusan, du missade alla skott";
 
 		player.transform.position = prevPos;
+		Reset ();
 	}
 
 	// Use this for initialization
@@ -117,6 +116,11 @@ public class CanonQuest : QuestBase  {
 		InitGUI();
 		#endif
 
+	}
+
+	void Reset(){
+		canonballs_shot = 0;
+		nr_of_hits = 0;
 	}
 
 	void InitGUI(){
@@ -319,5 +323,5 @@ public class CanonQuest : QuestBase  {
 			}
 
 		}
-	}
+	}	
 }
