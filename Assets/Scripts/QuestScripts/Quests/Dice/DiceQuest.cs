@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Text;
+using System.Text.RegularExpressions;
 
 public class DiceQuest : QuestBase {
 
@@ -28,6 +30,8 @@ public class DiceQuest : QuestBase {
 	GameObject invisWall;
 	GameObject diceparent;
 
+	GUIText informationsText;
+
 	GUITexture resetButtonBack;
 	GUIText resetButtonText;
 	LineRenderer lineRenderer;
@@ -45,7 +49,7 @@ public class DiceQuest : QuestBase {
 	{
 		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
 		resetButtonBack = (GUITexture)button.GetComponent ("GUITexture");
-		resetButtonBack.pixelInset = new Rect (Screen.width * 0.1f, Screen.height * 0.1f, Screen.width * 0.15f, Screen.height * 0.15f);
+		resetButtonBack.pixelInset = new Rect (Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.15f, Screen.height * 0.15f);
 		resetButtonBack.enabled = false;
 		resetButtonText = (GUIText)button.GetComponent ("GUIText");
 		resetButtonText.pixelOffset = resetButtonBack.GetScreenRect ().center;
@@ -54,6 +58,17 @@ public class DiceQuest : QuestBase {
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
 		dicecamera.camera.enabled = true;
+
+		GameObject informationObj = new GameObject ("Info Text");
+		informationObj.transform.parent = dicecamera.transform.parent;
+		informationsText = (GUIText)informationObj.AddComponent<GUIText> ();
+		informationsText.pixelOffset = new Vector2 (Screen.width * 0.3f, Screen.height * 0.1f);
+		informationsText.fontSize = (int)(16 * Screen.width / 800f);
+		informationsText.anchor = TextAnchor.MiddleLeft;
+		informationsText.alignment = TextAlignment.Left;
+		informationsText.text = "Dra över skärmen för att kasta";
+		informationsText.color = Color.yellow;
+
 		numberOfDiceToThrow = 5;
 		state = State.PRETHROW;
 		dice = new GameObject[numberOfDiceToThrow];
@@ -76,11 +91,12 @@ public class DiceQuest : QuestBase {
 		questActive = false;
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
+		Destroy (informationsText.gameObject);
 		Destroy (resetButtonBack.gameObject);
 		invisWall.SetActive (false);
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		endText.text = "Du fick " + totalPoints + " poÃ¤ng!";
+		endText.text = "Du fick " + totalPoints + " poäng!";
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
 	}
 
@@ -145,9 +161,11 @@ public class DiceQuest : QuestBase {
 				nrOfRerolls--;
 				invisWall.SetActive(false);
 				resetButtonBack.enabled = true;
-				resetButtonText.text = "BEHÃ…LL RESULTAT";
+				resetButtonText.text = "BEHÅLL RESULTAT";
 				resetButtonText.enabled = true;
 				state = State.SELECT_REROLL;
+				informationsText.enabled = true;
+				informationsText.text = "Välj de tärningar du vill slå om";
 			}
 			else
 			{
@@ -190,6 +208,7 @@ public class DiceQuest : QuestBase {
 				//invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls"), new Vector3(5.29764f, 4.712706f, -36.91311f), new Quaternion()) as GameObject;
 				lineRenderer.enabled = false;
 				state = State.POSTTHROW;
+				informationsText.enabled = false;
 				startHold = dicecamera.camera.ScreenPointToRay(startHold).origin;
 				endHold = dicecamera.camera.ScreenPointToRay(endHold).origin;
 				endHold.y = startHold.y;
@@ -233,10 +252,10 @@ public class DiceQuest : QuestBase {
 					listOfNumbers.Add(i);
 					if(numberOfDiceToThrow == 1)
 					{
-						resetButtonText.text = "SLÃ… OM EN";
+						resetButtonText.text = "SLÅ OM EN";
 					}
 					else
-						resetButtonText.text = "SLÃ… OM "+numberOfDiceToThrow;
+						resetButtonText.text = "SLÅ OM "+numberOfDiceToThrow;
 				}
 			}
 
@@ -248,6 +267,7 @@ public class DiceQuest : QuestBase {
 				{
 					state = State.PRETHROW;
 					invisWall.SetActive(true);
+					informationsText.text = "Dra över skärmen för att kasta";
 				}
 				resetButtonBack.enabled = false;
 				resetButtonText.enabled = false;
