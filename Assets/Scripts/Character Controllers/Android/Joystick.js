@@ -27,6 +27,10 @@ static private var joysticks : Joystick[];					// A static collection of all joy
 static private var enumeratedJoysticks : boolean = false;
 static private var tapTimeDelta : float = 0.3;				// Time allowed between taps
 
+var SizeModifier : float;
+var JoystickScaleSize : float;								// Scaled size of the joystick
+var JoystickScaleInset : float; 							// Scaled inset size
+var RightSideJoystick : boolean;
 var touchPad : boolean; 									// Is this a TouchPad?
 var touchZone : Rect;
 var deadZone : Vector2 = Vector2.zero;						// Control when position is output
@@ -50,12 +54,20 @@ function Start()
 {
 	// Cache this component at startup instead of looking up every frame	
 	gui = GetComponent( GUITexture );
+	var inset = Screen.height * JoystickScaleInset;
+	var size = Screen.height * JoystickScaleSize;
+	
+	Debug.Log("Joysize" + Screen.height * JoystickScaleSize);
+	gui.pixelInset = new Rect( RightSideJoystick ? (inset + size) * -1 : inset ,
+							   inset ,
+							   size ,
+							   size);
 	
 	// Store the default rect for the gui, so we can snap back to it
 	defaultRect = gui.pixelInset;	
     
-    defaultRect.x += transform.position.x * Screen.width;// + gui.pixelInset.x; // -  Screen.width * 0.5;
-    defaultRect.y += transform.position.y * Screen.height;// - Screen.height * 0.5;
+	defaultRect.x += transform.position.x * Screen.width;// + gui.pixelInset.x; // -  Screen.width * 0.5;
+	defaultRect.y += transform.position.y * Screen.height;// - Screen.height * 0.5;
     
     transform.position.x = 0.0;
     transform.position.y = 0.0;

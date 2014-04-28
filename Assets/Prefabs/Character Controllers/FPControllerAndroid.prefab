@@ -268,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100018}
   m_LocalRotation: {x: 0, y: .999564111, z: 0, w: .0295233373}
-  m_LocalPosition: {x: -6.93581772, y: 6.18735552, z: 2.96931076}
+  m_LocalPosition: {x: -3.63578033, y: 6.187356, z: 3.63191223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400020}
@@ -556,6 +556,7 @@ MonoBehaviour:
   ReloadTime: 0
   ScaleLimit: 2
   CircleDepth: 20
+  ShootSpot: {fileID: 0}
   ReloadTexture: {fileID: 2800000, guid: 0ab0b0a51e74dfb48be7285b3fb2e0ac, type: 3}
 --- !u!114 &11400006
 MonoBehaviour:
@@ -568,6 +569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb10c595af974ea6ba0313a749d5c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SizeModifier: 0
+  JoystickScaleSize: .200000003
+  JoystickScaleInset: .150000006
+  RightSideJoystick: 0
   touchPad: 0
   touchZone:
     serializedVersion: 2
@@ -593,6 +598,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb10c595af974ea6ba0313a749d5c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SizeModifier: 0
+  JoystickScaleSize: .0500000007
+  JoystickScaleInset: .150000006
+  RightSideJoystick: 0
   touchPad: 0
   touchZone:
     serializedVersion: 2
