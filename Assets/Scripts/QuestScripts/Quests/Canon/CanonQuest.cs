@@ -69,8 +69,8 @@ public class CanonQuest : QuestBase  {
 		GameObject temp = GameObject.Find ("Graphics");
 		temp.renderer.enabled = false;
 
-		mainCamera.SetActive(false);
-		canonCamera.SetActive (true);
+		mainCamera.camera.enabled = false;
+		canonCamera.camera.enabled = true;
 
 		canonballs_shot = 0;
 
@@ -90,8 +90,8 @@ public class CanonQuest : QuestBase  {
 		GameObject t = GameObject.Find ("CanonGUI");
 		Destroy (t);
 		questActive = false;
-		mainCamera.SetActive (true);
-		canonCamera.SetActive (false);
+		mainCamera.camera.enabled = true;
+		canonCamera.camera.enabled = false;
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		if (nr_of_hits > 0)
@@ -100,7 +100,8 @@ public class CanonQuest : QuestBase  {
 						endText.text = "Tusan, du missade alla skott";
 
 		player.transform.position = prevPos;
-		Reset ();
+		canonballs_shot = 0;
+		nr_of_hits = 0;
 	}
 
 	// Use this for initialization
@@ -118,11 +119,14 @@ public class CanonQuest : QuestBase  {
 
 	}
 
+	//Resets after completion
 	void Reset(){
 		canonballs_shot = 0;
-		nr_of_hits = 0;
+		reload_timer = 0;
+		end_timer = 0;
 	}
 
+	//Initializes GUI for android
 	void InitGUI(){
 
 		GameObject canonGUI = new GameObject ("CanonGUI");
@@ -244,7 +248,7 @@ public class CanonQuest : QuestBase  {
 							canonPipe.transform.Rotate(Vector3.left * ROTATION_SPEED * Time.deltaTime); 
 							start_up_rotation += Vector3.left * ROTATION_SPEED * Time.deltaTime;
 						}
-						if(j == 3 && start_up_rotation.x < 0f){			//NER
+						if(j == 3 && start_up_rotation.x < 0f){				//NER
 							canonPipe.transform.Rotate(Vector3.right * ROTATION_SPEED * Time.deltaTime);
 							start_up_rotation += Vector3.right * ROTATION_SPEED * Time.deltaTime;
 						}
@@ -257,12 +261,19 @@ public class CanonQuest : QuestBase  {
 		}
 	}
 
+	//Updates when player has either hit the ship or is out of cannonballs
 	void UpdateEndTimer(){
 		end_timer += Time.deltaTime;
-		if (end_timer > END_TIMER_COMPLETE && nr_of_hits > 0)
-			TriggerFinish ();
-		if (end_timer > END_TIMER_FAIL && nr_of_hits == 0)
-			TriggerFinish ();
+		ShipScript script = ship.GetComponent(typeof(ShipScript)) as ShipScript;
+		if (end_timer > END_TIMER_COMPLETE && nr_of_hits > 0) {
+						TriggerFinish ();
+						Reset ();
+						script.Reset();
+				} else if (end_timer > END_TIMER_FAIL && nr_of_hits == 0) {
+						TriggerFinish ();
+						Reset ();
+						script.Reset();
+				}
 	}
 
 	//Called when player presses shoots the canon
@@ -303,7 +314,6 @@ public class CanonQuest : QuestBase  {
 		ShipScript script = ship.GetComponent (typeof(ShipScript)) as ShipScript;
 		if (script != null) {
 			script.Speed = new Vector3 (0.03f, -0.02f, 0.03f);
-			Debug.Log ("Ship script changed");
 			script.hit = true;
 		}
 
