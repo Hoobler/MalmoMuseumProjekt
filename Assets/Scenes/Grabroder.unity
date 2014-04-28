@@ -3890,7 +3890,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155875913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.39776611, y: 22.6471558, z: -14.8850708}
+  m_LocalPosition: {x: -6.17132568, y: 22.6471558, z: -17.0079346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1606360369}
@@ -31374,7 +31374,7 @@ MonoBehaviour:
     isQuestTrigger: 0
     nameOfQuest: 
   - quitOnPress: 1
-    textOnButton: "Jag vet vet som \xE4r spion"
+    textOnButton: "Jag vet vem som \xE4r spion"
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
@@ -31396,6 +31396,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05b90c04801a4b4f927ada6cfa95f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  spionTexturer:
+  - {fileID: 2800000, guid: 96e347642ac81724c8e48ed5255dded7, type: 3}
+  - {fileID: 2800000, guid: 2af2e1af4c02bc942b17f0cf0fa6a2f1, type: 3}
+  - {fileID: 2800000, guid: 64773a6397ea88f4aa805560cba942cc, type: 3}
+  namn:
+  - Sven Svensson
+  - Jens Fagerstedt
+  - Mads
 --- !u!23 &1011142225
 Renderer:
   m_ObjectHideFlags: 0
@@ -35059,7 +35068,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1163427488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.78814697, y: 22.622818, z: -16.9518433}
+  m_LocalPosition: {x: -5.56170654, y: 22.622818, z: -19.074707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1606360369}
@@ -47508,7 +47517,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1601500581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.34069824, y: 22.6415882, z: -18.9650269}
+  m_LocalPosition: {x: -5.11425781, y: 22.6415882, z: -21.0878906}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1606360369}
