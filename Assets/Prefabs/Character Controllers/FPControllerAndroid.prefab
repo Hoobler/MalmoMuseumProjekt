@@ -166,7 +166,6 @@ GameObject:
   - 124: {fileID: 12400002}
   - 81: {fileID: 8100002}
   - 114: {fileID: 11400010}
-  - 45: {fileID: 4500000}
   m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -268,7 +267,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100018}
   m_LocalRotation: {x: 0, y: .999564111, z: 0, w: .0295233373}
-  m_LocalPosition: {x: 17.815918, y: 0, z: -9.36580658}
+  m_LocalPosition: {x: 18.1721344, y: 0, z: -9.99874878}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400020}
@@ -460,14 +459,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Mesh: {fileID: 4300000, guid: 76502fcc4445aeb4ba018a78ee67636b, type: 3}
---- !u!45 &4500000
-Skybox:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100024}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 53412155bc1016547b1a77b2333c0380, type: 2}
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
