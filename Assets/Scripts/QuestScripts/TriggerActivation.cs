@@ -36,6 +36,13 @@ public class TriggerActivation : QuestBase {
 			timeElapsed += Time.deltaTime;
 	}
 
+	void Reset(){
+
+		collected = 0;
+		questFinished = false;
+		timeElapsed = 0;
+	}
+
 	void OnTriggerEnter(Collider other){
 
 		if (other.gameObject.tag == "Pickup" && !carrying && questAccpeted) {	
@@ -75,7 +82,7 @@ public class TriggerActivation : QuestBase {
 		
 		quest1gui = GameObject.FindWithTag("Quest1");
 		collected = 0;
-		//showpickupquest()
+
 		questAccpeted = true;
 		for(int i = 0; i < pickupArray.Count; i++) {
 			GameObject go = (GameObject)pickupArray[i];
@@ -93,8 +100,12 @@ public class TriggerActivation : QuestBase {
 		questFinished = true;
 		questAccpeted = false;
 
-		Debug.Log ("QUEST FINISHED");
-		base.TriggerFinish ();
+		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+		endText.text = "Tack, du hämtade alla påsar!";
+
+		Reset ();
+		
 	}
 }
 
