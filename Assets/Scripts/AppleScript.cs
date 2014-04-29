@@ -11,7 +11,7 @@ public class AppleScript : MonoBehaviour {
 	void Start()
 	{
 		throwRef = GameObject.Find ("AppleQuestPerson").GetComponent (typeof(ThrowQuest)) as ThrowQuest;
-		timeUntilRemoval = 5.0f;
+		timeUntilRemoval = 10.0f;
 		hasTriggered = false;
 	}
 
@@ -35,10 +35,10 @@ public class AppleScript : MonoBehaviour {
 	{
 		if (!hasTriggered) {
 
-			if (timeUntilRemoval >= 1)
-				timeUntilRemoval = 1f;
 			if (collider.gameObject.name == "QuestBasketTrigger") {
 				hasTriggered = true;
+				if (timeUntilRemoval >= 1)
+					timeUntilRemoval = 1f;
 				if (throwRef != null) {
 					throwRef.AppleTrigger (true);
 				}
