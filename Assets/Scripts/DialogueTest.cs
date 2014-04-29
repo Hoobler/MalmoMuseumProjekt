@@ -59,8 +59,6 @@ public class DialogueTest: MonoBehaviour {
 
 	void CreateNewButtons()
 	{
-		float offsetY = 0.045f;
-
 		for (int i = 0; i < buttons.Length; i++) {
 				GameObject buttonParent = new GameObject ("Button");
 				buttonParent.transform.parent = dialogueObject.transform;

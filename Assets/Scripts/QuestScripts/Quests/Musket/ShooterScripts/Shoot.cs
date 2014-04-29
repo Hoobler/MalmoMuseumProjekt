@@ -15,7 +15,7 @@ public class Shoot : MonoBehaviour {
 	private float _reloadTimeLeft;
 
 	private bool _weaponActive;
-	private bool _questStared;
+//	private bool _questStared;
 	private bool _questFinished;
 	private bool _reloading;
 	private bool _firstHit;
@@ -131,7 +131,7 @@ public class Shoot : MonoBehaviour {
 
 		if(Physics.Raycast(_ray ,out _hit, 100f, 1 << 10)){
 			//Debug.DrawLine (_cameraTransform.position, _hit.point, Color.red, 10.0f, false);
-			GameObject otherObj = _hit.collider.gameObject;
+//			GameObject otherObj = _hit.collider.gameObject;
 			if(_hit.collider.name == "BullsEye"){
 				SendToMusketQuest("BullsEye");
 			}

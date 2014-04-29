@@ -5,8 +5,8 @@ public class GreetingsNewArea : MonoBehaviour {
 
     private float alpha;
 
-    private float fadeAlpha = 0.0f;
-    private bool fadeIn = true;
+//    private float fadeAlpha = 0.0f;
+//    private bool fadeIn = true;
 
     private Color color;
 

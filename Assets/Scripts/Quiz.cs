@@ -20,7 +20,7 @@ public class Quiz : MonoBehaviour {
 	GameObject[] buttons;
 	int currentQuestion;
 	GameObject quizParent;
-	bool active = false;
+	bool quizActive = false;
 	int points;
 	bool isChoosingAnswer;
 
@@ -48,7 +48,7 @@ public class Quiz : MonoBehaviour {
 
 
 	void Update() {
-		if (active) {
+		if (quizActive) {
 			if(Input.GetMouseButtonDown(0))
 			{
 				if(isChoosingAnswer)
@@ -143,7 +143,7 @@ public class Quiz : MonoBehaviour {
 
 	public void TriggerFinish()
 	{
-		active = false;
+		quizActive = false;
 		Destroy (quizParent);
 	}
 
@@ -187,9 +187,9 @@ public class Quiz : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (!active) {
+		if (!quizActive) {
 			TriggerStart ();
-			active = true;
+			quizActive = true;
 		}
 	}
 }

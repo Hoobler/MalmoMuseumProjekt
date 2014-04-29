@@ -9,7 +9,7 @@ public class SpawnInScene : MonoBehaviour {
 
 	private bool fadein = true;
 	private bool fadeout = false;
-	private bool timerstart = false;
+//	private bool timerstart = false;
 	private float alpha = 0.0f;
 
 	private const float TIME_ON_SCREEN = 4.0f;

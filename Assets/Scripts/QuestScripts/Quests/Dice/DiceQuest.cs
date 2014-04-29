@@ -36,7 +36,7 @@ public class DiceQuest : QuestBase {
 	GUIText resetButtonText;
 	LineRenderer lineRenderer;
 
-	Transform player;
+//	Transform player;
 	// Use this for initialization
 	void Start () {
 		dicecamera = GameObject.Find ("DiceCamera");
