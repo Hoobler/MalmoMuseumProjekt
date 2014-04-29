@@ -79,7 +79,7 @@ public class DiceQuest : QuestBase {
 			listOfNumbers.Add(i);
 		}
 		nrOfRerolls = 5;
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
+//		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		questActive = true;
 		lineRenderer = gameObject.GetComponent<LineRenderer> ();
 		lineRenderer.enabled = false;

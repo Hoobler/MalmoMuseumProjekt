@@ -28,7 +28,7 @@ public class MovingSight : MonoBehaviour {
 
 	IEnumerator SightSway(){
 //		int index = 0;
-		float timeLeft = 0;
+//		float timeLeft = 0;
 //		bool newTime = true;
 		while(true){
 			if(!_active){ yield return new WaitForSeconds(2.0f); }

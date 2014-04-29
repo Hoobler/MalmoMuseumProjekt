@@ -26,7 +26,7 @@ public class Shoot : MonoBehaviour {
 
 	void Start () {
 		_reloadTimeLeft = ReloadTime;
-		_questStared = false;
+//		_questStared = false;
 		_firstHit = false;
 		EventManager.OnQuest += EventRespons;
 		EventManager.OnTouchEvent += TouchRespons;
@@ -79,11 +79,11 @@ public class Shoot : MonoBehaviour {
 			Debug.Log("Shoot test");
 			if(evArgs.QuestType == QuestTypeEnum.Started){
 				StartCoroutine(MovePlayerToShootSpot());
-				_questStared = true;
+//				_questStared = true;
 				_firstHit = false;
 			}
 			else if(evArgs.QuestType == QuestTypeEnum.Finnished){
-				_questStared = false;
+//				_questStared = false;
 				DisableWeapon();
 			}
 			else if(evArgs.QuestType == QuestTypeEnum.Reset){
