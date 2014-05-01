@@ -115,6 +115,7 @@ public class Quiz : MonoBehaviour {
 		backgroundBounds = ((GUITexture)background.GetComponentInChildren (typeof(GUITexture))).GetScreenRect ();
 		questionText = (GUIText)background.GetComponentInChildren (typeof(GUIText));
 		questionText.pixelOffset = new Vector2 (backgroundBounds.x + backgroundBounds.width *0.1f, backgroundBounds.y + backgroundBounds.height * 0.9f);
+		questionText.fontSize = (int)(12 * Screen.width / 800f);
 
 		isChoosingAnswer = true;
 		if(randomizeQuestions)
@@ -132,6 +133,7 @@ public class Quiz : MonoBehaviour {
 		for (int i = 0; i < 4; i++) {
 			buttons [i] = (GameObject)Instantiate (Resources.Load ("Button"));
 			buttons[i].transform.parent = quizParent.transform;
+			((GUIText)buttons[i].GetComponentInChildren (typeof(GUIText))).fontSize = (int)(12 * Screen.width / 800f);
 			if(i%2 == 0)
 				buttons[i].transform.position = new Vector3(0.5f - 0.15f, 0.25f+0.1f*(i/2), 0); 
 			if(i%2 == 1)

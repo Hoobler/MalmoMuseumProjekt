@@ -32,7 +32,7 @@ public class ThrowQuest : QuestBase {
 		if(questActive)
 			for(int i = 0; i < applesToThrow; i++)
 			{
-				GUI.DrawTexture(new Rect(10*i, 10, 64, 64), appleImage);
+			GUI.DrawTexture(new Rect(Screen.width*0.01f*i, Screen.width*0.01f, Screen.width*0.032f, Screen.width*0.032f), appleImage);
 			}
 	}
 
@@ -129,7 +129,7 @@ public class ThrowQuest : QuestBase {
 		(chargeBarBack.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height / 4f, Screen.width / 20f, Screen.height / 2f);
 		(chargeBarAmount.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height * 0.3f, Screen.width *0.05f, Screen.height * 0.05f);
 		applesToThrow = 6;
-		nrOfApplesForSuccess = 3;
+		nrOfApplesForSuccess = 6;
 		applesInBasket = 0;
 		charge = 0f;
 		chargeRate = 0.009f;
