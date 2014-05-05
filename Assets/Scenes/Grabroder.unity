@@ -15037,6 +15037,38 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_PixelInset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_PixelInset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_PixelInset.height
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_PixelInset.width
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_LeftBorder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .159999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .159999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 93d18b574bf9cc74a83bc949239554aa, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7fa91666d5d38bc42b979a02be0540bb, type: 2}
   m_RootGameObject: {fileID: 1759181800}
@@ -52526,15 +52558,15 @@ GUITexture:
   m_PrefabInternal: {fileID: 521537211}
   m_GameObject: {fileID: 1759181800}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: aea035e154d68af488b0cc58d14bbfe2, type: 3}
+  m_Texture: {fileID: 2800000, guid: 93d18b574bf9cc74a83bc949239554aa, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
-    x: -64
-    y: -29
-    width: 128
-    height: 58
-  m_LeftBorder: 50
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
@@ -52546,7 +52578,7 @@ Transform:
   m_GameObject: {fileID: 1759181800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .899999976, y: .899999976, z: 0}
-  m_LocalScale: {x: .0500000007, y: .0500000007, z: 0}
+  m_LocalScale: {x: .159999996, y: .159999996, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1760006411
