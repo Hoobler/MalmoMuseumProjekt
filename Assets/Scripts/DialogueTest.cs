@@ -39,7 +39,7 @@ public class DialogueTest: MonoBehaviour {
 	public Knapp[] buttons; 
 
 	void Start(){
-		Debug.Log ("(W: "+Screen.width.ToString ()+" H: "+Screen.height.ToString ()+ ") CR: " + Screen.currentResolution.width + " "+Screen.currentResolution.height);
+		//Debug.Log ("(W: "+Screen.width.ToString ()+" H: "+Screen.height.ToString ()+ ") CR: " + Screen.currentResolution.width + " "+Screen.currentResolution.height);
 	}
 
 	void FormatMainText(){

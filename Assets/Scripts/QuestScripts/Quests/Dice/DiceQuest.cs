@@ -35,7 +35,7 @@ public class DiceQuest : QuestBase {
 	GUITexture resetButtonBack;
 	GUIText resetButtonText;
 	LineRenderer lineRenderer;
-
+	GameObject reminder;
 //	Transform player;
 	// Use this for initialization
 	void Start () {
@@ -43,10 +43,13 @@ public class DiceQuest : QuestBase {
 		dicecamera.camera.enabled = false;
 		invisWall = GameObject.Find ("Invisible Walls");
 		invisWall.SetActive (false);
+		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
+		reminder.transform.parent = dicecamera.transform.parent;
 	}
 
 	public override void TriggerStart()
 	{
+
 		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
 		resetButtonBack = (GUITexture)button.GetComponent ("GUITexture");
 		resetButtonBack.pixelInset = new Rect (Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.15f, Screen.height * 0.15f);
@@ -84,6 +87,11 @@ public class DiceQuest : QuestBase {
 		lineRenderer = gameObject.GetComponent<LineRenderer> ();
 		lineRenderer.enabled = false;
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
+
+		reminder.SetActive (true);
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. När du kastat väljer du vilka du ska slå om.");
+		//reminderText = (ReminderTextScript)reminder.GetComponent<ReminderTextScript>();
+		//reminderText.ChangeText ("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du.");
 	}
 
 	public override void TriggerFinish()
@@ -98,10 +106,12 @@ public class DiceQuest : QuestBase {
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		endText.text = "Du fick " + totalPoints + " poäng!";
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
+		reminder.SetActive (false);
 	}
 
 	public int CheckWhichSideIsUp(Transform die)
 	{
+
 		int sideUp = 0;
 		float angle = 360;
 		
