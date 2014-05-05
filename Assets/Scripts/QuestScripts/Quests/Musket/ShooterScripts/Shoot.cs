@@ -35,7 +35,7 @@ public class Shoot : MonoBehaviour {
 			particle.Stop();
 			particle.Clear();
 		}
-		if(Application.loadedLevel == 3){
+		if(Application.loadedLevel == 2){
 			ShootSpot = GameObject.Find("ShootSpot").transform;
 		}
 	}
