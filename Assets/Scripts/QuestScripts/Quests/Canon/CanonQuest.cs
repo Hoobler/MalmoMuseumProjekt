@@ -69,7 +69,7 @@ public class CanonQuest : QuestBase  {
 //		GameObject temp = GameObject.Find ("Graphics");
 //		temp.renderer.enabled = false;
 
-		EventManager.TriggerDisableAndroid("lock");
+//		EventManager.TriggerDisableAndroid("lock");
 		mainCamera.camera.enabled = false;
 		canonCamera.camera.enabled = true;
 
@@ -91,7 +91,7 @@ public class CanonQuest : QuestBase  {
 		GameObject t = GameObject.Find ("CanonGUI");
 		Destroy (t);
 		questActive = false;
-		EventManager.TriggerDisableAndroid("unlock");
+//		EventManager.TriggerDisableAndroid("unlock");
 		mainCamera.camera.enabled = true;
 		canonCamera.camera.enabled = false;
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
