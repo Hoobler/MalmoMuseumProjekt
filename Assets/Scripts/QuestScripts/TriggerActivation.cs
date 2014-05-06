@@ -20,12 +20,14 @@ public class TriggerActivation : QuestBase {
 	GameObject holdBag;
 	GameObject guiTexture;
 	GUITexture temp;
+	GameObject reminder;
 
 	void Start(){
 		holdBag = GameObject.FindGameObjectWithTag("HoldBag");
 		guiTexture = GameObject.Find ("GUIBags");
 		temp = guiTexture.GetComponent ("GUITexture") as GUITexture;
 		temp.enabled = false;
+		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 	}
 	
 	void OnGUI(){
@@ -96,6 +98,9 @@ public class TriggerActivation : QuestBase {
 		}
 		quest1gui.SetActive (true);
 		temp.enabled = true;
+
+		reminder.SetActive (true);
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Hjälp mig hitta mina vetepåsar och lämna tillbaka dom till mig. Du plockar upp dom när du går in i dom. DU lämnar in dom genom att gå in i området bredvid mig.");
 	}
 
 	public override void TriggerFinish()
@@ -111,7 +116,7 @@ public class TriggerActivation : QuestBase {
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		endText.text = "Tack, du hämtade alla påsar!";
-
+		reminder.SetActive (false);
 		Reset ();
 		
 	}
