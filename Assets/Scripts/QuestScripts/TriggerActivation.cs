@@ -18,9 +18,14 @@ public class TriggerActivation : QuestBase {
 
 	GameObject quest1gui;
 	GameObject holdBag;
+	GameObject guiTexture;
+	GUITexture temp;
 
 	void Start(){
 		holdBag = GameObject.FindGameObjectWithTag("HoldBag");
+		guiTexture = GameObject.Find ("GUIBags");
+		temp = guiTexture.GetComponent ("GUITexture") as GUITexture;
+		temp.enabled = false;
 	}
 	
 	void OnGUI(){
@@ -87,8 +92,10 @@ public class TriggerActivation : QuestBase {
 		for(int i = 0; i < pickupArray.Count; i++) {
 			GameObject go = (GameObject)pickupArray[i];
 			go.renderer.enabled = true;
+			(go.GetComponent("Halo") as Behaviour).enabled = true;
 		}
 		quest1gui.SetActive (true);
+		temp.enabled = true;
 	}
 
 	public override void TriggerFinish()
@@ -99,6 +106,7 @@ public class TriggerActivation : QuestBase {
 		}
 		questFinished = true;
 		questAccpeted = false;
+		temp.enabled = false;
 
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
