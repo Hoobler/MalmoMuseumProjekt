@@ -62,6 +62,8 @@ public class CanonQuest : QuestBase  {
 		canonBase	= GameObject.Find ("KanonBas");
 		smoke 		= GameObject.Find ("CanonSmoke").GetComponent ("ParticleSystem") as ParticleSystem;
 
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = false;
+
 		ship.SetActive (true);
 
 
@@ -104,6 +106,7 @@ public class CanonQuest : QuestBase  {
 		player.transform.position = prevPos;
 		canonballs_shot = 0;
 		nr_of_hits = 0;
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
 	}
 
 	// Use this for initialization
