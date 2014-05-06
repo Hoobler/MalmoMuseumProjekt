@@ -142,6 +142,7 @@ public class ThrowQuest : QuestBase {
 		base.TriggerStart ();
 		Init ();
 		questActive = true;
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = false;
 
 	}
 
@@ -159,5 +160,6 @@ public class ThrowQuest : QuestBase {
 		questActive = false;
 		if(chargeBar != null)
 			Destroy (chargeBar);
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
 	}
 }
