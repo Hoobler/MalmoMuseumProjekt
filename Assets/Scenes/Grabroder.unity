@@ -2372,6 +2372,8 @@ Transform:
   - {fileID: 450676241}
   - {fileID: 1791234651}
   - {fileID: 1547421038}
+  - {fileID: 618176996}
+  - {fileID: 1294053055}
   m_Father: {fileID: 0}
 --- !u!1 &112684643
 GameObject:
@@ -17773,6 +17775,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 589788469}
   - 111: {fileID: 589788470}
+  - 65: {fileID: 589788471}
   m_Layer: 0
   m_Name: WlObjPig_Idle
   m_TagString: Untagged
@@ -17810,6 +17813,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!65 &589788471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 589788468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.49000001, y: 2.3499999, z: 4.19999981}
+  m_Center: {x: 0, y: 1.02999997, z: 0}
 --- !u!1001 &591182316
 Prefab:
   m_ObjectHideFlags: 0
@@ -18885,6 +18900,45 @@ Prefab:
   m_RootGameObject: {fileID: 369901568}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &618176995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 618176996}
+  - 65: {fileID: 618176997}
+  m_Layer: 0
+  m_Name: collision object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &618176996
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 618176995}
+  m_LocalRotation: {x: 0, y: .815203726, z: 0, w: -.57917434}
+  m_LocalPosition: {x: 41.0548706, y: 47.2207603, z: -11.6084595}
+  m_LocalScale: {x: 1.88827598, y: .993498027, z: 1.50249398}
+  m_Children: []
+  m_Father: {fileID: 112088239}
+--- !u!65 &618176997
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 618176995}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .686256588, y: .639062285, z: .870330334}
+  m_Center: {x: -.414191008, y: .185793594, z: .514435232}
 --- !u!1 &618578489
 GameObject:
   m_ObjectHideFlags: 0
@@ -39112,6 +39166,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1293884827}
   m_Mesh: {fileID: 4300418, guid: c99583de1b019e74a828375ce43fa43f, type: 3}
+--- !u!1 &1294053054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1294053055}
+  - 65: {fileID: 1294053056}
+  m_Layer: 0
+  m_Name: collision object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1294053055
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1294053054}
+  m_LocalRotation: {x: 0, y: .710952282, z: 0, w: -.703240275}
+  m_LocalPosition: {x: 43.1160278, y: 47.2207603, z: -11.2290039}
+  m_LocalScale: {x: 1.88827598, y: .993498027, z: 1.50249398}
+  m_Children: []
+  m_Father: {fileID: 112088239}
+--- !u!65 &1294053056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1294053054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .119171709, y: 2.54596305, z: .502974033}
+  m_Center: {x: -.384790272, y: 1.13925469, z: .38458994}
 --- !u!1001 &1298621692
 Prefab:
   m_ObjectHideFlags: 0
@@ -50229,6 +50322,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1695768891}
   - 111: {fileID: 1695768892}
+  - 65: {fileID: 1695768893}
   m_Layer: 0
   m_Name: WlObjPig_Idle
   m_TagString: Untagged
@@ -50266,6 +50360,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!65 &1695768893
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695768890}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.49000001, y: 2.3499999, z: 4.19999981}
+  m_Center: {x: 0, y: 1.02999997, z: 0}
 --- !u!1 &1696044818
 GameObject:
   m_ObjectHideFlags: 0
