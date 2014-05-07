@@ -45,6 +45,11 @@ public class TriggerActivation : QuestBase {
 
 	void Reset(){
 
+		for (int i = 0; i < leaveArray.Count; i++) {
+			GameObject go = (GameObject)leaveArray [i];
+			go.renderer.enabled = false;
+		}
+
 		collected = 0;
 		questFinished = false;
 		timeElapsed = 0;
@@ -53,7 +58,7 @@ public class TriggerActivation : QuestBase {
 	void OnTriggerEnter(Collider other){
 
 		if (other.gameObject.tag == "Pickup" && !carrying && questAccpeted) {	
-			other.gameObject.SetActive(false);
+			other.gameObject.renderer.enabled = false;
 			carrying = true;
 			holdBag.renderer.enabled = true;
 		}
@@ -73,19 +78,11 @@ public class TriggerActivation : QuestBase {
 
 	public override void TriggerStart ()
 	{
-		//start()
 		foreach(GameObject go in GameObject.FindGameObjectsWithTag("Leavebag"))
 			leaveArray.Add(go);
 		
 		foreach (GameObject go in GameObject.FindGameObjectsWithTag("Pickup")) 
 			pickupArray.Add(go);		
-		
-		if (!questAccpeted) {
-			for(int i = 0; i < pickupArray.Count; i++){
-				GameObject go = (GameObject)pickupArray[i];
-				go.renderer.enabled = false;
-			}
-		}
 		
 		quest1gui = GameObject.FindWithTag("Quest1");
 		collected = 0;
@@ -105,6 +102,8 @@ public class TriggerActivation : QuestBase {
 
 	public override void TriggerFinish(bool success)
 	{
+		base.TriggerFinish (success);
+
 		for(int i = 0; i < pickupArray.Count; i++){
 			GameObject go = (GameObject)pickupArray[i];
 			go.renderer.enabled = false;
