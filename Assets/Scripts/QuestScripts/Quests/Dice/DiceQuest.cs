@@ -39,7 +39,6 @@ public class DiceQuest : QuestBase {
 
 	GUITexture resetButtonBack;
 	GUIText resetButtonText;
-	LineRenderer lineRenderer;
 	GameObject reminder;
 	GameObject endNotification;
 //	Transform player;
@@ -94,8 +93,6 @@ public class DiceQuest : QuestBase {
 
 //		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		questActive = true;
-		lineRenderer = gameObject.GetComponent<LineRenderer> ();
-		lineRenderer.enabled = false;
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 
 		reminder.SetActive (true);
@@ -316,15 +313,9 @@ public class DiceQuest : QuestBase {
 			{
 				holdingDownMouseButton = true;
 				startHold = Input.mousePosition;
-				lineRenderer.enabled = true;
-				lineRenderer.SetWidth(0,0.01f);
-				lineRenderer.SetPosition(0, dicecamera.camera.ScreenPointToRay(startHold).origin);
-				lineRenderer.SetPosition(1, dicecamera.camera.ScreenPointToRay(Input.mousePosition).origin);
 			}
 		}
 		else {
-			lineRenderer.SetPosition(0, dicecamera.camera.ScreenPointToRay(startHold).origin);
-			lineRenderer.SetPosition(1, dicecamera.camera.ScreenPointToRay(Input.mousePosition).origin);
 
 			if(!Input.GetMouseButton(0))
 			{
@@ -334,7 +325,7 @@ public class DiceQuest : QuestBase {
 				//endHold.y = startHold.y;
 
 				//invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls"), new Vector3(5.29764f, 4.712706f, -36.91311f), new Quaternion()) as GameObject;
-				lineRenderer.enabled = false;
+
 				state = State.PLAYERPOSTTHROW;
 				
 				informationsText.enabled = false;
