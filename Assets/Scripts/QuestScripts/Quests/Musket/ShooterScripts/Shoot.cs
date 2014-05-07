@@ -111,6 +111,7 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void DisableWeapon(){
+		GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().QuestFinished (); //gör att quest kan triggas igen
 		_weaponActive = false;
 		EventManager.TriggerOnActivate("CrossHair", ActiveEnum.Disabled);
 		Debug.Log("Disable Weapon");

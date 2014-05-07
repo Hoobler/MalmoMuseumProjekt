@@ -189,7 +189,7 @@ public class Quiz : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (!quizActive) {
+		if (!quizActive && !GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress()) {
 			TriggerStart ();
 			quizActive = true;
 		}

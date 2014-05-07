@@ -174,12 +174,15 @@ public class DialogueTest: MonoBehaviour {
 		}
 	}
 	void OnMouseDown(){
-		playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
-		if(Vector3.Distance(playerTransform.position, this.transform.position) < speechDistance)
-			if (!conversationActive) {
-				Init ();
-				conversationActive = true;
-			}		
+		if(!GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress())
+		{
+			playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
+			if(Vector3.Distance(playerTransform.position, this.transform.position) < speechDistance)
+				if (!conversationActive) {
+					Init ();
+					conversationActive = true;
+				}		
+		}
 	}
 
 }

@@ -76,7 +76,7 @@ public class DiceQuest : QuestBase {
 		informationsText.fontSize = (int)(16 * Screen.width / 800f);
 		informationsText.anchor = TextAnchor.MiddleLeft;
 		informationsText.alignment = TextAlignment.Left;
-		informationsText.text = "Dra över skärmen för att kasta";
+		informationsText.text = "Dra Ã¶ver skÃ¤rmen fÃ¶r att kasta";
 		informationsText.color = Color.yellow;
 
 		totalTime = 1.0f;
@@ -98,14 +98,14 @@ public class DiceQuest : QuestBase {
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 
 		reminder.SetActive (true);
-		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. När du kastat väljer du vilka du ska slå om.");
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra Ã¶ver skÃ¤rmen fÃ¶r kasta tÃ¤rning. Ju lÃ¤ngre du drar, desto hÃ¥rdare kastar du. NÃ¤r du kastat vÃ¤ljer du vilka du ska slÃ¥ om.");
 		//reminderText = (ReminderTextScript)reminder.GetComponent<ReminderTextScript>();
-		//reminderText.ChangeText ("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du.");
+		//reminderText.ChangeText ("Dra Ã¶ver skÃ¤rmen fÃ¶r kasta tÃ¤rning. Ju lÃ¤ngre du drar, desto hÃ¥rdare kastar du.");
 	}
 
-	public void TriggerFinish(bool success)
+	public override void TriggerFinish(bool success)
 	{
-		Debug.Log ("ENDED");
+		base.TriggerFinish (success);
 		questActive = false;
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
@@ -117,7 +117,7 @@ public class DiceQuest : QuestBase {
 		if(success)
 			endText.text = "Du vann spelet!";
 		else
-			endText.text = "Du förlorade spelet";
+			endText.text = "Du fÃ¶rlorade spelet";
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
 		reminder.SetActive (false);
 
@@ -174,8 +174,7 @@ public class DiceQuest : QuestBase {
 		if (Input.GetMouseButtonDown (0))
 		{
 			state = State.PLAYERPRETHROW;
-			
-			informationsText.text = "DRA ÖVER SKÄRMEN FÖR ATT KASTA";
+			informationsText.text = "DRA Ã–VER SKÃ„RMEN FÃ–R ATT KASTA";
 			for(int i = 0; i < numberOfDiceToThrow; i++)
 				Destroy(dice[i]);
 		}
@@ -200,7 +199,7 @@ public class DiceQuest : QuestBase {
 				state = State.OPPONENTCONTINUE;
 				
 				informationsText.enabled = true;
-				informationsText.text = "TRYCK FÖR ATT FORTSÄTTA";
+				informationsText.text = "TRYCK FÃ–R ATT FORTSÃ„TTA";
 				invisWall.SetActive(false);
 			}
 		}
@@ -242,13 +241,11 @@ public class DiceQuest : QuestBase {
 			{
 				informationsText.text = "DU VANN SPELET";
 				TriggerFinish(true);
-				Debug.Log ("PLAYER WIN");
 			}
 			else if(winsOpponent == winsForSuccess)
 			{
-				informationsText.text = "DU FÖRLORADE SPELET";
+				informationsText.text = "DU FÃ–RLORADE SPELET";
 				TriggerFinish(false);
-				Debug.Log ("OPPONENT WIN");
 			}
 			else
 			{
@@ -289,11 +286,11 @@ public class DiceQuest : QuestBase {
 				}
 				else if(playerPoints == totalPoints)
 				{
-					informationsText.text = "INGEN VANN, RUNDAN RÄKNAS INTE";
+					informationsText.text = "INGEN VANN, RUNDAN RÃ„KNAS INTE";
 				}
 				else
 				{
-					informationsText.text = "DU FÖRLORADE DENNA RUNDA";
+					informationsText.text = "DU FÃ–RLORADE DENNA RUNDA";
 					Instantiate(Resources.Load ("FadeWrong"));
 					winsOpponent++;
 			
@@ -390,10 +387,10 @@ public class DiceQuest : QuestBase {
 //					listOfNumbers.Add(i);
 //					if(numberOfDiceToThrow == 1)
 //					{
-//						resetButtonText.text = "SLÅ OM EN";
+//						resetButtonText.text = "SLÃ… OM EN";
 //					}
 //					else
-//						resetButtonText.text = "SLÅ OM "+numberOfDiceToThrow;
+//						resetButtonText.text = "SLÃ… OM "+numberOfDiceToThrow;
 //				}
 //			}
 //
@@ -405,7 +402,7 @@ public class DiceQuest : QuestBase {
 //				{
 //					state = State.PRETHROW;
 //					invisWall.SetActive(true);
-//					informationsText.text = "Dra över skärmen för att kasta";
+//					informationsText.text = "Dra Ã¶ver skÃ¤rmen fÃ¶r att kasta";
 //				}
 //				resetButtonBack.enabled = false;
 //				resetButtonText.enabled = false;

@@ -87,8 +87,9 @@ public class CanonQuest : QuestBase  {
 	}
 
 	//Called when player finishes quest
-	public override void TriggerFinish ()
+	public override void TriggerFinish (bool success)
 	{
+		base.TriggerFinish (success);
 		//Removes arrows on screen
 		GameObject t = GameObject.Find ("CanonGUI");
 		Destroy (t);
@@ -271,11 +272,11 @@ public class CanonQuest : QuestBase  {
 		end_timer += Time.deltaTime;
 		ShipScript script = ship.GetComponent(typeof(ShipScript)) as ShipScript;
 		if (end_timer > END_TIMER_COMPLETE && nr_of_hits > 0) {
-						TriggerFinish ();
+						TriggerFinish (true);
 						Reset ();
 						script.Reset();
 				} else if (end_timer > END_TIMER_FAIL && nr_of_hits == 0) {
-						TriggerFinish ();
+						TriggerFinish (false);
 						Reset ();
 						script.Reset();
 				}

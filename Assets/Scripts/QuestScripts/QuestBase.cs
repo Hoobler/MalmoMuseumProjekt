@@ -8,7 +8,7 @@ public class QuestBase : MonoBehaviour {
 
 	}
 
-	public virtual void TriggerFinish(){
-		
-		}
+	public virtual void TriggerFinish(bool success){
+		GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().QuestFinished ();
+	}
 }

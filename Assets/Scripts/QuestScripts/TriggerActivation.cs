@@ -66,7 +66,7 @@ public class TriggerActivation : QuestBase {
 			collected++;
 			go.renderer.enabled = true;
 			if(collected >= nrOfBags)
-				TriggerFinish ();
+				TriggerFinish (true);
 		}
 
 	}
@@ -103,7 +103,7 @@ public class TriggerActivation : QuestBase {
 		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Hjälp mig hitta mina vetepåsar och lämna tillbaka dom till mig. Du plockar upp dom när du går in i dom. DU lämnar in dom genom att gå in i området bredvid mig.");
 	}
 
-	public override void TriggerFinish()
+	public override void TriggerFinish(bool success)
 	{
 		for(int i = 0; i < pickupArray.Count; i++){
 			GameObject go = (GameObject)pickupArray[i];

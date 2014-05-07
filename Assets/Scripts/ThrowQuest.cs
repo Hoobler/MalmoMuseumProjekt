@@ -146,8 +146,9 @@ public class ThrowQuest : QuestBase {
 
 	}
 
-	public void TriggerFinish (bool success)
+	public override void TriggerFinish (bool success)
 	{
+		base.TriggerFinish (success);
 		string finishInfo;
 		if (success)
 						finishInfo = "Du klarade det!";
