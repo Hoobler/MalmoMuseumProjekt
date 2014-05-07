@@ -41,6 +41,7 @@ public class DiceQuest : QuestBase {
 	GUIText resetButtonText;
 	LineRenderer lineRenderer;
 	GameObject reminder;
+	GameObject endNotification;
 //	Transform player;
 	// Use this for initialization
 	void Start () {
@@ -56,7 +57,7 @@ public class DiceQuest : QuestBase {
 
 	public override void TriggerStart()
 	{
-
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 //		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
 //		resetButtonBack = (GUITexture)button.GetComponent ("GUITexture");
 //		resetButtonBack.pixelInset = new Rect (Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.15f, Screen.height * 0.15f);
@@ -106,18 +107,19 @@ public class DiceQuest : QuestBase {
 	public override void TriggerFinish(bool success)
 	{
 		base.TriggerFinish (success);
+
 		questActive = false;
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
 		Destroy (informationsText.gameObject);
 //		Destroy (resetButtonBack.gameObject);
 		invisWall.SetActive (false);
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+		//GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		//GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		if(success)
-			endText.text = "Du vann spelet!";
+			endNotification.GetComponent<endNotificationScript>().Activate("Du vann spelet!");
 		else
-			endText.text = "Du förlorade spelet";
+			endNotification.GetComponent<endNotificationScript>().Activate("Du förlorade spelet =(");
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
 		reminder.SetActive (false);
 
