@@ -64,7 +64,7 @@ public class CanonQuest : QuestBase  {
 
         ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = false;
 
-		ship.SetActive (true);
+		ship = (GameObject)Instantiate(Resources.Load ("Ship"));
 
 
 		prevPos = (player.transform.position);
@@ -93,6 +93,7 @@ public class CanonQuest : QuestBase  {
 		//Removes arrows on screen
 		GameObject t = GameObject.Find ("CanonGUI");
 		Destroy (t);
+		Destroy (ship);
 		questActive = false;
 //		EventManager.TriggerDisableAndroid("unlock");
 		mainCamera.camera.enabled = true;
@@ -112,8 +113,7 @@ public class CanonQuest : QuestBase  {
 
 	// Use this for initialization
 	void Start () {
-		ship = GameObject.Find ("Ship");
-		ship.SetActive (false);
+
 	}
 
 	//Initializes arrows on screen
@@ -270,16 +270,13 @@ public class CanonQuest : QuestBase  {
 	//Updates when player has either hit the ship or is out of cannonballs
 	void UpdateEndTimer(){
 		end_timer += Time.deltaTime;
-		ShipScript script = ship.GetComponent(typeof(ShipScript)) as ShipScript;
 		if (end_timer > END_TIMER_COMPLETE && nr_of_hits > 0) {
-						TriggerFinish (true);
-						Reset ();
-						script.Reset();
-				} else if (end_timer > END_TIMER_FAIL && nr_of_hits == 0) {
-						TriggerFinish (false);
-						Reset ();
-						script.Reset();
-				}
+			Reset ();
+			TriggerFinish (true);
+		} else if (end_timer > END_TIMER_FAIL && nr_of_hits == 0) {
+			Reset ();
+			TriggerFinish (false);
+		}
 	}
 
 	//Called when player presses shoots the canon

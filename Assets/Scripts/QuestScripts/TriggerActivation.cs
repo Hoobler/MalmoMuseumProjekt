@@ -23,11 +23,7 @@ public class TriggerActivation : QuestBase {
 	GameObject reminder;
 
 	void Start(){
-		holdBag = GameObject.FindGameObjectWithTag("HoldBag");
-		guiTexture = GameObject.Find ("GUIBags");
-		temp = guiTexture.GetComponent ("GUITexture") as GUITexture;
-		temp.enabled = false;
-		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
+
 	}
 	
 	void OnGUI(){
@@ -78,6 +74,12 @@ public class TriggerActivation : QuestBase {
 
 	public override void TriggerStart ()
 	{
+		holdBag = GameObject.FindGameObjectWithTag("HoldBag");
+		guiTexture = GameObject.Find ("GUIBags");
+		temp = guiTexture.GetComponent ("GUITexture") as GUITexture;
+		temp.enabled = true;
+		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
+
 		foreach(GameObject go in GameObject.FindGameObjectsWithTag("Leavebag"))
 			leaveArray.Add(go);
 		
