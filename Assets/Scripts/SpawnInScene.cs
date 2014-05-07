@@ -44,7 +44,6 @@ public class SpawnInScene : MonoBehaviour {
 				fadein = false;
 		}
 		if (fadeout) {
-			Debug.Log ("Fade out");
 			alpha -= 0.015f * Time.deltaTime * 60;
 			if(alpha <= 0.0f){
 				fadeout = false;
