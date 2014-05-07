@@ -17,6 +17,7 @@ public class DiceQuest : QuestBase {
 
 	bool questActive;
 
+
 	GameObject[] dice;
 	State state;
 	int numberOfDiceToThrow;
@@ -37,10 +38,11 @@ public class DiceQuest : QuestBase {
 
 	GUIText informationsText;
 
-	GUITexture resetButtonBack;
-	GUIText resetButtonText;
 	GameObject reminder;
 	GameObject endNotification;
+
+	GameObject opponentCounter;
+	GameObject playerCounter;
 //	Transform player;
 	// Use this for initialization
 	void Start () {
@@ -50,21 +52,20 @@ public class DiceQuest : QuestBase {
 		invisWall.SetActive (false);
 		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 		reminder.transform.parent = dicecamera.transform.parent;
+		playerCounter = (GameObject)Instantiate (Resources.Load ("counters/PlayerCounter"));
+		playerCounter.transform.parent = dicecamera.transform.parent;
+		opponentCounter = (GameObject)Instantiate (Resources.Load ("counters/OpponentCounter"));
+		opponentCounter.transform.parent = dicecamera.transform.parent;
 	}
-
-
 
 	public override void TriggerStart()
 	{
+		playerCounter.SetActive (true);
+		playerCounter.GetComponent<GUIText> ().text = "0";
+		opponentCounter.SetActive (true);
+		opponentCounter.GetComponent<GUIText> ().text = "0";
+
 		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-//		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
-//		resetButtonBack = (GUITexture)button.GetComponent ("GUITexture");
-//		resetButtonBack.pixelInset = new Rect (Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.15f, Screen.height * 0.15f);
-//		resetButtonBack.enabled = false;
-//		resetButtonText = (GUIText)button.GetComponent ("GUIText");
-//		resetButtonText.pixelOffset = resetButtonBack.GetScreenRect ().center;
-//		resetButtonText.fontSize = 14 * (Screen.width / 800);
-//		resetButtonText.enabled = false;
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
 		dicecamera.camera.enabled = true;
@@ -91,14 +92,11 @@ public class DiceQuest : QuestBase {
 
 		diceparent = new GameObject ("DiceParent");
 
-//		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		questActive = true;
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 
 		reminder.SetActive (true);
 		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. När du kastat väljer du vilka du ska slå om.");
-		//reminderText = (ReminderTextScript)reminder.GetComponent<ReminderTextScript>();
-		//reminderText.ChangeText ("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du.");
 	}
 
 	public override void TriggerFinish(bool success)
@@ -109,16 +107,15 @@ public class DiceQuest : QuestBase {
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
 		Destroy (informationsText.gameObject);
-//		Destroy (resetButtonBack.gameObject);
 		invisWall.SetActive (false);
-		//GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		//GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		if(success)
 			endNotification.GetComponent<endNotificationScript>().Activate("Du vann spelet!");
 		else
 			endNotification.GetComponent<endNotificationScript>().Activate("Du förlorade spelet =(");
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
 		reminder.SetActive (false);
+		playerCounter.SetActive (false);
+		opponentCounter.SetActive (false);
 
 	}
 
@@ -282,6 +279,7 @@ public class DiceQuest : QuestBase {
 					informationsText.text = "DU VANN DENNA RUNDAN";
 					Instantiate(Resources.Load("FadeCorrect"));
 					winsPlayer++;
+					playerCounter.GetComponent<GUIText> ().text = winsPlayer.ToString();
 				}
 				else if(playerPoints == totalPoints)
 				{
@@ -292,9 +290,10 @@ public class DiceQuest : QuestBase {
 					informationsText.text = "DU FÖRLORADE DENNA RUNDA";
 					Instantiate(Resources.Load ("FadeWrong"));
 					winsOpponent++;
-			
+					opponentCounter.GetComponent<GUIText> ().text = winsOpponent.ToString();
 				}
 					
+
 				state = State.PLAYERCONTINUE;
 				
 					
@@ -321,10 +320,6 @@ public class DiceQuest : QuestBase {
 			{
 				holdingDownMouseButton = false;
 				endHold = Input.mousePosition;
-				//startHold.y = dicecamera.transform.position.y;
-				//endHold.y = startHold.y;
-
-				//invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls"), new Vector3(5.29764f, 4.712706f, -36.91311f), new Quaternion()) as GameObject;
 
 				state = State.PLAYERPOSTTHROW;
 				
@@ -334,7 +329,6 @@ public class DiceQuest : QuestBase {
 				endHold.y = startHold.y;
 				Vector3 direction = (endHold  - startHold);
 				timer = totalTime;
-				//Debug.Log(startHold.ToString());
 
 				for(int i = 0; i < numberOfDiceToThrow; i++)
 				{
@@ -362,46 +356,7 @@ public class DiceQuest : QuestBase {
 		}
 
 	}
-//	void SelectReRollUpdate()
-//	{
-//		if (Input.GetMouseButtonDown (0))
-//		{
-//
-//			Ray ray = dicecamera.camera.ScreenPointToRay(Input.mousePosition);
-//			RaycastHit hit;
-//			Physics.Raycast(ray, out hit);
-//			for(int i = 0; i < dice.Length; i++)
-//			{
-//				if(dice[i] == hit.collider.gameObject)
-//				{
-//
-//					numberOfDiceToThrow++;
-//					Destroy(dice[i]);
-//					listOfNumbers.Add(i);
-//					if(numberOfDiceToThrow == 1)
-//					{
-//						resetButtonText.text = "SLÅ OM EN";
-//					}
-//					else
-//						resetButtonText.text = "SLÅ OM "+numberOfDiceToThrow;
-//				}
-//			}
-//
-//			if(resetButtonBack.GetScreenRect().Contains(Input.mousePosition) || numberOfDiceToThrow == 5)
-//			{
-//				if(numberOfDiceToThrow == 0)
-//					state = State.FINISH;
-//				else
-//				{
-//					state = State.PRETHROW;
-//					invisWall.SetActive(true);
-//					informationsText.text = "Dra över skärmen för att kasta";
-//				}
-//				resetButtonBack.enabled = false;
-//				resetButtonText.enabled = false;
-//			}
-//		}
-//	}
+
 	// Update is called once per frame
 	void Update () {
 		if (questActive)
