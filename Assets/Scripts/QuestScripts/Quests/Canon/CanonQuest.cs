@@ -18,6 +18,9 @@ public class CanonQuest : QuestBase  {
 	private const float END_TIMER_COMPLETE = 15f;
 	private float end_timer;
 
+	private	const float MISSED_SHIP_TIMER = 55f;
+	private float ship_timer;
+
 	private bool canonball_in_air = false;
 
 	private int nr_of_hits = 0;
@@ -102,8 +105,10 @@ public class CanonQuest : QuestBase  {
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		if (nr_of_hits > 0)
 						endText.text = "Du sänkte skeppet!";
-				else
+				else if (nr_of_hits == 0 && canonballs_shot == 5)
 						endText.text = "Tusan, du missade alla skott";
+				else if (nr_of_hits == 0 && canonballs_shot < 5)
+						endText.text = "Helvete, skeppet kom förbi";
 
 		player.transform.position = prevPos;
 		canonballs_shot = 0;
@@ -130,6 +135,7 @@ public class CanonQuest : QuestBase  {
 		canonballs_shot = 0;
 		reload_timer = 0;
 		end_timer = 0;
+		ship_timer = 0;
 	}
 
 	//Initializes GUI for android
@@ -199,6 +205,10 @@ public class CanonQuest : QuestBase  {
 
 			if(canonball_in_air)
 				UpdateCanonballs();
+
+			ship_timer += Time.deltaTime;
+			if(ship_timer >= MISSED_SHIP_TIMER)
+				TriggerFinish(false);
 		}
 	}
 
