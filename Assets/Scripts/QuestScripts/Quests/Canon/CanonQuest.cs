@@ -38,10 +38,16 @@ public class CanonQuest : QuestBase  {
 	GameObject canonBall;
 	GameObject canonMuzzle;
 	GameObject canonBase;
+	GameObject reminder;
 
 	public Texture canonball_texture;
 	public Texture reloadbar_texture;
-	public Texture arrow_texture;
+
+	public Texture arrow_up_texture;
+	public Texture arrow_down_texture;
+	public Texture arrow_right_texture;
+	public Texture arrow_left_texture;
+	public Texture fire_texture;
 
 	private bool questActive = false;
 
@@ -57,7 +63,6 @@ public class CanonQuest : QuestBase  {
 	public override void TriggerStart ()
 	{
 		mainCamera 	= GameObject.Find ("Main Camera");
-		canonCamera = GameObject.Find ("CanonCamera");
 		player		= GameObject.FindGameObjectWithTag ("Player");
 		canon 		= GameObject.FindGameObjectWithTag ("Kanon");
 		canonPipe 	= GameObject.FindGameObjectWithTag ("KanonPipa");
@@ -85,6 +90,9 @@ public class CanonQuest : QuestBase  {
 			smoke.Clear ();
 			smoke.Stop ();
 		}
+
+		reminder.SetActive (true);
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Sikta kanonen mot båten med pilarna. Du har 5 skott på dig och en begränsad tid för att sänka skeppet.");
 
 		Init ();
 	}
@@ -114,11 +122,14 @@ public class CanonQuest : QuestBase  {
 		canonballs_shot = 0;
 		nr_of_hits = 0;
         ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
+		reminder.SetActive (false);
 	}
 
 	// Use this for initialization
 	void Start () {
-
+		canonCamera = GameObject.Find ("CanonCamera");
+		reminder 	= (GameObject)Instantiate (Resources.Load ("ReminderText"));
+		reminder.transform.parent = canonCamera.transform.parent;
 	}
 
 	//Initializes arrows on screen
@@ -145,35 +156,35 @@ public class CanonQuest : QuestBase  {
 		
 		GameObject la = new GameObject ("Arrow");
 		left_arrow = (GUITexture)la.AddComponent (typeof(GUITexture));
-		left_arrow.texture = arrow_texture;
+		left_arrow.texture = arrow_left_texture;
 		left_arrow.transform.position =  new Vector3 (0.65f, 0.1f, 0);
 		left_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		left_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject ra = new GameObject ("Arrow");
 		right_arrow = (GUITexture)ra.AddComponent (typeof(GUITexture));
-		right_arrow.texture = arrow_texture;
+		right_arrow.texture = arrow_right_texture;
 		right_arrow.transform.position =  new Vector3 (0.85f, 0.1f, 0);
 		right_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		right_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject ua = new GameObject ("Arrow");
 		up_arrow = (GUITexture)ua.AddComponent (typeof(GUITexture));
-		up_arrow.texture = arrow_texture;
+		up_arrow.texture = arrow_up_texture;
 		up_arrow.transform.position =  new Vector3 (0.75f, 0.2f, 0);
 		up_arrow.transform.localScale = new Vector3 (0.1f, 0.11f, 0);
 		up_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject da = new GameObject ("Arrow");
 		down_arrow = (GUITexture)da.AddComponent (typeof(GUITexture));
-		down_arrow.texture = arrow_texture;
+		down_arrow.texture = arrow_down_texture;
 		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
 		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		down_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject shoot_go = new GameObject ("Arrow");
 		shoot_gui = (GUITexture)shoot_go.AddComponent (typeof(GUITexture));
-		shoot_gui.texture = arrow_texture;
+		shoot_gui.texture = fire_texture;
 		shoot_gui.transform.position = new Vector3 (0.5f, 0.1f, 0);
 		shoot_gui.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		shoot_gui.transform.parent = canonGUI.transform;

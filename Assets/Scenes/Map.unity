@@ -99,10 +99,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 237399888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2850cb83995c346b444a93b0719bee, type: 3}
+  m_Script: {fileID: 11500000, guid: 10151e5bf81d3e44bbb7af6e166d05af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Slottet
+  goto_texture: {fileID: 2800000, guid: 47253508b10be0c429f8f773da4be38a, type: 3}
+  background_texture: {fileID: 2800000, guid: 0c3bbfe3342d54b4ab810c467391f0d9, type: 3}
 --- !u!131 &237399890
 GUITexture:
   m_ObjectHideFlags: 0
@@ -129,8 +130,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 237399888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .284999996, y: .340000004, z: 1.35057497}
-  m_LocalScale: {x: .239999995, y: .150000006, z: 1}
+  m_LocalPosition: {x: .284999996, y: .319999993, z: 1.35057497}
+  m_LocalScale: {x: .200000003, y: .150000006, z: 1}
   m_Children: []
   m_Father: {fileID: 1808069484}
 --- !u!1 &428540605
@@ -142,6 +143,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 428540607}
   - 131: {fileID: 428540606}
+  - 114: {fileID: 428540608}
   m_Layer: 0
   m_Name: Karta
   m_TagString: Untagged
@@ -179,6 +181,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &428540608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 428540605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41d5f7f7e3679a45b7390889a4570d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1249469974
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +263,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1403031866}
   - 131: {fileID: 1403031867}
-  - 114: {fileID: 1403031868}
+  - 114: {fileID: 1403031869}
   m_Layer: 0
   m_Name: LillaTorg
   m_TagString: Untagged
@@ -265,8 +278,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403031865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .535000026, y: .550000012, z: 1.35057497}
-  m_LocalScale: {x: .119999997, y: .150000006, z: 1}
+  m_LocalPosition: {x: .535000026, y: .514999986, z: 1.35057497}
+  m_LocalScale: {x: .200000003, y: .150000006, z: 1}
   m_Children: []
   m_Father: {fileID: 1808069484}
 --- !u!131 &1403031867
@@ -288,7 +301,7 @@ GUITexture:
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
---- !u!114 &1403031868
+--- !u!114 &1403031869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -296,10 +309,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1403031865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2850cb83995c346b444a93b0719bee, type: 3}
+  m_Script: {fileID: 11500000, guid: 10151e5bf81d3e44bbb7af6e166d05af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: LillaTorg
+  goto_texture: {fileID: 2800000, guid: 47253508b10be0c429f8f773da4be38a, type: 3}
+  background_texture: {fileID: 2800000, guid: 0c3bbfe3342d54b4ab810c467391f0d9, type: 3}
 --- !u!1 &1665370873
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,8 +447,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1965255322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .779999971, y: .550000012, z: 1.35057497}
-  m_LocalScale: {x: .239999995, y: .150000006, z: 1}
+  m_LocalPosition: {x: .779999971, y: .540000021, z: 1.35057497}
+  m_LocalScale: {x: .200000003, y: .150000006, z: 1}
   m_Children: []
   m_Father: {fileID: 1808069484}
 --- !u!114 &1965255324
@@ -445,10 +459,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1965255322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd2850cb83995c346b444a93b0719bee, type: 3}
+  m_Script: {fileID: 11500000, guid: 10151e5bf81d3e44bbb7af6e166d05af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Grabroder
+  goto_texture: {fileID: 2800000, guid: 47253508b10be0c429f8f773da4be38a, type: 3}
+  background_texture: {fileID: 2800000, guid: 0c3bbfe3342d54b4ab810c467391f0d9, type: 3}
 --- !u!131 &1965255325
 GUITexture:
   m_ObjectHideFlags: 0

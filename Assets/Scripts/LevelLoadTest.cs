@@ -6,5 +6,6 @@ public class LevelLoadTest : MonoBehaviour {
 
 	void OnMouseDown(){
 		Application.LoadLevel(levelToLoad);
+		Debug.Log ("PRESSED");
 	}
 }
