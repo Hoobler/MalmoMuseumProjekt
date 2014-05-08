@@ -35,6 +35,7 @@ public class DiceQuest : QuestBase {
 	GameObject dicecamera;
 	GameObject invisWall;
 	GameObject diceparent;
+	GameObject lightparent;
 
 	GUIText informationsText;
 
@@ -91,7 +92,8 @@ public class DiceQuest : QuestBase {
 		Destroy(GameObject.Find("DiceParent"));
 
 		diceparent = new GameObject ("DiceParent");
-
+		Destroy (GameObject.Find("LightParent"));
+		lightparent = new GameObject("LightParent");
 		questActive = true;
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 
@@ -107,6 +109,7 @@ public class DiceQuest : QuestBase {
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
 		Destroy (informationsText.gameObject);
+		Destroy(lightparent);
 		invisWall.SetActive (false);
 		if(success)
 			endNotification.GetComponent<endNotificationScript>().Activate("Du vann spelet!");
@@ -192,7 +195,7 @@ public class DiceQuest : QuestBase {
 					totalPoints += CheckWhichSideIsUp(dice[i].transform);
 				}
 				state = State.OPPONENTCONTINUE;
-				
+
 				informationsText.enabled = true;
 				informationsText.text = "TRYCK FÖR ATT FORTSÄTTA";
 				invisWall.SetActive(false);
@@ -247,7 +250,9 @@ public class DiceQuest : QuestBase {
 				for(int i = 0; i < dice.Length; i++)
 					Destroy(dice[i]);
 				state = State.OPPONENTPRETHROW;
-				
+
+				Destroy(lightparent);
+				lightparent = new GameObject("LightParent");
 				informationsText.enabled = false;
 			}
 
@@ -269,6 +274,8 @@ public class DiceQuest : QuestBase {
 				for(int i = dice.Length/2; i < dice.Length; i++)
 				{
 					playerPoints += CheckWhichSideIsUp(dice[i].transform);
+
+
 				}
 				invisWall.SetActive(false);
 					
@@ -279,6 +286,18 @@ public class DiceQuest : QuestBase {
 					Instantiate(Resources.Load("FadeCorrect"));
 					winsPlayer++;
 					playerCounter.GetComponent<GUIText> ().text = winsPlayer.ToString();
+					for(int i = dice.Length/2; i < dice.Length; i++)
+					{
+						Light light = new GameObject("Light").AddComponent<Light>();
+						light.gameObject.transform.parent = lightparent.transform;
+						light.type =  LightType.Spot;
+						light.transform.position = dice[i].transform.position + new Vector3(0,.3f, 0);
+						light.transform.LookAt(dice[i].transform.position);
+						light.color = Color.green;
+						light.intensity = 0.2f;
+						light.areaSize = new Vector2(0.03f,0.03f);
+					}
+
 				}
 				else if(playerPoints == totalPoints)
 				{
@@ -290,6 +309,18 @@ public class DiceQuest : QuestBase {
 					Instantiate(Resources.Load ("FadeWrong"));
 					winsOpponent++;
 					opponentCounter.GetComponent<GUIText> ().text = winsOpponent.ToString();
+
+					for(int i = 0; i < dice.Length/2; i++)
+					{
+						Light light = new GameObject("Light").AddComponent<Light>();
+						light.gameObject.transform.parent = lightparent.transform;
+						light.type =  LightType.Spot;
+						light.transform.position = dice[i].transform.position + new Vector3(0,.3f, 0);
+						light.transform.LookAt(dice[i].transform.position);
+						light.color = Color.red;
+						light.intensity = 0.2f;
+						light.areaSize = new Vector2(0.03f,0.03f);
+					}
 				}
 					
 
