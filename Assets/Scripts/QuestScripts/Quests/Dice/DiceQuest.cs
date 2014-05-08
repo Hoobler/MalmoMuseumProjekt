@@ -87,7 +87,7 @@ public class DiceQuest : QuestBase {
 		winsOpponent = 0;
 		totalPoints = 0;
 		state = State.OPPONENTPRETHROW;
-		dice = new GameObject[numberOfDiceToThrow];
+		dice = new GameObject[numberOfDiceToThrow*2];
 		Destroy(GameObject.Find("DiceParent"));
 
 		diceparent = new GameObject ("DiceParent");
@@ -171,8 +171,7 @@ public class DiceQuest : QuestBase {
 		{
 			state = State.PLAYERPRETHROW;
 			informationsText.text = "DRA ÖVER SKÄRMEN FÖR ATT KASTA";
-			for(int i = 0; i < numberOfDiceToThrow; i++)
-				Destroy(dice[i]);
+
 		}
 		
 	}
@@ -182,13 +181,13 @@ public class DiceQuest : QuestBase {
 		if(timer <= 0)
 		{
 			int nrOfSleepingDice = 0;
-			for (int i = 0; i < dice.Length; i++) {
+			for (int i = 0; i < dice.Length/2; i++) {
 				if(dice[i].rigidbody.velocity == Vector3.zero)
 					nrOfSleepingDice++;
 			}
-			if (nrOfSleepingDice >= dice.Length) {
+			if (nrOfSleepingDice >= dice.Length/2) {
 				totalPoints = 0;
-				for(int i = 0; i < dice.Length; i++)
+				for(int i = 0; i < dice.Length/2; i++)
 				{
 					totalPoints += CheckWhichSideIsUp(dice[i].transform);
 				}
@@ -212,7 +211,7 @@ public class DiceQuest : QuestBase {
 		endHold.y = startHold.y;
 		Vector3 direction = endHold - startHold;
 
-		for(int i = 0; i < dice.Length; i++)
+		for(int i = 0; i < dice.Length/2; i++)
 		{
 			dice[i] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
 
@@ -245,7 +244,7 @@ public class DiceQuest : QuestBase {
 			}
 			else
 			{
-				for(int i = 0; i < numberOfDiceToThrow; i++)
+				for(int i = 0; i < dice.Length; i++)
 					Destroy(dice[i]);
 				state = State.OPPONENTPRETHROW;
 				
@@ -260,14 +259,14 @@ public class DiceQuest : QuestBase {
 		if(timer <= 0.0f)
 		{
 			int nrOfSleepingDice = 0;
-			for (int i = 0; i < dice.Length; i++) {
+			for (int i = dice.Length/2; i < dice.Length; i++) {
 				if(dice[i].rigidbody.velocity == Vector3.zero)
 					nrOfSleepingDice++;
 			}
-			if (nrOfSleepingDice >= dice.Length)
+			if (nrOfSleepingDice >= dice.Length/2)
 			{
 				int playerPoints = 0;
-				for(int i = 0; i < dice.Length; i++)
+				for(int i = dice.Length/2; i < dice.Length; i++)
 				{
 					playerPoints += CheckWhichSideIsUp(dice[i].transform);
 				}
@@ -330,7 +329,7 @@ public class DiceQuest : QuestBase {
 				Vector3 direction = (endHold  - startHold);
 				timer = totalTime;
 
-				for(int i = 0; i < numberOfDiceToThrow; i++)
+				for(int i = dice.Length/2; i < dice.Length; i++)
 				{
 					dice[i] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
 					dice[i].transform.position = startHold+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.5f, -0.1f), Random.Range(-0.1f, 0.1f));
