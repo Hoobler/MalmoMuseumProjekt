@@ -7,7 +7,6 @@ public class endNotificationScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.SetActive (false);
 		gameObject.GetComponent<GUITexture> ().pixelInset = new Rect (Screen.width * 0.3f, Screen.height * 0.3f, Screen.width * 0.4f, Screen.height * 0.4f);
 		gameObject.GetComponent<GUIText> ().pixelOffset = new Vector2 (gameObject.GetComponent<GUITexture> ().GetScreenRect ().x + gameObject.GetComponent<GUITexture> ().GetScreenRect ().width * 0.1f,
 		                                                              gameObject.GetComponent<GUITexture> ().GetScreenRect ().yMax - gameObject.GetComponent<GUITexture> ().GetScreenRect ().height * 0.1f);

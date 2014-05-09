@@ -23,7 +23,8 @@ public class TriggerActivation : QuestBase {
 	GameObject reminder;
 
 	void Start(){
-
+		reminder 	= (GameObject)Instantiate (Resources.Load ("ReminderText"));
+		reminder.transform.parent = GameObject.Find ("BagQuest").transform;
 	}
 	
 	void OnGUI(){
@@ -78,7 +79,6 @@ public class TriggerActivation : QuestBase {
 		guiTexture = GameObject.Find ("GUIBags");
 		temp = guiTexture.GetComponent ("GUITexture") as GUITexture;
 		temp.enabled = true;
-		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 
 		foreach(GameObject go in GameObject.FindGameObjectsWithTag("Leavebag"))
 			leaveArray.Add(go);
@@ -106,17 +106,26 @@ public class TriggerActivation : QuestBase {
 	{
 		base.TriggerFinish (success);
 
+		//PREFS
+		if (PlayerPrefs.GetInt ("LTquest") == 0)
+			PlayerPrefs.SetInt ("LTquest", 1);
+		else if (PlayerPrefs.GetInt ("LTquest") == 2)
+			PlayerPrefs.SetInt ("LTquest", 3);
+		//---
+
 		for(int i = 0; i < pickupArray.Count; i++){
 			GameObject go = (GameObject)pickupArray[i];
 			go.renderer.enabled = false;
 		}
-		questFinished = true;
-		questAccpeted = false;
-		temp.enabled = false;
 
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		endText.text = "Tack, du hämtade alla påsar!";
+
+		questFinished = true;
+		questAccpeted = false;
+		temp.enabled = false;
+
 		reminder.SetActive (false);
 		Reset ();
 		

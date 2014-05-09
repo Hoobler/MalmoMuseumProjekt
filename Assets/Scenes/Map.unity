@@ -102,8 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10151e5bf81d3e44bbb7af6e166d05af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goto_texture: {fileID: 2800000, guid: 47253508b10be0c429f8f773da4be38a, type: 3}
-  background_texture: {fileID: 2800000, guid: 0c3bbfe3342d54b4ab810c467391f0d9, type: 3}
+  goto_texture: {fileID: 2800000, guid: 14a77572c006c2d439a38dda347665cd, type: 3}
+  background_texture: {fileID: 2800000, guid: a58bde2ee68dfe940b47fb210da1d919, type: 3}
+  complete_texture: {fileID: 2800000, guid: acc4d76dc78de5f4794fdb31e6fbb54a, type: 3}
+  incomplete_texture: {fileID: 2800000, guid: 2837408da4af57b4ca0e4d90221e5862, type: 3}
 --- !u!131 &237399890
 GUITexture:
   m_ObjectHideFlags: 0
@@ -312,8 +314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10151e5bf81d3e44bbb7af6e166d05af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goto_texture: {fileID: 2800000, guid: 47253508b10be0c429f8f773da4be38a, type: 3}
-  background_texture: {fileID: 2800000, guid: 0c3bbfe3342d54b4ab810c467391f0d9, type: 3}
+  goto_texture: {fileID: 2800000, guid: 14a77572c006c2d439a38dda347665cd, type: 3}
+  background_texture: {fileID: 2800000, guid: da8fbb6d555154b4baa30406f156fc13, type: 3}
+  complete_texture: {fileID: 2800000, guid: acc4d76dc78de5f4794fdb31e6fbb54a, type: 3}
+  incomplete_texture: {fileID: 2800000, guid: 2837408da4af57b4ca0e4d90221e5862, type: 3}
 --- !u!1 &1665370873
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,8 +466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10151e5bf81d3e44bbb7af6e166d05af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goto_texture: {fileID: 2800000, guid: 47253508b10be0c429f8f773da4be38a, type: 3}
-  background_texture: {fileID: 2800000, guid: 0c3bbfe3342d54b4ab810c467391f0d9, type: 3}
+  goto_texture: {fileID: 2800000, guid: 14a77572c006c2d439a38dda347665cd, type: 3}
+  background_texture: {fileID: 2800000, guid: e00482573019bef4089398b77d0ed095, type: 3}
+  complete_texture: {fileID: 2800000, guid: acc4d76dc78de5f4794fdb31e6fbb54a, type: 3}
+  incomplete_texture: {fileID: 2800000, guid: 2837408da4af57b4ca0e4d90221e5862, type: 3}
 --- !u!131 &1965255325
 GUITexture:
   m_ObjectHideFlags: 0

@@ -157,14 +157,26 @@ public class ThrowQuest : QuestBase {
 	public override void TriggerFinish (bool success)
 	{
 		base.TriggerFinish (success);
+
+		//PREFS
+		if (success) {
+			if (PlayerPrefs.GetInt ("LTquest") == 0)
+				PlayerPrefs.SetInt ("LTquest", 2);
+			else if (PlayerPrefs.GetInt ("LTquest") == 1)
+				PlayerPrefs.SetInt ("LTquest", 3);
+		}
+		//---
+
 		string finishInfo;
 		if (success)
 						finishInfo = "Du klarade det!";
 				else
 						finishInfo = "Tyvärr, du träffade bara " + applesInBasket + " äpplen.";
+
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		endText.text = finishInfo;
+
 		reminder.SetActive (false);
 		questActive = false;
 		if(chargeBar != null)
