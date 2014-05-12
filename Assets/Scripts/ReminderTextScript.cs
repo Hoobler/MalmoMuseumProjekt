@@ -14,12 +14,7 @@ public class ReminderTextScript : MonoBehaviour {
 
 	public void ChangeText(string newText)
 	{
-		mainText.text = newText;
-		FormatMainText ();
-	}
-
-	void LocalChangeText(string newText)
-	{
+		gameObject.SetActive (true);
 		mainText.text = newText;
 		FormatMainText ();
 	}
@@ -64,7 +59,7 @@ public class ReminderTextScript : MonoBehaviour {
 		mainText.color = Color.black;
 		mainText.text = "Default Text 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15";
 		mainText.pixelOffset = new Vector2 (backgroundBounds.x + backgroundBounds.width * 0.1f, backgroundBounds.yMax - backgroundBounds.height * 0.1f);
-		mainText.fontSize = (int)(8 * Screen.width / 800f);
+		mainText.fontSize = (int)(12 * Screen.width / 800f);
 
 		gameObject.SetActive (false);
 	}
