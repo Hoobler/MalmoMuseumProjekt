@@ -23,8 +23,10 @@ public class TriggerActivation : QuestBase {
 	GameObject reminder;
 
 	void Start(){
-		reminder 	= (GameObject)Instantiate (Resources.Load ("ReminderText"));
-		reminder.transform.parent = GameObject.Find ("BagQuest").transform;
+		if (Application.loadedLevelName == "LillaTorg") {
+			reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
+			reminder.transform.parent = GameObject.Find ("BagQuest").transform;
+		}
 	}
 	
 	void OnGUI(){
