@@ -44,6 +44,8 @@ public class DiceQuest : QuestBase {
 
 	GameObject opponentCounter;
 	GameObject playerCounter;
+	Vector3 opponentDiceOrigin;
+	Vector3 playerDiceOrigin;
 //	Transform player;
 	// Use this for initialization
 	void Start () {
@@ -57,6 +59,8 @@ public class DiceQuest : QuestBase {
 		playerCounter.transform.parent = dicecamera.transform.parent;
 		opponentCounter = (GameObject)Instantiate (Resources.Load ("counters/OpponentCounter"));
 		opponentCounter.transform.parent = dicecamera.transform.parent;
+		opponentDiceOrigin = GameObject.Find ("DiceOpponentStart").transform.position;
+		playerDiceOrigin = GameObject.Find ("DicePlayerStart").transform.position;
 	}
 
 	public override void TriggerStart()
@@ -207,23 +211,22 @@ public class DiceQuest : QuestBase {
 	
 	void OpponentPreThrow()
 	{
-		startHold = new Vector3 (Screen.width / 2, Screen.height *0.75f, 0);
-		endHold = new Vector3 (Random.Range ((int)(Screen.width*0.1f), (int)(Screen.width*0.9f)), Random.Range (Screen.height/10, Screen.height/2), 0);
-		startHold = dicecamera.camera.ScreenPointToRay(startHold).origin;
-		endHold = dicecamera.camera.ScreenPointToRay(endHold).origin;
-		endHold.y = startHold.y;
-		Vector3 direction = endHold - startHold;
+
+		endHold = playerDiceOrigin + new Vector3 (Random.Range(-0.1f, 0.1f), 0, Random.Range(-0.1f, 0.1f));
+
+		endHold.y = opponentDiceOrigin.y;
+		Vector3 direction = endHold - opponentDiceOrigin;
 
 		for(int i = 0; i < dice.Length/2; i++)
 		{
 			dice[i] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
 
-			dice[i].transform.position = startHold+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.5f, -0.1f), Random.Range(-0.1f, 0.1f));
+			dice[i].transform.position = opponentDiceOrigin+new Vector3(-0.1f + 0.2f*i, Random.Range(-0.1f, -0.1f), Random.Range(-0.1f, 0.1f));
 
 			
 			dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 			dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-			dice[i].rigidbody.AddForce(direction*400f);
+			dice[i].rigidbody.AddForce(direction*200f);
 			dice[i].transform.parent = diceparent.transform;
 		}
 		state = State.OPPONENTPOSTTHROW;
@@ -259,6 +262,7 @@ public class DiceQuest : QuestBase {
 		}
 	}
 
+
 	void PlayerPostThrow()
 	{
 		if(timer <= 0.0f)
@@ -291,11 +295,10 @@ public class DiceQuest : QuestBase {
 						Light light = new GameObject("Light").AddComponent<Light>();
 						light.gameObject.transform.parent = lightparent.transform;
 						light.type =  LightType.Spot;
-						light.transform.position = dice[i].transform.position + new Vector3(0,.3f, 0);
+						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
 						light.transform.LookAt(dice[i].transform.position);
 						light.color = Color.green;
 						light.intensity = 0.2f;
-						light.areaSize = new Vector2(0.03f,0.03f);
 					}
 
 				}
@@ -315,11 +318,10 @@ public class DiceQuest : QuestBase {
 						Light light = new GameObject("Light").AddComponent<Light>();
 						light.gameObject.transform.parent = lightparent.transform;
 						light.type =  LightType.Spot;
-						light.transform.position = dice[i].transform.position + new Vector3(0,.3f, 0);
+						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
 						light.transform.LookAt(dice[i].transform.position);
 						light.color = Color.red;
 						light.intensity = 0.2f;
-						light.areaSize = new Vector2(0.03f,0.03f);
 					}
 				}
 					
@@ -350,7 +352,8 @@ public class DiceQuest : QuestBase {
 			{
 				holdingDownMouseButton = false;
 				endHold = Input.mousePosition;
-
+				if(endHold.y < startHold.y)
+					endHold.y = startHold.y;
 				state = State.PLAYERPOSTTHROW;
 				
 				informationsText.enabled = false;
@@ -363,11 +366,11 @@ public class DiceQuest : QuestBase {
 				for(int i = dice.Length/2; i < dice.Length; i++)
 				{
 					dice[i] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
-					dice[i].transform.position = startHold+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.5f, -0.1f), Random.Range(-0.1f, 0.1f));
+					dice[i].transform.position = playerDiceOrigin+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, -0.1f), Random.Range(-0.1f, 0.1f));
 
 					dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 					dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-					dice[i].rigidbody.AddForce(direction*400f);
+					dice[i].rigidbody.AddForce(direction*200f);
 					dice[i].transform.parent = diceparent.transform;
 
 				}

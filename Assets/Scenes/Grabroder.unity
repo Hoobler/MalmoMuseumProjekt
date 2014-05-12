@@ -237,6 +237,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22060720}
   m_Mesh: {fileID: 4300196, guid: c99583de1b019e74a828375ce43fa43f, type: 3}
+--- !u!1 &23030146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 23030147}
+  m_Layer: 0
+  m_Name: DicePlayerStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &23030147
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 23030146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3215332, y: -.0912733078, z: .997009277}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1186069833}
 --- !u!1001 &24013622
 Prefab:
   m_ObjectHideFlags: 0
@@ -17589,8 +17615,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 586986788}
-  m_LocalRotation: {x: .415564954, y: -.572106659, z: .572106242, w: .415565073}
-  m_LocalPosition: {x: 1.09698486, y: .42775178, z: .819152832}
+  m_LocalRotation: {x: .29439646, y: -.700248718, z: .405294091, w: .508644521}
+  m_LocalPosition: {x: 1.53552246, y: .566351056, z: 1.02844238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1186069833}
@@ -30904,6 +30930,32 @@ Prefab:
   m_RootGameObject: {fileID: 1494223072}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1003755603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1003755604}
+  m_Layer: 0
+  m_Name: DiceOpponentStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1003755604
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1003755603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .693603516, y: -.0912733078, z: .843994141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1186069833}
 --- !u!1 &1004611791
 GameObject:
   m_ObjectHideFlags: 0
@@ -35889,6 +35941,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 586986793}
+  - {fileID: 1003755604}
+  - {fileID: 23030147}
   - {fileID: 2033829869}
   - {fileID: 600837638}
   m_Father: {fileID: 1831863599}
