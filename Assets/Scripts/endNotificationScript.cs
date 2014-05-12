@@ -11,6 +11,7 @@ public class endNotificationScript : MonoBehaviour {
 		gameObject.GetComponent<GUIText> ().pixelOffset = new Vector2 (gameObject.GetComponent<GUITexture> ().GetScreenRect ().x + gameObject.GetComponent<GUITexture> ().GetScreenRect ().width * 0.1f,
 		                                                              gameObject.GetComponent<GUITexture> ().GetScreenRect ().yMax - gameObject.GetComponent<GUITexture> ().GetScreenRect ().height * 0.1f);
 		gameObject.GetComponent<GUIText> ().fontSize = (int)(16 * Screen.width / 800f);
+		gameObject.SetActive (false);
 	}
 
 	public void Activate(string newText)
