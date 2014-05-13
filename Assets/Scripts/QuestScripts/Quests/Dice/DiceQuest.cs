@@ -17,7 +17,6 @@ public class DiceQuest : QuestBase {
 
 	bool questActive;
 
-
 	GameObject[] dice;
 	State state;
 	int numberOfDiceToThrow;
