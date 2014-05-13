@@ -106,8 +106,8 @@ public class MusketQuest : MonoBehaviour {
 		Debug.Log("Finnished");
 		
 			if (PlayerPrefs.GetInt ("Squest") == 0)
-				PlayerPrefs.SetInt ("Squest", 2);
-			else if (PlayerPrefs.GetInt ("Squest") == 1)
+				PlayerPrefs.SetInt ("Squest", 1);
+			else if (PlayerPrefs.GetInt ("Squest") == 2)
 				PlayerPrefs.SetInt ("Squest", 3);
 
 		_questStarted = false;

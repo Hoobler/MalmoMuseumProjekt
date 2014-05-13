@@ -111,8 +111,13 @@ public class CanonQuest : QuestBase  {
 		canonCamera.camera.enabled = false;
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		if (nr_of_hits > 0)
+		if (nr_of_hits > 0) {
 						endText.text = "Du sänkte skeppet!";
+			if (PlayerPrefs.GetInt ("Squest") == 0)
+				PlayerPrefs.SetInt ("Squest", 2);
+			else if (PlayerPrefs.GetInt ("Squest") == 1)
+				PlayerPrefs.SetInt ("Squest", 3);
+				}
 				else if (nr_of_hits == 0 && canonballs_shot == 5)
 						endText.text = "Tusan, du missade alla skott";
 				else if (nr_of_hits == 0 && canonballs_shot < 5)

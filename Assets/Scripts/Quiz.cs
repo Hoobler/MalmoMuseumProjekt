@@ -35,9 +35,17 @@ public class Quiz : MonoBehaviour {
 	void EndScreen()
 	{
 		if (points == 0)
-			questionText.text = "Du klarade inte en enda fråga. =(";
-		else if (points == questions.Length)
+						questionText.text = "Du klarade inte en enda fråga. =(";
+		else if (points == questions.Length) {
 			questionText.text = "Grattis, du klarade alla frågor!";
+			if(Application.loadedLevel == 0)
+				PlayerPrefs.SetInt("LTquiz", 1);
+			else if(Application.loadedLevel == 2)
+				PlayerPrefs.SetInt("Squiz", 1);
+			else if(Application.loadedLevel == 3)
+				PlayerPrefs.SetInt("Gquiz", 1);
+		}
+			
 		else
 			questionText.text = "Grattis! Du klarade " + points + " av " + questions.Length + " frågor!";
 		FormatMainText ();
