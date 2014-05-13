@@ -46,6 +46,7 @@ public class DiceQuest : QuestBase {
 	GameObject playerCounter;
 	Vector3 opponentDiceOrigin;
 	Vector3 playerDiceOrigin;
+	Vector3 playerPos;
 //	Transform player;
 	// Use this for initialization
 	void Start () {
@@ -61,6 +62,7 @@ public class DiceQuest : QuestBase {
 		opponentCounter.transform.parent = dicecamera.transform.parent;
 		opponentDiceOrigin = GameObject.Find ("DiceOpponentStart").transform.position;
 		playerDiceOrigin = GameObject.Find ("DicePlayerStart").transform.position;
+		playerPos = GameObject.Find ("DicePlayerPosition").transform.position;
 	}
 
 	public override void TriggerStart()
@@ -84,6 +86,8 @@ public class DiceQuest : QuestBase {
 		informationsText.alignment = TextAlignment.Left;
 		informationsText.text = "Dra över skärmen för att kasta";
 		informationsText.color = Color.yellow;
+
+		GameObject.FindWithTag ("Player").transform.position = playerPos;
 
 		totalTime = 1.0f;
 		numberOfDiceToThrow = 2;
@@ -216,6 +220,8 @@ public class DiceQuest : QuestBase {
 
 		endHold.y = opponentDiceOrigin.y;
 		Vector3 direction = endHold - opponentDiceOrigin;
+		if(direction.magnitude < 0.3f)
+			direction = direction.normalized*0.3f;
 
 		for(int i = 0; i < dice.Length/2; i++)
 		{
@@ -226,7 +232,7 @@ public class DiceQuest : QuestBase {
 			
 			dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 			dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-			dice[i].rigidbody.AddForce(direction*300f);
+			dice[i].rigidbody.AddForce(direction*150f);
 			dice[i].transform.parent = diceparent.transform;
 		}
 		state = State.OPPONENTPOSTTHROW;
@@ -370,6 +376,8 @@ public class DiceQuest : QuestBase {
 
 					dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 					dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
+					if(direction.magnitude < 0.3f)
+						direction = direction.normalized*0.3f;
 					dice[i].rigidbody.AddForce(direction*200f);
 					dice[i].transform.parent = diceparent.transform;
 

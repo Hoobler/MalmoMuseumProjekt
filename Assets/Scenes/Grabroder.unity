@@ -35943,6 +35943,7 @@ Transform:
   - {fileID: 586986793}
   - {fileID: 1003755604}
   - {fileID: 23030147}
+  - {fileID: 1444703364}
   - {fileID: 2033829869}
   - {fileID: 600837638}
   m_Father: {fileID: 1831863599}
@@ -43445,6 +43446,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437967930}
   m_Mesh: {fileID: 4300392, guid: c99583de1b019e74a828375ce43fa43f, type: 3}
+--- !u!1 &1444703363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1444703364}
+  m_Layer: 0
+  m_Name: DicePlayerPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1444703364
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1444703363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.41046143, y: -1.03238297, z: 1.44683838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1186069833}
 --- !u!1 &1445188828
 GameObject:
   m_ObjectHideFlags: 0

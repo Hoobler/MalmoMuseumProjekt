@@ -27,6 +27,7 @@ public class ThrowQuest : QuestBase {
 
 	public Texture appleImage;
 	GameObject reminder;
+	GameObject endNotification;
 
 	public void OnGUI()
 	{
@@ -138,7 +139,8 @@ public class ThrowQuest : QuestBase {
 
 	void Start()
 	{
-
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		endNotification.transform.parent = gameObject.transform.parent;
 		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 		reminder.transform.parent = gameObject.transform.parent;
 	}
@@ -173,9 +175,8 @@ public class ThrowQuest : QuestBase {
 				else
 						finishInfo = "Tyvärr, du träffade bara " + applesInBasket + " äpplen.";
 
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		endText.text = finishInfo;
+
+		endNotification.GetComponent<endNotificationScript> ().Activate (finishInfo);
 
 		reminder.SetActive (false);
 		questActive = false;
