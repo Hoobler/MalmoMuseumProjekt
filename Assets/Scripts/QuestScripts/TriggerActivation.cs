@@ -21,6 +21,8 @@ public class TriggerActivation : QuestBase {
 	GameObject guiTexture;
 	GUITexture temp;
 	GameObject reminder;
+	GUIText collectedText;
+	GUIText timeText;
 
 	void Start(){
 		if (Application.loadedLevelName == "LillaTorg") {
@@ -28,18 +30,14 @@ public class TriggerActivation : QuestBase {
 			reminder.transform.parent = GameObject.Find ("BagQuest").transform;
 		}
 	}
-	
-	void OnGUI(){
-		if (questAccpeted) {
-			GUI.Label (new Rect (70, 30, 30, 20), collected.ToString () + " / 6");
-			GUI.Label (new Rect (70, 50, 30, 20), timeElapsed.ToString());
-		}
-			
-	}
 
 	void Update(){
-		if (questAccpeted)
+		if (questAccpeted) {
 			timeElapsed += Time.deltaTime;
+			timeElapsed = Mathf.Round(timeElapsed * 100.0f) / 100.0f;
+			collectedText.text = collected.ToString() + " / 6";
+			timeText.text = timeElapsed.ToString();
+		}
 	}
 
 	void Reset(){
@@ -100,8 +98,11 @@ public class TriggerActivation : QuestBase {
 		quest1gui.SetActive (true);
 		temp.enabled = true;
 
+		InitText ();
+
 		reminder.SetActive (true);
 		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Hjälp mig hitta mina vetepåsar och lämna tillbaka dom till mig. Du plockar upp dom när du går in i dom. DU lämnar in dom genom att gå in i området bredvid mig.");
+
 	}
 
 	public override void TriggerFinish(bool success)
@@ -131,6 +132,25 @@ public class TriggerActivation : QuestBase {
 		reminder.SetActive (false);
 		Reset ();
 		
+	}
+
+	private void InitText(){
+		GameObject collected = new GameObject ("CollectedText");
+		collectedText = (GUIText)collected.AddComponent<GUIText> ();
+		collectedText.pixelOffset = new Vector2 (Screen.width * 0.05f, Screen.height * 0.96f);
+		collectedText.fontSize = (int)(12 * Screen.width / 800f);
+		collectedText.anchor = TextAnchor.MiddleLeft;
+		collectedText.alignment = TextAlignment.Left;
+		collectedText.text = collected.ToString() + " / 6";
+
+		GameObject time = new GameObject ("TimeText");
+		timeText = (GUIText)time.AddComponent<GUIText> ();
+		timeText.pixelOffset = new Vector2 (Screen.width * 0.05f, Screen.height * 0.92f);
+		timeText.fontSize = (int)(12 * Screen.width / 800f);
+		timeText.anchor = TextAnchor.MiddleLeft;
+		timeText.alignment = TextAlignment.Left;
+		timeText.text = timeElapsed.ToString();
+
 	}
 }
 
