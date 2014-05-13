@@ -72,7 +72,7 @@ public class TriggerActivation : QuestBase {
 			GameObject go = (GameObject)leaveArray[collected];
 			collected++;
 			go.renderer.enabled = true;
-			if(collected >= 1)
+			if(collected >= nrOfBags)
 				TriggerFinish (true);
 		}
 
