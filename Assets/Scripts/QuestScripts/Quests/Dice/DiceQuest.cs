@@ -221,12 +221,12 @@ public class DiceQuest : QuestBase {
 		{
 			dice[i] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
 
-			dice[i].transform.position = opponentDiceOrigin+new Vector3(-0.1f + 0.2f*i, Random.Range(-0.1f, -0.1f), Random.Range(-0.1f, 0.1f));
+			dice[i].transform.position = opponentDiceOrigin+new Vector3(-0.1f + 0.2f*i, Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
 
 			
 			dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 			dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-			dice[i].rigidbody.AddForce(direction*200f);
+			dice[i].rigidbody.AddForce(direction*300f);
 			dice[i].transform.parent = diceparent.transform;
 		}
 		state = State.OPPONENTPOSTTHROW;
