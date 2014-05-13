@@ -54,7 +54,8 @@ public class TriggerActivation : QuestBase {
 
 	void OnTriggerEnter(Collider other){
 
-		if (other.gameObject.tag == "Pickup" && !carrying && questAccpeted) {	
+		if (other.gameObject.tag == "Pickup" && !carrying && questAccpeted) {
+			(other.gameObject.GetComponent("Halo") as Behaviour).enabled = false;
 			other.gameObject.renderer.enabled = false;
 			carrying = true;
 			holdBag.renderer.enabled = true;
