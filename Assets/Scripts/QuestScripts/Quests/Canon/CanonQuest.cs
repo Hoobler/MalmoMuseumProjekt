@@ -135,9 +135,9 @@ public class CanonQuest : QuestBase  {
 	//Initializes arrows on screen
 	void Init(){
 
-		#if UNITY_ANDROID
+	//	#if UNITY_ANDROID
 		InitGUI();
-		#endif
+	//	#endif
 
 	}
 
