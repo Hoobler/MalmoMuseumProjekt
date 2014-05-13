@@ -9,6 +9,8 @@ public class Question{
 }
 public class Quiz : MonoBehaviour {
 
+	public Texture texture;
+
 	public bool randomizeQuestions;
 	public Question[] questions;
 
@@ -22,6 +24,8 @@ public class Quiz : MonoBehaviour {
 	bool quizActive = false;
 	int points;
 	bool isChoosingAnswer;
+
+
 
 	int selectedAnswer;
 
@@ -115,12 +119,15 @@ public class Quiz : MonoBehaviour {
 
 	public void ActivatePreQuiz()
 	{
-
+		GameObject background = new GameObject ("Quizpredialogue");
+		background.AddComponent<GUITexture> ();
+		background.guiTexture.texture = texture;
+		background.guiTexture.pixelInset = new Rect (0, 0, 0, 0);
 	}
 
 	public void ActivateQuiz()
 	{
-		quizParent = new GameObject ("QuizParent");
+
 		GameObject background = (GameObject)Instantiate (Resources.Load ("Quizmain"));
 		background.transform.parent = quizParent.transform;
 		
@@ -160,12 +167,15 @@ public class Quiz : MonoBehaviour {
 	public void TriggerStart()
 	{
 		quizHasActuallyStarted = false;
+
+		quizParent = new GameObject ("QuizParent");
 		ActivateQuiz ();
 	}
 
 	public void TriggerFinish()
 	{
 		quizActive = false;
+		quizHasActuallyStarted = false;
 		Destroy (quizParent);
 	}
 
