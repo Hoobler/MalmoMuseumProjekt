@@ -16,6 +16,7 @@ public class TriggerActivation : QuestBase {
 	ArrayList leaveArray = new ArrayList();
 	ArrayList pickupArray = new ArrayList();
 
+	GameObject endDiag;
 	GameObject quest1gui;
 	GameObject holdBag;
 	GameObject guiTexture;
@@ -28,6 +29,8 @@ public class TriggerActivation : QuestBase {
 		if (Application.loadedLevelName == "LillaTorg") {
 			reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 			reminder.transform.parent = GameObject.Find ("BagQuest").transform;
+			endDiag = (GameObject)Instantiate(Resources.Load("QuestEndDialogue"));
+			endDiag.transform.parent = GameObject.Find ("BagQuest").transform;
 		}
 	}
 
@@ -57,6 +60,7 @@ public class TriggerActivation : QuestBase {
 		if (other.gameObject.tag == "Pickup" && !carrying && questAccpeted) {
 			(other.gameObject.GetComponent("Halo") as Behaviour).enabled = false;
 			other.gameObject.renderer.enabled = false;
+			other.gameObject.SetActive(false);
 			carrying = true;
 			holdBag.renderer.enabled = true;
 		}
@@ -68,7 +72,7 @@ public class TriggerActivation : QuestBase {
 			GameObject go = (GameObject)leaveArray[collected];
 			collected++;
 			go.renderer.enabled = true;
-			if(collected >= nrOfBags)
+			if(collected >= 1)
 				TriggerFinish (true);
 		}
 
@@ -93,6 +97,7 @@ public class TriggerActivation : QuestBase {
 		questAccpeted = true;
 		for(int i = 0; i < pickupArray.Count; i++) {
 			GameObject go = (GameObject)pickupArray[i];
+			go.SetActive(true);
 			go.renderer.enabled = true;
 			(go.GetComponent("Halo") as Behaviour).enabled = true;
 		}
@@ -103,7 +108,6 @@ public class TriggerActivation : QuestBase {
 
 		reminder.SetActive (true);
 		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Hjälp mig hitta mina vetepåsar och lämna tillbaka dom till mig. Du plockar upp dom när du går in i dom. DU lämnar in dom genom att gå in i området bredvid mig.");
-
 	}
 
 	public override void TriggerFinish(bool success)
@@ -119,18 +123,20 @@ public class TriggerActivation : QuestBase {
 
 		for(int i = 0; i < pickupArray.Count; i++){
 			GameObject go = (GameObject)pickupArray[i];
-			go.renderer.enabled = false;
+			go.SetActive(false);
 		}
-
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		endText.text = "Tack, du hämtade alla påsar!";
 
 		questFinished = true;
 		questAccpeted = false;
 		temp.enabled = false;
 
 		reminder.SetActive (false);
+		Destroy (GameObject.Find ("CollectedText"));
+		Destroy (GameObject.Find ("TimeText"));
+
+		endDiag.GetComponent<endNotificationScript> ().Activate("Tack du hämtade alla påsar");
+		endDiag.SetActive (true);
+
 		Reset ();
 		
 	}
