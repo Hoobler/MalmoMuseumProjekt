@@ -39,6 +39,7 @@ public class CanonQuest : QuestBase  {
 	GameObject canonMuzzle;
 	GameObject canonBase;
 	GameObject reminder;
+	GameObject endDiag;
 
 	public Texture canonball_texture;
 	public Texture reloadbar_texture;
@@ -109,20 +110,20 @@ public class CanonQuest : QuestBase  {
 //		EventManager.TriggerDisableAndroid("unlock");
 		mainCamera.camera.enabled = true;
 		canonCamera.camera.enabled = false;
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
+
+	
 		if (nr_of_hits > 0) {
-						endText.text = "Du sänkte skeppet!";
+			endDiag.GetComponent<endNotificationScript> ().Activate("Härligt, du sänkte skeppet.");
 			if (PlayerPrefs.GetInt ("Squest") == 0)
 				PlayerPrefs.SetInt ("Squest", 2);
 			else if (PlayerPrefs.GetInt ("Squest") == 1)
 				PlayerPrefs.SetInt ("Squest", 3);
 				}
 				else if (nr_of_hits == 0 && canonballs_shot == 5)
-						endText.text = "Tusan, du missade alla skott";
+					endDiag.GetComponent<endNotificationScript> ().Activate("Tusan, skeppet kom förbi!");
 				else if (nr_of_hits == 0 && canonballs_shot < 5)
-						endText.text = "Helvete, skeppet kom förbi";
-
+					endDiag.GetComponent<endNotificationScript> ().Activate("Helvete, du missade alla kanonkulor.");
+		endDiag.SetActive (true);
 		player.transform.position = prevPos;
 		canonballs_shot = 0;
 		nr_of_hits = 0;
@@ -135,6 +136,8 @@ public class CanonQuest : QuestBase  {
 		canonCamera = GameObject.Find ("CanonCamera");
 		reminder 	= (GameObject)Instantiate (Resources.Load ("ReminderText"));
 		reminder.transform.parent = canonCamera.transform.parent;
+		endDiag = (GameObject)Instantiate(Resources.Load("QuestEndDialogue"));
+		endDiag.transform.parent = canonCamera.transform.parent;
 	}
 
 	//Initializes arrows on screen

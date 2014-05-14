@@ -118,8 +118,13 @@ public class DiceQuest : QuestBase {
 		Destroy (informationsText.gameObject);
 		Destroy(lightparent);
 		invisWall.SetActive (false);
-		if(success)
-			endNotification.GetComponent<endNotificationScript>().Activate("Du vann spelet!");
+		if (success) {
+			endNotification.GetComponent<endNotificationScript> ().Activate ("Du vann spelet!");
+			if (PlayerPrefs.GetInt ("Gquest") == 0)
+				PlayerPrefs.SetInt ("Gquest", 2);
+			else if (PlayerPrefs.GetInt ("Gquest") == 1)
+				PlayerPrefs.SetInt ("Gquest", 3);
+			}
 		else
 			endNotification.GetComponent<endNotificationScript>().Activate("Du förlorade spelet =(");
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
