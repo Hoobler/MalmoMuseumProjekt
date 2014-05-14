@@ -22,7 +22,7 @@ public class MovingSight : MonoBehaviour {
 	private float _timeLeft;
 
 	void Start () {
-		EventManager.OnQuest += EventRespons;
+//		EventManager.OnQuest += EventRespons;
 		StartCoroutine(SightSway());
 	}
 

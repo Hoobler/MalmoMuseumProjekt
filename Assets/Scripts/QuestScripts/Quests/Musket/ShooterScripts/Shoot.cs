@@ -14,28 +14,34 @@ public class Shoot : MonoBehaviour {
 
 	private float _reloadTimeLeft;
 
+	private Vector3 _newShootSpot;
+
 	private bool _weaponActive;
-//	private bool _questStared;
+	private bool _questStared;
 	private bool _questFinished;
 	private bool _reloading;
 	private bool _firstHit;
+	private bool _goToSpot;
 	
 	private Ray _ray;
 	private RaycastHit _hit;
 	private Transform _cameraTransform;
 
 	void Start () {
+	
 		_reloadTimeLeft = ReloadTime;
-//		_questStared = false;
+		_questStared = false;
 		_firstHit = false;
-		EventManager.OnQuest += EventRespons;
-		EventManager.OnTouchEvent += TouchRespons;
+		_goToSpot = false;
+
+		EventManager.QuestEvent +=  new QuestHandler(ShootQuestRespons);
+//		EventManager.OnTouchEvent += TouchRespons;
 		particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
 		if(particle != null){
 			particle.Stop();
 			particle.Clear();
 		}
-		if(Application.loadedLevel == 3){
+		if(Application.loadedLevel == 2){
 			ShootSpot = GameObject.Find("ShootSpot").transform;
 		}
 	}
@@ -48,6 +54,10 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void Update () {
+		if(_questStared && _goToSpot){
+			_newShootSpot = new Vector3(ShootSpot.transform.position.x, transform.position.y, ShootSpot.transform.position.z);
+			MovePlayerToShootSpot();
+		}
 		if(_weaponActive && !_reloading){
 			if(Input.GetMouseButtonDown(0)){
 				Debug.Log("Mouse Shoot!");
@@ -73,22 +83,25 @@ public class Shoot : MonoBehaviour {
 			_reloadTimeLeft -= Time.deltaTime;
 		}
  	}
-
-	void EventRespons(MiniGamesEnum miniEnum , QuestEventArgs evArgs){
-		if(miniEnum == MiniGamesEnum.Musköt){
-			Debug.Log("Shoot test");
-			if(evArgs.QuestType == QuestTypeEnum.Started){
-				StartCoroutine(MovePlayerToShootSpot());
-//				_questStared = true;
+	//Clean up later!
+	void ShootQuestRespons(object o, QuestEventArgs e){
+		if(e.MiniGames == MiniGamesEnum.Musköt){
+			if(e.QuestType == QuestTypeEnum.Started){
+				Debug.Log("Shoot Started");
+				_goToSpot = true;
+				_questStared = true;
 				_firstHit = false;
 			}
-			else if(evArgs.QuestType == QuestTypeEnum.Finnished){
-//				_questStared = false;
+			else if(e.QuestType == QuestTypeEnum.Finnished){
+				Debug.Log("Shoot Fin");
+				_questStared = false;
 				DisableWeapon();
 			}
-			else if(evArgs.QuestType == QuestTypeEnum.Reset){
+			else if(e.QuestType == QuestTypeEnum.Reset){
+				Debug.Log("Shoot Reset");
 				_firstHit = false;
 			}
+			Debug.Log("Shoot Done");
 		}
 	}
 
@@ -111,6 +124,7 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void DisableWeapon(){
+		GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().QuestFinished (); //gör att quest kan triggas igen
 		_weaponActive = false;
 		EventManager.TriggerOnActivate("CrossHair", ActiveEnum.Disabled);
 		Debug.Log("Disable Weapon");
@@ -145,31 +159,33 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void SendToMusketQuest(string infoToSend){
-		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.OnGoing, infoToSend));
+		QuestEventArgs qEvArgs = new QuestEventArgs(MiniGamesEnum.Musköt ,QuestTypeEnum.OnGoing, infoToSend);
+		EventManager.OnQuestEvent(qEvArgs);
 	}
 
 	//Should move the player to the spot where he is going to shoot from.
-	IEnumerator MovePlayerToShootSpot(){
+	void MovePlayerToShootSpot(){
+		Debug.Log("Stuff mofo");
 		float distToShootSpot = 0;
 		float rate = 0;
 		float speed = 2;
-		bool goToSpot = true;
-		
-		Vector3 newShootSpot = new Vector3(ShootSpot.transform.position.x, transform.position.y, ShootSpot.transform.position.z);
-		while(goToSpot){
-			distToShootSpot = Vector3.Distance(transform.position, newShootSpot);
-			rate = Time.deltaTime * speed;
-			
-			if(distToShootSpot <= 0.01f){
-				goToSpot = false;
-			}
-			if(goToSpot){
-				this.transform.position = Vector3.MoveTowards(transform.position, newShootSpot, rate);
-				yield return null;
-			}
+
+		distToShootSpot = Vector3.Distance(transform.position, _newShootSpot);
+		rate = Time.deltaTime * speed;
+
+		if(distToShootSpot <= 0.01f){
+			_goToSpot = false;
+		}
+		if(_goToSpot){
+			this.transform.position = Vector3.MoveTowards(transform.position, _newShootSpot, rate);
 		}
 
-		EventManager.TriggerDisableAndroid("lock");
-		EnableWeapon();
+	
+		if(!_goToSpot){
+			EnableWeapon();
+			AndroidDisableArgs args = new AndroidDisableArgs();
+			args.Disable = true;
+			EventManager.TriggerDisableAndroid(args);
+		}
 	}
 }

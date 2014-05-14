@@ -6,9 +6,12 @@ using System.Text.RegularExpressions;
 public class DiceQuest : QuestBase {
 
 	enum State{
-		SELECT_REROLL,
-		POSTTHROW,
-		PRETHROW,
+		PLAYERPOSTTHROW,
+		PLAYERPRETHROW,
+		PLAYERCONTINUE,
+		OPPONENTPRETHROW,
+		OPPONENTPOSTTHROW,
+		OPPONENTCONTINUE,
 		FINISH
 	}
 
@@ -18,24 +21,31 @@ public class DiceQuest : QuestBase {
 	State state;
 	int numberOfDiceToThrow;
 
-	ArrayList listOfNumbers = new ArrayList();
-
 	bool holdingDownMouseButton;
 	Vector3 startHold;
 	Vector3 endHold;
+	int winsPlayer;
+	int winsOpponent;
+	int winsForSuccess;
 	int totalPoints;
-	int nrOfRerolls;
+	float timer;
+	float totalTime;
 	GameObject mainCamera;
 	GameObject dicecamera;
 	GameObject invisWall;
 	GameObject diceparent;
+	GameObject lightparent;
 
 	GUIText informationsText;
 
-	GUITexture resetButtonBack;
-	GUIText resetButtonText;
-	LineRenderer lineRenderer;
+	GameObject reminder;
+	GameObject endNotification;
 
+	GameObject opponentCounter;
+	GameObject playerCounter;
+	Vector3 opponentDiceOrigin;
+	Vector3 playerDiceOrigin;
+	Vector3 playerPos;
 //	Transform player;
 	// Use this for initialization
 	void Start () {
@@ -43,18 +53,25 @@ public class DiceQuest : QuestBase {
 		dicecamera.camera.enabled = false;
 		invisWall = GameObject.Find ("Invisible Walls");
 		invisWall.SetActive (false);
+		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
+		reminder.transform.parent = dicecamera.transform.parent;
+		playerCounter = (GameObject)Instantiate (Resources.Load ("counters/PlayerCounter"));
+		playerCounter.transform.parent = dicecamera.transform.parent;
+		opponentCounter = (GameObject)Instantiate (Resources.Load ("counters/OpponentCounter"));
+		opponentCounter.transform.parent = dicecamera.transform.parent;
+		opponentDiceOrigin = GameObject.Find ("DiceOpponentStart").transform.position;
+		playerDiceOrigin = GameObject.Find ("DicePlayerStart").transform.position;
+		playerPos = GameObject.Find ("DicePlayerPosition").transform.position;
 	}
 
 	public override void TriggerStart()
 	{
-		GameObject button = (GameObject)Instantiate (Resources.Load ("ResetButton"));
-		resetButtonBack = (GUITexture)button.GetComponent ("GUITexture");
-		resetButtonBack.pixelInset = new Rect (Screen.width * 0.05f, Screen.height * 0.05f, Screen.width * 0.15f, Screen.height * 0.15f);
-		resetButtonBack.enabled = false;
-		resetButtonText = (GUIText)button.GetComponent ("GUIText");
-		resetButtonText.pixelOffset = resetButtonBack.GetScreenRect ().center;
-		resetButtonText.fontSize = 14 * (Screen.width / 800);
-		resetButtonText.enabled = false;
+		playerCounter.SetActive (true);
+		playerCounter.GetComponent<GUIText> ().text = "0";
+		opponentCounter.SetActive (true);
+		opponentCounter.GetComponent<GUIText> ().text = "0";
+
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
 		dicecamera.camera.enabled = true;
@@ -66,42 +83,60 @@ public class DiceQuest : QuestBase {
 		informationsText.fontSize = (int)(16 * Screen.width / 800f);
 		informationsText.anchor = TextAnchor.MiddleLeft;
 		informationsText.alignment = TextAlignment.Left;
-		informationsText.text = "Dra ˆver sk‰rmen fˆr att kasta";
+		informationsText.text = "Dra √∂ver sk√§rmen f√∂r att kasta";
 		informationsText.color = Color.yellow;
 
-		numberOfDiceToThrow = 5;
-		state = State.PRETHROW;
-		dice = new GameObject[numberOfDiceToThrow];
-			Destroy(GameObject.Find("DiceParent"));
+		GameObject.FindWithTag ("Player").transform.position = playerPos;
+
+		totalTime = 1.0f;
+		numberOfDiceToThrow = 2;
+		winsForSuccess = 3;
+		winsPlayer = 0;
+		winsOpponent = 0;
+		totalPoints = 0;
+		state = State.OPPONENTPRETHROW;
+		dice = new GameObject[numberOfDiceToThrow*2];
+		Destroy(GameObject.Find("DiceParent"));
 
 		diceparent = new GameObject ("DiceParent");
-		for (int i = 0; i < numberOfDiceToThrow; i++) {
-			listOfNumbers.Add(i);
-		}
-		nrOfRerolls = 5;
-//		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		Destroy (GameObject.Find("LightParent"));
+		lightparent = new GameObject("LightParent");
 		questActive = true;
-		lineRenderer = gameObject.GetComponent<LineRenderer> ();
-		lineRenderer.enabled = false;
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
+
+		reminder.SetActive (true);
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra √∂ver sk√§rmen f√∂r kasta t√§rning. Ju l√§ngre du drar, desto h√•rdare kastar du. N√§r du kastat v√§ljer du vilka du ska sl√• om.");
 	}
 
-	public override void TriggerFinish()
+	public override void TriggerFinish(bool success)
 	{
+		base.TriggerFinish (success);
+
 		questActive = false;
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
 		Destroy (informationsText.gameObject);
-		Destroy (resetButtonBack.gameObject);
+		Destroy(lightparent);
 		invisWall.SetActive (false);
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		endText.text = "Du fick " + totalPoints + " po‰ng!";
+		if (success) {
+			endNotification.GetComponent<endNotificationScript> ().Activate ("Du vann spelet!");
+			if (PlayerPrefs.GetInt ("Gquest") == 0)
+				PlayerPrefs.SetInt ("Gquest", 2);
+			else if (PlayerPrefs.GetInt ("Gquest") == 1)
+				PlayerPrefs.SetInt ("Gquest", 3);
+			}
+		else
+			endNotification.GetComponent<endNotificationScript>().Activate("Du f√∂rlorade spelet =(");
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
+		reminder.SetActive (false);
+		playerCounter.SetActive (false);
+		opponentCounter.SetActive (false);
+
 	}
 
 	public int CheckWhichSideIsUp(Transform die)
 	{
+
 		int sideUp = 0;
 		float angle = 360;
 		
@@ -144,43 +179,174 @@ public class DiceQuest : QuestBase {
 		return sideUp;
 	}
 
-	void PostThrowUpdate()
+
+	void OpponentContinue()
 	{
-		int nrOfSleepingDice = 0;
-		for (int i = 0; i < dice.Length; i++) {
-			if(dice[i].rigidbody.velocity == Vector3.zero)
-				nrOfSleepingDice++;
+		if (Input.GetMouseButtonDown (0))
+		{
+			state = State.PLAYERPRETHROW;
+			informationsText.text = "DRA √ñVER SK√ÑRMEN F√ñR ATT KASTA";
+
 		}
-		if (nrOfSleepingDice >= dice.Length) {
-			for(int i = 0; i < dice.Length; i++)
-			{
-				totalPoints += CheckWhichSideIsUp(dice[i].transform);
+		
+	}
+	
+	void OpponentPostThrow()
+	{
+		if(timer <= 0)
+		{
+			int nrOfSleepingDice = 0;
+			for (int i = 0; i < dice.Length/2; i++) {
+				if(dice[i].rigidbody.velocity == Vector3.zero)
+					nrOfSleepingDice++;
 			}
-			if(nrOfRerolls > 0)
-			{
-				nrOfRerolls--;
-				invisWall.SetActive(false);
-				resetButtonBack.enabled = true;
-				resetButtonText.text = "BEH≈LL RESULTAT";
-				resetButtonText.enabled = true;
-				state = State.SELECT_REROLL;
+			if (nrOfSleepingDice >= dice.Length/2) {
+				totalPoints = 0;
+				for(int i = 0; i < dice.Length/2; i++)
+				{
+					totalPoints += CheckWhichSideIsUp(dice[i].transform);
+				}
+				state = State.OPPONENTCONTINUE;
+
 				informationsText.enabled = true;
-				informationsText.text = "V‰lj de t‰rningar du vill slÂ om";
+				informationsText.text = "TRYCK F√ñR ATT FORTS√ÑTTA";
+				invisWall.SetActive(false);
+			}
+		}
+		else
+			timer -= Time.deltaTime;
+	}
+	
+	void OpponentPreThrow()
+	{
+
+		endHold = playerDiceOrigin + new Vector3 (Random.Range(-0.1f, 0.1f), 0, Random.Range(-0.1f, 0.1f));
+
+		endHold.y = opponentDiceOrigin.y;
+		Vector3 direction = endHold - opponentDiceOrigin;
+		if(direction.magnitude < 0.3f)
+			direction = direction.normalized*0.3f;
+
+		for(int i = 0; i < dice.Length/2; i++)
+		{
+			dice[i] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
+
+			dice[i].transform.position = opponentDiceOrigin+new Vector3(-0.1f + 0.2f*i, Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
+
+			
+			dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
+			dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
+			dice[i].rigidbody.AddForce(direction*150f);
+			dice[i].transform.parent = diceparent.transform;
+		}
+		state = State.OPPONENTPOSTTHROW;
+		timer = totalTime;
+		
+		invisWall.SetActive(true);
+	}
+	void PlayerContinue()
+	{
+		if(Input.GetMouseButtonDown(0))
+		{
+			if(winsPlayer == winsForSuccess)
+			{
+				informationsText.text = "DU VANN SPELET";
+				TriggerFinish(true);
+			}
+			else if(winsOpponent == winsForSuccess)
+			{
+				informationsText.text = "DU F√ñRLORADE SPELET";
+				TriggerFinish(false);
 			}
 			else
 			{
-				state = State.FINISH;
+				for(int i = 0; i < dice.Length; i++)
+					Destroy(dice[i]);
+				state = State.OPPONENTPRETHROW;
+
+				Destroy(lightparent);
+				lightparent = new GameObject("LightParent");
+				informationsText.enabled = false;
+			}
+
+		}
+	}
+
+
+	void PlayerPostThrow()
+	{
+		if(timer <= 0.0f)
+		{
+			int nrOfSleepingDice = 0;
+			for (int i = dice.Length/2; i < dice.Length; i++) {
+				if(dice[i].rigidbody.velocity == Vector3.zero)
+					nrOfSleepingDice++;
+			}
+			if (nrOfSleepingDice >= dice.Length/2)
+			{
+				int playerPoints = 0;
+				for(int i = dice.Length/2; i < dice.Length; i++)
+				{
+					playerPoints += CheckWhichSideIsUp(dice[i].transform);
+
+
+				}
+				invisWall.SetActive(false);
+					
+				informationsText.enabled = true;
+				if(playerPoints > totalPoints)
+				{
+					informationsText.text = "DU VANN DENNA RUNDAN";
+					Instantiate(Resources.Load("FadeCorrect"));
+					winsPlayer++;
+					playerCounter.GetComponent<GUIText> ().text = winsPlayer.ToString();
+					for(int i = dice.Length/2; i < dice.Length; i++)
+					{
+						Light light = new GameObject("Light").AddComponent<Light>();
+						light.gameObject.transform.parent = lightparent.transform;
+						light.type =  LightType.Spot;
+						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
+						light.transform.LookAt(dice[i].transform.position);
+						light.color = Color.green;
+						light.intensity = 0.2f;
+					}
+
+				}
+				else if(playerPoints == totalPoints)
+				{
+					informationsText.text = "INGEN VANN, RUNDAN R√ÑKNAS INTE";
+				}
+				else
+				{
+					informationsText.text = "DU F√ñRLORADE DENNA RUNDA";
+					Instantiate(Resources.Load ("FadeWrong"));
+					winsOpponent++;
+					opponentCounter.GetComponent<GUIText> ().text = winsOpponent.ToString();
+
+					for(int i = 0; i < dice.Length/2; i++)
+					{
+						Light light = new GameObject("Light").AddComponent<Light>();
+						light.gameObject.transform.parent = lightparent.transform;
+						light.type =  LightType.Spot;
+						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
+						light.transform.LookAt(dice[i].transform.position);
+						light.color = Color.red;
+						light.intensity = 0.2f;
+					}
+				}
+					
+
+				state = State.PLAYERCONTINUE;
+				
+					
+			
 			}
 		}
-
+		else
+			timer -= Time.deltaTime;
 	}
 
-	void FinishUpdate()
-	{
-		TriggerFinish ();
-
-	}
-	void PreThrowUpdate()
+	void PlayerPreThrow()
 	{
 		if (!holdingDownMouseButton)
 		{
@@ -188,106 +354,77 @@ public class DiceQuest : QuestBase {
 			{
 				holdingDownMouseButton = true;
 				startHold = Input.mousePosition;
-				lineRenderer.enabled = true;
-				lineRenderer.SetWidth(0,0.01f);
-				lineRenderer.SetPosition(0, dicecamera.camera.ScreenPointToRay(startHold).origin);
-				lineRenderer.SetPosition(1, dicecamera.camera.ScreenPointToRay(Input.mousePosition).origin);
 			}
 		}
 		else {
-			lineRenderer.SetPosition(0, dicecamera.camera.ScreenPointToRay(startHold).origin);
-			lineRenderer.SetPosition(1, dicecamera.camera.ScreenPointToRay(Input.mousePosition).origin);
 
 			if(!Input.GetMouseButton(0))
 			{
 				holdingDownMouseButton = false;
 				endHold = Input.mousePosition;
-				//startHold.y = dicecamera.transform.position.y;
-				//endHold.y = startHold.y;
-				totalPoints = 0;
-				//invisWall = GameObject.Instantiate(Resources.Load("Invisible Walls"), new Vector3(5.29764f, 4.712706f, -36.91311f), new Quaternion()) as GameObject;
-				lineRenderer.enabled = false;
-				state = State.POSTTHROW;
+				if(endHold.y < startHold.y)
+					endHold.y = startHold.y;
+				state = State.PLAYERPOSTTHROW;
+				
 				informationsText.enabled = false;
 				startHold = dicecamera.camera.ScreenPointToRay(startHold).origin;
 				endHold = dicecamera.camera.ScreenPointToRay(endHold).origin;
 				endHold.y = startHold.y;
 				Vector3 direction = (endHold  - startHold);
+				timer = totalTime;
 
-				Debug.Log(startHold.ToString());
-
-				for(int i = 0; i < numberOfDiceToThrow; i++)
+				for(int i = dice.Length/2; i < dice.Length; i++)
 				{
-					dice[(int)listOfNumbers[i]] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
-					dice[(int)listOfNumbers[i]].transform.position = startHold+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.5f, -0.1f), Random.Range(-0.1f, 0.1f));
+					dice[i] = GameObject.Instantiate(Resources.Load ("Die")) as GameObject;
+					dice[i].transform.position = playerDiceOrigin+new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, -0.1f), Random.Range(-0.1f, 0.1f));
 
-					dice[(int)listOfNumbers[i]].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-					dice[(int)listOfNumbers[i]].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-					dice[(int)listOfNumbers[i]].rigidbody.AddForce(direction*400f);
-					dice[(int)listOfNumbers[i]].transform.parent = diceparent.transform;
+					dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
+					dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
+					if(direction.magnitude < 0.3f)
+						direction = direction.normalized*0.3f;
+					dice[i].rigidbody.AddForce(direction*200f);
+					dice[i].transform.parent = diceparent.transform;
 
 				}
-				numberOfDiceToThrow = 0;
-				listOfNumbers.Clear();
 
 			}
 		}
 	}
-
-	void SelectReRollUpdate()
+	void FinishUpdate()
 	{
-		if (Input.GetMouseButtonDown (0))
+		if(Input.GetMouseButtonDown(0))
 		{
-
-			Ray ray = dicecamera.camera.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			Physics.Raycast(ray, out hit);
-			for(int i = 0; i < dice.Length; i++)
-			{
-				if(dice[i] == hit.collider.gameObject)
-				{
-
-					numberOfDiceToThrow++;
-					Destroy(dice[i]);
-					listOfNumbers.Add(i);
-					if(numberOfDiceToThrow == 1)
-					{
-						resetButtonText.text = "SL≈ OM EN";
-					}
-					else
-						resetButtonText.text = "SL≈ OM "+numberOfDiceToThrow;
-				}
-			}
-
-			if(resetButtonBack.GetScreenRect().Contains(Input.mousePosition) || numberOfDiceToThrow == 5)
-			{
-				if(numberOfDiceToThrow == 0)
-					state = State.FINISH;
-				else
-				{
-					state = State.PRETHROW;
-					invisWall.SetActive(true);
-					informationsText.text = "Dra ˆver sk‰rmen fˆr att kasta";
-				}
-				resetButtonBack.enabled = false;
-				resetButtonText.enabled = false;
-			}
+			if(winsPlayer == winsForSuccess)
+				TriggerFinish (true);
+			else
+				TriggerFinish (false);
 		}
+
 	}
+
 	// Update is called once per frame
 	void Update () {
 		if (questActive)
 		{
 			switch(state)
 			{
-			case State.POSTTHROW:
-				PostThrowUpdate();
+			case State.PLAYERPOSTTHROW:
+				PlayerPostThrow();
 				break;
-			case State.PRETHROW:
-				PreThrowUpdate();
+			case State.PLAYERPRETHROW:
+				PlayerPreThrow();
 				break;
-			case State.SELECT_REROLL:
-				SelectReRollUpdate();
+			case State.OPPONENTPRETHROW:
+				OpponentPreThrow();
+				break;
+			case State.OPPONENTPOSTTHROW:
+				OpponentPostThrow();
+				break;
+			case State.PLAYERCONTINUE:
+				PlayerContinue();
+				break;
+			case State.OPPONENTCONTINUE:
+				OpponentContinue();
 				break;
 			case State.FINISH:
 				FinishUpdate();

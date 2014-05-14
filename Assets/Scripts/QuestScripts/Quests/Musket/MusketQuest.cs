@@ -22,13 +22,18 @@ public class MusketQuest : MonoBehaviour {
 	private Transform _playerTransform;
 	
 	void Start () {
-		EventManager.OnQuest += QuestRespons;
+//		EventManager.OnQuest += QuestRespons;
+		EventManager.QuestEvent += new QuestHandler(QuestRespons);
 		//_playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
 		_questEnded = false;
 		_questStarted = false;
 		_firstHit = false;
 		_totalPoints = 0;
+	}
+
+	void Test(object o, QuestEventArgs e){
+		Debug.Log("Quest Type: " + e.QuestType);
 	}
 
 	void Update () {
@@ -51,51 +56,48 @@ public class MusketQuest : MonoBehaviour {
 		}
 	}
 
-	void QuestRespons(MiniGamesEnum miniEnum, QuestEventArgs evArgs){
-		if(miniEnum == MiniGamesEnum.Musköt){
-			if(evArgs.QuestType == QuestTypeEnum.OnGoing){
-				if(evArgs.Info == "BullsEye" && _questStarted){
+	void QuestRespons(object o, QuestEventArgs e){
+		if(e.MiniGames == MiniGamesEnum.Musköt){
+			if(e.QuestType == QuestTypeEnum.OnGoing){
+				if(e.Info == "BullsEye" && _questStarted){
 					_totalPoints += Points.BullsEye;
 				}
-				if(evArgs.Info == "RedRing" && _questStarted){
+				if(e.Info == "RedRing" && _questStarted){
 					_totalPoints += Points.ThirdRing;
 				}
-				if(evArgs.Info == "WhiteRing" && _questStarted){
+				if(e.Info == "WhiteRing" && _questStarted){
 					_totalPoints += Points.SecondRing;
 				}
-				if(evArgs.Info == "FirstHit" && _questStarted){
+				if(e.Info == "FirstHit" && _questStarted){
 					_firstHit = true;
 				}
 			}
-			if(evArgs.QuestType == QuestTypeEnum.Started){
+			if(e.QuestType == QuestTypeEnum.Started){
+				Debug.Log("Reset Quest");
 				ResetQuest(); //Really start quest...
-				//StartCoroutine(MovePlayerToShootSpot());
 				_questStarted = true;
+			}
+			//Test stuff
+			if(e.QuestType == QuestTypeEnum.Started){
+				Debug.Log("Started info: " + e.Info);
+			}
+			if(e.QuestType == QuestTypeEnum.Reset){
+				Debug.Log("Reset info: " + e.Info);
+			}
+			if(e.QuestType == QuestTypeEnum.Trigger){
+				Debug.Log("Trigger info: " + e.Info);
+			}
+			if(e.QuestType == QuestTypeEnum.OnGoing){
+				Debug.Log("OnGoing info: " + e.Info);
+			}
+			if(e.QuestType == QuestTypeEnum.GoalReached){
+				Debug.Log("GoalReached info: " + e.Info);
+			}
+			if(e.QuestType == QuestTypeEnum.Finnished){
+				Debug.Log("Finnished info: " + e.Info);
 			}
 		}
 	}
-
-	//Should move the player to the spot where he is going to shoot from.
-//	IEnumerator MovePlayerToShootSpot(){
-//		float distToShootSpot = 0;
-//		float rate = 0;
-//		float speed = 2;
-//		bool goToSpot = true;
-//
-//		Vector3 newShootSpot = new Vector3(ShootSpot.transform.position.x, transform.position.y, ShootSpot.transform.position.z);
-//		while(goToSpot){
-//				distToShootSpot = Vector3.Distance(_playerTransform.position, newShootSpot);
-//				rate = Time.deltaTime * speed;
-//				
-//				if(distToShootSpot <= 0.01f){
-//					goToSpot = false;
-//				}
-//				if(goToSpot){
-//					this.transform.position = Vector3.MoveTowards(_playerTransform.position, newShootSpot, rate);
-//					yield return null;
-//				}
-//		}
-//	}
 
 	void HighScore(){
 		//stuffs at a later date!
@@ -104,15 +106,30 @@ public class MusketQuest : MonoBehaviour {
 	// Add more to this at a later date!
 	void QuestFinished(){
 		Debug.Log("Finnished");
+		
+			if (PlayerPrefs.GetInt ("Squest") == 0)
+				PlayerPrefs.SetInt ("Squest", 1);
+			else if (PlayerPrefs.GetInt ("Squest") == 2)
+				PlayerPrefs.SetInt ("Squest", 3);
+
 		_questStarted = false;
-		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Finnished, null));
+
+		//The quest is finnished! hurr durr!!
+		QuestEventArgs qEvArgs = new QuestEventArgs(MiniGamesEnum.Musköt ,QuestTypeEnum.Finnished);
+		EventManager.OnQuestEvent(qEvArgs);
+		//Enable Android again!
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Disable = false;
+		EventManager.TriggerDisableAndroid(args);
+
 		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
 		endText.text = "Du fick " + _totalPoints + " poäng!";
 	}
 
 	void ResetQuest(){
-		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Reset, null));
+		Debug.Log("MusketQuest resetQuest");
+//		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Reset));
 		_totalPoints = 0;
 		_timeElapsed = 0;
 		_firstHit = false;

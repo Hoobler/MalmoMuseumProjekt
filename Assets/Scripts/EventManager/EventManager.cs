@@ -6,20 +6,25 @@ using System;
 
 //The Delegates goes here! You need a delegate and an event for this to work.
 public delegate void ActivateEvent(string type, ActiveEnum activeEnum);
-public delegate void QuestEvent(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs);
+//public delegate void QuestEvent(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs);
 public delegate void FireEvent(int id);
 public delegate void LockPlayerEvent(string type , LockPlayerEventArgs evtArgs);
-public delegate void DisableAndroid(string type);
+
 public delegate void TouchEvent(TouchEnum touchEnum);
+
+//Test
+public delegate void QuestHandler(object o, QuestEventArgs e);
+public delegate void DisableAndroid(object o , AndroidDisableArgs e);
 
 public class EventManager : MonoBehaviour {
 
 	//Create events to subscribe to!
 	public static event ActivateEvent OnActivate;
-	public static event QuestEvent OnQuest;
+//	public static event QuestEvent OnQuest;
+	public static event QuestHandler QuestEvent;
 	public static event FireEvent OnHit;
 	public static event LockPlayerEvent OnLock;
-	public static event DisableAndroid OnDisable;
+	public static event DisableAndroid DisableAndroidEvent;
 	public static event TouchEvent OnTouchEvent;
 
 	//Set up a public methods that you can use to "trigger" an event!
@@ -30,9 +35,26 @@ public class EventManager : MonoBehaviour {
 	/// </summary>
 	/// <param name="typeEnum">An enum for what type of quest event</param>
 	/// <param name="type">String info about the event.</param>
-	public static void TriggerOnQuest(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs){
-		if(OnQuest != null){
-			OnQuest(miniEnum, eventArgs);
+//	public static void TriggerOnQuest(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs){
+////		try{
+//			if(OnQuest != null){
+//				OnQuest(miniEnum, eventArgs);
+//			}
+////		}
+////		catch{
+////			Debug.Log("NullRef in TriggerOnQuest");
+////		}
+//	}
+
+	public static void OnQuestEvent(QuestEventArgs e){
+		if(QuestEvent != null){
+			QuestEvent(new object(), e);
+		}
+	}
+
+	public static void TriggerDisableAndroid(AndroidDisableArgs e){
+		if(DisableAndroidEvent != null){
+			DisableAndroidEvent(new object(), e);
 		}
 	}
 
@@ -60,11 +82,7 @@ public class EventManager : MonoBehaviour {
 		}
 	}
 
-	public static void TriggerDisableAndroid(string type){
-		if(OnDisable != null){
-			OnDisable(type);
-		}
-	}
+
 
 	public static void TriggerOnTouchEvent(TouchEnum touchEnum){
 		if(OnTouchEvent != null){

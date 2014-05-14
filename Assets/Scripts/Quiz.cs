@@ -7,8 +7,9 @@ public class Question{
 	public string[] answers;
 	public int correctAnswer;
 }
-
 public class Quiz : MonoBehaviour {
+
+	public Texture texture;
 
 	public bool randomizeQuestions;
 	public Question[] questions;
@@ -24,20 +25,32 @@ public class Quiz : MonoBehaviour {
 	int points;
 	bool isChoosingAnswer;
 
+
+
 	int selectedAnswer;
+
+	bool quizHasActuallyStarted;
 
 	// Use this for initialization
 	void Start () {
-	
+		quizHasActuallyStarted = false;
 	}
 
 
 	void EndScreen()
 	{
 		if (points == 0)
-			questionText.text = "Du klarade inte en enda fråga. =(";
-		else if (points == questions.Length)
+						questionText.text = "Du klarade inte en enda fråga. =(";
+		else if (points == questions.Length) {
 			questionText.text = "Grattis, du klarade alla frågor!";
+			if(Application.loadedLevel == 0)
+				PlayerPrefs.SetInt("LTquiz", 1);
+			else if(Application.loadedLevel == 2)
+				PlayerPrefs.SetInt("Squiz", 1);
+			else if(Application.loadedLevel == 3)
+				PlayerPrefs.SetInt("Gquiz", 1);
+		}
+			
 		else
 			questionText.text = "Grattis! Du klarade " + points + " av " + questions.Length + " frågor!";
 		FormatMainText ();
@@ -104,31 +117,39 @@ public class Quiz : MonoBehaviour {
 		}
 	}
 
-	public void TriggerStart()
+	public void ActivatePreQuiz()
 	{
-		quizParent = new GameObject ("QuizParent");
+		GameObject background = new GameObject ("Quizpredialogue");
+		background.AddComponent<GUITexture> ();
+		background.guiTexture.texture = texture;
+		background.guiTexture.pixelInset = new Rect (0, 0, 0, 0);
+	}
+
+	public void ActivateQuiz()
+	{
+
 		GameObject background = (GameObject)Instantiate (Resources.Load ("Quizmain"));
 		background.transform.parent = quizParent.transform;
-
+		
 		//posititioning and shit. Mostly positioning.
-		((GUITexture)background.GetComponentInChildren (typeof(GUITexture))).pixelInset = new Rect (Screen.width / 8, Screen.height / 8, 6 * Screen.width / 8, 6 * Screen.height / 8);
-		backgroundBounds = ((GUITexture)background.GetComponentInChildren (typeof(GUITexture))).GetScreenRect ();
-		questionText = (GUIText)background.GetComponentInChildren (typeof(GUIText));
+		background.guiTexture.pixelInset = new Rect (Screen.width / 8, Screen.height / 8, 6 * Screen.width / 8, 6 * Screen.height / 8);
+		backgroundBounds = background.guiTexture.GetScreenRect ();
+		questionText = background.guiText;
 		questionText.pixelOffset = new Vector2 (backgroundBounds.x + backgroundBounds.width *0.1f, backgroundBounds.y + backgroundBounds.height * 0.9f);
 		questionText.fontSize = (int)(12 * Screen.width / 800f);
-
+		
 		isChoosingAnswer = true;
 		if(randomizeQuestions)
 			currentQuestion = Random.Range (0, questions.Length - 1);
 		else
 			currentQuestion = 0;
 		points = 0;
-
+		
 		listOfQuestions = new ArrayList ();
 		for (int i = 0; i < questions.Length; i++) {
 			listOfQuestions.Add (i);
 		}
-
+		
 		buttons = new GameObject[4];
 		for (int i = 0; i < 4; i++) {
 			buttons [i] = (GameObject)Instantiate (Resources.Load ("Button"));
@@ -139,13 +160,22 @@ public class Quiz : MonoBehaviour {
 			if(i%2 == 1)
 				buttons[i].transform.position = new Vector3(0.5f + 0.15f, 0.25f+0.1f*(i/2), 0);
 		}
-
+		
 		SetValues ();
+	}
+
+	public void TriggerStart()
+	{
+		quizHasActuallyStarted = false;
+
+		quizParent = new GameObject ("QuizParent");
+		ActivateQuiz ();
 	}
 
 	public void TriggerFinish()
 	{
 		quizActive = false;
+		quizHasActuallyStarted = false;
 		Destroy (quizParent);
 	}
 
@@ -189,7 +219,7 @@ public class Quiz : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if (!quizActive) {
+		if (!quizActive && !GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress()) {
 			TriggerStart ();
 			quizActive = true;
 		}

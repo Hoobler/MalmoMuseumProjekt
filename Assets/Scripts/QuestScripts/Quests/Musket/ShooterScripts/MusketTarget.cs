@@ -10,7 +10,7 @@ public class MusketTarget : MonoBehaviour {
 
 	void Start () {
 		_questRunning = false;
-		EventManager.OnQuest += EventRespons;
+		EventManager.QuestEvent += new QuestHandler(MoveTargetEvent);
 		StartCoroutine(MoveTarget(triggers[0].position, triggers[1].position));
 	}
 
@@ -53,12 +53,12 @@ public class MusketTarget : MonoBehaviour {
 		}
 	}
 	
-	void EventRespons(MiniGamesEnum miniEnum ,QuestEventArgs eventArgs){
-		if(miniEnum == MiniGamesEnum.Musköt){
-			if(eventArgs.QuestType == QuestTypeEnum.Started){
+	void MoveTargetEvent(object o ,QuestEventArgs e){
+		if(e.MiniGames == MiniGamesEnum.Musköt){
+			if(e.QuestType == QuestTypeEnum.Started){
 				_questRunning = true;
 			}
-			if(eventArgs.QuestType == QuestTypeEnum.Finnished){
+			if(e.QuestType == QuestTypeEnum.Finnished){
 				_questRunning = false;
 			}
 		}

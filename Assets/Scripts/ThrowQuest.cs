@@ -26,6 +26,8 @@ public class ThrowQuest : QuestBase {
 	bool appleIsInTheAir;
 
 	public Texture appleImage;
+	GameObject reminder;
+	GameObject endNotification;
 
 	public void OnGUI()
 	{
@@ -44,9 +46,8 @@ public class ThrowQuest : QuestBase {
 			else
 				appleIsInTheAir = false;
 			player.position = new Vector3 (startPoint.position.x, player.position.y, startPoint.position.z);
-			//Debug.Log ("" + startPoint.position.x + "=" + player.position.x + ", " + startPoint.position.z + "=" + player.position.z);
+
 			player.LookAt (new Vector3(basket.position.x, player.position.y, basket.position.z));
-			//chargeBarAmount.transform.position = new Vector3 (chargeBarAmount.transform.position.x, 0.3f + 0.4f * charge, chargeBarAmount.transform.position.z);
 			(chargeBarAmount.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height * (0.275f + 0.4f * charge), Screen.width *0.05f, Screen.height * 0.03f);
 			if (questStart) {
 				if (applesToThrow > 0 && !appleIsInTheAir) {
@@ -61,7 +62,6 @@ public class ThrowQuest : QuestBase {
 							else
 								chargeRate = -0.002f - 0.025f*charge;
 							charge += chargeRate*Time.deltaTime*60;
-							Debug.Log ("" + charge);
 							if (charge > 1.0f) {
 								charge = 1.0f;
 								chargeRate = -chargeRate;
@@ -137,27 +137,51 @@ public class ThrowQuest : QuestBase {
 
 	}
 
+	void Start()
+	{
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		endNotification.transform.parent = gameObject.transform.parent;
+		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
+		reminder.transform.parent = gameObject.transform.parent;
+	}
+
 	public override void TriggerStart ()
 	{
 		base.TriggerStart ();
 		Init ();
 		questActive = true;
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = false;
+		reminder.SetActive (true);
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript> ()).ChangeText ("Tryck på skärmen för att starta kastet. Sluta tryck för att kasta äpplet. Försök träffa så många som möjligt!");
 
 	}
 
-	public void TriggerFinish (bool success)
+	public override void TriggerFinish (bool success)
 	{
+		base.TriggerFinish (success);
+
+		//PREFS
+		if (success) {
+			if (PlayerPrefs.GetInt ("LTquest") == 0)
+				PlayerPrefs.SetInt ("LTquest", 2);
+			else if (PlayerPrefs.GetInt ("LTquest") == 1)
+				PlayerPrefs.SetInt ("LTquest", 3);
+		}
+		//---
+
 		string finishInfo;
 		if (success)
 						finishInfo = "Du klarade det!";
 				else
 						finishInfo = "Tyvärr, du träffade bara " + applesInBasket + " äpplen.";
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		endText.text = finishInfo;
 
+
+		endNotification.GetComponent<endNotificationScript> ().Activate (finishInfo);
+
+		reminder.SetActive (false);
 		questActive = false;
 		if(chargeBar != null)
 			Destroy (chargeBar);
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
 	}
 }

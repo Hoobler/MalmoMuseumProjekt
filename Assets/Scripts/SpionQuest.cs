@@ -25,7 +25,7 @@ public class SpionQuest : QuestBase {
 				{
 					if(choiceBounds[i].Contains(Input.mousePosition))
 					{
-						TriggerFinish();
+						TriggerFinish(true);
 					}
 				}
 			}
@@ -66,8 +66,9 @@ public class SpionQuest : QuestBase {
 		}
 	}
 
-	public override void TriggerFinish ()
+	public override void TriggerFinish (bool success)
 	{
+		base.TriggerFinish (success);
 		Destroy (dialogueWindow);
 	}
 }

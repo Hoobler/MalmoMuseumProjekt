@@ -18,6 +18,9 @@ public class CanonQuest : QuestBase  {
 	private const float END_TIMER_COMPLETE = 15f;
 	private float end_timer;
 
+	private	const float MISSED_SHIP_TIMER = 55f;
+	private float ship_timer;
+
 	private bool canonball_in_air = false;
 
 	private int nr_of_hits = 0;
@@ -35,10 +38,17 @@ public class CanonQuest : QuestBase  {
 	GameObject canonBall;
 	GameObject canonMuzzle;
 	GameObject canonBase;
+	GameObject reminder;
+	GameObject endDiag;
 
 	public Texture canonball_texture;
 	public Texture reloadbar_texture;
-	public Texture arrow_texture;
+
+	public Texture arrow_up_texture;
+	public Texture arrow_down_texture;
+	public Texture arrow_right_texture;
+	public Texture arrow_left_texture;
+	public Texture fire_texture;
 
 	private bool questActive = false;
 
@@ -54,7 +64,6 @@ public class CanonQuest : QuestBase  {
 	public override void TriggerStart ()
 	{
 		mainCamera 	= GameObject.Find ("Main Camera");
-		canonCamera = GameObject.Find ("CanonCamera");
 		player		= GameObject.FindGameObjectWithTag ("Player");
 		canon 		= GameObject.FindGameObjectWithTag ("Kanon");
 		canonPipe 	= GameObject.FindGameObjectWithTag ("KanonPipa");
@@ -62,7 +71,9 @@ public class CanonQuest : QuestBase  {
 		canonBase	= GameObject.Find ("KanonBas");
 		smoke 		= GameObject.Find ("CanonSmoke").GetComponent ("ParticleSystem") as ParticleSystem;
 
-		ship.SetActive (true);
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = false;
+
+		ship = (GameObject)Instantiate(Resources.Load ("Ship"));
 
 
 		prevPos = (player.transform.position);
@@ -81,43 +92,60 @@ public class CanonQuest : QuestBase  {
 			smoke.Stop ();
 		}
 
+		reminder.SetActive (true);
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Sikta kanonen mot båten med pilarna. Du har 5 skott på dig och en begränsad tid för att sänka skeppet.");
+
 		Init ();
 	}
 
 	//Called when player finishes quest
-	public override void TriggerFinish ()
+	public override void TriggerFinish (bool success)
 	{
+		base.TriggerFinish (success);
 		//Removes arrows on screen
 		GameObject t = GameObject.Find ("CanonGUI");
 		Destroy (t);
+		Destroy (ship);
 		questActive = false;
 //		EventManager.TriggerDisableAndroid("unlock");
 		mainCamera.camera.enabled = true;
 		canonCamera.camera.enabled = false;
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		if (nr_of_hits > 0)
-						endText.text = "Du sänkte skeppet!";
-				else
-						endText.text = "Tusan, du missade alla skott";
 
+	
+		if (nr_of_hits > 0) {
+			endDiag.GetComponent<endNotificationScript> ().Activate("Härligt, du sänkte skeppet.");
+			if (PlayerPrefs.GetInt ("Squest") == 0)
+				PlayerPrefs.SetInt ("Squest", 2);
+			else if (PlayerPrefs.GetInt ("Squest") == 1)
+				PlayerPrefs.SetInt ("Squest", 3);
+				}
+				else if (nr_of_hits == 0 && canonballs_shot == 5)
+					endDiag.GetComponent<endNotificationScript> ().Activate("Tusan, skeppet kom förbi!");
+				else if (nr_of_hits == 0 && canonballs_shot < 5)
+					endDiag.GetComponent<endNotificationScript> ().Activate("Helvete, du missade alla kanonkulor.");
+		endDiag.SetActive (true);
 		player.transform.position = prevPos;
 		canonballs_shot = 0;
 		nr_of_hits = 0;
+        ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
+		reminder.SetActive (false);
 	}
 
 	// Use this for initialization
 	void Start () {
-		ship = GameObject.Find ("Ship");
-		ship.SetActive (false);
+		canonCamera = GameObject.Find ("CanonCamera");
+		reminder 	= (GameObject)Instantiate (Resources.Load ("ReminderText"));
+		reminder.transform.parent = canonCamera.transform.parent;
+		endDiag = (GameObject)Instantiate(Resources.Load("QuestEndDialogue"));
+		endDiag.transform.parent = canonCamera.transform.parent;
 	}
 
 	//Initializes arrows on screen
 	void Init(){
 
-		#if UNITY_ANDROID
+	//	#if UNITY_ANDROID
 		InitGUI();
-		#endif
+	//	#endif
 
 	}
 
@@ -126,6 +154,7 @@ public class CanonQuest : QuestBase  {
 		canonballs_shot = 0;
 		reload_timer = 0;
 		end_timer = 0;
+		ship_timer = 0;
 	}
 
 	//Initializes GUI for android
@@ -135,35 +164,35 @@ public class CanonQuest : QuestBase  {
 		
 		GameObject la = new GameObject ("Arrow");
 		left_arrow = (GUITexture)la.AddComponent (typeof(GUITexture));
-		left_arrow.texture = arrow_texture;
+		left_arrow.texture = arrow_left_texture;
 		left_arrow.transform.position =  new Vector3 (0.65f, 0.1f, 0);
 		left_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		left_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject ra = new GameObject ("Arrow");
 		right_arrow = (GUITexture)ra.AddComponent (typeof(GUITexture));
-		right_arrow.texture = arrow_texture;
+		right_arrow.texture = arrow_right_texture;
 		right_arrow.transform.position =  new Vector3 (0.85f, 0.1f, 0);
 		right_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		right_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject ua = new GameObject ("Arrow");
 		up_arrow = (GUITexture)ua.AddComponent (typeof(GUITexture));
-		up_arrow.texture = arrow_texture;
+		up_arrow.texture = arrow_up_texture;
 		up_arrow.transform.position =  new Vector3 (0.75f, 0.2f, 0);
 		up_arrow.transform.localScale = new Vector3 (0.1f, 0.11f, 0);
 		up_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject da = new GameObject ("Arrow");
 		down_arrow = (GUITexture)da.AddComponent (typeof(GUITexture));
-		down_arrow.texture = arrow_texture;
+		down_arrow.texture = arrow_down_texture;
 		down_arrow.transform.position =  new Vector3 (0.75f, 0.1f, 0);
 		down_arrow.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		down_arrow.transform.parent = canonGUI.transform;
 		
 		GameObject shoot_go = new GameObject ("Arrow");
 		shoot_gui = (GUITexture)shoot_go.AddComponent (typeof(GUITexture));
-		shoot_gui.texture = arrow_texture;
+		shoot_gui.texture = fire_texture;
 		shoot_gui.transform.position = new Vector3 (0.5f, 0.1f, 0);
 		shoot_gui.transform.localScale = new Vector3 (0.1f, 0.1f, 0);
 		shoot_gui.transform.parent = canonGUI.transform;
@@ -195,6 +224,10 @@ public class CanonQuest : QuestBase  {
 
 			if(canonball_in_air)
 				UpdateCanonballs();
+
+			ship_timer += Time.deltaTime;
+			if(ship_timer >= MISSED_SHIP_TIMER)
+				TriggerFinish(false);
 		}
 	}
 
@@ -266,16 +299,13 @@ public class CanonQuest : QuestBase  {
 	//Updates when player has either hit the ship or is out of cannonballs
 	void UpdateEndTimer(){
 		end_timer += Time.deltaTime;
-		ShipScript script = ship.GetComponent(typeof(ShipScript)) as ShipScript;
 		if (end_timer > END_TIMER_COMPLETE && nr_of_hits > 0) {
-						TriggerFinish ();
-						Reset ();
-						script.Reset();
-				} else if (end_timer > END_TIMER_FAIL && nr_of_hits == 0) {
-						TriggerFinish ();
-						Reset ();
-						script.Reset();
-				}
+			Reset ();
+			TriggerFinish (true);
+		} else if (end_timer > END_TIMER_FAIL && nr_of_hits == 0) {
+			Reset ();
+			TriggerFinish (false);
+		}
 	}
 
 	//Called when player presses shoots the canon

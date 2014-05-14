@@ -15,13 +15,13 @@ public class ShootArea : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == "Player"){
-			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt ,new QuestEventArgs(QuestTypeEnum.Trigger, "EnterShootArea"));
+			//EventManager.TriggerOnQuest(MiniGamesEnum.Musköt ,new QuestEventArgs(QuestTypeEnum.Trigger, "EnterShootArea"));
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if(other.tag == "Player"){
-			EventManager.TriggerOnQuest(MiniGamesEnum.Musköt ,new QuestEventArgs(QuestTypeEnum.Trigger, "ExitShootArea"));
+			//EventManager.TriggerOnQuest(MiniGamesEnum.Musköt ,new QuestEventArgs(QuestTypeEnum.Trigger, "ExitShootArea"));
 		}
 	}	
 }

@@ -8,16 +8,16 @@ public class AndroidDisable: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		EventManager.OnDisable += EventRespons;
+		EventManager.DisableAndroidEvent += new DisableAndroid(DisableThumbPads);
 	}
 
-	void EventRespons(string type){
-		//Debug.Log("Disable test");
-		if(type == "lock"){
+	void DisableThumbPads(object o ,AndroidDisableArgs e){
+		Debug.Log("Disable test");
+		if(e.Disable){
 			LeftPad.SetActive(false);
 			RightPad.SetActive(false);
 		}
-		if(type == "unlock"){
+		if(!e.Disable){
 			LeftPad.SetActive(true);
 			RightPad.SetActive(true);
 		}
