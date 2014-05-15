@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,9 +12,10 @@ public class Question{
 public class Quiz : MonoBehaviour {
 
 	public Texture texture;
-
+	public string introText = "QUIZ YEAH!";
 	public bool randomizeQuestions;
 	public Question[] questions;
+	public int speechDistance = 20;
 
 	ArrayList listOfAnswers;
 	ArrayList listOfQuestions;
@@ -42,7 +43,7 @@ public class Quiz : MonoBehaviour {
 	void EndScreen()
 	{
 		if (points == 0)
-						questionText.text = "Du klarade inte en enda fråga. =(";
+			questionText.text = "Du klarade inte en enda fråga. =(";
 		else if (points == questions.Length) {
 			questionText.text = "Grattis, du klarade alla frågor!";
 			if(Application.loadedLevel == 0)
@@ -144,16 +145,15 @@ public class Quiz : MonoBehaviour {
 		background.transform.parent = quizParent.transform;
 		background.AddComponent<GUIText> ();
 		background.guiText.fontSize = (int)(14 * Screen.width / 800f);
-        background.guiText.text = "Så du vill svara på några frågor om Lilla Torg?";
-		//hbackground.guiText.text = Encoding.Unicode.GetString(Encoding.UTF8.GetBytes(questionText));
-
+		background.guiText.text = introText;
+		//background.guiText.text = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(background.guiText.text));
 
 		background.AddComponent<GUITexture> ();
 		background.guiTexture.texture = texture;
 		background.transform.position = new Vector3(0,0,-1);
 		background.transform.localScale = Vector3.zero;
 		background.guiTexture.pixelInset = new Rect (Screen.width * 0.3f, Screen.height *0.3f, Screen.width * 0.4f, Screen.height * 0.4f);
-		background.guiText.pixelOffset = new Vector2 (background.guiTexture.GetScreenRect ().x + background.guiTexture.GetScreenRect ().width * 0.2f, background.guiTexture.GetScreenRect ().yMax - background.guiTexture.GetScreenRect ().height * 0.2f);
+		background.guiText.pixelOffset = new Vector2 (background.guiTexture.GetScreenRect ().x + background.guiTexture.GetScreenRect ().width * 0.125f, background.guiTexture.GetScreenRect ().yMax - background.guiTexture.GetScreenRect ().height * 0.2f);
 		background.guiText.color = Color.black;
 
 		buttons = new GameObject[2];
@@ -272,10 +272,13 @@ public class Quiz : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+
 		if (!quizActive && !GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress()) {
-			TriggerStart ();
-			previousActionWasMouseButtonDown = true;
-			quizActive = true;
+			if(Vector3.Distance(GameObject.FindGameObjectWithTag ("Player").transform.position, this.transform.position) < speechDistance){
+				TriggerStart ();
+				previousActionWasMouseButtonDown = true;
+				quizActive = true;
+			}
 		}
 	}
 }
