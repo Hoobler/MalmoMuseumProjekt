@@ -9,6 +9,8 @@ public class AndroidDisable: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		EventManager.DisableAndroidEvent += new DisableAndroid(DisableThumbPads);
+		LeftPad = GameObject.Find("LeftTouchPad");
+		RightPad = GameObject.Find("RightTouchPad");
 	}
 
 	void DisableThumbPads(object o ,AndroidDisableArgs e){
