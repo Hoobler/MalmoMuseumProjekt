@@ -12,7 +12,6 @@ public class ThrowQuest : QuestBase {
 	Transform player;
 	Transform basket;
 	Transform startPoint;
-	GameObject apple;
 	float timeBetweenThrows;
 	float totalTimeBetweenThrows;
 	int nrOfActiveApples;
@@ -97,7 +96,7 @@ public class ThrowQuest : QuestBase {
 		nrOfActiveApples++;
 		timeBetweenThrows = totalTimeBetweenThrows;
 		appleIsInTheAir = true;
-		apple = Instantiate(Resources.Load("Apple")) as GameObject;
+		GameObject apple = Instantiate(Resources.Load("Apple")) as GameObject;
 		apple.transform.position = player.position;
 		apple.transform.position += player.forward * 0.5f;
 		apple.rigidbody.AddForce ((basket.position + new Vector3(0f,7f,0f) - player.position).normalized*(400f+400f*charge));
@@ -134,13 +133,14 @@ public class ThrowQuest : QuestBase {
 		charge = 0f;
 		chargeRate = 0.009f;
 		totalTimeBetweenThrows = 1.0f;
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		endNotification.transform.parent = gameObject.transform.parent;
 
 	}
 
 	void Start()
 	{
-		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		endNotification.transform.parent = gameObject.transform.parent;
+
 		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 		reminder.transform.parent = gameObject.transform.parent;
 	}

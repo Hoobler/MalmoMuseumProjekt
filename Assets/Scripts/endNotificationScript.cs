@@ -38,6 +38,6 @@ public class endNotificationScript : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Destroy (gameObject);
+		gameObject.SetActive(false);
 	}
 }

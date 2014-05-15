@@ -123,7 +123,7 @@ public class CanonQuest : QuestBase  {
 					endDiag.GetComponent<endNotificationScript> ().Activate("Tusan, skeppet kom förbi!");
 				else if (nr_of_hits == 0 && canonballs_shot < 5)
 					endDiag.GetComponent<endNotificationScript> ().Activate("Helvete, du missade alla kanonkulor.");
-		endDiag.SetActive (true);
+
 		player.transform.position = prevPos;
 		canonballs_shot = 0;
 		nr_of_hits = 0;

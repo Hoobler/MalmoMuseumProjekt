@@ -17,12 +17,13 @@ public class AppleScript : MonoBehaviour {
 
 	void Update()
 	{
-			timeUntilRemoval -= Time.deltaTime;
-			if (timeUntilRemoval <= 0) {
-				throwRef.AppleTrigger (false);
-				throwRef.FinishCheck();
-				Destroy (gameObject);
-			}
+		timeUntilRemoval -= Time.deltaTime;
+		if (timeUntilRemoval <= 0) {
+			throwRef.AppleTrigger (false);
+			throwRef.FinishCheck();
+			timeUntilRemoval = 100;
+			Destroy (gameObject);
+		}
 
 	}
 

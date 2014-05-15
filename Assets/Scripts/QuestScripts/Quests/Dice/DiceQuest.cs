@@ -61,6 +61,8 @@ public class DiceQuest : QuestBase {
 		invisWall.SetActive (false);
 		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 		reminder.transform.parent = dicecamera.transform.parent;
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		endNotification.transform.parent = dicecamera.transform.parent;
 		playerCounter = (GameObject)Instantiate (Resources.Load ("counters/PlayerCounter"));
 		playerCounter.transform.parent = dicecamera.transform.parent;
 		opponentCounter = (GameObject)Instantiate (Resources.Load ("counters/OpponentCounter"));
@@ -77,7 +79,7 @@ public class DiceQuest : QuestBase {
 		opponentCounter.SetActive (true);
 		opponentCounter.GetComponent<GUIText> ().text = "0";
 
-		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
 		dicecamera.camera.enabled = true;
