@@ -12,9 +12,10 @@ public class Question{
 public class Quiz : MonoBehaviour {
 
 	public Texture texture;
-
+	public string introText = "QUIZ YEAH!";
 	public bool randomizeQuestions;
 	public Question[] questions;
+	public int speechDistance = 20;
 
 	ArrayList listOfAnswers;
 	ArrayList listOfQuestions;
@@ -144,7 +145,7 @@ public class Quiz : MonoBehaviour {
 		background.transform.parent = quizParent.transform;
 		background.AddComponent<GUIText> ();
 		background.guiText.fontSize = (int)(14 * Screen.width / 800f);
-        background.guiText.text = "Så du vill svara på några frågor\nom Lilla Torg?";
+		background.guiText.text = introText;
 		//background.guiText.text = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(background.guiText.text));
 
 		background.AddComponent<GUITexture> ();
@@ -271,10 +272,13 @@ public class Quiz : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+
 		if (!quizActive && !GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress()) {
-			TriggerStart ();
-			previousActionWasMouseButtonDown = true;
-			quizActive = true;
+			if(Vector3.Distance(GameObject.FindGameObjectWithTag ("Player").transform.position, this.transform.position) < speechDistance){
+				TriggerStart ();
+				previousActionWasMouseButtonDown = true;
+				quizActive = true;
+			}
 		}
 	}
 }
