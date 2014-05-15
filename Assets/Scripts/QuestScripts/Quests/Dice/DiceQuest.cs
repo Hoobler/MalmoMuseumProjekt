@@ -15,10 +15,16 @@ public class DiceQuest : QuestBase {
 		FINISH
 	}
 
+	enum OpponentMood{
+		HAPPY,
+		NEUTRAL,
+		SAD
+	}
 	bool questActive;
 
 	GameObject[] dice;
 	State state;
+	OpponentMood mood;
 	int numberOfDiceToThrow;
 
 	bool holdingDownMouseButton;
@@ -95,6 +101,7 @@ public class DiceQuest : QuestBase {
 		winsOpponent = 0;
 		totalPoints = 0;
 		state = State.OPPONENTPRETHROW;
+		mood = OpponentMood.NEUTRAL;
 		dice = new GameObject[numberOfDiceToThrow*2];
 		Destroy(GameObject.Find("DiceParent"));
 
