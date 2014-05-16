@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3371f4acfeb2c8c46a4333c378c24ddf
+guid: 238ab846928dd3c4981055d4f988adba
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -38,7 +38,11 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 2
-  buildTargetSettings: []
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -1
+    compressionQuality: 50
   spriteSheet:
     sprites: []
   spritePackingTag: 

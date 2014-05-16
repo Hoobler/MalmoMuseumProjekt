@@ -178,7 +178,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024206145}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 14e27d7979c627f489735d8a1c1d4357, type: 3}
+  m_Texture: {fileID: 2800000, guid: feb9fc9e5e653a6418dacd14f508e6fb, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
@@ -248,7 +248,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1760728617}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 3371f4acfeb2c8c46a4333c378c24ddf, type: 3}
+  m_Texture: {fileID: 2800000, guid: 238ab846928dd3c4981055d4f988adba, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68040cf4491998b44bea3a570be946e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greyfortsatt: {fileID: 2800000, guid: ac3e7ee378b963842a3a6ed0dd795931, type: 3}
 --- !u!1 &2133235473
 GameObject:
   m_ObjectHideFlags: 0
