@@ -16,6 +16,7 @@ public class DiceQuest : QuestBase {
 	}
 
 	enum OpponentMood{
+		ECSTATIC,
 		HAPPY,
 		NEUTRAL,
 		SAD
@@ -41,6 +42,7 @@ public class DiceQuest : QuestBase {
 	GameObject invisWall;
 	GameObject diceparent;
 	GameObject lightparent;
+	string[] swedishNumbers = {"Noll", "Ett", "Två", "Tre", "Fyra", "Fem", "Sex", "Sju", "Åtta", "Nio", "Tio", "Elva", "Tolv"};
 
 	GUIText informationsText;
 
@@ -143,6 +145,12 @@ public class DiceQuest : QuestBase {
 
 	}
 
+
+	public void InsertDialogue(string text)
+	{
+
+	}
+
 	public int CheckWhichSideIsUp(Transform die)
 	{
 
@@ -216,7 +224,29 @@ public class DiceQuest : QuestBase {
 					totalPoints += CheckWhichSideIsUp(dice[i].transform);
 				}
 				state = State.OPPONENTCONTINUE;
-
+				if(totalPoints <= 5)
+				{
+					mood = OpponentMood.SAD;
+					InsertDialogue("Ajdå, "+swedishNumbers[totalPoints]);
+				}
+				else if(totalPoints >= 9)
+				{
+					if(mood == OpponentMood.HAPPY)
+					{
+						mood = OpponentMood.ECSTATIC;
+						InsertDialogue("Jisses vilken tur man har");
+					}
+					else
+					{
+						mood = OpponentMood.HAPPY;
+						InsertDialogue(swedishNumbers[totalPoints] + ", slå det om du kan!");
+					}
+				}
+				else
+				{
+					mood = OpponentMood.NEUTRAL;
+					InsertDialogue(swedishNumbers[totalPoints] + ", din tur att kasta.");
+				}
 				informationsText.enabled = true;
 				informationsText.text = "TRYCK FÖR ATT FORTSÄTTA";
 				invisWall.SetActive(false);
@@ -305,7 +335,14 @@ public class DiceQuest : QuestBase {
 				informationsText.enabled = true;
 				if(playerPoints > totalPoints)
 				{
-					informationsText.text = "DU VANN DENNA RUNDAN";
+					if(mood == OpponentMood.SAD)
+						InsertDialogue("Inte så förvånande");
+					else if(mood == OpponentMood.NEUTRAL)
+						InsertDialogue("Grattis");
+					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
+						InsertDialogue("Tackar för vin- Va?! Du vann ju!");
+
+					informationsText.text = "VINST, Tryck för att gå vidare";
 					Instantiate(Resources.Load("FadeCorrect"));
 					winsPlayer++;
 					playerCounter.GetComponent<GUIText> ().text = winsPlayer.ToString();
@@ -323,11 +360,25 @@ public class DiceQuest : QuestBase {
 				}
 				else if(playerPoints == totalPoints)
 				{
+					if(mood == OpponentMood.SAD)
+						InsertDialogue("Puh, vilken tur");
+					else if(mood == OpponentMood.NEUTRAL)
+						InsertDialogue("Där ser man");
+					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
+						InsertDialogue("Oooh, nära");
+
 					informationsText.text = "INGEN VANN, RUNDAN RÄKNAS INTE";
 				}
 				else
 				{
-					informationsText.text = "DU FÖRLORADE DENNA RUNDA";
+					if(mood == OpponentMood.SAD)
+						InsertDialogue("JA!");
+					else if(mood == OpponentMood.NEUTRAL)
+						InsertDialogue("Poäng till mig!");
+					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
+						InsertDialogue("Var ju självklart!");
+
+					informationsText.text = "FÖRLUST, Tryck för att gå vidare";
 					Instantiate(Resources.Load ("FadeWrong"));
 					winsOpponent++;
 					opponentCounter.GetComponent<GUIText> ().text = winsOpponent.ToString();
@@ -389,7 +440,11 @@ public class DiceQuest : QuestBase {
 
 					dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 					dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-					if(direction.magnitude < 0.3f)
+					if(direction.magnitude == 0)
+					{
+						direction = (opponentDiceOrigin-playerDiceOrigin).normalized * 0.3f;
+					}
+					else if(direction.magnitude < 0.3f)
 						direction = direction.normalized*0.3f;
 					dice[i].rigidbody.AddForce(direction*200f);
 					dice[i].transform.parent = diceparent.transform;
