@@ -14,9 +14,11 @@ public class MenuScript : MonoBehaviour {
         nyttspel = (GUITexture)GameObject.Find("NyttSpel").GetComponent(typeof(GUITexture));
         titel = (GUITexture)GameObject.Find("Titel").GetComponent(typeof(GUITexture));
 
-        fortsatt.pixelInset = new Rect(Screen.width * 0.1f, Screen.height * 0.35f, 0.39f * Screen.width, 0.125f * Screen.height);
-        nyttspel.pixelInset = new Rect(Screen.width * 0.1f, Screen.height * 0.22f, 0.39f * Screen.width, 0.125f * Screen.height);
-        titel.pixelInset = new Rect(Screen.width * 0.5f, Screen.height * 0.55f, 0.47f * Screen.width, 0.38f * Screen.height);
+        fortsatt.pixelInset = new Rect(Screen.width * 0.375f, Screen.height * 0.25f, 0.3f * Screen.width, 0.125f * Screen.height);
+        nyttspel.pixelInset = new Rect(Screen.width * 0.36f, Screen.height * 0.12f, 0.3f * Screen.width, 0.125f * Screen.height);
+        titel.pixelInset = new Rect(Screen.width * 0.25f, Screen.height * 0.55f, 0.5f * Screen.width, 0.375f * Screen.height);
+
+        //(fortsatt.texture.width / 2)
 
         int checkLT, checkMHS, checkGB;
         checkLT = PlayerPrefs.GetInt("LTquest");
