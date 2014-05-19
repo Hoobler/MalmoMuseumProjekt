@@ -95,7 +95,7 @@ public class DiceQuest : QuestBase {
 		informationsText.alignment = TextAlignment.Left;
 		informationsText.text = "Dra över skärmen för att kasta";
 		informationsText.color = Color.yellow;
-
+		informationsText.enabled = false;
 		GameObject.FindWithTag ("Player").transform.position = playerPos;
 
 		totalTime = 1.0f;
@@ -116,7 +116,7 @@ public class DiceQuest : QuestBase {
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 
 		reminder.SetActive (true);
-		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. När du kastat väljer du vilka du ska slå om.");
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. Först till tre vinner");
 	}
 
 	public override void TriggerFinish(bool success)
@@ -148,6 +148,16 @@ public class DiceQuest : QuestBase {
 
 	public void InsertDialogue(string text)
 	{
+		GameObject opponentDialogue = new GameObject ("OpponentDialogue");
+		opponentDialogue.AddComponent<GUIText> ();
+		opponentDialogue.guiText.text = text;
+		opponentDialogue.guiText.pixelOffset = new Vector2 (Screen.width*0.5f, Screen.height*0.8f);
+		opponentDialogue.guiText.fontSize = (int)(16 * Screen.width / 800f);
+		opponentDialogue.AddComponent<GUITexture> ();
+
+		IExistToFade fadeScript = opponentDialogue.AddComponent<IExistToFade> ();
+		fadeScript.timeUntilFadeStart = 1.0f;
+		fadeScript.totalFadeTime = 1.0f;
 
 	}
 
@@ -222,8 +232,10 @@ public class DiceQuest : QuestBase {
 				for(int i = 0; i < dice.Length/2; i++)
 				{
 					totalPoints += CheckWhichSideIsUp(dice[i].transform);
+					(dice[i].GetComponent<Rigidbody>()).useGravity = false;
+					(dice[i].GetComponent<Rigidbody>()).detectCollisions = false;
 				}
-				state = State.OPPONENTCONTINUE;
+				state = State.PLAYERPRETHROW;
 				if(totalPoints <= 5)
 				{
 					mood = OpponentMood.SAD;
@@ -231,10 +243,17 @@ public class DiceQuest : QuestBase {
 				}
 				else if(totalPoints >= 9)
 				{
-					if(mood == OpponentMood.HAPPY)
+					if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
 					{
-						mood = OpponentMood.ECSTATIC;
-						InsertDialogue("Jisses vilken tur man har");
+						if(mood == OpponentMood.ECSTATIC)
+						{
+							InsertDialogue("GUD ÄR MED MIIIIIG");
+						}
+						else
+						{
+							mood = OpponentMood.ECSTATIC;
+							InsertDialogue(swedishNumbers[totalPoints] + ", jisses vilken tur man har");
+						}
 					}
 					else
 					{
@@ -247,8 +266,8 @@ public class DiceQuest : QuestBase {
 					mood = OpponentMood.NEUTRAL;
 					InsertDialogue(swedishNumbers[totalPoints] + ", din tur att kasta.");
 				}
-				informationsText.enabled = true;
-				informationsText.text = "TRYCK FÖR ATT FORTSÄTTA";
+				//informationsText.enabled = true;
+				//informationsText.text = "TRYCK FÖR ATT FORTSÄTTA";
 				invisWall.SetActive(false);
 			}
 		}
@@ -340,7 +359,7 @@ public class DiceQuest : QuestBase {
 					else if(mood == OpponentMood.NEUTRAL)
 						InsertDialogue("Grattis");
 					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
-						InsertDialogue("Tackar för vin- Va?! Du vann ju!");
+						InsertDialogue("FUSKIS");
 
 					informationsText.text = "VINST, Tryck för att gå vidare";
 					Instantiate(Resources.Load("FadeCorrect"));
@@ -371,13 +390,17 @@ public class DiceQuest : QuestBase {
 				}
 				else
 				{
-					if(mood == OpponentMood.SAD)
-						InsertDialogue("JA!");
-					else if(mood == OpponentMood.NEUTRAL)
-						InsertDialogue("Poäng till mig!");
-					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
-						InsertDialogue("Var ju självklart!");
-
+					if(totalPoints - playerPoints == 1)
+						InsertDialogue("Inte ens nära");
+					else
+					{
+						if(mood == OpponentMood.SAD)
+							InsertDialogue("JA!");
+						else if(mood == OpponentMood.NEUTRAL)
+							InsertDialogue("Poäng till mig!");
+						else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
+							InsertDialogue("Var ju självklart!");
+					}
 					informationsText.text = "FÖRLUST, Tryck för att gå vidare";
 					Instantiate(Resources.Load ("FadeWrong"));
 					winsOpponent++;
