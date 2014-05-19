@@ -41,14 +41,14 @@ public class MusketQuest : MonoBehaviour {
 			if(_questStarted && !_questEnded){
 				_timeElapsed += Time.deltaTime;
 			}
-			if(_timeElapsed >= TimeLimit){
-				_questEnded = true;
-				HighScore();
-				QuestFinished();
-			}
+		}
+		if(_timeElapsed >= TimeLimit && !_questEnded){
+			_questEnded = true;
+			//HighScore();
+			QuestFinished();
 		}
 	}
-
+	
 	void OnGUI(){
 		if (_questStarted) {
 			GUI.Label (new Rect (70, 50, 100, 20), "Tid: " + _timeElapsed.ToString());
