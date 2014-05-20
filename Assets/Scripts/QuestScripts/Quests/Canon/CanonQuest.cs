@@ -80,7 +80,6 @@ public class CanonQuest : QuestBase  {
 //		GameObject temp = GameObject.Find ("Graphics");
 //		temp.renderer.enabled = false;
 
-//		EventManager.TriggerDisableAndroid("lock");
 		mainCamera.camera.enabled = false;
 		canonCamera.camera.enabled = true;
 
@@ -143,9 +142,9 @@ public class CanonQuest : QuestBase  {
 	//Initializes arrows on screen
 	void Init(){
 
-	//	#if UNITY_ANDROID
+		#if UNITY_ANDROID
 		InitGUI();
-	//	#endif
+		#endif
 
 	}
 
