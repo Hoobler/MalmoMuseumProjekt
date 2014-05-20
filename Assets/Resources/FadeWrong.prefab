@@ -39,6 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b140fd85ba15a748ad36c144ebed12c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilFadeStart: .200000003
+  totalFadeTime: 1
 --- !u!131 &13100000
 GUITexture:
   m_ObjectHideFlags: 1
