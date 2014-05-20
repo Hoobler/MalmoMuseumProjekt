@@ -165,7 +165,6 @@ public class Shoot : MonoBehaviour {
 
 	//Should move the player to the spot where he is going to shoot from.
 	void MovePlayerToShootSpot(){
-		Debug.Log("Stuff mofo");
 		float distToShootSpot = 0;
 		float rate = 0;
 		float speed = 2;

@@ -16,10 +16,12 @@ public class AndroidDisable: MonoBehaviour {
 	void DisableThumbPads(object o ,AndroidDisableArgs e){
 		Debug.Log("Disable test");
 		if(e.Disable){
+			Debug.Log("SetActive False");
 			LeftPad.SetActive(false);
 			RightPad.SetActive(false);
 		}
 		if(!e.Disable){
+			Debug.Log("SetActive True");
 			LeftPad.SetActive(true);
 			RightPad.SetActive(true);
 		}
