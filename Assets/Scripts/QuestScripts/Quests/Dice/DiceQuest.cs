@@ -156,8 +156,14 @@ public class DiceQuest : QuestBase {
 		opponentDialogue.guiText.text = text;
 		opponentDialogue.guiText.pixelOffset = new Vector2 (Screen.width*0.5f, Screen.height*0.8f);
 		opponentDialogue.guiText.fontSize = (int)(16 * Screen.width / 800f);
+		opponentDialogue.guiText.color = Color.black;
 		opponentDialogue.AddComponent<GUITexture> ();
-
+		opponentDialogue.guiTexture.texture = pratbubbla;
+		opponentDialogue.guiTexture.pixelInset = new Rect (Screen.width * 0.5f - Screen.width*0.05f,
+		                                                   Screen.height * 0.8f - Screen.height*0.1f,
+		                                                   opponentDialogue.guiText.GetScreenRect ().width+Screen.width*0.1f,
+		                                                   opponentDialogue.guiText.GetScreenRect ().height+Screen.height*0.1f);
+		opponentDialogue.guiTexture.transform.localScale = Vector2.zero;
 		IExistToFade fadeScript = opponentDialogue.AddComponent<IExistToFade> ();
 		fadeScript.timeUntilFadeStart = 1.0f;
 		fadeScript.totalFadeTime = 1.0f;
