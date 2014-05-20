@@ -227,7 +227,7 @@ public class DiceQuest : QuestBase {
 	void OpponentContinue()
 	{
 		if (Input.GetMouseButtonDown (0))
-			if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
+			if(!reminder.guiTexture.GetScreenRect().Contains(Input.mousePosition))
 			{
 				state = State.PLAYERPRETHROW;
 				informationsText.text = "DRA ÖVER SKÄRMEN FÖR ATT KASTA";
@@ -324,7 +324,7 @@ public class DiceQuest : QuestBase {
 	void PlayerContinue()
 	{
 		if(Input.GetMouseButtonDown(0))
-			if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
+			if(!reminder.guiTexture.GetScreenRect().Contains(Input.mousePosition))
 			{
 				if(winsPlayer == winsForSuccess)
 				{
@@ -454,7 +454,7 @@ public class DiceQuest : QuestBase {
 		if (!holdingDownMouseButton)
 		{
 			if (Input.GetMouseButtonDown (0)) 
-				if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
+				if(!reminder.guiTexture.GetScreenRect().Contains(Input.mousePosition))
 				{
 					holdingDownMouseButton = true;
 					startHold = Input.mousePosition;
@@ -501,7 +501,7 @@ public class DiceQuest : QuestBase {
 	void FinishUpdate()
 	{
 		if(Input.GetMouseButtonDown(0))
-			if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
+			if(!reminder.guiTexture.GetScreenRect().Contains(Input.mousePosition))
 			{
 				if(winsPlayer == winsForSuccess)
 					TriggerFinish (true);
