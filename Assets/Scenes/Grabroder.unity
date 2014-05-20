@@ -18538,6 +18538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa1518f879865c4182088cec95e300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pratbubbla: {fileID: 2800000, guid: 6292ede855451fb48911417db06addf3, type: 3}
 --- !u!23 &600837635
 Renderer:
   m_ObjectHideFlags: 0

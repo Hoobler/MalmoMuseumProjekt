@@ -54,6 +54,9 @@ public class DiceQuest : QuestBase {
 	Vector3 opponentDiceOrigin;
 	Vector3 playerDiceOrigin;
 	Vector3 playerPos;
+
+	public Texture pratbubbla;
+
 //	Transform player;
 	// Use this for initialization
 	void Start () {
@@ -128,6 +131,7 @@ public class DiceQuest : QuestBase {
 		dicecamera.camera.enabled = false;
 		Destroy (informationsText.gameObject);
 		Destroy(lightparent);
+
 		invisWall.SetActive (false);
 		if (success) {
 			endNotification.GetComponent<endNotificationScript> ().Activate ("Du vann spelet!");
@@ -151,10 +155,23 @@ public class DiceQuest : QuestBase {
 		GameObject opponentDialogue = new GameObject ("OpponentDialogue");
 		opponentDialogue.AddComponent<GUIText> ();
 		opponentDialogue.guiText.text = text;
-		opponentDialogue.guiText.pixelOffset = new Vector2 (Screen.width*0.5f, Screen.height*0.8f);
+		if(state == State.OPPONENTPOSTTHROW)
+			opponentDialogue.guiText.pixelOffset = new Vector2 (Screen.width*0.5f, Screen.height*0.8f);
+		else
+			opponentDialogue.guiText.pixelOffset = new Vector2 (Screen.width*0.2f, Screen.height*0.7f);
 		opponentDialogue.guiText.fontSize = (int)(16 * Screen.width / 800f);
+		opponentDialogue.guiText.color = Color.black;
 		opponentDialogue.AddComponent<GUITexture> ();
-
+		opponentDialogue.guiTexture.texture = pratbubbla;
+		if(state == State.OPPONENTPOSTTHROW)
+			opponentDialogue.guiTexture.pixelInset = new Rect (Screen.width * 0.5f - Screen.width*0.05f+(opponentDialogue.guiText.GetScreenRect ().width+Screen.width*0.1f), Screen.height * 0.8f - Screen.height*0.1f,
+		                                                   -(opponentDialogue.guiText.GetScreenRect ().width+Screen.width*0.1f),
+		                                                   opponentDialogue.guiText.GetScreenRect ().height+Screen.height*0.1f);
+		else
+			opponentDialogue.guiTexture.pixelInset = new Rect (Screen.width * 0.2f - Screen.width*0.05f, Screen.height * 0.7f - Screen.height*0.1f,
+			                                                   opponentDialogue.guiText.GetScreenRect ().width+Screen.width*0.1f,
+			                                                   opponentDialogue.guiText.GetScreenRect ().height+Screen.height*0.1f);
+		opponentDialogue.guiTexture.transform.localScale = Vector2.zero;
 		IExistToFade fadeScript = opponentDialogue.AddComponent<IExistToFade> ();
 		fadeScript.timeUntilFadeStart = 1.0f;
 		fadeScript.totalFadeTime = 1.0f;
@@ -210,11 +227,12 @@ public class DiceQuest : QuestBase {
 	void OpponentContinue()
 	{
 		if (Input.GetMouseButtonDown (0))
-		{
-			state = State.PLAYERPRETHROW;
-			informationsText.text = "DRA ÖVER SKÄRMEN FÖR ATT KASTA";
-
-		}
+			if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
+			{
+				state = State.PLAYERPRETHROW;
+				informationsText.text = "DRA ÖVER SKÄRMEN FÖR ATT KASTA";
+			
+			}
 		
 	}
 	
@@ -235,7 +253,7 @@ public class DiceQuest : QuestBase {
 					(dice[i].GetComponent<Rigidbody>()).useGravity = false;
 					(dice[i].GetComponent<Rigidbody>()).detectCollisions = false;
 				}
-				state = State.PLAYERPRETHROW;
+
 				if(totalPoints <= 5)
 				{
 					mood = OpponentMood.SAD;
@@ -268,6 +286,7 @@ public class DiceQuest : QuestBase {
 				}
 				//informationsText.enabled = true;
 				//informationsText.text = "TRYCK FÖR ATT FORTSÄTTA";
+				state = State.PLAYERPRETHROW;
 				invisWall.SetActive(false);
 			}
 		}
@@ -294,7 +313,7 @@ public class DiceQuest : QuestBase {
 			
 			dice[i].transform.Rotate(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
 			dice[i].rigidbody.angularVelocity = new Vector3(Random.Range(0,360), Random.Range(0,360), Random.Range(0,360));
-			dice[i].rigidbody.AddForce(direction*150f);
+			dice[i].rigidbody.AddForce(direction*50f);
 			dice[i].transform.parent = diceparent.transform;
 		}
 		state = State.OPPONENTPOSTTHROW;
@@ -305,29 +324,30 @@ public class DiceQuest : QuestBase {
 	void PlayerContinue()
 	{
 		if(Input.GetMouseButtonDown(0))
-		{
-			if(winsPlayer == winsForSuccess)
+			if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
 			{
-				informationsText.text = "DU VANN SPELET";
-				TriggerFinish(true);
+				if(winsPlayer == winsForSuccess)
+				{
+					informationsText.text = "DU VANN SPELET";
+					TriggerFinish(true);
+				}
+				else if(winsOpponent == winsForSuccess)
+				{
+					informationsText.text = "DU FÖRLORADE SPELET";
+					TriggerFinish(false);
+				}
+				else
+				{
+					for(int i = 0; i < dice.Length; i++)
+						Destroy(dice[i]);
+					state = State.OPPONENTPRETHROW;
+			
+					Destroy(lightparent);
+					lightparent = new GameObject("LightParent");
+					informationsText.enabled = false;
+				}
+			
 			}
-			else if(winsOpponent == winsForSuccess)
-			{
-				informationsText.text = "DU FÖRLORADE SPELET";
-				TriggerFinish(false);
-			}
-			else
-			{
-				for(int i = 0; i < dice.Length; i++)
-					Destroy(dice[i]);
-				state = State.OPPONENTPRETHROW;
-
-				Destroy(lightparent);
-				lightparent = new GameObject("LightParent");
-				informationsText.enabled = false;
-			}
-
-		}
 	}
 
 
@@ -434,10 +454,11 @@ public class DiceQuest : QuestBase {
 		if (!holdingDownMouseButton)
 		{
 			if (Input.GetMouseButtonDown (0)) 
-			{
-				holdingDownMouseButton = true;
-				startHold = Input.mousePosition;
-			}
+				if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
+				{
+					holdingDownMouseButton = true;
+					startHold = Input.mousePosition;
+				}
 		}
 		else {
 
@@ -480,12 +501,13 @@ public class DiceQuest : QuestBase {
 	void FinishUpdate()
 	{
 		if(Input.GetMouseButtonDown(0))
-		{
-			if(winsPlayer == winsForSuccess)
-				TriggerFinish (true);
-			else
-				TriggerFinish (false);
-		}
+			if(!reminder.GetComponent<ReminderTextScript>().backgroundBoundsBig.Contains(Input.mousePosition))
+			{
+				if(winsPlayer == winsForSuccess)
+					TriggerFinish (true);
+				else
+					TriggerFinish (false);
+			}
 
 	}
 

@@ -7,7 +7,8 @@ using System.Text.RegularExpressions;
 public class ReminderTextScript : MonoBehaviour {
 
 	bool closedDown = false;
-	Rect backgroundBounds;
+	public Rect backgroundBoundsBig;
+	public Rect backgroundBoundsSmall;
 	GUIText mainText;
 	GUITexture background;
 
@@ -26,7 +27,7 @@ public class ReminderTextScript : MonoBehaviour {
 		for (int i = 0; i < text.GetLength(0); i++) {
 			
 			gameObject.GetComponent<GUIText> ().text += text[i] + " ";
-			if(gameObject.GetComponent<GUIText> ().GetScreenRect().width > backgroundBounds.width * 0.8f)
+			if(gameObject.GetComponent<GUIText> ().GetScreenRect().width > backgroundBoundsBig.width * 0.8f)
 			{
 				gameObject.GetComponent<GUIText> ().text = gameObject.GetComponent<GUIText> ().text.Substring(0, gameObject.GetComponent<GUIText> ().text.Length - text[i].Length - 1);
 				gameObject.GetComponent<GUIText> ().text += "\n" + text[i] + " ";
@@ -37,36 +38,33 @@ public class ReminderTextScript : MonoBehaviour {
 	void CloseDown()
 	{
 		closedDown = true;
-		background.pixelInset = new Rect (Screen.width * 0.93f, Screen.height * 0.4f, Screen.width * 0.02f, Screen.height * 0.02f);
-		backgroundBounds = background.GetScreenRect ();
+		background.pixelInset = backgroundBoundsSmall;
 		gameObject.GetComponent<GUIText> ().enabled = false;
 	}
 
 	void BringUp()
 	{
 		closedDown = false;
-		background.pixelInset = new Rect (Screen.width * 0.8f, Screen.height * 0.4f, Screen.width * 0.15f, Screen.height * 0.4f);
-		backgroundBounds = background.GetScreenRect ();
+		background.pixelInset = backgroundBoundsBig;
 		gameObject.GetComponent<GUIText> ().enabled = true;
 	}
 
 	// Use this for initialization
 	void Start () {
 		background = gameObject.GetComponent<GUITexture> ();
-		background.pixelInset = new Rect (Screen.width * 0.8f, Screen.height * 0.4f, Screen.width * 0.15f, Screen.height * 0.4f);
-		backgroundBounds = background.GetScreenRect ();
+		backgroundBoundsBig = new Rect (Screen.width * 0.8f, Screen.height * 0.4f, Screen.width * 0.15f, Screen.height * 0.4f);
+		backgroundBoundsSmall = new Rect (Screen.width * 0.93f, Screen.height * 0.4f, Screen.width * 0.02f, Screen.height * 0.02f);
+		background.pixelInset = backgroundBoundsBig;
+
 		mainText = gameObject.GetComponent<GUIText> ();
 		mainText.color = Color.black;
 		mainText.text = "Default Text 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15";
-		mainText.pixelOffset = new Vector2 (backgroundBounds.x + backgroundBounds.width * 0.1f, backgroundBounds.yMax - backgroundBounds.height * 0.1f);
+		mainText.pixelOffset = new Vector2 (backgroundBoundsBig.x + backgroundBoundsBig.width * 0.1f, backgroundBoundsBig.yMax - backgroundBoundsBig.height * 0.1f);
 		mainText.fontSize = (int)(12 * Screen.width / 800f);
 
 		gameObject.SetActive (false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+
 
 	void OnMouseDown() {
 		if(!closedDown)
