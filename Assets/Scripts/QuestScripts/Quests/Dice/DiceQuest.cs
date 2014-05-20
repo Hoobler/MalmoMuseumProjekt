@@ -54,6 +54,9 @@ public class DiceQuest : QuestBase {
 	Vector3 opponentDiceOrigin;
 	Vector3 playerDiceOrigin;
 	Vector3 playerPos;
+
+	public Texture pratbubbla;
+
 //	Transform player;
 	// Use this for initialization
 	void Start () {
