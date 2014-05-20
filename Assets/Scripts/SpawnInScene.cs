@@ -18,11 +18,11 @@ public class SpawnInScene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		if (Application.loadedLevel == 0)	//LILLA TORG
+		if (Application.loadedLevel == 2)	//LILLA TORG
 			background_texture = Resources.Load ("skylt_lillatorg") as Texture;
-		if(Application.loadedLevel == 2)	//SLOTTET
+		if(Application.loadedLevel == 3)	//SLOTTET
 			background_texture = Resources.Load ("skylt_slottet") as Texture;
-		if (Application.loadedLevel == 3)	//GRÅBRÖDER
+		if (Application.loadedLevel == 4)	//GRÅBRÖDER
 			background_texture = Resources.Load ("skylt_grabroder") as Texture;
 
 
