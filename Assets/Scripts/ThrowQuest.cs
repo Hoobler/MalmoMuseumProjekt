@@ -133,8 +133,7 @@ public class ThrowQuest : QuestBase {
 		charge = 0f;
 		chargeRate = 0.009f;
 		totalTimeBetweenThrows = 1.0f;
-		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		endNotification.transform.parent = gameObject.transform.parent;
+
 
 	}
 
@@ -142,7 +141,10 @@ public class ThrowQuest : QuestBase {
 	{
 
 		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
-		reminder.transform.parent = gameObject.transform.parent;
+		reminder.transform.parent = gameObject.transform.parent;		
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		endNotification.transform.parent = gameObject.transform.parent;
+
 	}
 
 	public override void TriggerStart ()
@@ -169,11 +171,13 @@ public class ThrowQuest : QuestBase {
 		}
 		//---
 
-		string finishInfo;
+		string finishInfo = "Du klarade det! Och vet du vad, Malmö kallades faktiskt för Ellenbogen innan det hette Malmö.";
 		if (success)
-						finishInfo = "Du klarade det!";
-				else
-						finishInfo = "Tyvärr, du träffade bara " + applesInBasket + " äpplen.";
+			finishInfo = "Du klarade det! Och vet du vad, Malmö kallades faktiskt för Ellenbogen innan det hette Malmö.";
+		else if (!success && applesInBasket < 3)
+			finishInfo = "Tyvärr, du träffade bara " + applesInBasket + " äpplen. Du får försöka kasta bättre ifall du vill få någon information från mig.";
+		else if (!success && applesInBasket < 6)
+			finishInfo = "Tyvärr, du träffade bara " + applesInBasket + " äpplen. Och nu till informationen som jag skulle ge dig, ifall du inte har märkt det så är det mest Hantverk och Mat som handlas här.";
 
 
 		endNotification.GetComponent<endNotificationScript> ().Activate (finishInfo);
