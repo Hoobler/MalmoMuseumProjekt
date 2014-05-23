@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 public class DiceQuest : QuestBase {
 
 	enum State{
+		BEGIN,
 		PLAYERPOSTTHROW,
 		PLAYERPRETHROW,
 		PLAYERCONTINUE,
@@ -46,11 +47,14 @@ public class DiceQuest : QuestBase {
 
 	GUIText informationsText;
 
+	float timeUntilGameStarts;
+
 	GameObject reminder;
 	GameObject endNotification;
 
 	GameObject opponentCounter;
 	GameObject playerCounter;
+
 	Vector3 opponentDiceOrigin;
 	Vector3 playerDiceOrigin;
 	Vector3 playerPos;
@@ -83,7 +87,7 @@ public class DiceQuest : QuestBase {
 		playerCounter.GetComponent<GUIText> ().text = "0";
 		opponentCounter.SetActive (true);
 		opponentCounter.GetComponent<GUIText> ().text = "0";
-
+		timeUntilGameStarts = 1f;
 
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
@@ -107,7 +111,7 @@ public class DiceQuest : QuestBase {
 		winsPlayer = 0;
 		winsOpponent = 0;
 		totalPoints = 0;
-		state = State.OPPONENTPRETHROW;
+		state = State.BEGIN;
 		mood = OpponentMood.NEUTRAL;
 		dice = new GameObject[numberOfDiceToThrow*2];
 		Destroy(GameObject.Find("DiceParent"));
@@ -120,6 +124,7 @@ public class DiceQuest : QuestBase {
 
 		reminder.SetActive (true);
 		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. Först till tre vinner");
+		InsertDialogue ("Då börjar vi. Jag kastar först.");
 	}
 
 	public override void TriggerFinish(bool success)
@@ -223,6 +228,13 @@ public class DiceQuest : QuestBase {
 		return sideUp;
 	}
 
+	void Begin()
+	{
+		if (timeUntilGameStarts > 0)
+			timeUntilGameStarts -= Time.deltaTime;
+		else
+			state = State.OPPONENTPRETHROW;
+	}
 
 	void OpponentContinue()
 	{
@@ -387,6 +399,7 @@ public class DiceQuest : QuestBase {
 					playerCounter.GetComponent<GUIText> ().text = winsPlayer.ToString();
 					for(int i = dice.Length/2; i < dice.Length; i++)
 					{
+
 						Light light = new GameObject("Light").AddComponent<Light>();
 						light.gameObject.transform.parent = lightparent.transform;
 						light.type =  LightType.Spot;
@@ -517,6 +530,9 @@ public class DiceQuest : QuestBase {
 		{
 			switch(state)
 			{
+			case State.BEGIN:
+				Begin ();
+				break;
 			case State.PLAYERPOSTTHROW:
 				PlayerPostThrow();
 				break;
