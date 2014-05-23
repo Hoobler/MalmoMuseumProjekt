@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 public class DiceQuest : QuestBase {
 
 	enum State{
+		BEGIN,
 		PLAYERPOSTTHROW,
 		PLAYERPRETHROW,
 		PLAYERCONTINUE,
@@ -41,16 +42,19 @@ public class DiceQuest : QuestBase {
 	GameObject dicecamera;
 	GameObject invisWall;
 	GameObject diceparent;
-	GameObject lightparent;
+//	GameObject lightparent;
 	string[] swedishNumbers = {"Noll", "Ett", "Två", "Tre", "Fyra", "Fem", "Sex", "Sju", "Åtta", "Nio", "Tio", "Elva", "Tolv"};
 
 	GUIText informationsText;
+
+	float timeUntilGameStarts;
 
 	GameObject reminder;
 	GameObject endNotification;
 
 	GameObject opponentCounter;
 	GameObject playerCounter;
+
 	Vector3 opponentDiceOrigin;
 	Vector3 playerDiceOrigin;
 	Vector3 playerPos;
@@ -83,7 +87,7 @@ public class DiceQuest : QuestBase {
 		playerCounter.GetComponent<GUIText> ().text = "0";
 		opponentCounter.SetActive (true);
 		opponentCounter.GetComponent<GUIText> ().text = "0";
-
+		timeUntilGameStarts = 1f;
 
 		mainCamera 	= GameObject.Find ("Main Camera");
 		mainCamera.camera.enabled = false;
@@ -107,19 +111,20 @@ public class DiceQuest : QuestBase {
 		winsPlayer = 0;
 		winsOpponent = 0;
 		totalPoints = 0;
-		state = State.OPPONENTPRETHROW;
+		state = State.BEGIN;
 		mood = OpponentMood.NEUTRAL;
 		dice = new GameObject[numberOfDiceToThrow*2];
 		Destroy(GameObject.Find("DiceParent"));
 
 		diceparent = new GameObject ("DiceParent");
-		Destroy (GameObject.Find("LightParent"));
-		lightparent = new GameObject("LightParent");
+//		Destroy (GameObject.Find("LightParent"));
+//		lightparent = new GameObject("LightParent");
 		questActive = true;
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 
 		reminder.SetActive (true);
 		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. Först till tre vinner");
+		InsertDialogue ("Då börjar vi. Jag kastar först.");
 	}
 
 	public override void TriggerFinish(bool success)
@@ -130,7 +135,7 @@ public class DiceQuest : QuestBase {
 		mainCamera.camera.enabled = true;
 		dicecamera.camera.enabled = false;
 		Destroy (informationsText.gameObject);
-		Destroy(lightparent);
+//		Destroy(lightparent);
 
 		invisWall.SetActive (false);
 		if (success) {
@@ -223,6 +228,13 @@ public class DiceQuest : QuestBase {
 		return sideUp;
 	}
 
+	void Begin()
+	{
+		if (timeUntilGameStarts > 0)
+			timeUntilGameStarts -= Time.deltaTime;
+		else
+			state = State.OPPONENTPRETHROW;
+	}
 
 	void OpponentContinue()
 	{
@@ -342,8 +354,8 @@ public class DiceQuest : QuestBase {
 						Destroy(dice[i]);
 					state = State.OPPONENTPRETHROW;
 			
-					Destroy(lightparent);
-					lightparent = new GameObject("LightParent");
+//					Destroy(lightparent);
+//					lightparent = new GameObject("LightParent");
 					informationsText.enabled = false;
 				}
 			
@@ -385,16 +397,17 @@ public class DiceQuest : QuestBase {
 					Instantiate(Resources.Load("FadeCorrect"));
 					winsPlayer++;
 					playerCounter.GetComponent<GUIText> ().text = winsPlayer.ToString();
-					for(int i = dice.Length/2; i < dice.Length; i++)
-					{
-						Light light = new GameObject("Light").AddComponent<Light>();
-						light.gameObject.transform.parent = lightparent.transform;
-						light.type =  LightType.Spot;
-						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
-						light.transform.LookAt(dice[i].transform.position);
-						light.color = Color.green;
-						light.intensity = 0.2f;
-					}
+//					for(int i = dice.Length/2; i < dice.Length; i++)
+//					{
+//
+//						Light light = new GameObject("Light").AddComponent<Light>();
+//						light.gameObject.transform.parent = lightparent.transform;
+//						light.type =  LightType.Spot;
+//						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
+//						light.transform.LookAt(dice[i].transform.position);
+//						light.color = Color.green;
+//						light.intensity = 0.2f;
+//					}
 
 				}
 				else if(playerPoints == totalPoints)
@@ -406,7 +419,7 @@ public class DiceQuest : QuestBase {
 					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
 						InsertDialogue("Oooh, nära");
 
-					informationsText.text = "INGEN VANN, RUNDAN RÄKNAS INTE";
+					informationsText.text = "Oavgjort, tryck för att gå vidare";
 				}
 				else
 				{
@@ -426,16 +439,16 @@ public class DiceQuest : QuestBase {
 					winsOpponent++;
 					opponentCounter.GetComponent<GUIText> ().text = winsOpponent.ToString();
 
-					for(int i = 0; i < dice.Length/2; i++)
-					{
-						Light light = new GameObject("Light").AddComponent<Light>();
-						light.gameObject.transform.parent = lightparent.transform;
-						light.type =  LightType.Spot;
-						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
-						light.transform.LookAt(dice[i].transform.position);
-						light.color = Color.red;
-						light.intensity = 0.2f;
-					}
+//					for(int i = 0; i < dice.Length/2; i++)
+//					{
+//						Light light = new GameObject("Light").AddComponent<Light>();
+//						light.gameObject.transform.parent = lightparent.transform;
+//						light.type =  LightType.Spot;
+//						light.transform.position = dice[i].transform.position + new Vector3(0,.15f, 0);
+//						light.transform.LookAt(dice[i].transform.position);
+//						light.color = Color.red;
+//						light.intensity = 0.2f;
+//					}
 				}
 					
 
@@ -517,6 +530,9 @@ public class DiceQuest : QuestBase {
 		{
 			switch(state)
 			{
+			case State.BEGIN:
+				Begin ();
+				break;
 			case State.PLAYERPOSTTHROW:
 				PlayerPostThrow();
 				break;
