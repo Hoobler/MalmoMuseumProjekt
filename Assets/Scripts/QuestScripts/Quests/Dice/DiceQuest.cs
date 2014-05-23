@@ -419,7 +419,7 @@ public class DiceQuest : QuestBase {
 					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
 						InsertDialogue("Oooh, nära");
 
-					informationsText.text = "INGEN VANN, RUNDAN RÄKNAS INTE";
+					informationsText.text = "Oavgjort, tryck för att gå vidare";
 				}
 				else
 				{
