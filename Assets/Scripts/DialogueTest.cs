@@ -35,7 +35,7 @@ public class DialogueTest: MonoBehaviour {
 	private Transform playerTransform;
 
 	private bool conversationActive = false;
-
+	bool previousActionWasMouseButtonDown = false;
 	public Knapp[] buttons; 
 
 	void Start(){
@@ -146,7 +146,8 @@ public class DialogueTest: MonoBehaviour {
 
 	void Update(){
 		if (conversationActive) {
-			if (Input.GetMouseButtonDown (0)) {
+			if (Input.GetMouseButtonDown (0) && !previousActionWasMouseButtonDown) {
+				previousActionWasMouseButtonDown = true;
 				if(exitCross.GetScreenRect().Contains(Input.mousePosition))
 					KillConversation();
 					for(int i = 0; i < buttons.Length; i++)
@@ -169,6 +170,8 @@ public class DialogueTest: MonoBehaviour {
 					}
 
 			}
+			else
+				previousActionWasMouseButtonDown = false;
 			if(playerTransform && Vector3.Distance(playerTransform.position, this.transform.position) > abortConversationDistance)
 				KillConversation();
 		}
@@ -179,6 +182,7 @@ public class DialogueTest: MonoBehaviour {
 			playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
 			if(Vector3.Distance(playerTransform.position, this.transform.position) < speechDistance)
 				if (!conversationActive) {
+				previousActionWasMouseButtonDown = true;
 					Init ();
 					conversationActive = true;
 				}		
