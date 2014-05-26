@@ -21769,20 +21769,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: "T\xE4rning \xE5h vad mycket t\xE4rning"
+  introText: "Hejsan!\r\n\r\nVad s\xE4gs om att spela lite t\xE4rning?"
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
   abortConversationDistance: 20
   buttons:
   - quitOnPress: 1
-    textOnButton: YES
+    textOnButton: Javisst
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
     nameOfQuest: GraBroderDiceGame
   - quitOnPress: 1
-    textOnButton: NEJ
+    textOnButton: Nej tack
     shownInfoWhenPressed: 
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 0
@@ -36859,8 +36859,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introText: "Vi har f\xE5ngat en massa spioner. Hj\xE4lp oss bed\xF6ma vem som \xE4r
-    den danska."
+  introText: "Du d\xE4r!\r\n\r\nVi beh\xF6ver hj\xE4lp med att identifiera en spion.
+    Vi vet att en av dessa tre \xE4r den skyldiga men vi har inte tillr\xE4ckligt
+    m\xE5nga ledtr\xE5dar \xE4n. G\xE5 och prata med folk i omr\xE5det och se om n\xE5gon
+    vet n\xE5gonting. \r\n\r\nRapportera till mig n\xE4r du har n\xE5gon vettig information!"
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10

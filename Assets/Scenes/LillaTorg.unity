@@ -13170,10 +13170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introText: "Urs\xE4kta mig!\r\n\r\nSkulle du kunna hj\xE4lpa mig lite? Min fru \xE4r
-    sur p\xE5 mig s\xE5 hon tog mina vetep\xE5sar och g\xF6mde dem \xF6ver hela torget.
-    Jag har ont i f\xF6tterna av all kullersten s\xE5 jag m\xE5ste vila lite. Om du
-    hittar n\xE5gra, skulle du kunna l\xE4mna tillbaka dem till mig? Du kan l\xE4gga
-    dem h\xE4r bredvid.\r\n"
+    sur p\xE5 mig s\xE5 hon tog mina vetep\xE5sar och g\xF6mde dem \xF6ver hela torget...\r\nJag
+    har ont i f\xF6tterna s\xE5 jag m\xE5ste vila lite. \r\n\r\nOm du hittar n\xE5gra,
+    skulle du kunna l\xE4mna tillbaka dem till mig? \r\n\r\nDu kan l\xE4gga dem h\xE4r
+    bredvid."
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
@@ -54293,9 +54293,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introText: "KORGBOLL, KORGBOLL!\r\n\r\nHall\xE5 Malm\xF6bo, har du spelat korgboll
     n\xE5gon g\xE5ng? Jag k\xE4nner p\xE5 mig att det kommer bli n\xE5got stort i
-    framtiden! Det \xE4r enkelt, du ska kasta i \xE4pplena i korgen. Om du lyckas
-    kasta i alla sexk \xE4pplen s\xE5 ber\xE4ttar jag n\xE5got f\xF6r dig om Malm\xF6
-    som du kanske inte visste tidigare."
+    framtiden! \r\n\r\nDet \xE4r enkelt, du ska kasta i \xE4pplena i korgen. Om du
+    lyckas kasta i alla sex \xE4pplen s\xE5 ber\xE4ttar jag n\xE5got f\xF6r dig om
+    Malm\xF6 som du kanske inte visste tidigare."
   font: {fileID: 0}
   backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
   speechDistance: 10
