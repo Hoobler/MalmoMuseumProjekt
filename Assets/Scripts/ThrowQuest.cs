@@ -154,7 +154,7 @@ public class ThrowQuest : QuestBase {
 		questActive = true;
         ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = false;
 		reminder.SetActive (true);
-		((ReminderTextScript)reminder.GetComponent<ReminderTextScript> ()).ChangeText ("Tryck på skärmen för att starta kastet. Sluta tryck för att kasta äpplet. Försök träffa så många som möjligt!");
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript> ()).ChangeText ("Ladda ditt kast genom att hålla ned kastknappen. Mätaren till vänster visar hur hårt du kommer att kasta. Släpp kastknappen för att kasta.");
 
 	}
 
