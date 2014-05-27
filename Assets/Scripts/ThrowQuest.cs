@@ -199,6 +199,7 @@ public class ThrowQuest : QuestBase {
 		questActive = false;
 		if(chargeBar != null)
 			Destroy (chargeBar);
+        Destroy(throwButton);
         ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
 	}
 }
