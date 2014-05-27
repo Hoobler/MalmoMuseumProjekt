@@ -13118,6 +13118,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 452383201}
+  - 65: {fileID: 452383203}
+  - 114: {fileID: 452383202}
   m_Layer: 0
   m_Name: Bip001
   m_TagString: Untagged
@@ -13139,6 +13141,41 @@ Transform:
   - {fileID: 1044335706}
   - {fileID: 1568854749}
   m_Father: {fileID: 956262821}
+--- !u!114 &452383202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 452383200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "Vilket fint v\xE4der det var idag!"
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Det st\xE4mmer."
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &452383203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 452383200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .300000012, y: .5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &454331519
 GameObject:
   m_ObjectHideFlags: 0
@@ -13438,6 +13475,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461807207}
+  - 65: {fileID: 461807209}
+  - 114: {fileID: 461807208}
   m_Layer: 0
   m_Name: Bip001
   m_TagString: Untagged
@@ -13459,6 +13498,42 @@ Transform:
   - {fileID: 1293212322}
   - {fileID: 2000057095}
   m_Father: {fileID: 1864381323}
+--- !u!114 &461807208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461807206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "Jag har h\xF6rt att korgboll ska vara popul\xE4rt h\xE4r p\xE5 lilla
+    torg, du kanske kan hitta n\xE5gon som spelar."
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Det l\xE5ter skoj!"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &461807209
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461807206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .300000012, y: .5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &462958653
 GameObject:
   m_ObjectHideFlags: 0
@@ -34956,7 +35031,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400068, guid: 6750e506cd8f56a42ac1ddcefb6a4fcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.23864937
+      value: -4.54614353
       objectReference: {fileID: 0}
     - target: {fileID: 400068, guid: 6750e506cd8f56a42ac1ddcefb6a4fcc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34964,7 +35039,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400068, guid: 6750e506cd8f56a42ac1ddcefb6a4fcc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.1466513
+      value: 9.99948215
       objectReference: {fileID: 0}
     - target: {fileID: 400068, guid: 6750e506cd8f56a42ac1ddcefb6a4fcc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -40134,6 +40209,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1270877948}
+  - 65: {fileID: 1270877950}
+  - 114: {fileID: 1270877949}
   m_Layer: 0
   m_Name: Bip001
   m_TagString: Untagged
@@ -40155,6 +40232,43 @@ Transform:
   - {fileID: 1516045710}
   - {fileID: 815026588}
   m_Father: {fileID: 194897712}
+--- !u!114 &1270877949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1270877947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "Jag har sett att det ligger lite p\xE5sar utspridda h\xE4r p\xE5 torget,
+    jag misst\xE4nker att det \xE4r n\xE5gon som har tappat dem n\xE4r de har st\xE4llt
+    upp sina varor."
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: Ok
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &1270877950
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1270877947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .300000012, y: .5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1272842745
 GameObject:
   m_ObjectHideFlags: 0
@@ -53909,6 +54023,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1720480343}
+  - 65: {fileID: 1720480345}
+  - 114: {fileID: 1720480344}
   m_Layer: 0
   m_Name: Bip001
   m_TagString: Untagged
@@ -53930,6 +54046,41 @@ Transform:
   - {fileID: 1918531223}
   - {fileID: 1084819059}
   m_Father: {fileID: 1447913805}
+--- !u!114 &1720480344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720480342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "\xC4r du h\xE4r f\xF6r att kanske handla lite mat eller hantverk?"
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Ja det kan t\xE4nkas!"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &1720480345
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720480342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .300000012, y: .5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1721092996
 Prefab:
   m_ObjectHideFlags: 0
@@ -54376,7 +54527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cc21c8e6f47b64ead4d52f3f0da419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appleImage: {fileID: 2800000, guid: 5e1ac105c9ecda247b402702901b11bb, type: 3}
+  appleImage: {fileID: 2800000, guid: 9540b5723757df340ac250cccfad4b87, type: 3}
+  kastKnapp: {fileID: 2800000, guid: a40e44e021861ac4d925c77c606f164e, type: 3}
 --- !u!1 &1731681452
 GameObject:
   m_ObjectHideFlags: 0
@@ -58140,7 +58292,7 @@ Transform:
   m_PrefabInternal: {fileID: 1104005264}
   m_GameObject: {fileID: 1864381322}
   m_LocalRotation: {x: 0, y: .948483348, z: 0, w: .316827208}
-  m_LocalPosition: {x: -6.23864937, y: -4.04454708, z: 10.1466513}
+  m_LocalPosition: {x: -4.54614353, y: -4.04454708, z: 9.99948215}
   m_LocalScale: {x: 2.61557889, y: 2.61557889, z: 2.61557889}
   m_Children:
   - {fileID: 461807207}
@@ -66317,6 +66469,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2109583928}
+  - 65: {fileID: 2109583930}
+  - 114: {fileID: 2109583929}
   m_Layer: 0
   m_Name: Bip001
   m_TagString: Untagged
@@ -66338,6 +66492,42 @@ Transform:
   - {fileID: 320953013}
   - {fileID: 1746908440}
   m_Father: {fileID: 1202578078}
+--- !u!114 &2109583929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2109583927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "Jag har h\xF6rt att \xE4pplen ska vara riktigt goda och billiga h\xE4r
+    p\xE5 torget, se ifall du hittar n\xE5gon som s\xE4ljer."
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: "Det ska jag f\xF6rs\xF6ka."
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &2109583930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2109583927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .300000012, y: .5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2111615020
 GameObject:
   m_ObjectHideFlags: 0

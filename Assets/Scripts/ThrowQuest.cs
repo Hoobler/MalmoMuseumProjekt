@@ -23,17 +23,20 @@ public class ThrowQuest : QuestBase {
 	float chargeRate;
 	bool charging;
 	bool appleIsInTheAir;
+	Color startColor;
 
 	public Texture appleImage;
+	public Texture kastKnapp;
 	GameObject reminder;
 	GameObject endNotification;
+	GameObject throwButton;
 
 	public void OnGUI()
 	{
 		if(questActive)
 			for(int i = 0; i < applesToThrow; i++)
 			{
-			GUI.DrawTexture(new Rect(Screen.width*0.01f*i, Screen.width*0.01f, Screen.width*0.032f, Screen.width*0.032f), appleImage);
+				GUI.DrawTexture(new Rect(Screen.width*0.02f*i + Screen.width*0.035f, Screen.height*0.8f, Screen.width*0.06f, Screen.width*0.06f), appleImage);
 			}
 	}
 
@@ -50,8 +53,9 @@ public class ThrowQuest : QuestBase {
 			(chargeBarAmount.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height * (0.275f + 0.4f * charge), Screen.width *0.05f, Screen.height * 0.03f);
 			if (questStart) {
 				if (applesToThrow > 0 && !appleIsInTheAir) {
-					if(Input.GetMouseButtonDown(0) && !charging) {
+					if(Input.GetMouseButtonDown(0) && throwButton.guiTexture.GetScreenRect().Contains(Input.mousePosition) && !charging) {
 						charging = true;
+						throwButton.guiTexture.color = new Color(0.35f, 0.35f, 0.35f);
 					}
 					else if(charging)
 					{
@@ -71,6 +75,7 @@ public class ThrowQuest : QuestBase {
 						}
 						else
 						{
+							throwButton.guiTexture.color = startColor;
 							charging = false;
 							Toss ();
 						}
@@ -127,6 +132,14 @@ public class ThrowQuest : QuestBase {
 		chargeBarBack = GameObject.Find ("ChargeBackground");
 		(chargeBarBack.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height / 4f, Screen.width / 20f, Screen.height / 2f);
 		(chargeBarAmount.GetComponent<GUITexture> ()).pixelInset = new Rect (Screen.width / 20f, Screen.height * 0.3f, Screen.width *0.05f, Screen.height * 0.05f);
+		throwButton = new GameObject ("ThrowButton");
+		throwButton.transform.parent = chargeBar.transform.parent;
+		throwButton.transform.position = Vector3.zero;
+		throwButton.transform.localScale = Vector3.zero;
+		throwButton.AddComponent<GUITexture> ();
+		throwButton.guiTexture.texture = kastKnapp;
+		throwButton.guiTexture.pixelInset = new Rect (Screen.width*0.45f, Screen.height*0.05f, Screen.width*0.1f, Screen.width*0.1f);
+		startColor = throwButton.guiTexture.color;
 		applesToThrow = 6;
 		nrOfApplesForSuccess = 6;
 		applesInBasket = 0;
