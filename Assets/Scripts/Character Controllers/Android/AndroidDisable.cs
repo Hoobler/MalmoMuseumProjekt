@@ -30,11 +30,15 @@ public class AndroidDisable: MonoBehaviour {
 //		}else{
 //			Debug.Log("Leftpad is null");
 //		}
+		Debug.Log("LeftPad activeSelf: " + LeftPad.activeSelf);
+		Debug.Log("RightPad activeSelf: " + RightPad.activeSelf);
 		if(e.Disable){
+			Debug.Log("Disable derp");
 //			LeftPad.SetActive(false);
 //			RightPad.SetActive(false);
-			LeftPad.guiTexture.renderer.enabled = false;
-			RightPad.guiTexture.renderer.enabled = false;
+//			LeftPad.guiTexture.renderer.enabled = false;
+//			RightPad.guiTexture.renderer.enabled = false;
+			Debug.Log("After disable");
 			Debug.Log("Disable activeSelf: " + TouchPads[0].activeSelf);
 		}
 		if(!e.Disable){

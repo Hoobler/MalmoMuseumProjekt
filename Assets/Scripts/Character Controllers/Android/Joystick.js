@@ -63,6 +63,7 @@ function Start()
 							   size ,
 							   size);
 	
+	
 	// Store the default rect for the gui, so we can snap back to it
 	defaultRect = gui.pixelInset;	
     
