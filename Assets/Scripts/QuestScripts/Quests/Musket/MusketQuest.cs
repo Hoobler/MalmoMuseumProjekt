@@ -129,6 +129,9 @@ public class MusketQuest : MonoBehaviour {
 
 	void ResetQuest(){
 		Debug.Log("MusketQuest resetQuest");
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Disable = true;
+		EventManager.TriggerDisableAndroid(args);
 //		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Reset));
 		_totalPoints = 0;
 		_timeElapsed = 0;

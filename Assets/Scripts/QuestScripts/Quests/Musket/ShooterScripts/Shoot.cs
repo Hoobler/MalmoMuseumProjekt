@@ -178,13 +178,9 @@ public class Shoot : MonoBehaviour {
 		if(_goToSpot){
 			this.transform.position = Vector3.MoveTowards(transform.position, _newShootSpot, rate);
 		}
-
 	
 		if(!_goToSpot){
 			EnableWeapon();
-			AndroidDisableArgs args = new AndroidDisableArgs();
-			args.Disable = true;
-			EventManager.TriggerDisableAndroid(args);
 		}
 	}
 }
