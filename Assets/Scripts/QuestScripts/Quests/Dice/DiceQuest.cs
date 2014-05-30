@@ -123,7 +123,7 @@ public class DiceQuest : QuestBase {
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
 
 		reminder.SetActive (true);
-		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Dra över skärmen för kasta tärning. Ju längre du drar, desto hårdare kastar du. Först till tre vinner");
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Tryck på skärmen för att kasta dina tärningar. Få högst poäng tre gånger så vinner du spelet.");
 		InsertDialogue ("Då börjar vi. Jag kastar först.");
 	}
 
@@ -277,7 +277,7 @@ public class DiceQuest : QuestBase {
 					{
 						if(mood == OpponentMood.ECSTATIC)
 						{
-							InsertDialogue("GUD ÄR MED MIIIIIG");
+							InsertDialogue("GUD ÄR MED MIG");
 						}
 						else
 						{
@@ -393,6 +393,8 @@ public class DiceQuest : QuestBase {
 					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
 						InsertDialogue("FUSKIS");
 
+					mood = OpponentMood.NEUTRAL;
+
 					informationsText.text = "VINST, Tryck för att gå vidare";
 					Instantiate(Resources.Load("FadeCorrect"));
 					winsPlayer++;
@@ -412,13 +414,7 @@ public class DiceQuest : QuestBase {
 				}
 				else if(playerPoints == totalPoints)
 				{
-					if(mood == OpponentMood.SAD)
-						InsertDialogue("Puh, vilken tur");
-					else if(mood == OpponentMood.NEUTRAL)
-						InsertDialogue("Där ser man");
-					else if(mood == OpponentMood.HAPPY || mood == OpponentMood.ECSTATIC)
-						InsertDialogue("Oooh, nära");
-
+					InsertDialogue("Där ser man");
 					informationsText.text = "Oavgjort, tryck för att gå vidare";
 				}
 				else
