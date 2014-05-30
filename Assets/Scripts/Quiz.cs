@@ -13,6 +13,7 @@ public class Quiz : MonoBehaviour {
 
 	public Texture texture;
 	public string introText = "QUIZ YEAH!";
+	public string outroText = "";
 	public bool randomizeQuestions;
 	public Question[] questions;
 	public int speechDistance = 20;
@@ -56,6 +57,8 @@ public class Quiz : MonoBehaviour {
 			
 		else
 			questionText.text = "Grattis! Du klarade " + points + " av " + questions.Length + " frågor!";
+
+		questionText.text = questionText.text + "\n"+ outroText;
 		FormatMainText ();
 		for (int i = 0; i < buttons.Length; i++) {
 			SetButtonEnabled(buttons[i], false);
