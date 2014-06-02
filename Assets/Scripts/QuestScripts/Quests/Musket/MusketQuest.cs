@@ -22,16 +22,19 @@ public class MusketQuest : MonoBehaviour {
 	private Transform _playerTransform;
 
 	private GameObject endNotification;
+	private GameObject reminder;
 	
 	void Start () {
 //		EventManager.OnQuest += QuestRespons;
 		EventManager.QuestEvent += new QuestHandler(QuestRespons);
 		//_playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
+		reminder = (GameObject)Instantiate (Resources.Load ("ReminderText"));
 		_questEnded = false;
 		_questStarted = false;
 		_firstHit = false;
 		_totalPoints = 0;
+
 	}
 
 	void Test(object o, QuestEventArgs e){
@@ -76,7 +79,7 @@ public class MusketQuest : MonoBehaviour {
 			}
 			if(e.QuestType == QuestTypeEnum.Started){
 				Debug.Log("Reset Quest");
-				ResetQuest(); //Really start quest...
+				QuestStart(); //Really start quest...
 				_questStarted = true;
 			}
 			//Test stuff
@@ -125,10 +128,15 @@ public class MusketQuest : MonoBehaviour {
 		EventManager.TriggerDisableAndroid(args);
 
 		endNotification.GetComponent<endNotificationScript> ().Activate ("Grattis du klarade spelet, du fick " + _totalPoints + " poäng!");
+		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
 	}
 
-	void ResetQuest(){
+	void QuestStart(){
 		Debug.Log("MusketQuest resetQuest");
+
+		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
+		reminder.SetActive (true);
+		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Håll siktet över måltavlan, och skjut så nära mitten du kan. Mitten ger 10 poäng, Andra ringen 5, Tredje ringen 2.");
 		AndroidDisableArgs args = new AndroidDisableArgs();
 		args.Disable = true;
 		EventManager.TriggerDisableAndroid(args);
