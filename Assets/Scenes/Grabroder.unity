@@ -911,7 +911,7 @@ Prefab:
     - target: {fileID: 9500000, guid: 4777d6aafb378784fb701f1c9b074ca6, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 59770e9aaa3637b42b827b6c8583287d, type: 2}
+      objectReference: {fileID: 9100000, guid: d73e6d97d357a1f4f926015b6a72d5b6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4777d6aafb378784fb701f1c9b074ca6, type: 3}
   m_RootGameObject: {fileID: 2033614191}
@@ -6532,7 +6532,7 @@ Animator:
   m_GameObject: {fileID: 179088902}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 30f38e6e250055243b5f6405cfbe4338, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c5a7fc46f0111047a09b9bc5aabd5bf, type: 2}
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
@@ -6566,8 +6566,8 @@ MonoBehaviour:
       Han hade en bl\xE5, eller var den gr\xE5, halsduk p\xE5 sig. Gick runt h\xF6rnet
       till fr\xE5gesportsmannen."
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
-    isQuestTrigger: 0
-    nameOfQuest: 
+    isQuestTrigger: 1
+    nameOfQuest: SpionPerson
   - quitOnPress: 1
     textOnButton: "Hej d\xE5"
     shownInfoWhenPressed: 
@@ -9450,6 +9450,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 260712979}
   - 137: {fileID: 260712980}
+  - 95: {fileID: 260712981}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -9538,6 +9539,20 @@ SkinnedMeshRenderer:
     m_Center: {x: .0799918473, y: -.000851303339, z: -.0309878588}
     m_Extent: {x: .173762113, y: .446793139, z: .423176944}
   m_DirtyAABB: 0
+--- !u!95 &260712981
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260712978}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d73e6d97d357a1f4f926015b6a72d5b6, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1001 &260725684
 Prefab:
   m_ObjectHideFlags: 0
@@ -22422,6 +22437,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.62023902
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 30f38e6e250055243b5f6405cfbe4338, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9c5a7fc46f0111047a09b9bc5aabd5bf, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30f38e6e250055243b5f6405cfbe4338, type: 3}
   m_RootGameObject: {fileID: 179088902}
@@ -24583,8 +24602,8 @@ MonoBehaviour:
       med bl\xE5, eller var den r\xF6d, halsduk och spelade. F\xF6rlorade tre g\xE5nger
       i rad gjorde han. Efter det gick han vidare, sur som ett \xE4pple."
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
-    isQuestTrigger: 0
-    nameOfQuest: 
+    isQuestTrigger: 1
+    nameOfQuest: SpionPerson
   - quitOnPress: 1
     textOnButton: "Hej d\xE5"
     shownInfoWhenPressed: 
@@ -60311,6 +60330,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1539238324}
   - 95: {fileID: 1539238325}
+  - 65: {fileID: 1539238327}
+  - 114: {fileID: 1539238326}
   m_Layer: 0
   m_Name: "BondeGr\xF6n"
   m_TagString: Untagged
@@ -60345,6 +60366,55 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!114 &1539238326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1539238323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: Hej hej.
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 0
+    textOnButton: "Om Gr\xE5br\xF6der"
+    shownInfoWhenPressed: Shoobapalele
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+  - quitOnPress: 0
+    textOnButton: Om spionen
+    shownInfoWhenPressed: "Jag s\xE5g en misst\xE4nksam man med halsduk h\xE4r omkring.
+      Han hade en bl\xE5, eller var den gr\xE5, halsduk p\xE5 sig. Gick runt h\xF6rnet
+      till fr\xE5gesportsmannen."
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 1
+    nameOfQuest: SpionPerson
+  - quitOnPress: 1
+    textOnButton: "Hej d\xE5"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &1539238327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1539238323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .289999992, y: .779999971, z: .200000003}
+  m_Center: {x: 0, y: .389999986, z: 0}
 --- !u!1 &1539790746
 GameObject:
   m_ObjectHideFlags: 0
@@ -70248,6 +70318,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1791597053}
   - 95: {fileID: 1791597054}
+  - 65: {fileID: 1791597056}
+  - 114: {fileID: 1791597055}
   m_Layer: 0
   m_Name: "BondeBl\xE5"
   m_TagString: Untagged
@@ -70282,6 +70354,55 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!114 &1791597055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1791597052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: Hej hej.
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 0
+    textOnButton: "Om Gr\xE5br\xF6der"
+    shownInfoWhenPressed: Shoobapalele
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+  - quitOnPress: 0
+    textOnButton: Om spionen
+    shownInfoWhenPressed: "Jag s\xE5g en misst\xE4nksam man med halsduk h\xE4r omkring.
+      Han hade en bl\xE5, eller var den gr\xE5, halsduk p\xE5 sig. Gick runt h\xF6rnet
+      till fr\xE5gesportsmannen."
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 1
+    nameOfQuest: SpionPerson
+  - quitOnPress: 1
+    textOnButton: "Hej d\xE5"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &1791597056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1791597052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .289999992, y: .779999971, z: .200000003}
+  m_Center: {x: 0, y: .389999986, z: 0}
 --- !u!1 &1792694223
 GameObject:
   m_ObjectHideFlags: 0
@@ -71619,6 +71740,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1837219728}
   - 95: {fileID: 1837219729}
+  - 65: {fileID: 1837219730}
   m_Layer: 0
   m_Name: "BondeR\xF6d"
   m_TagString: Untagged
@@ -71653,6 +71775,18 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!65 &1837219730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1837219727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .289999992, y: .779999971, z: .200000003}
+  m_Center: {x: 0, y: .389999986, z: 0}
 --- !u!1 &1838543595
 GameObject:
   m_ObjectHideFlags: 0
@@ -79438,9 +79572,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 4acf852886a856248a96704e0792a232, type: 3}
   - {fileID: 2800000, guid: 2974fda5c79e1ab4789d03bf73030bc9, type: 3}
   namn:
-  - Sven Svensson
-  - Jens Fagerstedt
-  - Mads
+  - Sven
+  - "J\xF6ns "
+  - Gustav
 --- !u!114 &2032241359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79607,7 +79741,7 @@ Animator:
   m_GameObject: {fileID: 2033614191}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4777d6aafb378784fb701f1c9b074ca6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 59770e9aaa3637b42b827b6c8583287d, type: 2}
+  m_Controller: {fileID: 9100000, guid: d73e6d97d357a1f4f926015b6a72d5b6, type: 2}
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
@@ -81385,6 +81519,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 2078222831}
   - 95: {fileID: 2078222832}
+  - 65: {fileID: 2078222834}
+  - 114: {fileID: 2078222833}
   m_Layer: 0
   m_Name: BondeQuest
   m_TagString: Untagged
@@ -81420,6 +81556,55 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!114 &2078222833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078222830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: Hej hej.
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 0
+    textOnButton: "Om Gr\xE5br\xF6der"
+    shownInfoWhenPressed: Shoobapalele
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+  - quitOnPress: 0
+    textOnButton: Om spionen
+    shownInfoWhenPressed: "Jag s\xE5g en misst\xE4nksam man med halsduk h\xE4r omkring.
+      Han hade en bl\xE5, eller var den gr\xE5, halsduk p\xE5 sig. Gick runt h\xF6rnet
+      till fr\xE5gesportsmannen."
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 1
+    nameOfQuest: SpionPerson
+  - quitOnPress: 1
+    textOnButton: "Hej d\xE5"
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
+--- !u!65 &2078222834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2078222830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .289999992, y: .779999971, z: .200000003}
+  m_Center: {x: 0, y: .389999986, z: 0}
 --- !u!1 &2080104899
 GameObject:
   m_ObjectHideFlags: 0

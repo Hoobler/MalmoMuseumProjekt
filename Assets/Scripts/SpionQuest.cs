@@ -10,12 +10,23 @@ public class SpionQuest : QuestBase {
 	bool questActive;
 	GameObject dialogueWindow;
 	GameObject cancelKnapp;
+	GameObject endDiag;
 	Rect[] choiceBounds;
 	bool mouseButtonWasPreviouslyDown = false;
+	bool canceledSpionQuest = false;
+	bool hasChosenSpy = false;
+
+	int antalPratatMed = 0;
+	int antalAttPrataMed = 3;
 
 	// Use this for initialization
 	void Start () {
+		antalPratatMed = 0;
+		hasChosenSpy = false;
 		questActive = false;
+		endDiag = (GameObject)Instantiate(Resources.Load ("QuestEndDialogue"));
+		endDiag.transform.parent = GameObject.Find ("Spion").transform;
+
 	}
 	
 	// Update is called once per frame
@@ -33,6 +44,7 @@ public class SpionQuest : QuestBase {
 				}
 				if(cancelKnapp.guiTexture.GetScreenRect().Contains(Input.mousePosition))
 				{
+					canceledSpionQuest = true;
 					TriggerFinish(false);
 				}
 			}
@@ -43,6 +55,16 @@ public class SpionQuest : QuestBase {
 
 	public override void TriggerStart ()
 	{
+		if (antalPratatMed < antalAttPrataMed) {
+			TriggerFinish (false);
+			return;
+		}
+		if (hasChosenSpy) {
+			TriggerFinish (true);
+			return;
+		}
+
+		canceledSpionQuest = false;
 		choiceBounds = new Rect[3];
 		questActive = true;
 		dialogueWindow = new GameObject ("SpionFonster");
@@ -98,7 +120,29 @@ public class SpionQuest : QuestBase {
 	public override void TriggerFinish (bool success)
 	{
 		questActive = false;
+		if (success) {
+			if(!hasChosenSpy){
+				endDiag.GetComponent<endNotificationScript> ().Activate ("Tack för din hjälp, vi har det i åtanke.");
+				hasChosenSpy = true;
+				if (PlayerPrefs.GetInt ("Gquest") == 0)
+					PlayerPrefs.SetInt ("Gquest", 1);
+				else if (PlayerPrefs.GetInt ("Gquest") == 2)
+					PlayerPrefs.SetInt ("Gquest", 3);
+			}
+			else
+				endDiag.GetComponent<endNotificationScript> ().Activate ("Tack för tanken, men du har redan pekat ut någon.");
+
+		} else if(!success){
+			if(canceledSpionQuest)
+				endDiag.GetComponent<endNotificationScript> ().Activate ("Ok, kom tillbaka när du känner dig mer säker.");
+			else
+				endDiag.GetComponent<endNotificationScript> ().Activate ("Jag tror du måste prata med fler folk innan du pekar ut någon.");			
+		}
 		base.TriggerFinish (success);
 		Destroy (dialogueWindow);
+	}
+
+	public void PratatMedFolk(){
+		antalPratatMed++;
 	}
 }

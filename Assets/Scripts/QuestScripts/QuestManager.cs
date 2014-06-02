@@ -39,6 +39,10 @@ public class QuestManager : MonoBehaviour {
 			if(name == "GraBroderSpion") {
 				((QuestBase) GameObject.Find ("QuestGiverSpion").GetComponent("SpionQuest")).TriggerStart();
 			}
+			if(name == "SpionPerson"){
+				((SpionQuest) GameObject.Find ("QuestGiverSpion").GetComponent("SpionQuest")).PratatMedFolk();
+				QuestFinished();
+			}
 		}
 	}
 
