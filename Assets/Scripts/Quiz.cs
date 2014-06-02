@@ -47,11 +47,11 @@ public class Quiz : MonoBehaviour {
 			questionText.text = "Du klarade inte en enda fråga. =(";
 		else if (points == questions.Length) {
 			questionText.text = "Grattis, du klarade alla frågor!";
-			if(Application.loadedLevel == 0)
+			if(Application.loadedLevel == 2)
 				PlayerPrefs.SetInt("LTquiz", 1);
-			else if(Application.loadedLevel == 2)
-				PlayerPrefs.SetInt("Squiz", 1);
 			else if(Application.loadedLevel == 3)
+				PlayerPrefs.SetInt("Squiz", 1);
+			else if(Application.loadedLevel == 4)
 				PlayerPrefs.SetInt("Gquiz", 1);
 		}
 			
