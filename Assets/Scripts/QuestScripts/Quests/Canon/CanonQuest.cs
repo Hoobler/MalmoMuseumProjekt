@@ -128,6 +128,10 @@ public class CanonQuest : QuestBase  {
 		nr_of_hits = 0;
         ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
 		reminder.SetActive (false);
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = true;
+		args.Right = true;
+		EventManager.TriggerDisableAndroid(args);
 	}
 
 	// Use this for initialization

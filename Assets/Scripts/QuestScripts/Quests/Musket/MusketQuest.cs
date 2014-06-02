@@ -124,11 +124,13 @@ public class MusketQuest : MonoBehaviour {
 		EventManager.OnQuestEvent(qEvArgs);
 		//Enable Android again!
 		AndroidDisableArgs args = new AndroidDisableArgs();
-		args.Disable = false;
+		args.Left = true;
+		args.Right = true;
 		EventManager.TriggerDisableAndroid(args);
 
 		endNotification.GetComponent<endNotificationScript> ().Activate ("Grattis du klarade spelet, du fick " + _totalPoints + " poäng!");
-		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true;
+		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true ;
+		reminder.SetActive (false);
 	}
 
 	void QuestStart(){
@@ -138,7 +140,8 @@ public class MusketQuest : MonoBehaviour {
 		reminder.SetActive (true);
 		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Håll siktet över måltavlan, och skjut så nära mitten du kan. Mitten ger 10 poäng, Andra ringen 5, Tredje ringen 2.");
 		AndroidDisableArgs args = new AndroidDisableArgs();
-		args.Disable = true;
+		args.Left = false;
+		args.Right = true;
 		EventManager.TriggerDisableAndroid(args);
 //		EventManager.TriggerOnQuest(MiniGamesEnum.Musköt, new QuestEventArgs(QuestTypeEnum.Reset));
 		_totalPoints = 0;

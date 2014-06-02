@@ -95,6 +95,11 @@ public class DialogueTest: MonoBehaviour {
 
 	void Init(){
 
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = false;
+		args.Right = false;
+		EventManager.TriggerDisableAndroid(args);
+
 		dialogueObject = new GameObject ("Dialogue");
 		questManager = GameObject.Find ("Quest_Handler").GetComponent (typeof(QuestManager)) as QuestManager;
 
@@ -138,8 +143,16 @@ public class DialogueTest: MonoBehaviour {
 
 	}
 
+	void KillConversationThroughQuest() {
+		Destroy (dialogueObject);
+		conversationActive = false;
+	}
 
 	void KillConversation(){
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = true;
+		args.Right = true;
+		EventManager.TriggerDisableAndroid(args);
 		Destroy (dialogueObject);
 		conversationActive = false;
 		}
@@ -150,24 +163,31 @@ public class DialogueTest: MonoBehaviour {
 				previousActionWasMouseButtonDown = true;
 				if(exitCross.GetScreenRect().Contains(Input.mousePosition))
 					KillConversation();
-					for(int i = 0; i < buttons.Length; i++)
-					{
-						if (buttons[i].background.GetScreenRect ().Contains (Input.mousePosition)) {
-					
-							if (questManager && buttons[i].isQuestTrigger)
-								questManager.ActivateQuest(buttons[i].nameOfQuest);
-					
+				for(int i = 0; i < buttons.Length; i++)
+				{
+					if (buttons[i].background.GetScreenRect ().Contains (Input.mousePosition)) {
+				
+						if (questManager && buttons[i].isQuestTrigger)
+						{
+							questManager.ActivateQuest(buttons[i].nameOfQuest);
 							if(buttons[i].quitOnPress)
 							{
-								KillConversation();
+
+								KillConversationThroughQuest();
 								break;
 							}
-					
-							mainGUIText.text = buttons[i].shownInfoWhenPressed;
-							FormatMainText();
+						}
+						else if(buttons[i].quitOnPress)
+						{
+							KillConversation();
 							break;
 						}
+				
+						mainGUIText.text = buttons[i].shownInfoWhenPressed;
+						FormatMainText();
+						break;
 					}
+				}
 
 			}
 			else

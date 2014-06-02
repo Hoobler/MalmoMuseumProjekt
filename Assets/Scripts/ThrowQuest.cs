@@ -147,6 +147,10 @@ public class ThrowQuest : QuestBase {
 		chargeRate = 0.009f;
 		totalTimeBetweenThrows = 1.0f;
 
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = false;
+		args.Right = false;
+		EventManager.TriggerDisableAndroid(args);
 
 	}
 
@@ -201,5 +205,9 @@ public class ThrowQuest : QuestBase {
 			Destroy (chargeBar);
         Destroy(throwButton);
         ((GUITexture)(GameObject.Find("Karta")).GetComponentInChildren(typeof(GUITexture))).enabled = true;
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = true;
+		args.Right = true;
+		EventManager.TriggerDisableAndroid(args);
 	}
 }

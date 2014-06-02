@@ -226,7 +226,10 @@ public class Quiz : MonoBehaviour {
 	public void TriggerStart()
 	{
 		quizHasActuallyStarted = false;
-
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = false;
+		args.Right = false;
+		EventManager.TriggerDisableAndroid(args);
 
 		ActivatePreQuiz ();
 	}
@@ -235,6 +238,10 @@ public class Quiz : MonoBehaviour {
 	{
 		quizActive = false;
 		quizHasActuallyStarted = false;
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = true;
+		args.Right = true;
+		EventManager.TriggerDisableAndroid(args);
 		Destroy (quizParent);
 	}
 

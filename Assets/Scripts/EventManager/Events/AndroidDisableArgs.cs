@@ -4,10 +4,17 @@ using System;
 
 public class AndroidDisableArgs : EventArgs {
 
-	private bool _disable;
+	private bool _left;
+	private bool _right;
 
-	public bool Disable{
-		get{ return _disable; }
-		set{ _disable = value; }
+	public bool Left{
+		get{ return _left; }
+		set{ _left = value; }
 	}
+
+	public bool Right{
+		get{ return _right; }
+		set{ _right = value; }
+	}
+
 }

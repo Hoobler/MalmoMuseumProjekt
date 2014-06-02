@@ -151,7 +151,10 @@ public class DiceQuest : QuestBase {
 		reminder.SetActive (false);
 		playerCounter.SetActive (false);
 		opponentCounter.SetActive (false);
-
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = true;
+		args.Right = true;
+		EventManager.TriggerDisableAndroid(args);
 	}
 
 

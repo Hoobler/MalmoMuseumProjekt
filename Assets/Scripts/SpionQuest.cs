@@ -117,6 +117,8 @@ public class SpionQuest : QuestBase {
 		                                              backTexture.GetScreenRect().width*0.6f,
 		                                              backTexture.GetScreenRect().height*0.2f);
 
+
+
 	}
 
 	public override void TriggerFinish (bool success)
@@ -142,6 +144,10 @@ public class SpionQuest : QuestBase {
 		}
 		base.TriggerFinish (success);
 		Destroy (dialogueWindow);
+		AndroidDisableArgs args = new AndroidDisableArgs();
+		args.Left = true;
+		args.Right = true;
+		EventManager.TriggerDisableAndroid(args);
 	}
 
 	public void PratatMedFolk(){

@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour {
 	public Transform ShootSpot;
 	public Texture ReloadTexture;
 
+	private Transform player;
 	private ParticleSystem particle;
 
 	private float _reloadTimeLeft;
@@ -27,15 +28,21 @@ public class Shoot : MonoBehaviour {
 	private RaycastHit _hit;
 	private Transform _cameraTransform;
 
+	private Rect fireButtonBoundsDraw;
+	private Rect fireButtonBoundsInput;
+	public Texture fireButtonTexture;
+
 	void Start () {
 	
 		_reloadTimeLeft = ReloadTime;
 		_questStared = false;
 		_firstHit = false;
 		_goToSpot = false;
-
+		fireButtonBoundsDraw = new Rect(Screen.width*0.1f, Screen.height*0.9f - Screen.width*0.1f, Screen.width*0.1f, Screen.width*0.1f);
+		fireButtonBoundsInput = new Rect(Screen.width*0.1f, Screen.height*0.1f, Screen.width*0.1f, Screen.width*0.1f);
 		EventManager.QuestEvent +=  new QuestHandler(ShootQuestRespons);
 //		EventManager.OnTouchEvent += TouchRespons;
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		particle = GameObject.Find("Smoke").GetComponent("ParticleSystem") as ParticleSystem;
 		if(particle != null){
 			particle.Stop();
@@ -47,23 +54,31 @@ public class Shoot : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if(_weaponActive && _reloading){
-			float w = ((ReloadTime - _reloadTimeLeft) / ReloadTime) * 200;
-			GUI.DrawTexture(new Rect(Screen.width/2 - 100, Screen.height/1.1f, w, 15), ReloadTexture);
+		if(_weaponActive){
+			GUI.DrawTexture(fireButtonBoundsDraw, fireButtonTexture);
+			if(_reloading)
+			{
+				float w = ((ReloadTime - _reloadTimeLeft) / ReloadTime) * 200;
+				GUI.DrawTexture(new Rect(Screen.width/2 - 100, Screen.height/1.1f, w, 15), ReloadTexture);
+			}
 		}
 	}
 
 	void Update () {
+
 		if(_questStared && _goToSpot){
-			_newShootSpot = new Vector3(ShootSpot.transform.position.x, transform.position.y, ShootSpot.transform.position.z);
+			_newShootSpot = new Vector3(ShootSpot.transform.position.x, player.position.y, ShootSpot.transform.position.z);
 			MovePlayerToShootSpot();
 		}
 		if(_weaponActive && !_reloading){
 			if(Input.GetMouseButtonDown(0)){
-				Debug.Log("Mouse Shoot!");
-				RayCastChecker();
-				if(particle != null){
-					particle.Play ();
+				if(fireButtonBoundsInput.Contains(Input.mousePosition))
+				{
+					Debug.Log("Mouse Shoot!");
+					RayCastChecker();
+					if(particle != null){
+						particle.Play ();
+					}
 				}
 			}
 //			if(Input.touchCount > 0){
@@ -138,7 +153,7 @@ public class Shoot : MonoBehaviour {
 		_reloading = true;
 		Vector3 direction = Random.insideUnitCircle * ScaleLimit;
 		direction.z = CircleDepth;
-		direction = transform.TransformDirection ( direction.normalized );
+		direction = player.TransformDirection ( direction.normalized );
 
 		_cameraTransform = Camera.main.transform;
 		_ray = new Ray(_cameraTransform.position, direction);
@@ -169,14 +184,14 @@ public class Shoot : MonoBehaviour {
 		float rate = 0;
 		float speed = 2;
 
-		distToShootSpot = Vector3.Distance(transform.position, _newShootSpot);
+		distToShootSpot = Vector3.Distance(player.position, _newShootSpot);
 		rate = Time.deltaTime * speed;
 
 		if(distToShootSpot <= 0.01f){
 			_goToSpot = false;
 		}
 		if(_goToSpot){
-			this.transform.position = Vector3.MoveTowards(transform.position, _newShootSpot, rate);
+			player.position = Vector3.MoveTowards(player.position, _newShootSpot, rate);
 		}
 	
 		if(!_goToSpot){

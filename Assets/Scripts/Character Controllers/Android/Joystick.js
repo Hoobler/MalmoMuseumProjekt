@@ -62,7 +62,7 @@ function Start()
 							   inset ,
 							   size ,
 							   size);
-	
+	Debug.Log("Pixel X: " + gui.pixelInset.x);
 	
 	// Store the default rect for the gui, so we can snap back to it
 	defaultRect = gui.pixelInset;	
