@@ -20,12 +20,14 @@ public class MusketQuest : MonoBehaviour {
 	private int _totalPoints;
 	private float _timeElapsed;
 	private Transform _playerTransform;
+
+	private GameObject endNotification;
 	
 	void Start () {
 //		EventManager.OnQuest += QuestRespons;
 		EventManager.QuestEvent += new QuestHandler(QuestRespons);
 		//_playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
+		endNotification = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
 		_questEnded = false;
 		_questStarted = false;
 		_firstHit = false;
@@ -122,9 +124,7 @@ public class MusketQuest : MonoBehaviour {
 		args.Disable = false;
 		EventManager.TriggerDisableAndroid(args);
 
-		GameObject endDiag = (GameObject)Instantiate (Resources.Load ("QuestEndDialogue"));
-		GUIText endText = (GUIText)endDiag.GetComponentInChildren (typeof(GUIText));
-		endText.text = "Du fick " + _totalPoints + " poäng!";
+		endNotification.GetComponent<endNotificationScript> ().Activate ("Grattis du klarade spelet, du fick " + _totalPoints + " poäng!");
 	}
 
 	void ResetQuest(){
