@@ -63137,7 +63137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
-  introText: QUIZ YEAH!
+  introText: "Vill du svara p\xE5 lite fr\xE5gor om Lilla Torg ?"
+  outroText: 
   randomizeQuestions: 1
   questions:
   - question: "Lilla torg anv\xE4ndes som en handlingsplats. Vilka varor kunde man
