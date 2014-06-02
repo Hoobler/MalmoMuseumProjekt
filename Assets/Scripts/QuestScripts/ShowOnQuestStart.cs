@@ -15,17 +15,20 @@ public class ShowOnQuestStart : MonoBehaviour {
 			Debug.Log("miniEnum: " + e.MiniGames);
 			Debug.Log("ShowOnQuest inside miniEnum");
 			if(e.QuestType == QuestTypeEnum.Started){
+
 				Debug.Log("ShowOnQuest evArgs QuestStarted");
-				if(gameObject.renderer != null){
-					Debug.Log("Showonquest not null");
-				}
-				if(gameObject.renderer == null){
-					Debug.Log("Showonquest is null");
-				}
-				gameObject.renderer.enabled = true;
+//				if(gameObject.renderer != null){
+//					Debug.Log("Showonquest not null");
+//				}
+//				else{
+//					Debug.Log("Showonquest is null");
+//				}
+				if(gameObject.renderer != null)
+					gameObject.renderer.enabled = true;
 			}
 			if(e.QuestType == QuestTypeEnum.Finnished){
 				Debug.Log("ShowOnQuest evArgs QuestFin");
+			if(gameObject.renderer != null)
 				gameObject.renderer.enabled = false;
 			}
 		}

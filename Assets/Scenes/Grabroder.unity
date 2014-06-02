@@ -39625,7 +39625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pcController: {fileID: 100002, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
-  androidController: {fileID: 100018, guid: 879566529466b4acb9d9b47176abe812, type: 2}
+  androidController: {fileID: 100018, guid: fd26f1d7696a5c04bbf245966b3900be, type: 2}
 --- !u!4 &968124732
 Transform:
   m_ObjectHideFlags: 0

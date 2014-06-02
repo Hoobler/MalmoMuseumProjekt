@@ -230,12 +230,13 @@ public class Quiz : MonoBehaviour {
 		args.Left = false;
 		args.Right = false;
 		EventManager.TriggerDisableAndroid(args);
-
+		previousActionWasMouseButtonDown = false;
 		ActivatePreQuiz ();
 	}
 
 	public void TriggerFinish()
 	{
+		previousActionWasMouseButtonDown = false;
 		quizActive = false;
 		quizHasActuallyStarted = false;
 		AndroidDisableArgs args = new AndroidDisableArgs();
@@ -283,11 +284,12 @@ public class Quiz : MonoBehaviour {
 	void OnMouseDown()
 	{
 
-		if (!quizActive && !GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress()) {
+		if (!quizActive && !GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress() && !previousActionWasMouseButtonDown) {
 			if(Vector3.Distance(GameObject.FindGameObjectWithTag ("Player").transform.position, this.transform.position) < speechDistance){
-				TriggerStart ();
+
 				previousActionWasMouseButtonDown = true;
 				quizActive = true;
+				TriggerStart ();
 			}
 		}
 	}

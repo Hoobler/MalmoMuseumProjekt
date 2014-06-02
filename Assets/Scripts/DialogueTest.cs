@@ -99,6 +99,7 @@ public class DialogueTest: MonoBehaviour {
 		args.Left = false;
 		args.Right = false;
 		EventManager.TriggerDisableAndroid(args);
+		Debug.Log ("A CONVERSATION HAS BEEN STARTED");
 
 		dialogueObject = new GameObject ("Dialogue");
 		questManager = GameObject.Find ("Quest_Handler").GetComponent (typeof(QuestManager)) as QuestManager;
@@ -146,6 +147,9 @@ public class DialogueTest: MonoBehaviour {
 	void KillConversationThroughQuest() {
 		Destroy (dialogueObject);
 		conversationActive = false;
+		Debug.Log ("A CONVERSATION HAS BEEN STOPPED THROUGH QUEST");
+		previousActionWasMouseButtonDown = false;
+		conversationActive = false;
 	}
 
 	void KillConversation(){
@@ -154,6 +158,9 @@ public class DialogueTest: MonoBehaviour {
 		args.Right = true;
 		EventManager.TriggerDisableAndroid(args);
 		Destroy (dialogueObject);
+		conversationActive = false;
+		Debug.Log ("A CONVERSATION HAS BEEN STOPPED IN GENERAL");
+		previousActionWasMouseButtonDown = false;
 		conversationActive = false;
 		}
 
@@ -197,14 +204,15 @@ public class DialogueTest: MonoBehaviour {
 		}
 	}
 	void OnMouseDown(){
-		if(!GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress())
+		if(!GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().IsQuestInProgress() && !previousActionWasMouseButtonDown)
 		{
 			playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
 			if(Vector3.Distance(playerTransform.position, this.transform.position) < speechDistance)
 				if (!conversationActive) {
 				previousActionWasMouseButtonDown = true;
+				conversationActive = true;
 					Init ();
-					conversationActive = true;
+					
 				}		
 		}
 	}
