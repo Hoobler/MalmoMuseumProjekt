@@ -24068,6 +24068,7 @@ GameObject:
   - 4: {fileID: 589788469}
   - 111: {fileID: 589788470}
   - 65: {fileID: 589788471}
+  - 114: {fileID: 589788472}
   m_Layer: 0
   m_Name: WlObjPig_Idle
   m_TagString: Untagged
@@ -24117,6 +24118,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.49000001, y: 2.3499999, z: 4.19999981}
   m_Center: {x: 0, y: 1.02999997, z: 0}
+--- !u!114 &589788472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 589788468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: "N\xF6ff. N\xF6ff."
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: Okej
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
 --- !u!1001 &591182316
 Prefab:
   m_ObjectHideFlags: 0
@@ -60385,15 +60409,16 @@ MonoBehaviour:
   buttons:
   - quitOnPress: 0
     textOnButton: "Om Gr\xE5br\xF6der"
-    shownInfoWhenPressed: Shoobapalele
+    shownInfoWhenPressed: "Har du kommit f\xF6r fr\xE5gespelet? \xC4r r\xE4tt kul
+      faktiskt."
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 0
     nameOfQuest: 
   - quitOnPress: 0
     textOnButton: Om spionen
-    shownInfoWhenPressed: "Jag s\xE5g en misst\xE4nksam man med halsduk h\xE4r omkring.
-      Han hade en bl\xE5, eller var den gr\xE5, halsduk p\xE5 sig. Gick runt h\xF6rnet
-      till fr\xE5gesportsmannen."
+    shownInfoWhenPressed: "En man med bl\xE5 halsduk gick f\xF6rbi h\xE4r, ilsken
+      som sjutton. Jag tror han hade f\xF6rlorat p\xE5 t\xE4rningspelet. Hur som helst
+      sprang han vidare till mannen som h\xE5ller i fr\xE5gesporten."
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
     nameOfQuest: SpionPerson
@@ -70379,9 +70404,9 @@ MonoBehaviour:
     nameOfQuest: 
   - quitOnPress: 0
     textOnButton: Om spionen
-    shownInfoWhenPressed: "Jag s\xE5g en misst\xE4nksam man med halsduk h\xE4r omkring.
-      Han hade en bl\xE5, eller var den gr\xE5, halsduk p\xE5 sig. Gick runt h\xF6rnet
-      till fr\xE5gesportsmannen."
+    shownInfoWhenPressed: "Jo, jag s\xE5g en man med r\xF6d halsduk springa h\xE4r.
+      Han bad om att k\xF6pa ett \xE4pple och sedan gick vidare. Ser du honom, s\xE4g
+      att han ska betala f\xF6r \xE4pplet han tog."
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
     nameOfQuest: SpionPerson
@@ -81574,23 +81599,17 @@ MonoBehaviour:
   abortConversationDistance: 20
   buttons:
   - quitOnPress: 0
-    textOnButton: "Om Gr\xE5br\xF6der"
-    shownInfoWhenPressed: Shoobapalele
-    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
-    isQuestTrigger: 0
-    nameOfQuest: 
-  - quitOnPress: 0
     textOnButton: Om spionen
-    shownInfoWhenPressed: "Jag s\xE5g en misst\xE4nksam man med halsduk h\xE4r omkring.
-      Han hade en bl\xE5, eller var den gr\xE5, halsduk p\xE5 sig. Gick runt h\xF6rnet
-      till fr\xE5gesportsmannen."
+    shownInfoWhenPressed: "Jag s\xE5g b\xE5de en man med r\xF6d halsduk och en med
+      bl\xE5. Den med bl\xE5 halsduken gick till t\xE4rningspelet, precis n\xE4r den
+      r\xF6da gick d\xE4rifr\xE5n."
     backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
     isQuestTrigger: 1
     nameOfQuest: SpionPerson
   - quitOnPress: 1
     textOnButton: "Hej d\xE5"
     shownInfoWhenPressed: 
-    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    backgroundTexture: {fileID: 0}
     isQuestTrigger: 0
     nameOfQuest: 
 --- !u!65 &2078222834
@@ -83798,6 +83817,7 @@ GameObject:
   - 4: {fileID: 2131841592}
   - 111: {fileID: 2131841594}
   - 65: {fileID: 2131841593}
+  - 114: {fileID: 2131841595}
   m_Layer: 0
   m_Name: Bull
   m_TagString: Untagged
@@ -83845,6 +83865,29 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &2131841595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131841591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6a37a8b6c742c41af7ddd91535d796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introText: Mu.
+  font: {fileID: 0}
+  backgroundTexture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  speechDistance: 10
+  abortConversationDistance: 20
+  buttons:
+  - quitOnPress: 1
+    textOnButton: Okej
+    shownInfoWhenPressed: 
+    backgroundTexture: {fileID: 2800000, guid: d59e70ccf884a37478aee12c479ce321, type: 3}
+    isQuestTrigger: 0
+    nameOfQuest: 
 --- !u!1 &2132414283
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,13 +15,14 @@ public class SpionQuest : QuestBase {
 	bool mouseButtonWasPreviouslyDown = false;
 	bool canceledSpionQuest = false;
 	bool hasChosenSpy = false;
-
+	int chosen = 0;
 	int antalPratatMed = 0;
 	int antalAttPrataMed = 3;
 
 	// Use this for initialization
 	void Start () {
 		antalPratatMed = 0;
+		chosen = 0;
 		hasChosenSpy = false;
 		questActive = false;
 		endDiag = (GameObject)Instantiate(Resources.Load ("QuestEndDialogue"));
@@ -39,6 +40,7 @@ public class SpionQuest : QuestBase {
 				{
 					if(choiceBounds[i].Contains(Input.mousePosition))
 					{
+						chosen = i;
 						TriggerFinish(true);
 					}
 				}
@@ -122,7 +124,7 @@ public class SpionQuest : QuestBase {
 		questActive = false;
 		if (success) {
 			if(!hasChosenSpy){
-				endDiag.GetComponent<endNotificationScript> ().Activate ("Tack för din hjälp, vi har det i åtanke.");
+				endDiag.GetComponent<endNotificationScript> ().Activate ("Tack för din hjälp, vi har det i åtanke.\n\n"+namn[chosen]+" kommer nog skickas till Värnhem för att hängas. ROLIGT VA");
 				hasChosenSpy = true;
 				if (PlayerPrefs.GetInt ("Gquest") == 0)
 					PlayerPrefs.SetInt ("Gquest", 1);
@@ -130,7 +132,7 @@ public class SpionQuest : QuestBase {
 					PlayerPrefs.SetInt ("Gquest", 3);
 			}
 			else
-				endDiag.GetComponent<endNotificationScript> ().Activate ("Tack för tanken, men du har redan pekat ut någon.");
+				endDiag.GetComponent<endNotificationScript> ().Activate ("Tack för tanken, men du har redan pekat ut någon. " + namn[chosen] + " kommer att skickas till Värnhem.");
 
 		} else if(!success){
 			if(canceledSpionQuest)
