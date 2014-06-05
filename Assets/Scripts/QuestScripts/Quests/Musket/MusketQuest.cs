@@ -137,8 +137,10 @@ public class MusketQuest : MonoBehaviour {
 		Debug.Log("MusketQuest resetQuest");
 
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = false;
-		reminder.SetActive (true);
-		((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Håll siktet över måltavlan, och skjut så nära mitten du kan. Mitten ger 10 poäng, Andra ringen 5, Tredje ringen 2.");
+		if(reminder != null){
+			reminder.SetActive (true);
+			((ReminderTextScript)reminder.GetComponent<ReminderTextScript>()).ChangeText("Håll siktet över måltavlan, och skjut så nära mitten du kan. Mitten ger 10 poäng, Andra ringen 5, Tredje ringen 2.");
+		}
 		AndroidDisableArgs args = new AndroidDisableArgs();
 		args.Left = false;
 		args.Right = true;

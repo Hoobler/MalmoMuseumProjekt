@@ -23,7 +23,7 @@ public class ShowOnQuestStart : MonoBehaviour {
 //				else{
 //					Debug.Log("Showonquest is null");
 //				}
-				if(gameObject.renderer != null)
+				if(gameObject != null)
 					gameObject.renderer.enabled = true;
 			}
 			if(e.QuestType == QuestTypeEnum.Finnished){
