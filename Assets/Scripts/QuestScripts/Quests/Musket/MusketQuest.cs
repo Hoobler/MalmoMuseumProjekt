@@ -120,6 +120,7 @@ public class MusketQuest : MonoBehaviour {
 		_questStarted = false;
 
 		//The quest is finnished! hurr durr!!
+		Debug.Log("CP");
 		QuestEventArgs qEvArgs = new QuestEventArgs(MiniGamesEnum.Musköt ,QuestTypeEnum.Finnished);
 		EventManager.OnQuestEvent(qEvArgs);
 		//Enable Android again!
@@ -128,7 +129,13 @@ public class MusketQuest : MonoBehaviour {
 		args.Right = true;
 		EventManager.TriggerDisableAndroid(args);
 
-		endNotification.GetComponent<endNotificationScript> ().Activate ("Grattis du klarade spelet, du fick " + _totalPoints + " poäng!");
+		if(_totalPoints <= 0){
+			endNotification.GetComponent<endNotificationScript> ().Activate ("Det ser ut som att du missade måltavlan, vill du försöka igen?");
+		}
+		else{
+			endNotification.GetComponent<endNotificationScript> ().Activate ("Grattis du klarade spelet, du fick " + _totalPoints + " poäng!");
+		}
+
 		((GUITexture)(GameObject.Find ("Karta")).GetComponentInChildren (typeof(GUITexture))).enabled = true ;
 		reminder.SetActive (false);
 	}

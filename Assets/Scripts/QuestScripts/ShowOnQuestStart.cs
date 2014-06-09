@@ -3,9 +3,11 @@ using System.Collections;
 
 public class ShowOnQuestStart : MonoBehaviour {
 
+	private GameObject musket;
+
 	// Use this for initialization
 	void Start () {
-		gameObject.renderer.enabled = false;
+		musket = GameObject.FindGameObjectWithTag("Musket");
 		EventManager.QuestEvent += new QuestHandler(ShowOnQuest);
 	}
 	
@@ -17,19 +19,14 @@ public class ShowOnQuestStart : MonoBehaviour {
 			if(e.QuestType == QuestTypeEnum.Started){
 
 				Debug.Log("ShowOnQuest evArgs QuestStarted");
-//				if(gameObject.renderer != null){
-//					Debug.Log("Showonquest not null");
-//				}
-//				else{
-//					Debug.Log("Showonquest is null");
-//				}
-				if(gameObject != null)
-					gameObject.renderer.enabled = true;
+				if(musket != null)
+					musket.renderer.enabled = true;
+		
 			}
 			if(e.QuestType == QuestTypeEnum.Finnished){
 				Debug.Log("ShowOnQuest evArgs QuestFin");
-			if(gameObject.renderer != null)
-				gameObject.renderer.enabled = false;
+				if(musket != null)
+					musket.renderer.enabled = false;
 			}
 		}
 	}

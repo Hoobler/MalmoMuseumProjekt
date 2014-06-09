@@ -8,18 +8,18 @@ public class CrossHair : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_guiTexture = GetComponent<GUITexture>();
-		_guiTexture.enabled = false;
+		//_guiTexture = GameObject.Find("GUI_Crosshair").guiTexture;
 		EventManager.OnActivate += EventRespons;
 	}
 
 	void EventRespons(string type, ActiveEnum activeEnum){
 		if(type == "CrossHair"){
+			Debug.Log("Crosshair");
 			if(activeEnum == ActiveEnum.Active){
-				_guiTexture.enabled = true;
+				GameObject.Find("GUI_Crosshair").guiTexture.enabled = true;
 			}
 			else if(activeEnum == ActiveEnum.Disabled){
-				_guiTexture.enabled = false;
+				GameObject.Find("GUI_Crosshair").guiTexture.enabled = false;
 			}
 		}
 	}
