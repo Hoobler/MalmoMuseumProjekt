@@ -4,6 +4,7 @@ using System.Collections;
 public class QuestManager : MonoBehaviour {
 
 	bool questInProgress = false;
+	bool conversationInProgress = false;
 
 	public void ActivateQuest(string name)
 	{
@@ -54,6 +55,12 @@ public class QuestManager : MonoBehaviour {
 	public bool IsQuestInProgress()
 	{
 		return questInProgress;
+	}
+
+	public bool ConversationEnabled
+	{
+		get{ return conversationInProgress;}
+		set{ conversationInProgress = value;}
 	}
 
 }
