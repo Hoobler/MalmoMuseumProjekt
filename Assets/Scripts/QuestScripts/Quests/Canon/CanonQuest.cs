@@ -26,6 +26,7 @@ public class CanonQuest : QuestBase  {
 	private int nr_of_hits = 0;
 
 	private ParticleSystem smoke;
+	private ParticleSystem waterEffect;
 
 	private Vector3 prevPos;
 
