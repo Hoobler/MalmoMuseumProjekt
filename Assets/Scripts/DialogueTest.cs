@@ -129,6 +129,7 @@ public class DialogueTest: MonoBehaviour {
 			mainGUIText.font = font;
 		mainGUIText.fontSize = (int) (12 * Screen.width / 800f);
 
+		GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().ConversationEnabled = true;
 
 		GameObject kryssIHornet = new GameObject ("Exit Cross");
 		kryssIHornet.transform.parent = dialogueObject.transform;
@@ -150,6 +151,7 @@ public class DialogueTest: MonoBehaviour {
 		Debug.Log ("A CONVERSATION HAS BEEN STOPPED THROUGH QUEST");
 		previousActionWasMouseButtonDown = false;
 		conversationActive = false;
+		GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().ConversationEnabled = false;
 	}
 
 	void KillConversation(){
@@ -162,6 +164,7 @@ public class DialogueTest: MonoBehaviour {
 		Debug.Log ("A CONVERSATION HAS BEEN STOPPED IN GENERAL");
 		previousActionWasMouseButtonDown = false;
 		conversationActive = false;
+		GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().ConversationEnabled = false;
 		}
 
 	void Update(){
@@ -208,7 +211,7 @@ public class DialogueTest: MonoBehaviour {
 		{
 			playerTransform = GameObject.FindGameObjectWithTag ("Player").transform;
 			if(Vector3.Distance(playerTransform.position, this.transform.position) < speechDistance)
-				if (!conversationActive) {
+				if (!conversationActive && !GameObject.Find ("Quest_Handler").GetComponent<QuestManager> ().ConversationEnabled) {
 				previousActionWasMouseButtonDown = true;
 				conversationActive = true;
 					Init ();
