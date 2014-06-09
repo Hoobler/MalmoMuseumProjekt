@@ -417,6 +417,99 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &2097622848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2097622852}
+  - 132: {fileID: 2097622851}
+  - 131: {fileID: 2097622850}
+  - 114: {fileID: 2097622849}
+  m_Layer: 0
+  m_Name: Intro Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2097622849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097622848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0534080afed8e1845bef2a30d426dc7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScreenInset:
+    serializedVersion: 2
+    x: .0500000007
+    y: .0500000007
+    width: .25
+    height: .460000008
+  fontSize: 12
+--- !u!131 &2097622850
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097622848}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: b17dde1c0bf4ae945baaf9c59d9eebde, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 20
+    y: 20
+    width: 20
+    height: 20
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!132 &2097622851
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097622848}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: "V\xE4lkommen till Malm\xF6, \xE5ret \xE4r 1692. Kom och utforska staden!
+    Var inte blyg, du f\xE5r g\xE4rna prata med m\xE4nniskorna du tr\xE4ffar p\xE5.\r\n\r\nAnv\xE4nd
+    kartan f\xF6r att bes\xF6ka olika omr\xE5den. Med styrspakarna kan du navigera
+    runt de olika kvarteren. F\xF6r att prata med n\xE5gon kan du klicka p\xE5 dem
+    med fingret.\r\n\r\nHa det s\xE5 kul!"
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &2097622852
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097622848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &2133235473
 GameObject:
   m_ObjectHideFlags: 0
